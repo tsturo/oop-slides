@@ -10,7 +10,7 @@ Build a football system demonstrating **composition** (Stadium owns its parts) a
 ## Step 1: Pitch and Seats (parts of a stadium)
 
 ```python
-class Pitch:
+class Pitch:  # Aikštė
     def __init__(self, surface):
         self.surface = surface
 
@@ -18,7 +18,7 @@ class Pitch:
         return f"Pitch({self.surface})"
 
 
-class Seats:
+class Seats:  # Sėdynės
     def __init__(self, capacity):
         self.capacity = capacity
 
@@ -29,7 +29,7 @@ class Seats:
 ## Step 2: Stadium creates its own parts
 
 ```python
-class Stadium:
+class Stadium:  # Stadionas
     def __init__(self, name, capacity, surface="grass"):
         self.name = name
         # Composition: created INSIDE — exclusive to this stadium
@@ -66,7 +66,7 @@ Stadium: Camp Nou
 ## Step 4: Player
 
 ```python
-class Player:
+class Player:  # Žaidėjas
     def __init__(self, name, position):
         self.name = name
         self.position = position
@@ -78,7 +78,7 @@ class Player:
 ## Step 5: Team (base class)
 
 ```python
-class Team:
+class Team:  # Komanda
     def __init__(self, name):
         self.name = name
         self.players = []
@@ -99,11 +99,11 @@ class Team:
 ## Step 6: FootballTeam and NationalTeam
 
 ```python
-class FootballTeam(Team):
+class FootballTeam(Team):  # Futbolo komanda
     pass
 
 
-class NationalTeam(Team):
+class NationalTeam(Team):  # Nacionalinė komanda
     pass
 ```
 
