@@ -253,25 +253,8 @@ team = <span class="cls">Team</span>([player])
       </ul>
       <div class="callout" style="margin-top: 1.5rem;">UML helps you <strong>think about design</strong> before you write code.</div>
     </div>
-    <div class="visual" style="flex: 0 0 220px;">
-      <svg viewBox="0 0 200 200" width="200">
-        <rect x="30" y="10" width="140" height="40" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
-        <text x="100" y="35" text-anchor="middle" fill="#818cf8" font-size="14" font-weight="600" font-family="JetBrains Mono, monospace">UML</text>
-        <line x1="70" y1="50" x2="50" y2="80" stroke="var(--muted)" stroke-width="1.5"/>
-        <line x1="130" y1="50" x2="150" y2="80" stroke="var(--muted)" stroke-width="1.5"/>
-        <rect x="10" y="80" width="80" height="35" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="1.5"/>
-        <text x="50" y="102" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">Structural</text>
-        <rect x="110" y="80" width="80" height="35" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="1.5"/>
-        <text x="150" y="102" text-anchor="middle" fill="#34d399" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">Behavioral</text>
-        <line x1="30" y1="115" x2="30" y2="135" stroke="var(--muted)" stroke-width="1"/>
-        <line x1="70" y1="115" x2="70" y2="135" stroke="var(--muted)" stroke-width="1"/>
-        <line x1="130" y1="115" x2="130" y2="135" stroke="var(--muted)" stroke-width="1"/>
-        <line x1="170" y1="115" x2="170" y2="135" stroke="var(--muted)" stroke-width="1"/>
-        <text x="30" y="150" text-anchor="middle" fill="var(--muted)" font-size="8" font-family="Outfit, sans-serif">Class</text>
-        <text x="70" y="150" text-anchor="middle" fill="var(--muted)" font-size="8" font-family="Outfit, sans-serif">Object</text>
-        <text x="130" y="150" text-anchor="middle" fill="var(--muted)" font-size="8" font-family="Outfit, sans-serif">Sequence</text>
-        <text x="170" y="150" text-anchor="middle" fill="var(--muted)" font-size="8" font-family="Outfit, sans-serif">Use Case</text>
-      </svg>
+    <div class="visual">
+      <img src="assets/bpmn-example.png" alt="Example UML diagram" style="max-height: 350px; border-radius: 8px;">
     </div>
   </div>
 </div>
@@ -309,46 +292,18 @@ team = <span class="cls">Team</span>([player])
 
 <div class="slide">
   <h2>Step 1: <span class="accent">Identify Classes</span></h2>
-  <p style="color: var(--muted); margin-bottom: 1.5rem;">Start by identifying the key entities in your domain</p>
-  <div style="display: flex; justify-content: center; gap: 40px;">
-    <svg viewBox="0 0 500 100" width="600">
-      <rect x="10" y="10" width="130" height="50" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
-      <text x="75" y="42" text-anchor="middle" fill="var(--heading)" font-size="16" font-weight="700" font-family="JetBrains Mono, monospace">Team</text>
-      <rect x="185" y="10" width="130" height="50" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2"/>
-      <text x="250" y="42" text-anchor="middle" fill="var(--heading)" font-size="16" font-weight="700" font-family="JetBrains Mono, monospace">Player</text>
-      <rect x="360" y="10" width="130" height="50" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="2"/>
-      <text x="425" y="42" text-anchor="middle" fill="var(--heading)" font-size="16" font-weight="700" font-family="JetBrains Mono, monospace">Coach</text>
-    </svg>
+  <p style="color: var(--muted); margin-bottom: 1rem;">Start by identifying the key entities in your domain</p>
+  <div style="display: flex; justify-content: center;">
+    <img src="assets/uml-classes-empty.png" alt="Team, Player, Coach classes" style="max-height: 350px; border-radius: 8px;">
   </div>
-  <div class="callout" style="margin-top: 2rem; max-width: 500px;">Each box represents a <strong>class</strong> &mdash; a blueprint for objects in our system.</div>
+  <div class="callout" style="margin-top: 1.5rem; max-width: 500px;">Each box represents a <strong>class</strong> &mdash; a blueprint for objects in our system.</div>
 </div>
 
 <div class="slide">
   <h2>Step 2: <span class="accent">Add Attributes</span></h2>
   <p style="color: var(--muted); margin-bottom: 1rem;">Define the data each class holds</p>
-  <div style="display: flex; justify-content: center; gap: 30px;">
-    <svg viewBox="0 0 520 140" width="600">
-      <rect x="10" y="5" width="145" height="130" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
-      <text x="82" y="28" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Team</text>
-      <line x1="10" y1="38" x2="155" y2="38" stroke="#818cf8" stroke-width="1"/>
-      <text x="20" y="58" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+name: string</text>
-      <text x="20" y="78" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+city: string</text>
-      <text x="20" y="98" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+founded: int</text>
-
-      <rect x="190" y="5" width="145" height="130" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2"/>
-      <text x="262" y="28" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Player</text>
-      <line x1="190" y1="38" x2="335" y2="38" stroke="#a78bfa" stroke-width="1"/>
-      <text x="200" y="58" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+name: string</text>
-      <text x="200" y="78" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+number: int</text>
-      <text x="200" y="98" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+position: string</text>
-
-      <rect x="370" y="5" width="145" height="130" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="2"/>
-      <text x="442" y="28" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Coach</text>
-      <line x1="370" y1="38" x2="515" y2="38" stroke="#34d399" stroke-width="1"/>
-      <text x="380" y="58" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+name: string</text>
-      <text x="380" y="78" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+experience: int</text>
-      <text x="380" y="98" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+specialty: string</text>
-    </svg>
+  <div style="display: flex; justify-content: center;">
+    <img src="assets/uml-classes-attributes.png" alt="Classes with attributes" style="max-height: 350px; border-radius: 8px;">
   </div>
 </div>
 
@@ -356,64 +311,43 @@ team = <span class="cls">Team</span>([player])
   <h2>Step 3: <span class="accent">Add Methods</span></h2>
   <p style="color: var(--muted); margin-bottom: 1rem;">Define what each class can do</p>
   <div style="display: flex; justify-content: center;">
-    <svg viewBox="0 0 520 180" width="600">
-      <rect x="10" y="5" width="145" height="170" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
-      <text x="82" y="28" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Team</text>
-      <line x1="10" y1="38" x2="155" y2="38" stroke="#818cf8" stroke-width="1"/>
-      <text x="20" y="56" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">+name: string</text>
-      <text x="20" y="72" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">+city: string</text>
-      <line x1="10" y1="82" x2="155" y2="82" stroke="#818cf8" stroke-width="1"/>
-      <text x="20" y="100" fill="#818cf8" font-size="10" font-family="JetBrains Mono, monospace">+playGame()</text>
-      <text x="20" y="116" fill="#818cf8" font-size="10" font-family="JetBrains Mono, monospace">+hireCoach()</text>
-      <text x="20" y="132" fill="#818cf8" font-size="10" font-family="JetBrains Mono, monospace">+addPlayer()</text>
-
-      <rect x="190" y="5" width="145" height="170" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2"/>
-      <text x="262" y="28" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Player</text>
-      <line x1="190" y1="38" x2="335" y2="38" stroke="#a78bfa" stroke-width="1"/>
-      <text x="200" y="56" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">+name: string</text>
-      <text x="200" y="72" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">+number: int</text>
-      <line x1="190" y1="82" x2="335" y2="82" stroke="#a78bfa" stroke-width="1"/>
-      <text x="200" y="100" fill="#a78bfa" font-size="10" font-family="JetBrains Mono, monospace">+train()</text>
-      <text x="200" y="116" fill="#a78bfa" font-size="10" font-family="JetBrains Mono, monospace">+play()</text>
-
-      <rect x="370" y="5" width="145" height="170" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="2"/>
-      <text x="442" y="28" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Coach</text>
-      <line x1="370" y1="38" x2="515" y2="38" stroke="#34d399" stroke-width="1"/>
-      <text x="380" y="56" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">+name: string</text>
-      <text x="380" y="72" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">+experience: int</text>
-      <line x1="370" y1="82" x2="515" y2="82" stroke="#34d399" stroke-width="1"/>
-      <text x="380" y="100" fill="#34d399" font-size="10" font-family="JetBrains Mono, monospace">+makeStrategy()</text>
-      <text x="380" y="116" fill="#34d399" font-size="10" font-family="JetBrains Mono, monospace">+trainTeam()</text>
-    </svg>
+    <img src="assets/uml-classes-methods.png" alt="Classes with attributes and methods" style="max-height: 380px; border-radius: 8px;">
   </div>
 </div>
 
 <div class="slide">
   <h2>Step 4: <span class="accent">Visibility Symbols</span></h2>
   <p style="color: var(--muted); margin-bottom: 1rem;">Control access to attributes and methods</p>
-  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem 1.5rem; min-width: 140px; text-align: center;">
-      <p style="font-size: 2rem; color: #34d399; font-family: JetBrains Mono, monospace; font-weight: 700;">+</p>
-      <p style="color: var(--heading); font-weight: 600;">Public</p>
-      <p style="font-size: 0.8rem; color: var(--muted);">Accessible from anywhere</p>
+  <div class="layout">
+    <div class="visual" style="flex: 0 0 200px;">
+      <img src="assets/uml-team-visibility.png" alt="Team class with visibility" style="max-height: 320px; border-radius: 8px;">
     </div>
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem 1.5rem; min-width: 140px; text-align: center;">
-      <p style="font-size: 2rem; color: var(--accent); font-family: JetBrains Mono, monospace; font-weight: 700;">-</p>
-      <p style="color: var(--heading); font-weight: 600;">Private</p>
-      <p style="font-size: 0.8rem; color: var(--muted);">Only within the class</p>
-    </div>
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem 1.5rem; min-width: 140px; text-align: center;">
-      <p style="font-size: 2rem; color: #fbbf24; font-family: JetBrains Mono, monospace; font-weight: 700;">#</p>
-      <p style="color: var(--heading); font-weight: 600;">Protected</p>
-      <p style="font-size: 0.8rem; color: var(--muted);">Class + subclasses</p>
-    </div>
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem 1.5rem; min-width: 140px; text-align: center;">
-      <p style="font-size: 2rem; color: #a78bfa; font-family: JetBrains Mono, monospace; font-weight: 700;">~</p>
-      <p style="color: var(--heading); font-weight: 600;">Package</p>
-      <p style="font-size: 0.8rem; color: var(--muted);">Within the package</p>
+    <div class="text">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem; text-align: center;">
+          <p style="font-size: 1.8rem; color: #34d399; font-family: JetBrains Mono, monospace; font-weight: 700;">+</p>
+          <p style="color: var(--heading); font-weight: 600; font-size: 0.95rem;">Public</p>
+          <p style="font-size: 0.75rem; color: var(--muted);">Accessible from anywhere</p>
+        </div>
+        <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem; text-align: center;">
+          <p style="font-size: 1.8rem; color: var(--accent); font-family: JetBrains Mono, monospace; font-weight: 700;">-</p>
+          <p style="color: var(--heading); font-weight: 600; font-size: 0.95rem;">Private</p>
+          <p style="font-size: 0.75rem; color: var(--muted);">Only within the class</p>
+        </div>
+        <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem; text-align: center;">
+          <p style="font-size: 1.8rem; color: #fbbf24; font-family: JetBrains Mono, monospace; font-weight: 700;">#</p>
+          <p style="color: var(--heading); font-weight: 600; font-size: 0.95rem;">Protected</p>
+          <p style="font-size: 0.75rem; color: var(--muted);">Class + subclasses</p>
+        </div>
+        <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem; text-align: center;">
+          <p style="font-size: 1.8rem; color: #a78bfa; font-family: JetBrains Mono, monospace; font-weight: 700;">~</p>
+          <p style="color: var(--heading); font-weight: 600; font-size: 0.95rem;">Package</p>
+          <p style="font-size: 0.75rem; color: var(--muted);">Within the package</p>
+        </div>
+      </div>
+      <div class="callout" style="margin-top: 0.8rem;">In Python: <code style="color: var(--accent);">_name</code> = protected, <code style="color: var(--accent);">__name</code> = private</div>
     </div>
   </div>
-  <div class="callout" style="margin-top: 1.5rem; max-width: 550px;">In Python: <code style="color: var(--accent);">_name</code> = protected, <code style="color: var(--accent);">__name</code> = private (name mangling)</div>
 </div>
 
 <div class="slide">
