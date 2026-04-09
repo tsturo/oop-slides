@@ -708,29 +708,63 @@ team = <span class="cls">Team</span>([player])
 
 <div class="slide">
   <h2><span style="color: #34d399;">Structural</span> Patterns</h2>
-  <div style="max-width: 700px; margin-top: 1rem;">
-    <p style="color: var(--muted); margin-bottom: 1.5rem;">Deal with <strong>object composition</strong> &mdash; how classes and objects are combined to form larger structures.</p>
-    <ul>
-      <li>&#128994; <strong>Adapter</strong> &mdash; make incompatible interfaces work together</li>
-      <li>&#128994; <strong>Decorator</strong> &mdash; add responsibilities dynamically</li>
-      <li>&#128994; <strong>Proxy</strong> &mdash; provide a surrogate or placeholder</li>
-      <li>&#128994; <strong>Composite</strong> &mdash; compose objects into tree structures</li>
-      <li>&#128994; <strong>Bridge</strong> &mdash; separate abstraction from implementation</li>
-    </ul>
+  <p style="color: var(--muted); margin-bottom: 1rem;">How classes and objects are <strong>composed</strong> into larger structures</p>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 950px;">
+    <div class="col" style="display: flex; align-items: center; gap: 14px; padding: 1.2rem; min-height: 90px;">
+      <img src="assets/dp-icon-adapter.png" alt="" style="height: 55px; flex-shrink: 0;">
+      <div><strong style="font-size: 1rem;">Adapter</strong><br><span style="font-size: 0.85rem; color: var(--muted);">Incompatible interfaces work together</span></div>
+    </div>
+    <div class="col" style="display: flex; align-items: center; gap: 14px; padding: 1.2rem; min-height: 90px;">
+      <img src="assets/dp-icon-bridge.png" alt="" style="height: 55px; flex-shrink: 0;">
+      <div><strong style="font-size: 1rem;">Bridge</strong><br><span style="font-size: 0.85rem; color: var(--muted);">Separate abstraction from implementation</span></div>
+    </div>
+    <div class="col" style="display: flex; align-items: center; gap: 14px; padding: 1.2rem; min-height: 90px;">
+      <img src="assets/dp-icon-composite.png" alt="" style="height: 55px; flex-shrink: 0;">
+      <div><strong style="font-size: 1rem;">Composite</strong><br><span style="font-size: 0.85rem; color: var(--muted);">Tree structures of objects</span></div>
+    </div>
+    <div class="col" style="display: flex; align-items: center; gap: 14px; padding: 1.2rem; min-height: 90px;">
+      <img src="assets/dp-icon-decorator.png" alt="" style="height: 55px; flex-shrink: 0;">
+      <div><strong style="font-size: 1rem;">Decorator</strong><br><span style="font-size: 0.85rem; color: var(--muted);">Add responsibilities dynamically</span></div>
+    </div>
+    <div class="col" style="display: flex; align-items: center; gap: 14px; padding: 1.2rem; min-height: 90px;">
+      <img src="assets/dp-icon-facade.png" alt="" style="height: 55px; flex-shrink: 0;">
+      <div><strong style="font-size: 1rem;">Facade</strong><br><span style="font-size: 0.85rem; color: var(--muted);">Simple interface to complex subsystem</span></div>
+    </div>
+    <div class="col" style="display: flex; align-items: center; gap: 14px; padding: 1.2rem; min-height: 90px;">
+      <img src="assets/dp-icon-proxy.png" alt="" style="height: 55px; flex-shrink: 0;">
+      <div><strong style="font-size: 1rem;">Proxy</strong><br><span style="font-size: 0.85rem; color: var(--muted);">Surrogate or placeholder</span></div>
+    </div>
   </div>
 </div>
 
 <div class="slide">
   <h2><span style="color: #fbbf24;">Behavioral</span> Patterns</h2>
-  <div style="max-width: 700px; margin-top: 1rem;">
-    <p style="color: var(--muted); margin-bottom: 1.5rem;">Deal with <strong>communication</strong> between objects &mdash; how objects interact and distribute responsibility.</p>
-    <ul>
-      <li>&#128993; <strong>Observer</strong> &mdash; notify dependents of state changes</li>
-      <li>&#128993; <strong>Strategy</strong> &mdash; define a family of interchangeable algorithms</li>
-      <li>&#128993; <strong>Command</strong> &mdash; encapsulate a request as an object</li>
-      <li>&#128993; <strong>Iterator</strong> &mdash; access elements sequentially</li>
-      <li>&#128993; <strong>State</strong> &mdash; alter behavior when internal state changes</li>
-    </ul>
+  <p style="color: var(--muted); margin-bottom: 1rem;">How objects <strong>communicate</strong> and distribute responsibility</p>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 950px;">
+    <div class="col" style="display: flex; align-items: center; gap: 14px; padding: 1.2rem; min-height: 90px;">
+      <img src="assets/dp-icon-observer.png" alt="" style="height: 55px; flex-shrink: 0;">
+      <div><strong style="font-size: 1rem;">Observer</strong><br><span style="font-size: 0.85rem; color: var(--muted);">Notify dependents of changes</span></div>
+    </div>
+    <div class="col" style="display: flex; align-items: center; gap: 14px; padding: 1.2rem; min-height: 90px;">
+      <img src="assets/dp-icon-strategy.png" alt="" style="height: 55px; flex-shrink: 0;">
+      <div><strong style="font-size: 1rem;">Strategy</strong><br><span style="font-size: 0.85rem; color: var(--muted);">Interchangeable algorithms</span></div>
+    </div>
+    <div class="col" style="display: flex; align-items: center; gap: 14px; padding: 1.2rem; min-height: 90px;">
+      <img src="assets/dp-icon-command.png" alt="" style="height: 55px; flex-shrink: 0;">
+      <div><strong style="font-size: 1rem;">Command</strong><br><span style="font-size: 0.85rem; color: var(--muted);">Encapsulate request as object</span></div>
+    </div>
+    <div class="col" style="display: flex; align-items: center; gap: 14px; padding: 1.2rem; min-height: 90px;">
+      <img src="assets/dp-icon-iterator.png" alt="" style="height: 55px; flex-shrink: 0;">
+      <div><strong style="font-size: 1rem;">Iterator</strong><br><span style="font-size: 0.85rem; color: var(--muted);">Access elements sequentially</span></div>
+    </div>
+    <div class="col" style="display: flex; align-items: center; gap: 14px; padding: 1.2rem; min-height: 90px;">
+      <img src="assets/dp-icon-state.png" alt="" style="height: 55px; flex-shrink: 0;">
+      <div><strong style="font-size: 1rem;">State</strong><br><span style="font-size: 0.85rem; color: var(--muted);">Alter behavior when state changes</span></div>
+    </div>
+    <div class="col" style="display: flex; align-items: center; gap: 14px; padding: 1.2rem; min-height: 90px;">
+      <img src="assets/dp-icon-visitor.png" alt="" style="height: 55px; flex-shrink: 0;">
+      <div><strong style="font-size: 1rem;">Visitor</strong><br><span style="font-size: 0.85rem; color: var(--muted);">New operations without modifying</span></div>
+    </div>
   </div>
 </div>
 
@@ -899,9 +933,16 @@ user_repo = <span class="cls">UserRepository</span>()
   </div>
 </div>
 
-<div class="slide center" style="background: var(--surface);">
-  <h2><span style="color: #a78bfa;">Builder</span> Pattern</h2>
-  <p style="color: var(--text); margin-top: 1.5rem; font-size: 1.1rem;">Construct <strong>complex objects</strong> step by step.</p>
+<div class="slide" style="background: var(--surface);">
+  <div class="layout">
+    <div class="text" style="text-align: center;">
+      <h2><span style="color: #a78bfa;">Builder</span> Pattern</h2>
+      <p style="color: var(--text); margin-top: 1.5rem; font-size: 1.1rem;">Construct <strong>complex objects</strong> step by step.</p>
+    </div>
+    <div class="visual">
+      <img src="assets/dp-builder-2.png" alt="Builder pattern" style="max-height: 400px; border-radius: 8px;">
+    </div>
+  </div>
 </div>
 
 <div class="slide">
@@ -923,30 +964,18 @@ user_repo = <span class="cls">UserRepository</span>()
 
 <div class="slide">
   <h2><span style="color: #a78bfa;">Builder</span> &mdash; The Solution</h2>
-  <div style="max-width: 700px; margin-top: 1rem;">
-    <ul>
-      <li>&#128451;&#65039; <strong>Extract</strong> the construction code into a separate <strong>Builder</strong> class</li>
-      <li>&#128260; Builder provides <strong>step-by-step methods</strong> to configure each part</li>
-      <li>&#128279; Methods return <code style="color: var(--cyan);">self</code> to allow <strong>method chaining</strong></li>
-      <li>&#9989; A <code style="color: var(--cyan);">build()</code> method returns the final constructed object</li>
-    </ul>
-    <div class="callout" style="margin-top: 1.5rem;">&#128161; You don't need to call all steps &mdash; only the ones needed for your particular configuration.</div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2><span style="color: #a78bfa;">Builder</span> &mdash; Solution</h2>
   <div class="layout">
     <div class="text">
-      <p>The Builder pattern suggests that you extract the object construction code out of its own class and move it to separate objects called <strong>builders</strong>.</p>
-      <ul style="margin-top: 1rem;">
-        <li>&#128736;&#65039; Build step by step</li>
-        <li>&#128260; Same process, different representations</li>
-        <li>&#9989; Only call the steps you need</li>
+      <ul>
+        <li>&#128451;&#65039; <strong>Extract</strong> construction into a separate <strong>Builder</strong> class</li>
+        <li>&#128260; Step-by-step methods to configure each part</li>
+        <li>&#128279; Methods return <code style="color: var(--cyan);">self</code> for <strong>method chaining</strong></li>
+        <li>&#9989; <code style="color: var(--cyan);">build()</code> returns the final object</li>
       </ul>
+      <div class="callout" style="margin-top: 1rem;">&#128161; Only call the steps you need for your configuration.</div>
     </div>
     <div class="visual">
-      <img src="assets/dp-builder.png" alt="Builder pattern diagram" style="max-height: 350px; border-radius: 8px;">
+      <img src="assets/dp-builder.png" alt="Builder pattern diagram" style="max-height: 400px; border-radius: 8px;">
     </div>
   </div>
 </div>
