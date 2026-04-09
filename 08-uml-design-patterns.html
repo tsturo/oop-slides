@@ -798,6 +798,28 @@ team = <span class="cls">Team</span>([player])
 </div>
 
 <div class="slide">
+  <h2><span style="color: #818cf8;">Singleton</span> in Real Life</h2>
+  <div class="three-col" style="margin-top: 1.5rem;">
+    <div class="col" style="text-align: center;">
+      <p style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#127987;&#65039;</p>
+      <h3 style="color: #818cf8;">One President</h3>
+      <p style="font-size: 0.9rem;">A country has exactly <strong>one president</strong>. Everyone refers to the same person. You don't create a new one each time.</p>
+    </div>
+    <div class="col" style="text-align: center;">
+      <p style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#128203;</p>
+      <h3 style="color: #818cf8;">One Clipboard</h3>
+      <p style="font-size: 0.9rem;">Your phone has <strong>one clipboard</strong>. Copy from any app, paste in any app &mdash; it's always the same clipboard.</p>
+    </div>
+    <div class="col" style="text-align: center;">
+      <p style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#127979;</p>
+      <h3 style="color: #818cf8;">One Principal</h3>
+      <p style="font-size: 0.9rem;">A school has <strong>one principal</strong>. One office, one person in charge. Everyone goes to the same one.</p>
+    </div>
+  </div>
+  <div class="callout" style="margin-top: 1.5rem; max-width: 600px;">&#128161; In code: one database connection, one configuration manager, one logger &mdash; same idea.</div>
+</div>
+
+<div class="slide">
   <h2><span style="color: #818cf8;">Singleton</span> &mdash; The Solution</h2>
   <div style="max-width: 700px; margin-top: 1rem;">
     <ul>
@@ -991,6 +1013,28 @@ user_repo = <span class="cls">UserRepository</span>()
 </div>
 
 <div class="slide">
+  <h2><span style="color: #a78bfa;">Builder</span> in Real Life</h2>
+  <div class="three-col" style="margin-top: 1.5rem;">
+    <div class="col" style="text-align: center;">
+      <p style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#127828;</p>
+      <h3 style="color: #a78bfa;">Ordering a Burger</h3>
+      <p style="font-size: 0.9rem;">Pick bun, patty, cheese, sauce, extras <strong>step by step</strong>. Same process &rarr; Big Mac or custom burger.</p>
+    </div>
+    <div class="col" style="text-align: center;">
+      <p style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#127829;</p>
+      <h3 style="color: #a78bfa;">Building a Pizza</h3>
+      <p style="font-size: 0.9rem;">Choose base, sauce, toppings, size. <strong>Not all options required</strong> &mdash; a margherita skips most toppings.</p>
+    </div>
+    <div class="col" style="text-align: center;">
+      <p style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#128722;</p>
+      <h3 style="color: #a78bfa;">IKEA Furniture</h3>
+      <p style="font-size: 0.9rem;">Follow steps, <strong>skip optional parts</strong> (shelf dividers, extra drawers). Same instructions, different results.</p>
+    </div>
+  </div>
+  <div class="callout" style="margin-top: 1.5rem; max-width: 600px;">&#128161; In code: build a complex object (Car, Computer, Query) one piece at a time, only setting what you need.</div>
+</div>
+
+<div class="slide">
   <h2><span style="color: #a78bfa;">Builder</span> &mdash; The Solution</h2>
   <div class="layout">
     <div class="text">
@@ -1006,48 +1050,6 @@ user_repo = <span class="cls">UserRepository</span>()
       <img src="assets/dp-builder.png" alt="Builder pattern diagram" style="max-height: 400px; border-radius: 8px;">
     </div>
   </div>
-</div>
-
-<div class="slide center">
-  <h2><span style="color: #a78bfa;">Builder</span> &mdash; UML Diagram</h2>
-  <svg viewBox="0 0 650 240" width="85%" style="max-width: 850px; margin-top: 1rem;">
-    <rect x="10" y="10" width="180" height="90" rx="8" fill="var(--code-bg)" stroke="var(--border)" stroke-width="1.5"/>
-    <text x="100" y="32" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">Director</text>
-    <line x1="10" y1="40" x2="190" y2="40" stroke="var(--border)" stroke-width="1"/>
-    <text x="20" y="58" fill="var(--muted)" font-size="9" font-family="JetBrains Mono, monospace">- builder: Builder</text>
-    <line x1="10" y1="68" x2="190" y2="68" stroke="var(--border)" stroke-width="1"/>
-    <text x="20" y="86" fill="var(--green)" font-size="9" font-family="JetBrains Mono, monospace">+ construct()</text>
-
-    <line x1="190" y1="55" x2="240" y2="55" stroke="var(--muted)" stroke-width="1.5"/>
-    <polygon points="240,55 232,51 232,59" fill="var(--muted)"/>
-
-    <rect x="245" y="10" width="180" height="120" rx="8" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2.5"/>
-    <text x="335" y="28" text-anchor="middle" fill="#a78bfa" font-size="9" font-family="Outfit, sans-serif">&#171;interface&#187;</text>
-    <text x="335" y="44" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">Builder</text>
-    <line x1="245" y1="52" x2="425" y2="52" stroke="#a78bfa" stroke-width="1"/>
-    <text x="255" y="70" fill="var(--green)" font-size="9" font-family="JetBrains Mono, monospace">+ set_engine()</text>
-    <text x="255" y="86" fill="var(--green)" font-size="9" font-family="JetBrains Mono, monospace">+ set_tires()</text>
-    <text x="255" y="102" fill="var(--green)" font-size="9" font-family="JetBrains Mono, monospace">+ set_color()</text>
-    <text x="255" y="118" fill="var(--green)" font-size="9" font-family="JetBrains Mono, monospace">+ build(): Product</text>
-
-    <line x1="335" y1="130" x2="335" y2="155" stroke="var(--muted)" stroke-width="1.5"/>
-    <polygon points="335,130 331,138 339,138" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
-
-    <rect x="245" y="160" width="180" height="65" rx="8" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="1.5"/>
-    <text x="335" y="183" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">CarBuilder</text>
-    <line x1="245" y1="192" x2="425" y2="192" stroke="#a78bfa" stroke-width="1"/>
-    <text x="255" y="210" fill="var(--green)" font-size="9" font-family="JetBrains Mono, monospace">+ set_engine(), ...</text>
-
-    <line x1="425" y1="55" x2="465" y2="55" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 3"/>
-    <polygon points="465,55 457,51 457,59" fill="var(--muted)"/>
-
-    <rect x="470" y="10" width="160" height="90" rx="8" fill="var(--code-bg)" stroke="var(--border)" stroke-width="1.5"/>
-    <text x="550" y="32" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">Product</text>
-    <line x1="470" y1="40" x2="630" y2="40" stroke="var(--border)" stroke-width="1"/>
-    <text x="480" y="58" fill="var(--muted)" font-size="9" font-family="JetBrains Mono, monospace">- engine: str</text>
-    <text x="480" y="74" fill="var(--muted)" font-size="9" font-family="JetBrains Mono, monospace">- tires: str</text>
-    <text x="480" y="90" fill="var(--muted)" font-size="9" font-family="JetBrains Mono, monospace">- color: str</text>
-  </svg>
 </div>
 
 <div class="slide reveal-slide">
