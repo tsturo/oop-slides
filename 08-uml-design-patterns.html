@@ -174,14 +174,22 @@ team = <span class="cls">Team</span>([player])
 
 <div class="slide quiz-slide">
   <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Lecture 07)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">Which SOLID principle says "open for extension, closed for modification"?</p>
-  <div class="two-col quiz-answers" style="margin-top: 2rem; max-width: 700px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">A) Single Responsibility Principle</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">B) Liskov Substitution Principle</p></div>
+  <p style="color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Which SOLID principle does this code violate?</p>
+  <pre style="font-size: 0.72rem;"><span class="kw">class</span> <span class="cls">NotificationService</span>:
+    <span class="kw">def</span> <span class="fn">send</span>(<span class="par">self</span>, message, channel):
+        <span class="kw">if</span> channel == <span class="str">"email"</span>:
+            <span class="par">self</span>.<span class="fn">_send_email</span>(message)
+        <span class="kw">elif</span> channel == <span class="str">"sms"</span>:
+            <span class="par">self</span>.<span class="fn">_send_sms</span>(message)
+        <span class="kw">elif</span> channel == <span class="str">"slack"</span>:
+            <span class="par">self</span>.<span class="fn">_send_slack</span>(message)</pre>
+  <div class="two-col quiz-answers" style="margin-top: 1rem; max-width: 700px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">A) Liskov Substitution</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">B) Interface Segregation</p></div>
     <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);"><strong>C) Open-Closed Principle</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) Dependency Inversion Principle</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) No violation</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1rem; font-size: 0.9rem;">The <strong>Open-Closed Principle (OCP)</strong> says software entities should be open for extension but closed for modification &mdash; add new behavior without changing existing code.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 0.5rem; font-size: 0.9rem;">Adding WhatsApp means <strong>editing this class</strong>. OCP says extend with new classes (e.g., <code style="color: var(--cyan);">WhatsAppChannel</code>), don't modify existing ones.</p>
 </div>
 <div class="slide">
   <p style="color: var(--accent); font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Recap: Lecture 07</p>
