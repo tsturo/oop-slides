@@ -849,6 +849,34 @@ team = <span class="cls">Team</span>([player])
   </div>
 </div>
 
+<div class="slide center">
+  <h2><span style="color: #818cf8;">Singleton</span> &mdash; UML Diagram</h2>
+  <svg viewBox="0 0 500 220" width="70%" style="max-width: 600px; margin-top: 1.5rem;">
+    <rect x="140" y="10" width="220" height="130" rx="8" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2.5"/>
+    <rect x="140" y="10" width="220" height="35" rx="8" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2.5"/>
+    <text x="250" y="33" text-anchor="middle" fill="var(--heading)" font-size="16" font-weight="700" font-family="JetBrains Mono, monospace">Singleton</text>
+    <line x1="140" y1="45" x2="360" y2="45" stroke="#818cf8" stroke-width="1.5"/>
+    <text x="155" y="65" fill="var(--accent)" font-size="11" font-family="JetBrains Mono, monospace">- _instance: Singleton</text>
+    <line x1="140" y1="78" x2="360" y2="78" stroke="#818cf8" stroke-width="1.5"/>
+    <text x="155" y="98" fill="var(--accent)" font-size="11" font-family="JetBrains Mono, monospace">- __new__(cls)</text>
+    <text x="155" y="118" fill="var(--green)" font-size="11" font-family="JetBrains Mono, monospace">+ query(sql)</text>
+    <text x="155" y="133" fill="var(--green)" font-size="11" font-family="JetBrains Mono, monospace">+ connection</text>
+
+    <rect x="10" y="80" width="90" height="35" rx="6" fill="var(--code-bg)" stroke="var(--border)" stroke-width="1.5"/>
+    <text x="55" y="102" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">Client</text>
+    <line x1="100" y1="97" x2="138" y2="97" stroke="var(--muted)" stroke-width="1.5"/>
+    <polygon points="138,97 130,93 130,101" fill="var(--muted)"/>
+
+    <path d="M360 90 Q420 90 420 65 Q420 40 360 40" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <polygon points="360,40 368,36 368,44" fill="var(--muted)"/>
+    <text x="430" y="62" fill="var(--muted)" font-size="9" font-family="Outfit, sans-serif" font-style="italic">returns same</text>
+    <text x="430" y="75" fill="var(--muted)" font-size="9" font-family="Outfit, sans-serif" font-style="italic">instance</text>
+
+    <text x="250" y="175" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif"><tspan fill="var(--accent)">- private</tspan> constructor prevents external instantiation</text>
+    <text x="250" y="195" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif"><tspan fill="#818cf8">__new__</tspan> checks if _instance exists, returns it or creates one</text>
+  </svg>
+</div>
+
 <div class="slide reveal-slide">
   <h2><span style="color: #818cf8;">Singleton</span> in Python</h2>
   <div class="reveal-blocks">
@@ -978,6 +1006,48 @@ user_repo = <span class="cls">UserRepository</span>()
       <img src="assets/dp-builder.png" alt="Builder pattern diagram" style="max-height: 400px; border-radius: 8px;">
     </div>
   </div>
+</div>
+
+<div class="slide center">
+  <h2><span style="color: #a78bfa;">Builder</span> &mdash; UML Diagram</h2>
+  <svg viewBox="0 0 650 240" width="85%" style="max-width: 850px; margin-top: 1rem;">
+    <rect x="10" y="10" width="180" height="90" rx="8" fill="var(--code-bg)" stroke="var(--border)" stroke-width="1.5"/>
+    <text x="100" y="32" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">Director</text>
+    <line x1="10" y1="40" x2="190" y2="40" stroke="var(--border)" stroke-width="1"/>
+    <text x="20" y="58" fill="var(--muted)" font-size="9" font-family="JetBrains Mono, monospace">- builder: Builder</text>
+    <line x1="10" y1="68" x2="190" y2="68" stroke="var(--border)" stroke-width="1"/>
+    <text x="20" y="86" fill="var(--green)" font-size="9" font-family="JetBrains Mono, monospace">+ construct()</text>
+
+    <line x1="190" y1="55" x2="240" y2="55" stroke="var(--muted)" stroke-width="1.5"/>
+    <polygon points="240,55 232,51 232,59" fill="var(--muted)"/>
+
+    <rect x="245" y="10" width="180" height="110" rx="8" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2.5"/>
+    <text x="275" y="28" fill="#a78bfa" font-size="8" font-family="Outfit, sans-serif">&#171;interface&#187;</text>
+    <text x="335" y="32" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">Builder</text>
+    <line x1="245" y1="42" x2="425" y2="42" stroke="#a78bfa" stroke-width="1"/>
+    <text x="255" y="60" fill="var(--green)" font-size="9" font-family="JetBrains Mono, monospace">+ set_engine()</text>
+    <text x="255" y="76" fill="var(--green)" font-size="9" font-family="JetBrains Mono, monospace">+ set_tires()</text>
+    <text x="255" y="92" fill="var(--green)" font-size="9" font-family="JetBrains Mono, monospace">+ set_color()</text>
+    <text x="255" y="108" fill="var(--green)" font-size="9" font-family="JetBrains Mono, monospace">+ build(): Product</text>
+
+    <line x1="335" y1="120" x2="335" y2="155" stroke="var(--muted)" stroke-width="1.5"/>
+    <polygon points="335,120 331,128 339,128" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+
+    <rect x="245" y="160" width="180" height="65" rx="8" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="335" y="183" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">CarBuilder</text>
+    <line x1="245" y1="192" x2="425" y2="192" stroke="#a78bfa" stroke-width="1"/>
+    <text x="255" y="210" fill="var(--green)" font-size="9" font-family="JetBrains Mono, monospace">+ set_engine(), ...</text>
+
+    <line x1="425" y1="55" x2="465" y2="55" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <polygon points="465,55 457,51 457,59" fill="var(--muted)"/>
+
+    <rect x="470" y="10" width="160" height="90" rx="8" fill="var(--code-bg)" stroke="var(--border)" stroke-width="1.5"/>
+    <text x="550" y="32" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">Product</text>
+    <line x1="470" y1="40" x2="630" y2="40" stroke="var(--border)" stroke-width="1"/>
+    <text x="480" y="58" fill="var(--muted)" font-size="9" font-family="JetBrains Mono, monospace">- engine: str</text>
+    <text x="480" y="74" fill="var(--muted)" font-size="9" font-family="JetBrains Mono, monospace">- tires: str</text>
+    <text x="480" y="90" fill="var(--muted)" font-size="9" font-family="JetBrains Mono, monospace">- color: str</text>
+  </svg>
 </div>
 
 <div class="slide reveal-slide">
