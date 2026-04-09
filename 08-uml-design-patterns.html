@@ -223,192 +223,16 @@ team = <span class="cls">Team</span>([player])
   <h2>Agenda for <span class="accent">Today</span></h2>
   <div style="max-width: 600px; margin-top: 1rem;">
     <ul>
+      <li>&#128208; <strong>UML</strong> &mdash; the visual language for software design</li>
       <li>&#128218; What are <strong>Design Patterns</strong>?</li>
       <li>&#128161; Why are they <strong>important</strong>?</li>
       <li>&#128451;&#65039; How are they <strong>categorized</strong>?</li>
-      <li>&#128208; <strong>UML</strong> &mdash; Unified Modeling Language</li>
       <li>&#128269; Deep dive into 2 patterns:</li>
     </ul>
     <div style="margin-left: 2rem; margin-top: 0.5rem;">
       <p>&#128312; <strong style="color: #818cf8;">Singleton</strong> &mdash; one instance, global access</p>
       <p>&#128311; <strong style="color: #a78bfa;">Builder</strong> &mdash; step-by-step construction</p>
     </div>
-  </div>
-</div>
-
-<div class="slide center" style="background: var(--surface);">
-  <h2>What is a <span class="accent">Design Pattern</span>?</h2>
-  <p style="color: var(--text); margin-top: 1.5rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto;">A <strong>standardized solution</strong> to a commonly occurring problem in software design.</p>
-  <p style="color: var(--muted); margin-top: 1.5rem; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">They are <strong>templates</strong>, not ready-made code. You adapt the pattern to fit your specific problem.</p>
-  <div class="callout" style="margin-top: 2rem; max-width: 550px; margin-left: auto; margin-right: auto;">&#128161; Think of patterns as <strong>blueprints</strong> &mdash; they show the approach, but the implementation is yours.</div>
-</div>
-
-<div class="slide">
-  <h2>&#128690; Don't <span class="accent">reinvent the wheel!</span></h2>
-  <div style="max-width: 700px; margin-top: 1rem;">
-    <ul>
-      <li>&#9889; <strong>Efficiency:</strong> Solve problems faster with proven approaches</li>
-      <li>&#128737;&#65039; <strong>Reliability:</strong> Battle-tested solutions used by thousands of developers</li>
-      <li>&#128483;&#65039; <strong>Standardization:</strong> Common vocabulary your team already understands</li>
-      <li>&#128683; <strong>Avoid pitfalls:</strong> Learn from decades of mistakes made by others</li>
-    </ul>
-    <div class="callout" style="margin-top: 1.5rem;">You wouldn't design your own sorting algorithm for production code &mdash; the same logic applies to software architecture.</div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>History: <span class="accent">Christopher Alexander</span></h2>
-  <div class="layout">
-    <div class="text">
-      <ul>
-        <li>&#127975; <strong>Architect</strong> (buildings, not software)</li>
-        <li>&#128197; 1970s &mdash; published <em>"A Pattern Language"</em></li>
-        <li>&#128161; Identified <strong>253 architectural patterns</strong> for building towns and cities</li>
-        <li>&#128300; Key insight: recurring problems have <strong>recurring solutions</strong></li>
-      </ul>
-      <div class="callout" style="margin-top: 1.5rem;">Software engineers borrowed this idea: if buildings have patterns, <strong>so does code</strong>.</div>
-    </div>
-    <div class="visual">
-      <img src="assets/pattern-language-book.png" alt="A Pattern Language by Christopher Alexander" style="max-height: 500px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>The <span class="accent">Gang of Four</span> (GoF)</h2>
-  <div class="layout">
-    <div class="text">
-      <ul>
-        <li>&#128214; <em>"Design Patterns: Elements of Reusable Object-Oriented Software"</em> (1994)</li>
-        <li>&#128101; Four authors: <strong>Gamma, Helm, Johnson, Vlissides</strong></li>
-        <li>&#128220; Catalogued <strong>23 design patterns</strong></li>
-        <li>&#127942; Became the <strong>bible</strong> of OOP design</li>
-      </ul>
-      <div class="callout" style="margin-top: 1.5rem;">When someone says "design patterns," they usually mean the GoF patterns.</div>
-    </div>
-    <div class="visual">
-      <img src="assets/gof-book.png" alt="Design Patterns: Elements of Reusable Object-Oriented Software" style="max-height: 500px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Problem-solving <span class="accent">toolkit</span></h2>
-  <div style="max-width: 700px; margin-top: 1rem;">
-    <ul>
-      <li>&#128483;&#65039; <strong>Shared language:</strong> "Let's use a Strategy pattern here" &mdash; everyone instantly understands</li>
-      <li>&#128270; <strong>Identify solutions quickly:</strong> Recognize the problem, apply the matching pattern</li>
-      <li>&#128101; <strong>Onboarding:</strong> New team members can understand architecture faster when patterns are documented</li>
-    </ul>
-    <div class="callout" style="margin-top: 1.5rem;">Patterns give developers a <strong>common vocabulary</strong> that transcends programming languages.</div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Code <span class="accent">quality</span></h2>
-  <div style="max-width: 700px; margin-top: 1rem;">
-    <ul>
-      <li>&#128270; <strong>Readability:</strong> Well-known patterns make code easier to understand at a glance</li>
-      <li>&#128736;&#65039; <strong>Maintainability:</strong> Changes are localized to specific classes, not scattered everywhere</li>
-      <li>&#9989; <strong>Testability:</strong> Patterns encourage small, focused classes that are easy to unit test</li>
-    </ul>
-    <div class="callout" style="margin-top: 1.5rem;">Patterns promote the <strong>SOLID principles</strong> we learned last week.</div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Adaptability &amp; <span class="accent">scalability</span></h2>
-  <div style="max-width: 700px; margin-top: 1rem;">
-    <ul>
-      <li>&#128279; <strong>Loose coupling:</strong> Objects depend on abstractions, not concrete implementations</li>
-      <li>&#129513; <strong>High cohesion:</strong> Related behavior grouped together, unrelated behavior separated</li>
-      <li>&#128640; <strong>Scalability:</strong> Add new features without rewriting existing code</li>
-      <li>&#128260; <strong>Flexibility:</strong> Swap components at runtime without modifying the system</li>
-    </ul>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Three <span class="accent">Categories</span></h2>
-  <div class="three-col" style="margin-top: 1.5rem;">
-    <div class="col" style="border-color: #818cf8; text-align: center;">
-      <p style="font-size: 2.5rem; margin-bottom: 0.3rem;">&#127981;</p>
-      <h3 style="color: #818cf8;">Creational</h3>
-      <p style="font-size: 0.9rem;">How objects are <strong>created</strong></p>
-      <ul style="margin-top: 0.8rem; font-size: 0.85rem; text-align: left;">
-        <li>Singleton</li>
-        <li>Factory Method</li>
-        <li>Abstract Factory</li>
-        <li>Builder</li>
-        <li>Prototype</li>
-      </ul>
-    </div>
-    <div class="col" style="border-color: #34d399; text-align: center;">
-      <p style="font-size: 2.5rem; margin-bottom: 0.3rem;">&#129513;</p>
-      <h3 style="color: #34d399;">Structural</h3>
-      <p style="font-size: 0.9rem;">How objects are <strong>composed</strong></p>
-      <ul style="margin-top: 0.8rem; font-size: 0.85rem; text-align: left;">
-        <li>Adapter</li>
-        <li>Decorator</li>
-        <li>Proxy</li>
-        <li>Composite</li>
-        <li>Facade</li>
-      </ul>
-    </div>
-    <div class="col" style="border-color: #fbbf24; text-align: center;">
-      <p style="font-size: 2.5rem; margin-bottom: 0.3rem;">&#128172;</p>
-      <h3 style="color: #fbbf24;">Behavioral</h3>
-      <p style="font-size: 0.9rem;">How objects <strong>communicate</strong></p>
-      <ul style="margin-top: 0.8rem; font-size: 0.85rem; text-align: left;">
-        <li>Observer</li>
-        <li>Strategy</li>
-        <li>Command</li>
-        <li>Iterator</li>
-        <li>State</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2><span style="color: #818cf8;">Creational</span> Patterns</h2>
-  <div style="max-width: 700px; margin-top: 1rem;">
-    <p style="color: var(--muted); margin-bottom: 1.5rem;">Deal with <strong>object creation</strong> mechanisms &mdash; creating objects in a manner suitable to the situation.</p>
-    <ul>
-      <li>&#128312; <strong>Singleton</strong> &mdash; ensure a class has only one instance</li>
-      <li>&#128312; <strong>Factory Method</strong> &mdash; delegate instantiation to subclasses</li>
-      <li>&#128312; <strong>Abstract Factory</strong> &mdash; create families of related objects</li>
-      <li>&#128312; <strong>Builder</strong> &mdash; construct complex objects step by step</li>
-      <li>&#128312; <strong>Prototype</strong> &mdash; clone existing objects</li>
-    </ul>
-  </div>
-</div>
-
-<div class="slide">
-  <h2><span style="color: #34d399;">Structural</span> Patterns</h2>
-  <div style="max-width: 700px; margin-top: 1rem;">
-    <p style="color: var(--muted); margin-bottom: 1.5rem;">Deal with <strong>object composition</strong> &mdash; how classes and objects are combined to form larger structures.</p>
-    <ul>
-      <li>&#128994; <strong>Adapter</strong> &mdash; make incompatible interfaces work together</li>
-      <li>&#128994; <strong>Decorator</strong> &mdash; add responsibilities dynamically</li>
-      <li>&#128994; <strong>Proxy</strong> &mdash; provide a surrogate or placeholder</li>
-      <li>&#128994; <strong>Composite</strong> &mdash; compose objects into tree structures</li>
-      <li>&#128994; <strong>Bridge</strong> &mdash; separate abstraction from implementation</li>
-    </ul>
-  </div>
-</div>
-
-<div class="slide">
-  <h2><span style="color: #fbbf24;">Behavioral</span> Patterns</h2>
-  <div style="max-width: 700px; margin-top: 1rem;">
-    <p style="color: var(--muted); margin-bottom: 1.5rem;">Deal with <strong>communication</strong> between objects &mdash; how objects interact and distribute responsibility.</p>
-    <ul>
-      <li>&#128993; <strong>Observer</strong> &mdash; notify dependents of state changes</li>
-      <li>&#128993; <strong>Strategy</strong> &mdash; define a family of interchangeable algorithms</li>
-      <li>&#128993; <strong>Command</strong> &mdash; encapsulate a request as an object</li>
-      <li>&#128993; <strong>Iterator</strong> &mdash; access elements sequentially</li>
-      <li>&#128993; <strong>State</strong> &mdash; alter behavior when internal state changes</li>
-    </ul>
   </div>
 </div>
 
@@ -1027,6 +851,182 @@ team = <span class="cls">Team</span>([player])
     </svg>
   </div>
   <p style="color: var(--muted); font-size: 0.72rem; margin-top: 1rem; text-align: center;">Notice: the "No" path loops back &mdash; <strong>persistence is key</strong> &#128170;</p>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <h2>What is a <span class="accent">Design Pattern</span>?</h2>
+  <p style="color: var(--text); margin-top: 1.5rem; font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto;">A <strong>standardized solution</strong> to a commonly occurring problem in software design.</p>
+  <p style="color: var(--muted); margin-top: 1.5rem; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">They are <strong>templates</strong>, not ready-made code. You adapt the pattern to fit your specific problem.</p>
+  <div class="callout" style="margin-top: 2rem; max-width: 550px; margin-left: auto; margin-right: auto;">&#128161; Think of patterns as <strong>blueprints</strong> &mdash; they show the approach, but the implementation is yours.</div>
+</div>
+
+<div class="slide">
+  <h2>&#128690; Don't <span class="accent">reinvent the wheel!</span></h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <ul>
+      <li>&#9889; <strong>Efficiency:</strong> Solve problems faster with proven approaches</li>
+      <li>&#128737;&#65039; <strong>Reliability:</strong> Battle-tested solutions used by thousands of developers</li>
+      <li>&#128483;&#65039; <strong>Standardization:</strong> Common vocabulary your team already understands</li>
+      <li>&#128683; <strong>Avoid pitfalls:</strong> Learn from decades of mistakes made by others</li>
+    </ul>
+    <div class="callout" style="margin-top: 1.5rem;">You wouldn't design your own sorting algorithm for production code &mdash; the same logic applies to software architecture.</div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>History: <span class="accent">Christopher Alexander</span></h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#127975; <strong>Architect</strong> (buildings, not software)</li>
+        <li>&#128197; 1970s &mdash; published <em>"A Pattern Language"</em></li>
+        <li>&#128161; Identified <strong>253 architectural patterns</strong> for building towns and cities</li>
+        <li>&#128300; Key insight: recurring problems have <strong>recurring solutions</strong></li>
+      </ul>
+      <div class="callout" style="margin-top: 1.5rem;">Software engineers borrowed this idea: if buildings have patterns, <strong>so does code</strong>.</div>
+    </div>
+    <div class="visual">
+      <img src="assets/pattern-language-book.png" alt="A Pattern Language by Christopher Alexander" style="max-height: 500px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>The <span class="accent">Gang of Four</span> (GoF)</h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#128214; <em>"Design Patterns: Elements of Reusable Object-Oriented Software"</em> (1994)</li>
+        <li>&#128101; Four authors: <strong>Gamma, Helm, Johnson, Vlissides</strong></li>
+        <li>&#128220; Catalogued <strong>23 design patterns</strong></li>
+        <li>&#127942; Became the <strong>bible</strong> of OOP design</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.5rem;">When someone says "design patterns," they usually mean the GoF patterns.</div>
+    </div>
+    <div class="visual">
+      <img src="assets/gof-book.png" alt="Design Patterns: Elements of Reusable Object-Oriented Software" style="max-height: 500px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Problem-solving <span class="accent">toolkit</span></h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <ul>
+      <li>&#128483;&#65039; <strong>Shared language:</strong> "Let's use a Strategy pattern here" &mdash; everyone instantly understands</li>
+      <li>&#128270; <strong>Identify solutions quickly:</strong> Recognize the problem, apply the matching pattern</li>
+      <li>&#128101; <strong>Onboarding:</strong> New team members can understand architecture faster when patterns are documented</li>
+    </ul>
+    <div class="callout" style="margin-top: 1.5rem;">Patterns give developers a <strong>common vocabulary</strong> that transcends programming languages.</div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Code <span class="accent">quality</span></h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <ul>
+      <li>&#128270; <strong>Readability:</strong> Well-known patterns make code easier to understand at a glance</li>
+      <li>&#128736;&#65039; <strong>Maintainability:</strong> Changes are localized to specific classes, not scattered everywhere</li>
+      <li>&#9989; <strong>Testability:</strong> Patterns encourage small, focused classes that are easy to unit test</li>
+    </ul>
+    <div class="callout" style="margin-top: 1.5rem;">Patterns promote the <strong>SOLID principles</strong> we learned last week.</div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Adaptability &amp; <span class="accent">scalability</span></h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <ul>
+      <li>&#128279; <strong>Loose coupling:</strong> Objects depend on abstractions, not concrete implementations</li>
+      <li>&#129513; <strong>High cohesion:</strong> Related behavior grouped together, unrelated behavior separated</li>
+      <li>&#128640; <strong>Scalability:</strong> Add new features without rewriting existing code</li>
+      <li>&#128260; <strong>Flexibility:</strong> Swap components at runtime without modifying the system</li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Three <span class="accent">Categories</span></h2>
+  <div class="three-col" style="margin-top: 1.5rem;">
+    <div class="col" style="border-color: #818cf8; text-align: center;">
+      <p style="font-size: 2.5rem; margin-bottom: 0.3rem;">&#127981;</p>
+      <h3 style="color: #818cf8;">Creational</h3>
+      <p style="font-size: 0.9rem;">How objects are <strong>created</strong></p>
+      <ul style="margin-top: 0.8rem; font-size: 0.85rem; text-align: left;">
+        <li>Singleton</li>
+        <li>Factory Method</li>
+        <li>Abstract Factory</li>
+        <li>Builder</li>
+        <li>Prototype</li>
+      </ul>
+    </div>
+    <div class="col" style="border-color: #34d399; text-align: center;">
+      <p style="font-size: 2.5rem; margin-bottom: 0.3rem;">&#129513;</p>
+      <h3 style="color: #34d399;">Structural</h3>
+      <p style="font-size: 0.9rem;">How objects are <strong>composed</strong></p>
+      <ul style="margin-top: 0.8rem; font-size: 0.85rem; text-align: left;">
+        <li>Adapter</li>
+        <li>Decorator</li>
+        <li>Proxy</li>
+        <li>Composite</li>
+        <li>Facade</li>
+      </ul>
+    </div>
+    <div class="col" style="border-color: #fbbf24; text-align: center;">
+      <p style="font-size: 2.5rem; margin-bottom: 0.3rem;">&#128172;</p>
+      <h3 style="color: #fbbf24;">Behavioral</h3>
+      <p style="font-size: 0.9rem;">How objects <strong>communicate</strong></p>
+      <ul style="margin-top: 0.8rem; font-size: 0.85rem; text-align: left;">
+        <li>Observer</li>
+        <li>Strategy</li>
+        <li>Command</li>
+        <li>Iterator</li>
+        <li>State</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #818cf8;">Creational</span> Patterns</h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <p style="color: var(--muted); margin-bottom: 1.5rem;">Deal with <strong>object creation</strong> mechanisms &mdash; creating objects in a manner suitable to the situation.</p>
+    <ul>
+      <li>&#128312; <strong>Singleton</strong> &mdash; ensure a class has only one instance</li>
+      <li>&#128312; <strong>Factory Method</strong> &mdash; delegate instantiation to subclasses</li>
+      <li>&#128312; <strong>Abstract Factory</strong> &mdash; create families of related objects</li>
+      <li>&#128312; <strong>Builder</strong> &mdash; construct complex objects step by step</li>
+      <li>&#128312; <strong>Prototype</strong> &mdash; clone existing objects</li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #34d399;">Structural</span> Patterns</h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <p style="color: var(--muted); margin-bottom: 1.5rem;">Deal with <strong>object composition</strong> &mdash; how classes and objects are combined to form larger structures.</p>
+    <ul>
+      <li>&#128994; <strong>Adapter</strong> &mdash; make incompatible interfaces work together</li>
+      <li>&#128994; <strong>Decorator</strong> &mdash; add responsibilities dynamically</li>
+      <li>&#128994; <strong>Proxy</strong> &mdash; provide a surrogate or placeholder</li>
+      <li>&#128994; <strong>Composite</strong> &mdash; compose objects into tree structures</li>
+      <li>&#128994; <strong>Bridge</strong> &mdash; separate abstraction from implementation</li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #fbbf24;">Behavioral</span> Patterns</h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <p style="color: var(--muted); margin-bottom: 1.5rem;">Deal with <strong>communication</strong> between objects &mdash; how objects interact and distribute responsibility.</p>
+    <ul>
+      <li>&#128993; <strong>Observer</strong> &mdash; notify dependents of state changes</li>
+      <li>&#128993; <strong>Strategy</strong> &mdash; define a family of interchangeable algorithms</li>
+      <li>&#128993; <strong>Command</strong> &mdash; encapsulate a request as an object</li>
+      <li>&#128993; <strong>Iterator</strong> &mdash; access elements sequentially</li>
+      <li>&#128993; <strong>State</strong> &mdash; alter behavior when internal state changes</li>
+    </ul>
+  </div>
 </div>
 
 <div class="slide center" style="background: var(--surface);">
