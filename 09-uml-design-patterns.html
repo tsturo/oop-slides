@@ -3,21 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UML & Design Patterns: Course 9 — Python OOP</title>
+<title>Design Patterns (Part 2): Course 9 — Python OOP</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="vgtu.jpg">
 <link rel="stylesheet" href="shared.css">
 <style>
-  @keyframes umlPulse {
+  @keyframes patternPulse {
     0%, 100% { opacity: 0.7; }
     50% { opacity: 1; }
   }
-  @keyframes drawLine {
-    from { stroke-dashoffset: 100; }
-    to { stroke-dashoffset: 0; }
+  @keyframes gearSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
-  .uml-pulse { animation: umlPulse 2s ease-in-out infinite; }
-  .draw-line { stroke-dasharray: 100; animation: drawLine 1.5s ease forwards; }
+  .pattern-pulse { animation: patternPulse 2s ease-in-out infinite; }
   .reveal-slide .reveal-blocks .reveal-block { opacity: 0; transform: translateY(8px); transition: opacity 0.4s, transform 0.4s; }
   .reveal-slide.step-1 .reveal-blocks .reveal-block:nth-child(1) { opacity: 1; transform: translateY(0); }
   .reveal-slide.step-2 .reveal-blocks .reveal-block:nth-child(-n+2) { opacity: 1; transform: translateY(0); }
@@ -25,8 +24,8 @@
   pre { overflow-x: auto; max-width: 100%; }
   .two-col, .three-col { overflow: hidden; }
   svg { max-width: 100%; height: auto; }
-  .col { overflow: hidden; word-wrap: break-word; }
   .layout .visual img, .layout .visual svg { max-width: 100%; }
+  .col { overflow: hidden; word-wrap: break-word; }
 </style>
 </head>
 <body>
@@ -53,23 +52,20 @@
 
 <div class="slide active center">
   <p style="color: var(--accent); font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Python Object Oriented Programming</p>
-  <h1>UML &amp; Design Patterns</h1>
+  <h1>Design Patterns <span style="color: var(--muted); font-weight: 300;">(Part 2)</span></h1>
   <p class="subtitle">Course 9</p>
-  <div style="margin-top: 2.5rem;">
-    <svg viewBox="0 0 360 100" width="380">
-      <rect x="0" y="10" width="100" height="80" rx="8" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
-      <text x="50" y="40" text-anchor="middle" fill="#818cf8" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace">&#171;class&#187;</text>
-      <text x="50" y="60" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">Design</text>
-      <line x1="105" y1="50" x2="125" y2="50" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="125,45 135,50 125,55" fill="var(--muted)"/>
-      <rect x="140" y="10" width="100" height="80" rx="8" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2"/>
-      <text x="190" y="40" text-anchor="middle" fill="#a78bfa" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace">&#171;class&#187;</text>
-      <text x="190" y="60" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">Pattern</text>
-      <line x1="245" y1="50" x2="265" y2="50" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="265,45 275,50 265,55" fill="var(--muted)"/>
-      <rect x="280" y="10" width="100" height="80" rx="8" fill="var(--code-bg)" stroke="#34d399" stroke-width="2"/>
-      <text x="330" y="40" text-anchor="middle" fill="#34d399" font-size="12" font-weight="700" font-family="JetBrains Mono, monospace">&#171;class&#187;</text>
-      <text x="330" y="60" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">Code</text>
+  <div style="margin-top: 3rem;">
+    <svg viewBox="0 0 500 70" width="500">
+      <rect x="0" y="5" width="90" height="55" rx="8" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="45" y="38" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700" font-family="Outfit, sans-serif">Strategy</text>
+      <rect x="105" y="5" width="90" height="55" rx="8" fill="var(--code-bg)" stroke="#34d399" stroke-width="2"/>
+      <text x="150" y="38" text-anchor="middle" fill="#34d399" font-size="11" font-weight="700" font-family="Outfit, sans-serif">Decorator</text>
+      <rect x="210" y="5" width="90" height="55" rx="8" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
+      <text x="255" y="38" text-anchor="middle" fill="#818cf8" font-size="11" font-weight="700" font-family="Outfit, sans-serif">Factory</text>
+      <rect x="315" y="5" width="90" height="55" rx="8" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2"/>
+      <text x="360" y="38" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="700" font-family="Outfit, sans-serif">Facade</text>
+      <rect x="420" y="5" width="90" height="55" rx="8" fill="var(--code-bg)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="465" y="38" text-anchor="middle" fill="var(--accent)" font-size="11" font-weight="700" font-family="Outfit, sans-serif">Iterator</text>
     </svg>
   </div>
   <p style="color: var(--muted); font-size: 0.9rem; margin-top: 2rem;">
@@ -89,7 +85,7 @@
     <li style="color: var(--muted);">5. Composition &amp; Aggregation</li>
     <li style="color: var(--muted);">6. Exception Handling &amp; Logging</li>
     <li style="color: var(--muted);">7. SOLID Principles</li>
-    <li style="color: var(--muted);">8. UML &amp; Design Patterns</li>
+    <li style="color: var(--muted);">8. Design Patterns</li>
     <li class="current" style="color: var(--accent); font-weight: 600;">9. Design Patterns (2nd part)</li>
     <li>10. Testing &amp; TDD</li>
     <li>11. Libraries &amp; Frameworks</li>
@@ -99,101 +95,97 @@
 
 <div class="slide quiz-slide">
   <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Lecture 06)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What is the purpose of <code style="color: var(--accent);">custom exceptions</code>?</p>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What keyword makes the <code style="color: var(--accent);">finally</code> block special?</p>
   <div class="two-col quiz-answers" style="margin-top: 2rem; max-width: 700px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">A) To replace all built-in exceptions</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);"><strong>B) To represent domain-specific error conditions</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">C) To skip the try/except block</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) To make exceptions uncatchable</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">A) It catches all exceptions</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">B) It only runs when no exception occurs</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);"><strong>C) It always executes, exception or not</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) It re-raises the exception automatically</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1rem; font-size: 0.9rem;">Custom exceptions let you create <strong>meaningful error types</strong> that describe exactly what went wrong in your specific application domain.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1rem; font-size: 0.9rem;">The <code>finally</code> block <strong>always executes</strong> &mdash; whether an exception was raised or not. It's used for cleanup like closing files or connections.</p>
 </div>
 <div class="slide">
   <p style="color: var(--accent); font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Recap: Lecture 06</p>
-  <h2>Custom Exceptions: <span class="accent">Domain Errors</span></h2>
+  <h2>Exception Handling: <span class="accent">finally</span></h2>
   <div class="layout">
     <div class="text">
       <ul>
-        <li>Inherit from <code style="color: var(--accent);">Exception</code> or a specific built-in exception</li>
-        <li>Name them clearly: <code style="color: var(--green);">InsufficientFundsError</code>, <code style="color: var(--green);">InvalidEmailError</code></li>
-        <li>Add custom attributes for extra context</li>
-        <li>Makes error handling <strong>expressive and precise</strong></li>
+        <li><code style="color: var(--accent);">finally</code> &mdash; runs <strong>no matter what</strong>, even if an exception is raised</li>
+        <li>Used for <strong>cleanup</strong>: closing files, releasing locks, disconnecting</li>
+        <li>Executes after <code style="color: var(--cyan);">try</code> and <code style="color: var(--cyan);">except</code> blocks</li>
+        <li>Guarantees resource management</li>
       </ul>
     </div>
     <div class="visual">
-      <pre style="font-size: 0.75rem;"><span class="kw">class</span> <span class="cls">InsufficientFundsError</span>(<span class="cls">Exception</span>):
-    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, balance, amount):
-        <span class="par">self</span>.balance = balance
-        <span class="par">self</span>.amount = amount
-        <span class="fn">super</span>().__init__(
-            <span class="str">f"Need </span>{amount}<span class="str">, have </span>{balance}<span class="str">"</span>
-        )</pre>
+      <pre style="font-size: 0.8rem;"><span class="kw">try</span>:
+    file = <span class="fn">open</span>(<span class="str">"data.txt"</span>)
+    data = file.<span class="fn">read</span>()
+<span class="kw">except</span> <span class="cls">FileNotFoundError</span>:
+    <span class="fn">print</span>(<span class="str">"File not found"</span>)
+<span class="kw">finally</span>:
+    file.<span class="fn">close</span>()  <span class="cmt"># always runs</span></pre>
     </div>
   </div>
 </div>
 
 <div class="slide quiz-slide">
   <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Lecture 07)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What does the <code style="color: var(--accent);">'I'</code> in SOLID stand for?</p>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What does the <code style="color: var(--accent);">'D'</code> in SOLID stand for?</p>
   <div class="two-col quiz-answers" style="margin-top: 2rem; max-width: 700px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">A) Inheritance Principle</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">B) Immutability Principle</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);"><strong>C) Interface Segregation Principle</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) Integration Principle</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">A) Decorator Pattern</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);"><strong>B) Dependency Inversion Principle</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">C) Data Abstraction Principle</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) Dynamic Binding Principle</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1rem; font-size: 0.9rem;">ISP says clients should not be forced to depend on interfaces they don't use &mdash; prefer <strong>many small, specific interfaces</strong> over one large one.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1rem; font-size: 0.9rem;">DIP says high-level modules should not depend on low-level modules &mdash; both should depend on <strong>abstractions</strong>.</p>
 </div>
 <div class="slide">
   <p style="color: var(--accent); font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Recap: Lecture 07</p>
-  <h2>SOLID: <span class="accent">Interface Segregation</span></h2>
+  <h2>SOLID: <span class="accent">Dependency Inversion</span></h2>
   <div class="layout">
     <div class="text">
       <ul>
-        <li>Don't force classes to implement methods they don't need</li>
-        <li>Split large interfaces into <strong>focused, cohesive</strong> ones</li>
-        <li>In Python: use multiple ABCs instead of one big ABC</li>
-        <li>Result: <strong>decoupled</strong>, easier to maintain code</li>
+        <li><strong>High-level modules</strong> should not depend on low-level modules</li>
+        <li>Both should depend on <strong>abstractions</strong></li>
+        <li><strong>Inject</strong> dependencies instead of creating them inside classes</li>
+        <li>Makes code <strong>testable</strong> and <strong>flexible</strong></li>
       </ul>
     </div>
     <div class="visual">
-      <pre style="font-size: 0.75rem;"><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+      <pre style="font-size: 0.75rem;"><span class="kw">class</span> <span class="cls">NotificationService</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, sender):
+        <span class="par">self</span>._sender = sender
 
-<span class="kw">class</span> <span class="cls">Printable</span>(ABC):
-    @abstractmethod
-    <span class="kw">def</span> <span class="fn">print</span>(<span class="par">self</span>): ...
+    <span class="kw">def</span> <span class="fn">notify</span>(<span class="par">self</span>, msg):
+        <span class="par">self</span>._sender.send(msg)
 
-<span class="kw">class</span> <span class="cls">Scannable</span>(ABC):
-    @abstractmethod
-    <span class="kw">def</span> <span class="fn">scan</span>(<span class="par">self</span>): ...
-
-<span class="kw">class</span> <span class="cls">Printer</span>(<span class="cls">Printable</span>):
-    <span class="kw">def</span> <span class="fn">print</span>(<span class="par">self</span>):
-        <span class="kw">return</span> <span class="str">"Printing..."</span></pre>
+sms = <span class="cls">SMSSender</span>()
+svc = <span class="cls">NotificationService</span>(sms)</pre>
     </div>
   </div>
 </div>
 
 <div class="slide quiz-slide">
   <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Lecture 08)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">Which pattern ensures a class has <code style="color: var(--accent);">only one instance</code>?</p>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">In a UML class diagram, what does a <code style="color: var(--accent);">filled diamond</code> represent?</p>
   <div class="two-col quiz-answers" style="margin-top: 2rem; max-width: 700px;">
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);"><strong>A) Singleton</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">B) Factory Method</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">C) Observer</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) Strategy</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);"><strong>A) Composition</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">B) Aggregation</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">C) Inheritance</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) Dependency</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1rem; font-size: 0.9rem;">Singleton restricts instantiation to <strong>one object</strong>. It overrides <code>__new__</code> to return the same instance every time.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1rem; font-size: 0.9rem;">&#9670; <strong>Filled diamond = Composition</strong> (strong ownership &mdash; parts die with the owner). &#9671; Empty diamond = Aggregation (weak &mdash; parts survive independently).</p>
 </div>
 <div class="slide">
   <p style="color: var(--accent); font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Recap: Lecture 08</p>
-  <h2>Design Patterns: <span class="accent">Singleton</span></h2>
+  <h2>UML &amp; Design Patterns: <span class="accent">Highlights</span></h2>
   <div class="layout">
     <div class="text">
       <ul>
-        <li>Ensures a class has <strong>exactly one instance</strong></li>
-        <li>Provides a <strong>global access point</strong> to that instance</li>
-        <li>Common uses: database connections, loggers, config objects</li>
-        <li>In Python: override <code style="color: var(--accent);">__new__</code></li>
+        <li><strong>UML</strong> &mdash; visual language for modeling software systems</li>
+        <li><strong>Class diagrams</strong> show structure: classes, attributes, relationships</li>
+        <li><strong>Singleton</strong> &mdash; guarantees one instance with global access</li>
+        <li><strong>Builder</strong> &mdash; step-by-step construction of complex objects</li>
       </ul>
     </div>
     <div class="visual">
@@ -216,630 +208,18 @@ b = <span class="cls">Singleton</span>()
   <h2>Agenda for <span class="accent">Today</span></h2>
   <div style="max-width: 600px; margin-top: 1rem;">
     <ul>
-      <li>&#128208; <strong>UML</strong> &mdash; Unified Modeling Language</li>
-      <li>&#128260; <strong>Design Patterns recap</strong> &mdash; categories &amp; GoF</li>
-      <li>&#127981; <strong>Factory Method</strong> &mdash; creational pattern</li>
-      <li>&#128451;&#65039; <strong>Facade</strong> &mdash; structural pattern</li>
-      <li>&#128257; <strong>Iterator</strong> &mdash; behavioral pattern</li>
+      <li>&#128218; Quick <strong>Design Patterns</strong> recap</li>
+      <li>&#128269; Deep dive into 5 patterns:</li>
     </ul>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>What is <span class="accent">UML</span>?</h2>
-  <div class="layout">
-    <div class="text">
-      <ul>
-        <li>&#128208; <strong>Unified Modeling Language</strong> &mdash; a standardized visual language for software design</li>
-        <li>&#127912; Not a programming language &mdash; a <strong>modeling</strong> language</li>
-        <li>&#129309; Provides a common vocabulary for developers, architects, and stakeholders</li>
-        <li>&#128196; Used to visualize, specify, construct, and document software systems</li>
-      </ul>
-      <div class="callout" style="margin-top: 1.5rem;">UML helps you <strong>think about design</strong> before you write code.</div>
+    <div style="margin-left: 2rem; margin-top: 0.5rem;">
+      <p>&#128993; <strong style="color: #fbbf24;">Strategy</strong> &mdash; swappable algorithms</p>
+      <p>&#128994; <strong style="color: #34d399;">Decorator</strong> &mdash; layered behaviors</p>
+      <p>&#128312; <strong style="color: #818cf8;">Factory Method</strong> &mdash; delegated creation</p>
+      <p>&#128311; <strong style="color: #a78bfa;">Facade</strong> &mdash; simplified interface</p>
+      <p>&#128308; <strong style="color: var(--accent);">Iterator</strong> &mdash; sequential access</p>
     </div>
-    <div class="visual" style="flex: 0 0 220px;">
-      <svg viewBox="0 0 200 200" width="200">
-        <rect x="30" y="10" width="140" height="40" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
-        <text x="100" y="35" text-anchor="middle" fill="#818cf8" font-size="14" font-weight="600" font-family="JetBrains Mono, monospace">UML</text>
-        <line x1="70" y1="50" x2="50" y2="80" stroke="var(--muted)" stroke-width="1.5"/>
-        <line x1="130" y1="50" x2="150" y2="80" stroke="var(--muted)" stroke-width="1.5"/>
-        <rect x="10" y="80" width="80" height="35" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="1.5"/>
-        <text x="50" y="102" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">Structural</text>
-        <rect x="110" y="80" width="80" height="35" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="1.5"/>
-        <text x="150" y="102" text-anchor="middle" fill="#34d399" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">Behavioral</text>
-        <line x1="30" y1="115" x2="30" y2="135" stroke="var(--muted)" stroke-width="1"/>
-        <line x1="70" y1="115" x2="70" y2="135" stroke="var(--muted)" stroke-width="1"/>
-        <line x1="130" y1="115" x2="130" y2="135" stroke="var(--muted)" stroke-width="1"/>
-        <line x1="170" y1="115" x2="170" y2="135" stroke="var(--muted)" stroke-width="1"/>
-        <text x="30" y="150" text-anchor="middle" fill="var(--muted)" font-size="8" font-family="Outfit, sans-serif">Class</text>
-        <text x="70" y="150" text-anchor="middle" fill="var(--muted)" font-size="8" font-family="Outfit, sans-serif">Object</text>
-        <text x="130" y="150" text-anchor="middle" fill="var(--muted)" font-size="8" font-family="Outfit, sans-serif">Sequence</text>
-        <text x="170" y="150" text-anchor="middle" fill="var(--muted)" font-size="8" font-family="Outfit, sans-serif">Use Case</text>
-      </svg>
-    </div>
+    <p style="margin-top: 1rem;">&#9989; Best practices &amp; anti-patterns</p>
   </div>
-</div>
-
-<div class="slide">
-  <h2>UML Diagram <span class="accent">Categories</span></h2>
-  <div class="two-col" style="margin-top: 1.5rem;">
-    <div class="col" style="border-color: #a78bfa;">
-      <h3 style="color: #a78bfa;">&#128194; Structural Diagrams</h3>
-      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 0.5rem;">Static view &mdash; what the system <strong>is</strong></p>
-      <ul style="font-size: 0.9rem;">
-        <li>Class Diagram</li>
-        <li>Object Diagram</li>
-        <li>Component Diagram</li>
-        <li>Package Diagram</li>
-      </ul>
-    </div>
-    <div class="col" style="border-color: #34d399;">
-      <h3 style="color: #34d399;">&#9889; Behavioral Diagrams</h3>
-      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 0.5rem;">Dynamic view &mdash; what the system <strong>does</strong></p>
-      <ul style="font-size: 0.9rem;">
-        <li>Sequence Diagram</li>
-        <li>Use Case Diagram</li>
-        <li>Activity Diagram</li>
-        <li>State Machine Diagram</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="slide center" style="background: var(--surface);">
-  <p style="font-size: 1.8rem; color: var(--heading); font-weight: 700;">Class Diagrams</p>
-  <p style="color: var(--muted); margin-top: 0.5rem; font-size: 1.1rem;">The most commonly used UML diagram &mdash; let's build one step by step</p>
-</div>
-
-<div class="slide">
-  <h2>Step 1: <span class="accent">Identify Classes</span></h2>
-  <p style="color: var(--muted); margin-bottom: 1.5rem;">Start by identifying the key entities in your domain</p>
-  <div style="display: flex; justify-content: center; gap: 40px;">
-    <svg viewBox="0 0 500 100" width="600">
-      <rect x="10" y="10" width="130" height="50" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
-      <text x="75" y="42" text-anchor="middle" fill="var(--heading)" font-size="16" font-weight="700" font-family="JetBrains Mono, monospace">Team</text>
-      <rect x="185" y="10" width="130" height="50" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2"/>
-      <text x="250" y="42" text-anchor="middle" fill="var(--heading)" font-size="16" font-weight="700" font-family="JetBrains Mono, monospace">Player</text>
-      <rect x="360" y="10" width="130" height="50" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="2"/>
-      <text x="425" y="42" text-anchor="middle" fill="var(--heading)" font-size="16" font-weight="700" font-family="JetBrains Mono, monospace">Coach</text>
-    </svg>
-  </div>
-  <div class="callout" style="margin-top: 2rem; max-width: 500px;">Each box represents a <strong>class</strong> &mdash; a blueprint for objects in our system.</div>
-</div>
-
-<div class="slide">
-  <h2>Step 2: <span class="accent">Add Attributes</span></h2>
-  <p style="color: var(--muted); margin-bottom: 1rem;">Define the data each class holds</p>
-  <div style="display: flex; justify-content: center; gap: 30px;">
-    <svg viewBox="0 0 520 140" width="600">
-      <rect x="10" y="5" width="145" height="130" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
-      <text x="82" y="28" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Team</text>
-      <line x1="10" y1="38" x2="155" y2="38" stroke="#818cf8" stroke-width="1"/>
-      <text x="20" y="58" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+name: string</text>
-      <text x="20" y="78" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+city: string</text>
-      <text x="20" y="98" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+founded: int</text>
-
-      <rect x="190" y="5" width="145" height="130" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2"/>
-      <text x="262" y="28" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Player</text>
-      <line x1="190" y1="38" x2="335" y2="38" stroke="#a78bfa" stroke-width="1"/>
-      <text x="200" y="58" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+name: string</text>
-      <text x="200" y="78" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+number: int</text>
-      <text x="200" y="98" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+position: string</text>
-
-      <rect x="370" y="5" width="145" height="130" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="2"/>
-      <text x="442" y="28" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Coach</text>
-      <line x1="370" y1="38" x2="515" y2="38" stroke="#34d399" stroke-width="1"/>
-      <text x="380" y="58" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+name: string</text>
-      <text x="380" y="78" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+experience: int</text>
-      <text x="380" y="98" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">+specialty: string</text>
-    </svg>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Step 3: <span class="accent">Add Methods</span></h2>
-  <p style="color: var(--muted); margin-bottom: 1rem;">Define what each class can do</p>
-  <div style="display: flex; justify-content: center;">
-    <svg viewBox="0 0 520 180" width="600">
-      <rect x="10" y="5" width="145" height="170" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
-      <text x="82" y="28" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Team</text>
-      <line x1="10" y1="38" x2="155" y2="38" stroke="#818cf8" stroke-width="1"/>
-      <text x="20" y="56" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">+name: string</text>
-      <text x="20" y="72" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">+city: string</text>
-      <line x1="10" y1="82" x2="155" y2="82" stroke="#818cf8" stroke-width="1"/>
-      <text x="20" y="100" fill="#818cf8" font-size="10" font-family="JetBrains Mono, monospace">+playGame()</text>
-      <text x="20" y="116" fill="#818cf8" font-size="10" font-family="JetBrains Mono, monospace">+hireCoach()</text>
-      <text x="20" y="132" fill="#818cf8" font-size="10" font-family="JetBrains Mono, monospace">+addPlayer()</text>
-
-      <rect x="190" y="5" width="145" height="170" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2"/>
-      <text x="262" y="28" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Player</text>
-      <line x1="190" y1="38" x2="335" y2="38" stroke="#a78bfa" stroke-width="1"/>
-      <text x="200" y="56" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">+name: string</text>
-      <text x="200" y="72" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">+number: int</text>
-      <line x1="190" y1="82" x2="335" y2="82" stroke="#a78bfa" stroke-width="1"/>
-      <text x="200" y="100" fill="#a78bfa" font-size="10" font-family="JetBrains Mono, monospace">+train()</text>
-      <text x="200" y="116" fill="#a78bfa" font-size="10" font-family="JetBrains Mono, monospace">+play()</text>
-
-      <rect x="370" y="5" width="145" height="170" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="2"/>
-      <text x="442" y="28" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Coach</text>
-      <line x1="370" y1="38" x2="515" y2="38" stroke="#34d399" stroke-width="1"/>
-      <text x="380" y="56" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">+name: string</text>
-      <text x="380" y="72" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">+experience: int</text>
-      <line x1="370" y1="82" x2="515" y2="82" stroke="#34d399" stroke-width="1"/>
-      <text x="380" y="100" fill="#34d399" font-size="10" font-family="JetBrains Mono, monospace">+makeStrategy()</text>
-      <text x="380" y="116" fill="#34d399" font-size="10" font-family="JetBrains Mono, monospace">+trainTeam()</text>
-    </svg>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Step 4: <span class="accent">Visibility Symbols</span></h2>
-  <p style="color: var(--muted); margin-bottom: 1rem;">Control access to attributes and methods</p>
-  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem 1.5rem; min-width: 140px; text-align: center;">
-      <p style="font-size: 2rem; color: #34d399; font-family: JetBrains Mono, monospace; font-weight: 700;">+</p>
-      <p style="color: var(--heading); font-weight: 600;">Public</p>
-      <p style="font-size: 0.8rem; color: var(--muted);">Accessible from anywhere</p>
-    </div>
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem 1.5rem; min-width: 140px; text-align: center;">
-      <p style="font-size: 2rem; color: var(--accent); font-family: JetBrains Mono, monospace; font-weight: 700;">-</p>
-      <p style="color: var(--heading); font-weight: 600;">Private</p>
-      <p style="font-size: 0.8rem; color: var(--muted);">Only within the class</p>
-    </div>
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem 1.5rem; min-width: 140px; text-align: center;">
-      <p style="font-size: 2rem; color: #fbbf24; font-family: JetBrains Mono, monospace; font-weight: 700;">#</p>
-      <p style="color: var(--heading); font-weight: 600;">Protected</p>
-      <p style="font-size: 0.8rem; color: var(--muted);">Class + subclasses</p>
-    </div>
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem 1.5rem; min-width: 140px; text-align: center;">
-      <p style="font-size: 2rem; color: #a78bfa; font-family: JetBrains Mono, monospace; font-weight: 700;">~</p>
-      <p style="color: var(--heading); font-weight: 600;">Package</p>
-      <p style="font-size: 0.8rem; color: var(--muted);">Within the package</p>
-    </div>
-  </div>
-  <div class="callout" style="margin-top: 1.5rem; max-width: 550px;">In Python: <code style="color: var(--accent);">_name</code> = protected, <code style="color: var(--accent);">__name</code> = private (name mangling)</div>
-</div>
-
-<div class="slide">
-  <h2>Step 5: <span class="accent">Inheritance</span> (Generalization)</h2>
-  <p style="color: var(--muted); margin-bottom: 1rem;">An arrow with a hollow triangle points to the parent class</p>
-  <div style="display: flex; justify-content: center;">
-    <svg viewBox="0 0 500 220" width="550">
-      <rect x="175" y="5" width="150" height="60" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2"/>
-      <text x="250" y="28" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Player</text>
-      <line x1="175" y1="38" x2="325" y2="38" stroke="#a78bfa" stroke-width="1"/>
-      <text x="185" y="55" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">+name, +number</text>
-
-      <line x1="80" y1="130" x2="250" y2="70" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="250,70 240,78 245,68" fill="var(--muted)" stroke="var(--muted)" stroke-width="1"/>
-      <line x1="250" y1="130" x2="250" y2="70" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="250,70 244,80 256,80" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
-      <line x1="420" y1="130" x2="250" y2="70" stroke="var(--muted)" stroke-width="1.5"/>
-
-      <rect x="5" y="130" width="150" height="60" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="1.5"/>
-      <text x="80" y="155" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">Quarterback</text>
-      <line x1="5" y1="165" x2="155" y2="165" stroke="#818cf8" stroke-width="1"/>
-      <text x="15" y="182" fill="var(--text)" font-size="9" font-family="JetBrains Mono, monospace">+throwBall()</text>
-
-      <rect x="175" y="130" width="150" height="60" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="1.5"/>
-      <text x="250" y="155" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">RunningBack</text>
-      <line x1="175" y1="165" x2="325" y2="165" stroke="#818cf8" stroke-width="1"/>
-      <text x="185" y="182" fill="var(--text)" font-size="9" font-family="JetBrains Mono, monospace">+rush()</text>
-
-      <rect x="345" y="130" width="150" height="60" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="1.5"/>
-      <text x="420" y="155" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">LeftTackle</text>
-      <line x1="345" y1="165" x2="495" y2="165" stroke="#818cf8" stroke-width="1"/>
-      <text x="355" y="182" fill="var(--text)" font-size="9" font-family="JetBrains Mono, monospace">+block()</text>
-    </svg>
-  </div>
-  <p style="color: var(--muted); font-size: 0.72rem; margin-top: 1rem; text-align: center;">Hollow triangle &#9651; = <strong>inheritance</strong> ("is-a" relationship)</p>
-</div>
-
-<div class="slide">
-  <h2>Steps 6-7: <span class="accent">Association &amp; Aggregation</span></h2>
-  <p style="color: var(--muted); margin-bottom: 1rem;">Relationships between classes</p>
-  <div style="display: flex; justify-content: center;">
-    <svg viewBox="0 0 550 200" width="600">
-      <text x="10" y="30" fill="var(--heading)" font-size="12" font-weight="600" font-family="Outfit, sans-serif">Association (simple line):</text>
-      <rect x="10" y="40" width="120" height="40" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="1.5"/>
-      <text x="70" y="65" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">Team</text>
-      <line x1="130" y1="60" x2="260" y2="60" stroke="var(--muted)" stroke-width="1.5"/>
-      <rect x="260" y="40" width="120" height="40" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="1.5"/>
-      <text x="320" y="65" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">Coach</text>
-      <text x="195" y="52" text-anchor="middle" fill="var(--muted)" font-size="9" font-family="Outfit, sans-serif">employs</text>
-
-      <text x="10" y="120" fill="var(--heading)" font-size="12" font-weight="600" font-family="Outfit, sans-serif">Aggregation (empty diamond &#9671;):</text>
-      <rect x="10" y="130" width="120" height="40" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="1.5"/>
-      <text x="70" y="155" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">Team</text>
-      <line x1="130" y1="150" x2="260" y2="150" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="130,150 142,144 154,150 142,156" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
-      <rect x="260" y="130" width="120" height="40" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="1.5"/>
-      <text x="320" y="155" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">Player</text>
-      <text x="205" y="142" text-anchor="middle" fill="var(--muted)" font-size="9" font-family="Outfit, sans-serif">has (weak)</text>
-
-      <text x="420" y="120" fill="var(--heading)" font-size="12" font-weight="600" font-family="Outfit, sans-serif">Composition (filled &#9670;):</text>
-      <rect x="420" y="130" width="50" height="40" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="1.5"/>
-      <text x="445" y="155" text-anchor="middle" fill="var(--heading)" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">Car</text>
-      <line x1="470" y1="150" x2="540" y2="150" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="470,150 482,144 494,150 482,156" fill="var(--muted)" stroke="var(--muted)" stroke-width="1.5"/>
-      <text x="540" y="155" fill="var(--heading)" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">Engine</text>
-    </svg>
-  </div>
-  <div class="callout" style="margin-top: 1rem; max-width: 550px;">&#9671; Aggregation = parts <strong>can exist independently</strong>. &#9670; Composition = parts <strong>die with the owner</strong>.</div>
-</div>
-
-<div class="slide">
-  <h2>Steps 8-9: <span class="accent">Dependency &amp; Multiplicity</span></h2>
-  <div style="display: flex; justify-content: center;">
-    <svg viewBox="0 0 550 200" width="600">
-      <text x="10" y="25" fill="var(--heading)" font-size="12" font-weight="600" font-family="Outfit, sans-serif">Dependency (dashed arrow):</text>
-      <rect x="10" y="35" width="120" height="40" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="1.5"/>
-      <text x="70" y="60" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">Team</text>
-      <line x1="130" y1="55" x2="250" y2="55" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="6 3"/>
-      <polygon points="250,55 240,50 240,60" fill="var(--muted)"/>
-      <rect x="255" y="35" width="120" height="40" rx="6" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="1.5"/>
-      <text x="315" y="60" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">Stadium</text>
-      <text x="190" y="48" text-anchor="middle" fill="var(--muted)" font-size="9" font-family="Outfit, sans-serif">&#171;uses&#187;</text>
-
-      <text x="10" y="110" fill="var(--heading)" font-size="12" font-weight="600" font-family="Outfit, sans-serif">Multiplicity:</text>
-      <rect x="10" y="120" width="120" height="40" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="1.5"/>
-      <text x="70" y="145" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">Team</text>
-      <line x1="130" y1="140" x2="250" y2="140" stroke="var(--muted)" stroke-width="1.5"/>
-      <rect x="255" y="120" width="120" height="40" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="1.5"/>
-      <text x="315" y="145" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">Player</text>
-      <text x="140" y="135" fill="#34d399" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">1</text>
-      <text x="235" y="135" fill="#34d399" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">1..*</text>
-
-      <text x="420" y="110" fill="var(--heading)" font-size="11" font-weight="600" font-family="Outfit, sans-serif">Common notations:</text>
-      <text x="420" y="130" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace"><tspan fill="#34d399">1</tspan>    &mdash; exactly one</text>
-      <text x="420" y="148" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace"><tspan fill="#34d399">0..1</tspan> &mdash; zero or one</text>
-      <text x="420" y="166" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace"><tspan fill="#34d399">1..*</tspan> &mdash; one or more</text>
-      <text x="420" y="184" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace"><tspan fill="#34d399">*</tspan>    &mdash; zero or more</text>
-    </svg>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Class Diagram <span class="accent">Cheat Sheet</span></h2>
-  <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 0.5rem;">
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; flex: 1; min-width: 200px; max-width: 250px;">
-      <h3 style="color: #a78bfa; font-size: 0.9rem; margin-bottom: 0.5rem;">Visibility</h3>
-      <p style="font-size: 0.8rem; font-family: JetBrains Mono, monospace;"><span style="color: #34d399;">+</span> public</p>
-      <p style="font-size: 0.8rem; font-family: JetBrains Mono, monospace;"><span style="color: var(--accent);">-</span> private</p>
-      <p style="font-size: 0.8rem; font-family: JetBrains Mono, monospace;"><span style="color: #fbbf24;">#</span> protected</p>
-      <p style="font-size: 0.8rem; font-family: JetBrains Mono, monospace;"><span style="color: #a78bfa;">~</span> package</p>
-    </div>
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; flex: 1; min-width: 200px; max-width: 250px;">
-      <h3 style="color: #818cf8; font-size: 0.9rem; margin-bottom: 0.5rem;">Relationships</h3>
-      <p style="font-size: 0.8rem;">&#9472;&#9472;&#9655; Generalization</p>
-      <p style="font-size: 0.8rem;">&#9472;&#9472;&#9472; Association</p>
-      <p style="font-size: 0.8rem;">&#9671;&#9472;&#9472; Aggregation</p>
-      <p style="font-size: 0.8rem;">&#9670;&#9472;&#9472; Composition</p>
-    </div>
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; flex: 1; min-width: 200px; max-width: 250px;">
-      <h3 style="color: #34d399; font-size: 0.9rem; margin-bottom: 0.5rem;">Other</h3>
-      <p style="font-size: 0.8rem;">- - -&#9655; Dependency</p>
-      <p style="font-size: 0.8rem;">&#171;interface&#187; stereotype</p>
-      <p style="font-size: 0.8rem;"><em>italic</em> = abstract</p>
-      <p style="font-size: 0.8rem;">1..* multiplicity</p>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Full Example: <span class="accent">Bank System</span></h2>
-  <div style="display: flex; justify-content: center;">
-    <svg viewBox="0 0 700 340" width="95%">
-      <rect x="270" y="5" width="160" height="70" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
-      <text x="350" y="25" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">Bank</text>
-      <line x1="270" y1="32" x2="430" y2="32" stroke="#818cf8" stroke-width="1"/>
-      <text x="280" y="48" fill="var(--text)" font-size="9" font-family="JetBrains Mono, monospace">+name: string</text>
-      <line x1="270" y1="55" x2="430" y2="55" stroke="#818cf8" stroke-width="1"/>
-      <text x="280" y="68" fill="#818cf8" font-size="9" font-family="JetBrains Mono, monospace">+openAccount()</text>
-
-      <rect x="60" y="110" width="160" height="70" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2"/>
-      <text x="140" y="130" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">Teller</text>
-      <line x1="60" y1="137" x2="220" y2="137" stroke="#a78bfa" stroke-width="1"/>
-      <text x="70" y="153" fill="var(--text)" font-size="9" font-family="JetBrains Mono, monospace">+employeeId: int</text>
-      <line x1="60" y1="160" x2="220" y2="160" stroke="#a78bfa" stroke-width="1"/>
-      <text x="70" y="173" fill="#a78bfa" font-size="9" font-family="JetBrains Mono, monospace">+serveCust()</text>
-
-      <rect x="480" y="110" width="160" height="70" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="2"/>
-      <text x="560" y="130" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">Customer</text>
-      <line x1="480" y1="137" x2="640" y2="137" stroke="#34d399" stroke-width="1"/>
-      <text x="490" y="153" fill="var(--text)" font-size="9" font-family="JetBrains Mono, monospace">+name: string</text>
-      <line x1="480" y1="160" x2="640" y2="160" stroke="#34d399" stroke-width="1"/>
-      <text x="490" y="173" fill="#34d399" font-size="9" font-family="JetBrains Mono, monospace">+applyLoan()</text>
-
-      <line x1="270" y1="45" x2="220" y2="110" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="270,45 260,57 266,48" fill="var(--muted)"/>
-      <text x="225" y="70" fill="#34d399" font-size="9" font-family="JetBrains Mono, monospace">1..*</text>
-
-      <line x1="430" y1="45" x2="480" y2="110" stroke="var(--muted)" stroke-width="1.5"/>
-      <text x="470" y="70" fill="#34d399" font-size="9" font-family="JetBrains Mono, monospace">*</text>
-
-      <rect x="270" y="220" width="160" height="70" rx="6" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="2"/>
-      <text x="350" y="240" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">Account</text>
-      <line x1="270" y1="247" x2="430" y2="247" stroke="#fbbf24" stroke-width="1"/>
-      <text x="280" y="262" fill="var(--text)" font-size="9" font-family="JetBrains Mono, monospace">-balance: float</text>
-      <line x1="270" y1="270" x2="430" y2="270" stroke="#fbbf24" stroke-width="1"/>
-      <text x="280" y="283" fill="#fbbf24" font-size="9" font-family="JetBrains Mono, monospace">+deposit()</text>
-
-      <line x1="560" y1="180" x2="430" y2="240" stroke="var(--muted)" stroke-width="1.5"/>
-      <text x="510" y="200" fill="#34d399" font-size="9" font-family="JetBrains Mono, monospace">1</text>
-      <text x="440" y="230" fill="#34d399" font-size="9" font-family="JetBrains Mono, monospace">1..*</text>
-
-      <rect x="60" y="280" width="100" height="40" rx="6" fill="var(--code-bg)" stroke="var(--muted)" stroke-width="1.5"/>
-      <text x="110" y="305" text-anchor="middle" fill="var(--heading)" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">Checking</text>
-
-      <rect x="540" y="280" width="100" height="40" rx="6" fill="var(--code-bg)" stroke="var(--muted)" stroke-width="1.5"/>
-      <text x="590" y="305" text-anchor="middle" fill="var(--heading)" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">Savings</text>
-
-      <line x1="110" y1="280" x2="300" y2="290" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="300,290 288,284 290,294" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
-      <line x1="590" y1="280" x2="400" y2="290" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="400,290 412,284 410,294" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
-    </svg>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Object Diagram: <span class="accent">Instance Snapshot</span></h2>
-  <div class="layout">
-    <div class="text">
-      <ul>
-        <li>&#128247; A <strong>snapshot</strong> of objects at a specific point in time</li>
-        <li>&#128218; Shows <strong>actual values</strong>, not types</li>
-        <li>&#128279; Object names are <strong>underlined</strong></li>
-        <li>&#128270; Useful for debugging and understanding state</li>
-      </ul>
-    </div>
-    <div class="visual">
-      <svg viewBox="0 0 240 200" width="260">
-        <rect x="10" y="10" width="220" height="80" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
-        <text x="120" y="35" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace" text-decoration="underline">myBook: Book</text>
-        <line x1="10" y1="45" x2="230" y2="45" stroke="#818cf8" stroke-width="1"/>
-        <text x="20" y="62" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">title = "Clean Code"</text>
-        <text x="20" y="78" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">author = "R. Martin"</text>
-
-        <rect x="10" y="110" width="220" height="80" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2"/>
-        <text x="120" y="135" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace" text-decoration="underline">lib: Library</text>
-        <line x1="10" y1="145" x2="230" y2="145" stroke="#a78bfa" stroke-width="1"/>
-        <text x="20" y="162" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">name = "City Library"</text>
-        <text x="20" y="178" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">books = [myBook]</text>
-      </svg>
-    </div>
-  </div>
-</div>
-
-<div class="slide center" style="background: var(--surface);">
-  <p style="font-size: 1.8rem; color: var(--heading); font-weight: 700;">Sequence Diagrams</p>
-  <p style="color: var(--muted); margin-top: 0.5rem; font-size: 1.1rem;">Behavioral diagrams &mdash; modeling interactions over time</p>
-</div>
-
-<div class="slide">
-  <h2>Sequence Diagram: <span class="accent">ATM Example</span></h2>
-  <div style="display: flex; justify-content: center;">
-    <svg viewBox="0 0 500 300" width="550">
-      <rect x="40" y="10" width="90" height="35" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
-      <text x="85" y="32" text-anchor="middle" fill="var(--heading)" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">Customer</text>
-      <line x1="85" y1="45" x2="85" y2="280" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="6 3"/>
-
-      <rect x="200" y="10" width="90" height="35" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2"/>
-      <text x="245" y="32" text-anchor="middle" fill="var(--heading)" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">ATM</text>
-      <line x1="245" y1="45" x2="245" y2="280" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="6 3"/>
-
-      <rect x="370" y="10" width="90" height="35" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="2"/>
-      <text x="415" y="32" text-anchor="middle" fill="var(--heading)" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">Bank</text>
-      <line x1="415" y1="45" x2="415" y2="280" stroke="#34d399" stroke-width="1.5" stroke-dasharray="6 3"/>
-
-      <line x1="85" y1="80" x2="245" y2="80" stroke="var(--heading)" stroke-width="1.5"/>
-      <polygon points="245,80 235,75 235,85" fill="var(--heading)"/>
-      <text x="165" y="73" text-anchor="middle" fill="var(--text)" font-size="9" font-family="JetBrains Mono, monospace">Insert Card</text>
-
-      <line x1="245" y1="110" x2="415" y2="110" stroke="var(--heading)" stroke-width="1.5"/>
-      <polygon points="415,110 405,105 405,115" fill="var(--heading)"/>
-      <text x="330" y="103" text-anchor="middle" fill="var(--text)" font-size="9" font-family="JetBrains Mono, monospace">Verify Card</text>
-
-      <line x1="415" y1="145" x2="245" y2="145" stroke="var(--heading)" stroke-width="1.5" stroke-dasharray="5 3"/>
-      <polygon points="245,145 255,140 255,150" fill="var(--heading)"/>
-      <text x="330" y="138" text-anchor="middle" fill="#34d399" font-size="9" font-family="JetBrains Mono, monospace">Card OK</text>
-
-      <line x1="245" y1="175" x2="85" y2="175" stroke="var(--heading)" stroke-width="1.5" stroke-dasharray="5 3"/>
-      <polygon points="85,175 95,170 95,180" fill="var(--heading)"/>
-      <text x="165" y="168" text-anchor="middle" fill="var(--text)" font-size="9" font-family="JetBrains Mono, monospace">Request PIN</text>
-
-      <line x1="85" y1="205" x2="245" y2="205" stroke="var(--heading)" stroke-width="1.5"/>
-      <polygon points="245,205 235,200 235,210" fill="var(--heading)"/>
-      <text x="165" y="198" text-anchor="middle" fill="var(--text)" font-size="9" font-family="JetBrains Mono, monospace">Enter PIN</text>
-
-      <line x1="245" y1="235" x2="415" y2="235" stroke="var(--heading)" stroke-width="1.5"/>
-      <polygon points="415,235 405,230 405,240" fill="var(--heading)"/>
-      <text x="330" y="228" text-anchor="middle" fill="var(--text)" font-size="9" font-family="JetBrains Mono, monospace">Verify PIN</text>
-
-      <line x1="415" y1="265" x2="245" y2="265" stroke="var(--heading)" stroke-width="1.5" stroke-dasharray="5 3"/>
-      <polygon points="245,265 255,260 255,270" fill="var(--heading)"/>
-      <text x="330" y="258" text-anchor="middle" fill="#34d399" font-size="9" font-family="JetBrains Mono, monospace">PIN OK</text>
-    </svg>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Why <span class="accent">Sequence Diagrams</span>?</h2>
-  <div style="max-width: 700px;">
-    <ul>
-      <li>&#128260; <strong>Model flow</strong> of messages between objects over time</li>
-      <li>&#128221; <strong>Specify behavior</strong> of a system interaction</li>
-      <li>&#127912; <strong>Visualize scenarios</strong> &mdash; happy path, error cases, edge cases</li>
-      <li>&#128295; <strong>Design &amp; debugging</strong> &mdash; understand how components interact</li>
-      <li>&#128101; <strong>Communication tool</strong> &mdash; explain flows to non-technical stakeholders</li>
-    </ul>
-    <div class="callout" style="margin-top: 1.5rem;">Solid arrows = <strong>calls/requests</strong>. Dashed arrows = <strong>responses/returns</strong>. Time flows <strong>top to bottom</strong>.</div>
-  </div>
-</div>
-
-<div class="slide center" style="background: var(--surface);">
-  <p style="font-size: 1.8rem; color: var(--heading); font-weight: 700;">Use Case Diagrams</p>
-  <p style="color: var(--muted); margin-top: 0.5rem; font-size: 1.1rem;">Functional requirements from the user's perspective</p>
-</div>
-
-<div class="slide">
-  <h2>Use Case: <span class="accent">Restaurant</span></h2>
-  <div style="display: flex; justify-content: center;">
-    <svg viewBox="0 0 550 320" width="600">
-      <rect x="120" y="10" width="310" height="300" rx="10" fill="none" stroke="var(--border)" stroke-width="1.5"/>
-      <text x="275" y="30" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="700" font-family="Outfit, sans-serif">Restaurant System</text>
-
-      <text x="40" y="85" text-anchor="middle" fill="var(--heading)" font-size="10" font-family="Outfit, sans-serif">Client</text>
-      <circle cx="40" cy="95" r="8" fill="none" stroke="#818cf8" stroke-width="1.5"/>
-      <line x1="40" y1="103" x2="40" y2="120" stroke="#818cf8" stroke-width="1.5"/>
-      <line x1="25" y1="110" x2="55" y2="110" stroke="#818cf8" stroke-width="1.5"/>
-      <line x1="40" y1="120" x2="28" y2="138" stroke="#818cf8" stroke-width="1.5"/>
-      <line x1="40" y1="120" x2="52" y2="138" stroke="#818cf8" stroke-width="1.5"/>
-
-      <text x="40" y="195" text-anchor="middle" fill="var(--heading)" font-size="10" font-family="Outfit, sans-serif">Waiter</text>
-      <circle cx="40" cy="205" r="8" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
-      <line x1="40" y1="213" x2="40" y2="230" stroke="#a78bfa" stroke-width="1.5"/>
-      <line x1="25" y1="220" x2="55" y2="220" stroke="#a78bfa" stroke-width="1.5"/>
-      <line x1="40" y1="230" x2="28" y2="248" stroke="#a78bfa" stroke-width="1.5"/>
-      <line x1="40" y1="230" x2="52" y2="248" stroke="#a78bfa" stroke-width="1.5"/>
-
-      <text x="510" y="85" text-anchor="middle" fill="var(--heading)" font-size="10" font-family="Outfit, sans-serif">Chef</text>
-      <circle cx="510" cy="95" r="8" fill="none" stroke="#34d399" stroke-width="1.5"/>
-      <line x1="510" y1="103" x2="510" y2="120" stroke="#34d399" stroke-width="1.5"/>
-      <line x1="495" y1="110" x2="525" y2="110" stroke="#34d399" stroke-width="1.5"/>
-      <line x1="510" y1="120" x2="498" y2="138" stroke="#34d399" stroke-width="1.5"/>
-      <line x1="510" y1="120" x2="522" y2="138" stroke="#34d399" stroke-width="1.5"/>
-
-      <text x="510" y="215" text-anchor="middle" fill="var(--heading)" font-size="10" font-family="Outfit, sans-serif">Cashier</text>
-      <circle cx="510" cy="225" r="8" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
-      <line x1="510" y1="233" x2="510" y2="250" stroke="#fbbf24" stroke-width="1.5"/>
-      <line x1="495" y1="240" x2="525" y2="240" stroke="#fbbf24" stroke-width="1.5"/>
-      <line x1="510" y1="250" x2="498" y2="268" stroke="#fbbf24" stroke-width="1.5"/>
-      <line x1="510" y1="250" x2="522" y2="268" stroke="#fbbf24" stroke-width="1.5"/>
-
-      <ellipse cx="220" cy="70" rx="70" ry="20" fill="none" stroke="var(--muted)" stroke-width="1.2"/>
-      <text x="220" y="74" text-anchor="middle" fill="var(--text)" font-size="9" font-family="Outfit, sans-serif">Order Food</text>
-      <line x1="55" y1="100" x2="150" y2="70" stroke="var(--muted)" stroke-width="1"/>
-
-      <ellipse cx="330" cy="110" rx="70" ry="20" fill="none" stroke="var(--muted)" stroke-width="1.2"/>
-      <text x="330" y="114" text-anchor="middle" fill="var(--text)" font-size="9" font-family="Outfit, sans-serif">Prepare Food</text>
-      <line x1="495" y1="105" x2="400" y2="110" stroke="var(--muted)" stroke-width="1"/>
-
-      <ellipse cx="220" cy="160" rx="70" ry="20" fill="none" stroke="var(--muted)" stroke-width="1.2"/>
-      <text x="220" y="164" text-anchor="middle" fill="var(--text)" font-size="9" font-family="Outfit, sans-serif">Serve Food</text>
-      <line x1="55" y1="210" x2="150" y2="160" stroke="var(--muted)" stroke-width="1"/>
-
-      <ellipse cx="330" cy="210" rx="70" ry="20" fill="none" stroke="var(--muted)" stroke-width="1.2"/>
-      <text x="330" y="214" text-anchor="middle" fill="var(--text)" font-size="9" font-family="Outfit, sans-serif">Pay Bill</text>
-      <line x1="55" y1="110" x2="260" y2="210" stroke="var(--muted)" stroke-width="1"/>
-      <line x1="495" y1="235" x2="400" y2="210" stroke="var(--muted)" stroke-width="1"/>
-
-      <ellipse cx="220" cy="260" rx="70" ry="20" fill="none" stroke="var(--muted)" stroke-width="1.2"/>
-      <text x="220" y="264" text-anchor="middle" fill="var(--text)" font-size="9" font-family="Outfit, sans-serif">Take Order</text>
-      <line x1="55" y1="220" x2="150" y2="260" stroke="var(--muted)" stroke-width="1"/>
-    </svg>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Why <span class="accent">Use Case Diagrams</span>?</h2>
-  <div style="max-width: 700px;">
-    <ul>
-      <li>&#128203; <strong>Requirements analysis</strong> &mdash; capture what the system should do</li>
-      <li>&#128736;&#65039; <strong>System design</strong> &mdash; identify system boundaries and actors</li>
-      <li>&#128101; <strong>User interactions</strong> &mdash; map who interacts with what</li>
-      <li>&#128196; <strong>Documentation</strong> &mdash; common language between developers and stakeholders</li>
-      <li>&#127919; <strong>Scope definition</strong> &mdash; clearly define what's in/out of the system</li>
-    </ul>
-    <div class="callout" style="margin-top: 1.5rem;">Stick figures = <strong>actors</strong> (users or external systems). Ovals = <strong>use cases</strong> (what the system does). Box = <strong>system boundary</strong>.</div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>BPMN: <span class="accent">Business Process Modeling</span></h2>
-  <div class="layout">
-    <div class="text">
-      <ul>
-        <li>&#128200; <strong>BPMN</strong> = Business Process Model and Notation</li>
-        <li>&#128260; Standard for <strong>flowcharting</strong> business processes</li>
-        <li>&#128994; Start event (circle), &#128308; End event (bold circle)</li>
-        <li>&#9635; Tasks (rounded rectangles)</li>
-        <li>&#9670; Gateways (diamonds) &mdash; decision points</li>
-        <li>&#10132; Sequence flows (arrows)</li>
-      </ul>
-    </div>
-    <div class="visual" style="flex: 0 0 280px;">
-      <svg viewBox="0 0 280 100" width="280">
-        <circle cx="20" cy="50" r="12" fill="none" stroke="#34d399" stroke-width="2"/>
-        <line x1="32" y1="50" x2="60" y2="50" stroke="var(--muted)" stroke-width="1.5"/>
-        <polygon points="60,50 54,46 54,54" fill="var(--muted)"/>
-        <rect x="62" y="35" width="60" height="30" rx="8" fill="var(--code-bg)" stroke="var(--border)" stroke-width="1.5"/>
-        <text x="92" y="55" text-anchor="middle" fill="var(--text)" font-size="9" font-family="Outfit, sans-serif">Task</text>
-        <line x1="122" y1="50" x2="145" y2="50" stroke="var(--muted)" stroke-width="1.5"/>
-        <polygon points="145,50 139,46 139,54" fill="var(--muted)"/>
-        <rect x="147" y="30" width="40" height="40" rx="0" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="1.5" transform="rotate(45 167 50)"/>
-        <text x="167" y="54" text-anchor="middle" fill="#fbbf24" font-size="10" font-family="Outfit, sans-serif">?</text>
-        <line x1="195" y1="50" x2="230" y2="50" stroke="var(--muted)" stroke-width="1.5"/>
-        <polygon points="230,50 224,46 224,54" fill="var(--muted)"/>
-        <circle cx="245" cy="50" r="12" fill="none" stroke="var(--accent)" stroke-width="3"/>
-      </svg>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>BPMN Fun: <span class="accent">Ask for a Date</span> &#128522;</h2>
-  <div style="display: flex; justify-content: center;">
-    <svg viewBox="0 0 650 160" width="90%">
-      <circle cx="25" cy="80" r="12" fill="none" stroke="#34d399" stroke-width="2"/>
-      <line x1="37" y1="80" x2="65" y2="80" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="65,80 59,76 59,84" fill="var(--muted)"/>
-
-      <rect x="68" y="60" width="90" height="40" rx="8" fill="var(--code-bg)" stroke="var(--border)" stroke-width="1.5"/>
-      <text x="113" y="84" text-anchor="middle" fill="var(--text)" font-size="9" font-family="Outfit, sans-serif">Find a girl</text>
-
-      <line x1="158" y1="80" x2="186" y2="80" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="186,80 180,76 180,84" fill="var(--muted)"/>
-
-      <rect x="188" y="60" width="90" height="40" rx="8" fill="var(--code-bg)" stroke="var(--border)" stroke-width="1.5"/>
-      <text x="233" y="84" text-anchor="middle" fill="var(--text)" font-size="9" font-family="Outfit, sans-serif">Ask her out</text>
-
-      <line x1="278" y1="80" x2="306" y2="80" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="306,80 300,76 300,84" fill="var(--muted)"/>
-
-      <rect x="300" y="54" width="40" height="40" rx="0" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="1.5" transform="rotate(45 320 74)"/>
-      <text x="320" y="78" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="600" font-family="Outfit, sans-serif">?</text>
-
-      <text x="350" y="50" fill="#34d399" font-size="9" font-family="Outfit, sans-serif">Yes!</text>
-      <line x1="345" y1="60" x2="400" y2="60" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="400,60 394,56 394,64" fill="var(--muted)"/>
-      <rect x="402" y="40" width="90" height="40" rx="8" fill="var(--code-bg)" stroke="#34d399" stroke-width="1.5"/>
-      <text x="447" y="64" text-anchor="middle" fill="#34d399" font-size="9" font-family="Outfit, sans-serif">Go on a date!</text>
-      <line x1="492" y1="60" x2="530" y2="60" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="530,60 524,56 524,64" fill="var(--muted)"/>
-      <circle cx="545" cy="60" r="12" fill="none" stroke="var(--accent)" stroke-width="3"/>
-
-      <text x="350" y="110" fill="var(--accent)" font-size="9" font-family="Outfit, sans-serif">No...</text>
-      <line x1="345" y1="100" x2="400" y2="120" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="400,120 394,114 392,122" fill="var(--muted)"/>
-      <rect x="402" y="100" width="90" height="40" rx="8" fill="var(--code-bg)" stroke="var(--accent)" stroke-width="1.5"/>
-      <text x="447" y="124" text-anchor="middle" fill="var(--accent)" font-size="9" font-family="Outfit, sans-serif">Cry a little</text>
-      <line x1="492" y1="120" x2="530" y2="120" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="530,120 524,116 524,124" fill="var(--muted)"/>
-
-      <line x1="540" y1="120" x2="540" y2="145" stroke="var(--muted)" stroke-width="1.5"/>
-      <line x1="540" y1="145" x2="113" y2="145" stroke="var(--muted)" stroke-width="1.5"/>
-      <line x1="113" y1="145" x2="113" y2="100" stroke="var(--muted)" stroke-width="1.5"/>
-      <polygon points="113,100 109,106 117,106" fill="var(--muted)"/>
-    </svg>
-  </div>
-  <p style="color: var(--muted); font-size: 0.72rem; margin-top: 1rem; text-align: center;">Notice: the "No" path loops back &mdash; <strong>persistence is key</strong> &#128170;</p>
-</div>
-
-<div class="slide center" style="background: var(--surface);">
-  <p style="font-size: 1.8rem; color: var(--heading); font-weight: 700;">Design Patterns</p>
-  <p style="color: var(--muted); margin-top: 0.5rem; font-size: 1.1rem;">Quick recap before we dive deeper</p>
 </div>
 
 <div class="slide">
@@ -849,9 +229,9 @@ b = <span class="cls">Singleton</span>()
       <li>&#128218; <strong>Reusable solutions</strong> to commonly occurring problems in software design</li>
       <li>&#129521; Not finished code &mdash; a <strong>template</strong> for how to solve a problem</li>
       <li>&#128101; Shared <strong>vocabulary</strong> among developers: "Let's use a Factory here"</li>
-      <li>&#128736;&#65039; Introduced by the <strong>Gang of Four (GoF)</strong> in 1994</li>
+      <li>&#128736;&#65039; Introduced by the <strong>Gang of Four (GoF)</strong> in 1994 &mdash; 23 patterns</li>
     </ul>
-    <div class="callout" style="margin-top: 1.5rem;">The GoF catalogued <strong>23 design patterns</strong> in three categories.</div>
+    <div class="callout" style="margin-top: 1.5rem;">Patterns are <strong>tools</strong>, not rules. Use them when they simplify, not when they impress.</div>
   </div>
 </div>
 
@@ -862,10 +242,8 @@ b = <span class="cls">Singleton</span>()
       <h3 style="color: #818cf8;">&#127981; Creational</h3>
       <p style="font-size: 0.72rem; color: var(--muted); margin-bottom: 0.5rem;">Object creation mechanisms</p>
       <ul style="font-size: 0.72rem;">
-        <li>Singleton</li>
-        <li>Factory Method</li>
-        <li>Abstract Factory</li>
-        <li>Builder</li>
+        <li>Singleton, Factory Method</li>
+        <li>Abstract Factory, Builder</li>
         <li>Prototype</li>
       </ul>
     </div>
@@ -873,11 +251,9 @@ b = <span class="cls">Singleton</span>()
       <h3 style="color: #a78bfa;">&#128451;&#65039; Structural</h3>
       <p style="font-size: 0.72rem; color: var(--muted); margin-bottom: 0.5rem;">Class/object composition</p>
       <ul style="font-size: 0.72rem;">
-        <li>Adapter</li>
-        <li>Facade</li>
-        <li>Decorator</li>
-        <li>Proxy</li>
-        <li>Composite, Bridge, Flyweight</li>
+        <li>Adapter, Facade, Decorator</li>
+        <li>Proxy, Composite</li>
+        <li>Bridge, Flyweight</li>
       </ul>
     </div>
   </div>
@@ -886,6 +262,275 @@ b = <span class="cls">Singleton</span>()
       <h3 style="color: #34d399;">&#128260; Behavioral</h3>
       <p style="font-size: 0.72rem; color: var(--muted); margin-bottom: 0.5rem;">Object interaction &amp; responsibility</p>
       <span style="font-size: 0.72rem;">Observer, Strategy, Iterator, Command, State, Template Method, ...</span>
+    </div>
+  </div>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <h2><span style="color: #fbbf24;">Strategy</span> Pattern</h2>
+  <p style="color: var(--text); margin-top: 1.5rem; font-size: 1.1rem;">Define a family of <strong>algorithms</strong>, put each in a separate class,<br>and make them <strong>interchangeable</strong>.</p>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #fbbf24;">Strategy</span> &mdash; The Problem</h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <p style="margin-bottom: 1rem;">Imagine a <strong>navigation app</strong> that needs to calculate routes:</p>
+    <ul>
+      <li>&#128694; <strong>Walking</strong> &mdash; shortest path through parks and sidewalks</li>
+      <li>&#128663; <strong>Driving</strong> &mdash; fastest route via roads and highways</li>
+      <li>&#128652; <strong>Public transport</strong> &mdash; routes using buses and trains</li>
+    </ul>
+    <p style="margin-top: 1.5rem; color: var(--accent);">Putting all algorithms in one class means <strong>editing it every time</strong> you add a new route type &rarr; violates OCP.</p>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #fbbf24;">Strategy</span> &mdash; The Solution</h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <ul>
+      <li>&#128451;&#65039; <strong>Extract</strong> each algorithm into its own class (a "strategy")</li>
+      <li>&#128260; All strategies implement the <strong>same interface</strong></li>
+      <li>&#128279; The <strong>context</strong> object holds a reference to a strategy and delegates work to it</li>
+      <li>&#128257; Swap strategies at <strong>runtime</strong> without changing the context</li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #fbbf24;">Strategy</span> &mdash; Real-world Analogy</h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <p style="margin-bottom: 1.5rem;">You need to get to the airport. Different strategies:</p>
+    <ul>
+      <li>&#128652; <strong>Bus</strong> &mdash; cheapest ($0), but slowest</li>
+      <li>&#128661; <strong>Taxi</strong> &mdash; fast and comfortable ($$), but expensive</li>
+      <li>&#128690; <strong>Bicycle</strong> &mdash; free, healthy, but weather-dependent</li>
+    </ul>
+    <div class="callout" style="margin-top: 1.5rem;">Same <strong>goal</strong> (get to airport), different <strong>strategies</strong>. You pick based on context: budget, time, weather.</div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #fbbf24;">Strategy</span> &mdash; Structure</h2>
+  <div style="margin-top: 1rem;">
+    <svg viewBox="0 0 650 220" width="100%" style="max-width: 700px;">
+      <rect x="230" y="5" width="180" height="50" rx="8" fill="var(--code-bg)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="320" y="28" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="700" font-family="Outfit, sans-serif">Context</text>
+      <text x="320" y="45" text-anchor="middle" fill="var(--muted)" font-size="10" font-family="JetBrains Mono, monospace">- strategy: Strategy</text>
+      <line x1="320" y1="55" x2="320" y2="85" stroke="var(--muted)" stroke-width="1.5"/>
+      <polygon points="320,90 316,83 324,83" fill="var(--muted)"/>
+      <rect x="215" y="90" width="210" height="50" rx="8" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6 3"/>
+      <text x="320" y="113" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="700" font-family="Outfit, sans-serif">&laquo;interface&raquo; Strategy</text>
+      <text x="320" y="130" text-anchor="middle" fill="var(--muted)" font-size="10" font-family="JetBrains Mono, monospace">+ execute()</text>
+      <line x1="180" y1="140" x2="320" y2="140" stroke="var(--muted)" stroke-width="1"/>
+      <line x1="320" y1="140" x2="460" y2="140" stroke="var(--muted)" stroke-width="1"/>
+      <line x1="100" y1="140" x2="100" y2="160" stroke="var(--muted)" stroke-width="1"/>
+      <line x1="100" y1="140" x2="180" y2="140" stroke="var(--muted)" stroke-width="1"/>
+      <line x1="320" y1="140" x2="320" y2="160" stroke="var(--muted)" stroke-width="1"/>
+      <line x1="540" y1="140" x2="540" y2="160" stroke="var(--muted)" stroke-width="1"/>
+      <line x1="460" y1="140" x2="540" y2="140" stroke="var(--muted)" stroke-width="1"/>
+      <rect x="20" y="160" width="160" height="40" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="100" y="185" text-anchor="middle" fill="#34d399" font-size="11" font-weight="600" font-family="Outfit, sans-serif">ConcreteStrategyA</text>
+      <rect x="240" y="160" width="160" height="40" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="320" y="185" text-anchor="middle" fill="#34d399" font-size="11" font-weight="600" font-family="Outfit, sans-serif">ConcreteStrategyB</text>
+      <rect x="460" y="160" width="160" height="40" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="540" y="185" text-anchor="middle" fill="#34d399" font-size="11" font-weight="600" font-family="Outfit, sans-serif">ConcreteStrategyC</text>
+    </svg>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2><span style="color: #fbbf24;">Strategy</span> in Python</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <pre style="font-size: 0.68rem;"><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+
+<span class="kw">class</span> <span class="cls">RouteStrategy</span>(ABC):
+    @abstractmethod
+    <span class="kw">def</span> <span class="fn">calculate_route</span>(<span class="par">self</span>, origin, destination):
+        <span class="kw">pass</span>
+
+<span class="kw">class</span> <span class="cls">WalkingStrategy</span>(<span class="cls">RouteStrategy</span>):
+    <span class="kw">def</span> <span class="fn">calculate_route</span>(<span class="par">self</span>, origin, destination):
+        <span class="kw">return</span> <span class="str">f"Walking from {origin} to {destination} via parks"</span>
+
+<span class="kw">class</span> <span class="cls">RoadStrategy</span>(<span class="cls">RouteStrategy</span>):
+    <span class="kw">def</span> <span class="fn">calculate_route</span>(<span class="par">self</span>, origin, destination):
+        <span class="kw">return</span> <span class="str">f"Driving from {origin} to {destination} via highway"</span>
+
+<span class="kw">class</span> <span class="cls">PublicTransportStrategy</span>(<span class="cls">RouteStrategy</span>):
+    <span class="kw">def</span> <span class="fn">calculate_route</span>(<span class="par">self</span>, origin, destination):
+        <span class="kw">return</span> <span class="str">f"Taking bus from {origin} to {destination}"</span></pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.68rem; margin-top: 1rem;"><span class="kw">class</span> <span class="cls">Navigator</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, strategy: <span class="cls">RouteStrategy</span>):
+        <span class="par">self</span>.strategy = strategy
+
+    <span class="kw">def</span> <span class="fn">navigate</span>(<span class="par">self</span>, origin, destination):
+        <span class="kw">return</span> <span class="par">self</span>.strategy.<span class="fn">calculate_route</span>(origin, destination)
+
+nav = <span class="cls">Navigator</span>(<span class="cls">WalkingStrategy</span>())
+<span class="fn">print</span>(nav.<span class="fn">navigate</span>(<span class="str">"Home"</span>, <span class="str">"Airport"</span>))
+
+nav.strategy = <span class="cls">RoadStrategy</span>()  <span class="cmt"># swap at runtime!</span>
+<span class="fn">print</span>(nav.<span class="fn">navigate</span>(<span class="str">"Home"</span>, <span class="str">"Airport"</span>))</pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #fbbf24;">Strategy</span> &mdash; Pros &amp; Cons</h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div>
+      <p style="color: var(--green); font-weight: 700; margin-bottom: 1rem;">&#9989; Pros</p>
+      <ul>
+        <li><strong>Swap algorithms</strong> at runtime</li>
+        <li><strong>Isolate</strong> implementation details of each algorithm</li>
+        <li><strong>OCP</strong> &mdash; add new strategies without modifying context</li>
+        <li><strong>Replace</strong> inheritance with composition</li>
+      </ul>
+    </div>
+    <div>
+      <p style="color: var(--accent); font-weight: 700; margin-bottom: 1rem;">&#10060; Cons</p>
+      <ul>
+        <li><strong>Overkill</strong> if you only have a couple of algorithms that rarely change</li>
+        <li>Clients must <strong>know the differences</strong> between strategies to pick the right one</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <h2><span style="color: #34d399;">Decorator</span> Pattern</h2>
+  <p style="color: var(--text); margin-top: 1.5rem; font-size: 1.1rem;">Attach <strong>new behaviors</strong> to objects by wrapping them<br>in special <strong>wrapper objects</strong>.</p>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #34d399;">Decorator</span> &mdash; Real-world Analogy</h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <p style="margin-bottom: 1.5rem;">Wearing <strong>layers of clothing</strong>:</p>
+    <ul>
+      <li>&#128085; You start with a <strong>t-shirt</strong> (base object)</li>
+      <li>&#129507; Add a <strong>sweater</strong> when it's cold (decorator 1)</li>
+      <li>&#129509; Put on a <strong>jacket</strong> for rain (decorator 2)</li>
+      <li>&#127746; Add a <strong>raincoat</strong> for heavy rain (decorator 3)</li>
+    </ul>
+    <div class="callout" style="margin-top: 1.5rem;">Each layer <strong>wraps</strong> the previous one. You can add or remove layers without changing the t-shirt itself.</div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Decorator</span> &mdash; OOP Pattern</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <pre style="font-size: 0.68rem;"><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+
+<span class="kw">class</span> <span class="cls">Text</span>(ABC):
+    @abstractmethod
+    <span class="kw">def</span> <span class="fn">render</span>(<span class="par">self</span>):
+        <span class="kw">pass</span>
+
+<span class="kw">class</span> <span class="cls">PlainText</span>(<span class="cls">Text</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, content):
+        <span class="par">self</span>.content = content
+
+    <span class="kw">def</span> <span class="fn">render</span>(<span class="par">self</span>):
+        <span class="kw">return</span> <span class="par">self</span>.content
+
+<span class="kw">class</span> <span class="cls">TextDecorator</span>(<span class="cls">Text</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, wrapped: <span class="cls">Text</span>):
+        <span class="par">self</span>.wrapped = wrapped
+
+<span class="kw">class</span> <span class="cls">BoldText</span>(<span class="cls">TextDecorator</span>):
+    <span class="kw">def</span> <span class="fn">render</span>(<span class="par">self</span>):
+        <span class="kw">return</span> <span class="str">f"&lt;b&gt;{self.wrapped.render()}&lt;/b&gt;"</span>
+
+<span class="kw">class</span> <span class="cls">ItalicText</span>(<span class="cls">TextDecorator</span>):
+    <span class="kw">def</span> <span class="fn">render</span>(<span class="par">self</span>):
+        <span class="kw">return</span> <span class="str">f"&lt;i&gt;{self.wrapped.render()}&lt;/i&gt;"</span></pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.68rem; margin-top: 0.5rem;">text = <span class="cls">PlainText</span>(<span class="str">"Hello"</span>)
+bold = <span class="cls">BoldText</span>(text)
+bold_italic = <span class="cls">ItalicText</span>(bold)
+<span class="fn">print</span>(bold_italic.<span class="fn">render</span>())  <span class="cmt"># &lt;i&gt;&lt;b&gt;Hello&lt;/b&gt;&lt;/i&gt;</span></pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Python Decorators</span> (functions)</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-bottom: 0.5rem;">Python has built-in decorator <strong>syntax</strong> using <code style="color: var(--accent);">@</code>:</p>
+      <pre style="font-size: 0.75rem;"><span class="kw">import</span> time
+
+<span class="kw">def</span> <span class="fn">time_logger</span>(func):
+    <span class="kw">def</span> <span class="fn">wrapper</span>(*args, **kwargs):
+        start = time.<span class="fn">time</span>()
+        result = <span class="fn">func</span>(*args, **kwargs)
+        elapsed = time.<span class="fn">time</span>() - start
+        <span class="fn">print</span>(<span class="str">f"{func.__name__} took {elapsed:.4f}s"</span>)
+        <span class="kw">return</span> result
+    <span class="kw">return</span> wrapper</pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.75rem; margin-top: 1rem;">@time_logger
+<span class="kw">def</span> <span class="fn">process_data</span>(data):
+    time.<span class="fn">sleep</span>(<span class="num">0.5</span>)
+    <span class="kw">return</span> <span class="str">f"Processed {len(data)} items"</span>
+
+<span class="fn">process_data</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>])
+<span class="cmt"># process_data took 0.5012s</span></pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Decorator</span> with Arguments</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <pre style="font-size: 0.75rem;"><span class="kw">def</span> <span class="fn">repeat</span>(times):
+    <span class="kw">def</span> <span class="fn">decorator</span>(func):
+        <span class="kw">def</span> <span class="fn">wrapper</span>(*args, **kwargs):
+            <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(times):
+                result = <span class="fn">func</span>(*args, **kwargs)
+            <span class="kw">return</span> result
+        <span class="kw">return</span> wrapper
+    <span class="kw">return</span> decorator</pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.75rem; margin-top: 1rem;">@repeat(times=<span class="num">3</span>)
+<span class="kw">def</span> <span class="fn">greet</span>(name):
+    <span class="fn">print</span>(<span class="str">f"Hello, {name}!"</span>)
+
+<span class="fn">greet</span>(<span class="str">"Alice"</span>)
+<span class="cmt"># Hello, Alice!</span>
+<span class="cmt"># Hello, Alice!</span>
+<span class="cmt"># Hello, Alice!</span></pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #34d399;">Decorator</span> &mdash; Pros &amp; Cons</h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div>
+      <p style="color: var(--green); font-weight: 700; margin-bottom: 1rem;">&#9989; Pros</p>
+      <ul>
+        <li><strong>Extend behavior</strong> without subclassing</li>
+        <li><strong>Add/remove</strong> at runtime</li>
+        <li><strong>Combine</strong> multiple behaviors by stacking decorators</li>
+        <li><strong>SRP</strong> &mdash; each decorator handles one concern</li>
+      </ul>
+    </div>
+    <div>
+      <p style="color: var(--accent); font-weight: 700; margin-bottom: 1rem;">&#10060; Cons</p>
+      <ul>
+        <li><strong>Hard to remove</strong> a specific wrapper from the middle of a stack</li>
+        <li><strong>Order-dependent</strong> &mdash; stacking order matters</li>
+        <li><strong>Complex configuration</strong> with many layers</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -1261,70 +906,89 @@ b = <span class="cls">Singleton</span>()
 </div>
 
 <div class="slide">
-  <h2>Dependency Injection: <span class="accent">Recap</span></h2>
-  <div class="layout">
-    <div class="text">
-      <p style="margin-bottom: 1rem;">From SOLID's <strong>Dependency Inversion Principle</strong>:</p>
-      <ul>
-        <li>&#128260; <strong>Inject</strong> dependencies instead of creating them inside classes</li>
-        <li>&#128994; Makes code <strong>testable</strong> and <strong>flexible</strong></li>
-        <li>&#128295; Easy to swap implementations</li>
-      </ul>
-    </div>
-    <div class="visual">
-      <pre style="font-size: 0.72rem;"><span class="kw">class</span> <span class="cls">NotificationService</span>:
-    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, sender):
-        <span class="par">self</span>._sender = sender
-
-    <span class="kw">def</span> <span class="fn">notify</span>(<span class="par">self</span>, msg):
-        <span class="par">self</span>._sender.send(msg)
-
-sms = <span class="cls">SMSSender</span>()
-svc = <span class="cls">NotificationService</span>(sms)
-svc.notify(<span class="str">"Hello!"</span>)</pre>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Anti-Patterns: <span class="accent">What to Avoid</span></h2>
-  <div class="two-col" style="margin-top: 1rem;">
-    <div class="col" style="border-color: var(--accent);">
-      <h3 style="color: var(--accent);">&#128308; God Object</h3>
-      <ul style="font-size: 0.9rem;">
-        <li>One class that <strong>knows too much</strong> or <strong>does too much</strong></li>
-        <li>Violates <strong>SRP</strong> &mdash; many reasons to change</li>
-        <li>Hard to test, maintain, and extend</li>
-        <li>Example: a <code style="color: var(--accent);">Manager</code> class with 50 methods</li>
-      </ul>
-    </div>
-    <div class="col" style="border-color: #fbbf24;">
-      <h3 style="color: #fbbf24;">&#127837; Spaghetti Code</h3>
-      <ul style="font-size: 0.9rem;">
-        <li>Code with <strong>no clear structure</strong></li>
-        <li>Tangled dependencies, mixed concerns</li>
-        <li>Impossible to follow the flow</li>
-        <li>Often results from no planning or design patterns</li>
-      </ul>
-    </div>
-  </div>
-  <div class="callout" style="margin-top: 1.5rem; max-width: 600px;">Design patterns are the <strong>antidote</strong> to anti-patterns. They give your code structure and purpose.</div>
-</div>
-
-<div class="slide">
-  <h2>Key Takeaways</h2>
-  <div style="max-width: 750px;">
+  <h2>Best <span class="accent">Practices</span></h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
     <ul>
-      <li style="margin-bottom: 0.5rem;">&#128208; <strong>UML</strong> &mdash; visual language for designing and documenting software systems</li>
-      <li style="margin-bottom: 0.5rem;">&#128194; <strong>Class diagrams</strong> show structure: classes, attributes, methods, relationships</li>
-      <li style="margin-bottom: 0.5rem;">&#128260; <strong>Sequence diagrams</strong> show behavior: interactions over time</li>
-      <li style="margin-bottom: 0.5rem;">&#127981; <strong>Factory Method</strong> &mdash; delegate object creation to subclasses (creational)</li>
-      <li style="margin-bottom: 0.5rem;">&#128451;&#65039; <strong>Facade</strong> &mdash; simplified interface to a complex subsystem (structural)</li>
-      <li style="margin-bottom: 0.5rem;">&#128257; <strong>Iterator</strong> &mdash; traverse collections without exposing internals (behavioral)</li>
+      <li>&#128270; <strong>Understand the problem fully</strong> before picking a pattern</li>
+      <li>&#128175; <strong>KISS</strong> &mdash; keep it simple, don't over-engineer</li>
+      <li>&#128736;&#65039; <strong>Follow SOLID</strong> principles &mdash; patterns naturally emerge</li>
+      <li>&#128260; <strong>Refactor to patterns</strong> when the need becomes clear, not upfront</li>
+      <li>&#9878;&#65039; <strong>Understand trade-offs</strong> &mdash; every pattern has pros and cons</li>
+      <li>&#128218; <strong>Study real-world examples</strong> in frameworks you use (Django, Flask, etc.)</li>
     </ul>
-    <div class="callout" style="margin-top: 1.5rem;">Use patterns when they solve a <strong>real problem</strong>. Don't force them where they don't fit.</div>
   </div>
-  <p style="color: var(--muted); margin-top: 2rem; font-size: 1.1rem;">Next up: <strong style="color: var(--accent);">Testing &amp; TDD</strong></p>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <h2 style="font-size: 2rem;">&#9888;&#65039; Anti-patterns</h2>
+  <p style="color: var(--text); margin-top: 1.5rem; font-size: 1.1rem;">Common solutions that are <strong>ineffective</strong><br>or <strong>counterproductive</strong>.</p>
+  <p style="color: var(--muted); margin-top: 1rem; font-size: 1rem;">The opposite of design patterns &mdash; things to <strong>avoid</strong>.</p>
+</div>
+
+<div class="slide">
+  <h2>&#128683; Anti-pattern: <span class="accent">God Object</span></h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <p style="margin-bottom: 1rem;">A single object that <strong>does too much</strong> &mdash; knows too much, controls too much.</p>
+    <pre style="font-size: 0.75rem;"><span class="kw">class</span> <span class="cls">Application</span>:
+    <span class="kw">def</span> <span class="fn">authenticate_user</span>(<span class="par">self</span>, ...): ...
+    <span class="kw">def</span> <span class="fn">process_payment</span>(<span class="par">self</span>, ...): ...
+    <span class="kw">def</span> <span class="fn">send_email</span>(<span class="par">self</span>, ...): ...
+    <span class="kw">def</span> <span class="fn">generate_report</span>(<span class="par">self</span>, ...): ...
+    <span class="kw">def</span> <span class="fn">manage_inventory</span>(<span class="par">self</span>, ...): ...
+    <span class="kw">def</span> <span class="fn">handle_shipping</span>(<span class="par">self</span>, ...): ...</pre>
+    <div class="callout" style="margin-top: 1rem;">&#10060; Violates <strong>SRP</strong>. Break it into focused classes: <code>AuthService</code>, <code>PaymentService</code>, <code>EmailService</code>, etc.</div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>&#128683; Anti-pattern: <span class="accent">Spaghetti Code</span></h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <p style="margin-bottom: 1rem;">Tangled control flow, deeply nested, hard to follow.</p>
+    <pre style="font-size: 0.75rem;"><span class="kw">def</span> <span class="fn">process</span>(data):
+    <span class="kw">if</span> data:
+        <span class="kw">for</span> item <span class="kw">in</span> data:
+            <span class="kw">if</span> item.active:
+                <span class="kw">if</span> item.type == <span class="str">"A"</span>:
+                    <span class="kw">if</span> item.value > <span class="num">0</span>:
+                        <span class="kw">for</span> sub <span class="kw">in</span> item.children:
+                            <span class="kw">if</span> sub.valid:
+                                ...</pre>
+    <ul style="margin-top: 1rem;">
+      <li>&#128683; Hard to <strong>read</strong>, <strong>debug</strong>, and <strong>test</strong></li>
+      <li>&#9989; Fix with: <strong>early returns</strong>, <strong>extract methods</strong>, <strong>design patterns</strong></li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Key <span class="accent">Takeaways</span></h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <ul>
+      <li><strong style="color: #fbbf24;">Strategy</strong> &mdash; <strong>swappable algorithms</strong> behind a common interface. Pick the right one at runtime</li>
+      <li style="margin-top: 0.75rem;"><strong style="color: #34d399;">Decorator</strong> &mdash; <strong>layered behaviors</strong> by wrapping objects. Extend without subclassing</li>
+      <li style="margin-top: 0.75rem;"><strong style="color: #818cf8;">Factory Method</strong> &mdash; <strong>delegate creation</strong> to subclasses. Add new types without changing existing code</li>
+      <li style="margin-top: 0.75rem;"><strong style="color: #a78bfa;">Facade</strong> &mdash; <strong>simplified interface</strong> to a complex subsystem. Hide the complexity</li>
+      <li style="margin-top: 0.75rem;"><strong style="color: var(--accent);">Iterator</strong> &mdash; <strong>sequential access</strong> without exposing internals. Python's <code style="color: var(--accent);">for</code> loop uses it</li>
+    </ul>
+    <div class="callout" style="margin-top: 1.5rem;">Patterns are <strong>tools</strong>, not rules. Use them when they simplify, not when they impress.</div>
+  </div>
+</div>
+
+<div class="slide center">
+  <h2>Next Up</h2>
+  <p style="color: var(--text); margin-top: 1.5rem; font-size: 1.3rem;"><strong style="color: var(--accent);">Testing &amp; TDD</strong></p>
+  <div style="margin-top: 2rem;">
+    <svg viewBox="0 0 200 80" width="200">
+      <rect x="10" y="10" width="80" height="60" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="50" y="35" text-anchor="middle" fill="#34d399" font-size="10" font-weight="600" font-family="Outfit, sans-serif">Unit</text>
+      <text x="50" y="55" text-anchor="middle" fill="var(--muted)" font-size="8" font-family="Outfit, sans-serif">Testing</text>
+      <text x="110" y="44" text-anchor="middle" fill="var(--muted)" font-size="16">+</text>
+      <rect x="120" y="10" width="80" height="60" rx="6" fill="var(--code-bg)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="160" y="35" text-anchor="middle" fill="var(--accent)" font-size="10" font-weight="600" font-family="Outfit, sans-serif">TDD</text>
+      <text x="160" y="55" text-anchor="middle" fill="var(--muted)" font-size="8" font-family="Outfit, sans-serif">Red-Green</text>
+    </svg>
+  </div>
+  <p style="color: var(--muted); font-size: 0.95rem; margin-top: 2rem;">Unit tests, pytest, and test-driven development!</p>
 </div>
 
 <div class="nav">
