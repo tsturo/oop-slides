@@ -468,6 +468,13 @@ nav.strategy = <span class="cls">RoadStrategy</span>()  <span class="cmt"># swap
   </div>
 </div>
 
+<div class="slide center">
+  <h2 style="text-align: center;"><span style="color: #34d399;">Decorator</span> &mdash; Visual Intuition</h2>
+  <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
+    <img src="assets/dp-decorator-extra.jpg" alt="Decorator pattern visual intuition" style="max-width: 100%; max-height: 500px; border-radius: 8px;">
+  </div>
+</div>
+
 <div class="slide reveal-slide">
   <h2><span style="color: #34d399;">Decorator</span> &mdash; OOP Pattern</h2>
   <div class="reveal-blocks">
@@ -1321,6 +1328,55 @@ result = calc.<span class="fn">calc</span>(<span class="num">2</span>, <span cla
     </div>
   </div>
   <div class="callout" style="margin-top: 1.2rem; max-width: 820px; border-color: var(--accent);"><strong>The rule:</strong> AI suggests patterns &mdash; <strong>you decide if they fit</strong>. Knowing the patterns is how you can tell.</div>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <p style="font-size: 1.8rem; color: var(--heading); font-weight: 700;">&#129504; Pattern Check</p>
+  <p style="color: var(--muted); margin-top: 0.5rem; font-size: 1.05rem; font-style: italic;">Can you spot the pattern from the code?</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(End of Lecture)</span></h2>
+  <p style="color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Which pattern does this code implement?</p>
+  <pre style="font-size: 0.72rem;"><span class="kw">class</span> <span class="cls">LoggedReader</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, reader):
+        <span class="par">self</span>._reader = reader
+
+    <span class="kw">def</span> <span class="fn">read</span>(<span class="par">self</span>):
+        data = <span class="par">self</span>._reader.<span class="fn">read</span>()
+        <span class="fn">log</span>(<span class="fn">f</span><span class="str">"Read {len(data)} bytes"</span>)
+        <span class="kw">return</span> data
+
+reader = <span class="cls">LoggedReader</span>(<span class="cls">FileReader</span>(<span class="str">"data.txt"</span>))
+reader.<span class="fn">read</span>()</pre>
+  <div class="two-col quiz-answers" style="margin-top: 1rem; max-width: 700px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">A) Facade</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);"><strong>B) Decorator</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">C) Strategy</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) Observer</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 0.6rem; font-size: 0.9rem;"><strong>Decorator</strong>: <code style="color: var(--cyan);">LoggedReader</code> wraps another reader and adds logging behavior without modifying the original class. Same interface (<code>read()</code>), extra behavior layered on top.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(End of Lecture)</span></h2>
+  <p style="color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">And this one?</p>
+  <pre style="font-size: 0.72rem;"><span class="kw">class</span> <span class="cls">TaxCalculator</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, rule):
+        <span class="par">self</span>._rule = rule
+
+    <span class="kw">def</span> <span class="fn">calc</span>(<span class="par">self</span>, amount):
+        <span class="kw">return</span> <span class="par">self</span>._rule(amount)
+
+usa = <span class="cls">TaxCalculator</span>(<span class="kw">lambda</span> x: x * <span class="num">0.08</span>)
+eu  = <span class="cls">TaxCalculator</span>(<span class="kw">lambda</span> x: x * <span class="num">0.20</span>)</pre>
+  <div class="two-col quiz-answers" style="margin-top: 1rem; max-width: 700px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">A) Factory Method</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">B) Decorator</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);"><strong>C) Strategy</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) Iterator</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 0.6rem; font-size: 0.9rem;"><strong>Strategy</strong>: the tax <em>rule</em> is injected at construction time and called by <code>calc()</code>. Swap the algorithm (USA vs EU) without changing the <code>TaxCalculator</code> class.</p>
 </div>
 
 <div class="slide">
