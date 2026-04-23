@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Patterns (Part 2): Course 10 — Python OOP</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="vgtu.jpg">
+<link rel="stylesheet" href="shared.css">
+<style>
+  @keyframes patternPulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+  @keyframes gearSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .pattern-pulse { animation: patternPulse 2s ease-in-out infinite; }
+  .reveal-slide .reveal-blocks .reveal-block { opacity: 0; transform: translateY(8px); transition: opacity 0.4s, transform 0.4s; }
+  .reveal-slide.step-1 .reveal-blocks .reveal-block:nth-child(1) { opacity: 1; transform: translateY(0); }
+  .reveal-slide.step-2 .reveal-blocks .reveal-block:nth-child(-n+2) { opacity: 1; transform: translateY(0); }
+  .reveal-slide.step-3 .reveal-blocks .reveal-block { opacity: 1; transform: translateY(0); }
+  pre { overflow-x: auto; max-width: 100%; }
+  .two-col, .three-col { overflow: hidden; }
+  svg { max-width: 100%; height: auto; }
+  .layout .visual img, .layout .visual svg { max-width: 100%; }
+  .col { overflow: hidden; word-wrap: break-word; }
+</style>
+</head>
+<body>
+
+<div class="mobile-warning">
+  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+  </svg>
+  <h2>Please use a larger screen</h2>
+  <p>This presentation is designed for desktop or projector displays.</p>
+  <a href="index.html">&larr; Back to curriculum</a>
+</div>
+
+<div class="progress" id="progress"></div>
+
+<div class="visma-logo" style="display: flex; align-items: center; gap: 16px;">
+  <svg width="100" height="24" viewBox="30 75 165 45" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32.228 81.327c8.803.852 18.458 5.253 23.996 11.643 7.099 8.093 4.686 16.187-5.396 18.032-10.081 1.988-23.996-3.123-31.095-11.217-5.396-6.248-5.253-12.495-.284-15.902l27.971 20.73-15.192-23.286z" fill="#c92043"/>
+    <path d="M170.805 111.002l-3.549-14.199c-.428-1.703-.711-3.407-.994-4.969h-.143c-.283 1.704-.426 3.266-.852 5.111l-3.551 14.057h-6.105l8.094-29.533h4.828l8.52 29.533h-6.248zM77.663 81.469l3.55 14.198c.568 1.704.71 3.409.994 4.969h.142c.284-1.703.426-3.408.852-5.111l3.55-14.056h6.105l-8.093 29.533h-4.828l-8.519-29.533h6.247zM97.256 81.469h5.822v29.533h-5.822V81.469zM136.02 81.469L139 98.934l2.414-17.465h7.809l2.982 29.533h-5.963l-1.42-21.298-.994 7.241-2.414 14.057h-4.543l-2.84-14.199-.994-6.531v-.568h-.142l-.852 21.298h-6.248l2.557-29.533h7.668zM117.561 81.469c-.994.71-1.703 1.987-2.271 3.265-1.562 3.55.141 6.389 1.561 8.945.143.284.428.71.568 1.136 3.266 5.395 4.402 9.37 2.131 15.049l-.568 1.137h-7.1c.852-.711 1.703-1.703 2.129-2.84 1.705-3.834-.283-7.383-2.129-10.934-2.129-4.117-4.402-8.376-1.988-14.198.143-.568.711-1.562.711-1.562h6.956v.002z" fill="var(--heading)"/>
+  </svg>
+  <span style="color: var(--border); font-size: 1.2rem;">|</span>
+  <img src="vgtu.jpg" alt="VILNIUS TECH" height="28" style="border-radius: 4px;">
+</div>
+
+<div class="slide active center">
+  <p style="color: var(--accent); font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Python Object Oriented Programming</p>
+  <h1>Design Patterns <span style="color: var(--muted); font-weight: 300;">(Part 2)</span></h1>
+  <p class="subtitle">Course 10</p>
+  <div style="margin-top: 2.5rem;">
+    <svg viewBox="0 0 600 160" width="900" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+      <rect x="0" y="5" width="185" height="150" rx="12" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2.5"/>
+      <text x="92" y="40" text-anchor="middle" fill="#818cf8" font-size="16" font-weight="800" font-family="Outfit, sans-serif">Creational</text>
+      <text x="92" y="78" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="JetBrains Mono, monospace">Factory Method</text>
+      <text x="92" y="98" text-anchor="middle" fill="var(--muted)" font-size="10" font-style="italic" font-family="Outfit, sans-serif">how objects are built</text>
+
+      <rect x="207" y="5" width="185" height="150" rx="12" fill="var(--code-bg)" stroke="#34d399" stroke-width="2.5"/>
+      <text x="300" y="40" text-anchor="middle" fill="#34d399" font-size="16" font-weight="800" font-family="Outfit, sans-serif">Structural</text>
+      <text x="300" y="75" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="JetBrains Mono, monospace">Decorator</text>
+      <text x="300" y="92" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="JetBrains Mono, monospace">Facade</text>
+      <text x="300" y="120" text-anchor="middle" fill="var(--muted)" font-size="10" font-style="italic" font-family="Outfit, sans-serif">how objects compose</text>
+
+      <rect x="414" y="5" width="185" height="150" rx="12" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="2.5"/>
+      <text x="507" y="40" text-anchor="middle" fill="#fbbf24" font-size="16" font-weight="800" font-family="Outfit, sans-serif">Behavioral</text>
+      <text x="507" y="75" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="JetBrains Mono, monospace">Strategy &middot; Iterator</text>
+      <text x="507" y="92" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="JetBrains Mono, monospace">Observer</text>
+      <text x="507" y="115" text-anchor="middle" fill="var(--muted)" font-size="10" font-style="italic" font-family="Outfit, sans-serif">how objects interact</text>
+    </svg>
+  </div>
+  <p style="color: var(--muted); font-size: 0.9rem; margin-top: 2rem;">
+    <span class="tag">&larr;</span> <span class="tag">&rarr;</span> to navigate
+  </p>
+</div>
+
+<div class="slide">
+  <h2>Course Curriculum</h2>
+  <p style="color: var(--heading); margin-bottom: 1.5rem;">Where we are in the journey</p>
+  <ul class="curriculum-list">
+    <li style="color: var(--muted);">0. Introduction to the course</li>
+    <li style="color: var(--muted);">1. Classes vs. Objects</li>
+    <li style="color: var(--muted);">2. Encapsulation &amp; Access Control</li>
+    <li style="color: var(--muted);">3. Inheritance</li>
+    <li style="color: var(--muted);">4. Polymorphism &amp; PEP 8</li>
+    <li style="color: var(--muted);">5. Composition &amp; Aggregation</li>
+    <li style="color: var(--muted);">6. Exception Handling &amp; Logging</li>
+    <li style="color: var(--muted);">7. SOLID Principles</li>
+    <li style="color: var(--muted);">8. UML &amp; Design Patterns</li>
+    <li style="color: var(--muted);">9. Unit Testing &amp; TDD</li>
+    <li class="current" style="color: var(--accent); font-weight: 600;">10. Design Patterns (2nd part)</li>
+    <li>11. Libraries &amp; Frameworks</li>
+    <li>12. Recap &amp; Consultation</li>
+  </ul>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Lecture 09)</span></h2>
+  <p style="color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">What are the three phases of the <strong>TDD cycle</strong>?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 700px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">A) Write &mdash; Test &mdash; Ship</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">B) Plan &mdash; Code &mdash; Debug</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);"><strong>C) Red &mdash; Green &mdash; Refactor</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) Arrange &mdash; Act &mdash; Assert</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 0.8rem; font-size: 0.9rem;"><span style="color: #ef4444;">&#128308; RED</span> &mdash; write a failing test. <span style="color: #34d399;">&#128994; GREEN</span> &mdash; make it pass with the simplest code. <span style="color: #60a5fa;">&#128309; REFACTOR</span> &mdash; clean up without breaking the tests. (AAA is about <em>one test's structure</em>, not the TDD loop.)</p>
+</div>
+<div class="slide">
+  <p style="color: var(--accent); font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Recap: Lecture 09</p>
+  <h2>Test-Driven <span class="accent">Development</span></h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li><span style="color: #ef4444;">&#128308;</span> <strong>RED</strong> &mdash; write a test that fails for the right reason</li>
+        <li><span style="color: #34d399;">&#128994;</span> <strong>GREEN</strong> &mdash; simplest code that makes the test pass</li>
+        <li><span style="color: #60a5fa;">&#128309;</span> <strong>REFACTOR</strong> &mdash; clean up, tests remain green</li>
+        <li>&#128218; Tests act as <strong>documentation</strong> and a <strong>safety net</strong></li>
+      </ul>
+    </div>
+    <div class="visual">
+      <pre style="font-size: 0.78rem;"><span class="kw">def</span> <span class="fn">test_deposit_adds_money</span>():
+    acc = <span class="cls">Account</span>()
+    acc.<span class="fn">deposit</span>(<span class="num">100</span>)
+    <span class="kw">assert</span> acc.balance == <span class="num">100</span>
+
+<span class="cmt"># Fail &rarr; implement &rarr; pass &rarr; clean</span></pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Lecture 07)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What does the <code style="color: var(--accent);">'D'</code> in SOLID stand for?</p>
+  <div class="two-col quiz-answers" style="margin-top: 2rem; max-width: 700px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">A) Decorator Pattern</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);"><strong>B) Dependency Inversion Principle</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">C) Data Abstraction Principle</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) Dynamic Binding Principle</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1rem; font-size: 0.9rem;">DIP says high-level modules should not depend on low-level modules &mdash; both should depend on <strong>abstractions</strong>.</p>
+</div>
+<div class="slide">
+  <p style="color: var(--accent); font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Recap: Lecture 07</p>
+  <h2>SOLID: <span class="accent">Dependency Inversion</span></h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li><strong>High-level modules</strong> should not depend on low-level modules</li>
+        <li>Both should depend on <strong>abstractions</strong></li>
+        <li><strong>Inject</strong> dependencies instead of creating them inside classes</li>
+        <li>Makes code <strong>testable</strong> and <strong>flexible</strong></li>
+      </ul>
+    </div>
+    <div class="visual">
+      <pre style="font-size: 0.75rem;"><span class="kw">class</span> <span class="cls">NotificationService</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, sender):
+        <span class="par">self</span>._sender = sender
+
+    <span class="kw">def</span> <span class="fn">notify</span>(<span class="par">self</span>, msg):
+        <span class="par">self</span>._sender.send(msg)
+
+sms = <span class="cls">SMSSender</span>()
+svc = <span class="cls">NotificationService</span>(sms)</pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Lecture 08)</span></h2>
+  <p style="color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Which design pattern solves the problem in this code?</p>
+  <pre style="font-size: 0.72rem;"><span class="kw">class</span> <span class="cls">Pizza</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, size, crust, sauce, cheese,
+                 toppings, extra_cheese, extra_sauce,
+                 gluten_free, vegan, thin_crust, ...):
+        <span class="cmt"># 15+ parameters, most optional, most combinations nonsensical</span>
+        ...
+
+pizza = <span class="cls">Pizza</span>(<span class="str">"L"</span>, <span class="str">"thin"</span>, <span class="kw">None</span>, <span class="kw">True</span>, [<span class="str">"mushrooms"</span>], <span class="kw">False</span>, <span class="kw">None</span>, ...)</pre>
+  <div class="two-col quiz-answers" style="margin-top: 1rem; max-width: 700px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">A) Singleton</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);"><strong>B) Builder</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">C) Strategy</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) Factory Method</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 0.6rem; font-size: 0.9rem;"><strong>Builder</strong> replaces the monstrous constructor with step-by-step fluent methods: <code style="color: var(--cyan);">Pizza.builder().size("L").thin_crust().add("mushrooms").build()</code>.</p>
+</div>
+<div class="slide">
+  <p style="color: var(--accent); font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Recap: Lecture 08</p>
+  <h2>Design Patterns: <span style="color: #a78bfa;">Builder</span></h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#128296; Constructs <strong>complex objects step by step</strong></li>
+        <li>&#129729; Replaces the <strong>monstrous constructor</strong> with a fluent API</li>
+        <li>&#129513; Each call configures one aspect &mdash; readable, reorderable</li>
+        <li>&#9989; Use when an object has many optional parameters or construction variants</li>
+      </ul>
+    </div>
+    <div class="visual">
+      <pre style="font-size: 0.75rem;">pizza = (<span class="cls">Pizza</span>.<span class="fn">builder</span>()
+    .<span class="fn">size</span>(<span class="str">"L"</span>)
+    .<span class="fn">thin_crust</span>()
+    .<span class="fn">add</span>(<span class="str">"mushrooms"</span>)
+    .<span class="fn">extra_cheese</span>()
+    .<span class="fn">build</span>())
+
+<span class="cmt"># Readable. No positional noise.</span>
+<span class="cmt"># Only the options you want.</span></pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Agenda for <span class="accent">Today</span></h2>
+  <div style="max-width: 600px; margin-top: 1rem;">
+    <ul>
+      <li>&#128218; Quick <strong>Design Patterns</strong> recap</li>
+      <li>&#128269; Deep dive into 6 patterns:</li>
+    </ul>
+    <div style="margin-left: 2rem; margin-top: 0.5rem; font-size: 0.95rem;">
+      <p>&#128993; <strong style="color: #fbbf24;">Strategy</strong> &mdash; swappable algorithms</p>
+      <p>&#128994; <strong style="color: #34d399;">Decorator</strong> &mdash; layered behaviors</p>
+      <p>&#128312; <strong style="color: #818cf8;">Factory Method</strong> &mdash; delegated creation</p>
+      <p>&#128311; <strong style="color: #a78bfa;">Facade</strong> &mdash; simplified interface</p>
+      <p>&#128308; <strong style="color: var(--accent);">Iterator</strong> &mdash; sequential access</p>
+      <p>&#128995; <strong style="color: #22d3ee;">Observer</strong> &mdash; one-to-many notifications</p>
+    </div>
+    <p style="margin-top: 1rem;">&#9989; Anti-patterns &amp; AI in design</p>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Design Patterns: <span class="accent">Recap</span></h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#128218; <strong>Reusable solutions</strong> to commonly occurring problems in software design</li>
+        <li>&#129521; Not finished code &mdash; a <strong>template</strong> for how to solve a problem</li>
+        <li>&#128101; Shared <strong>vocabulary</strong> among developers: "Let's use a Factory here"</li>
+        <li>&#128736;&#65039; Introduced by the <strong>Gang of Four (GoF)</strong> in 1994 &mdash; 23 patterns</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.5rem;">Patterns are <strong>tools</strong>, not rules. Use them when they simplify, not when they impress.</div>
+    </div>
+    <div class="visual" style="display: flex; flex-direction: column; align-items: center;">
+      <img src="assets/gof-book.jpg" alt="Design Patterns: Elements of Reusable Object-Oriented Software (Gang of Four book cover)" style="max-height: 380px; border-radius: 6px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);">
+      <p style="text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 0.9rem; font-style: italic; max-width: 260px; line-height: 1.4;">Gamma, Helm, Johnson, Vlissides &mdash; <em>the</em> Gang of Four</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2>Three <span class="accent">Categories</span></h2>
+  <div class="three-col reveal-blocks" style="margin-top: 1.5rem;">
+    <div class="col reveal-block" style="border-color: #818cf8; text-align: center;">
+      <p style="font-size: 2.5rem; margin-bottom: 0.3rem;">&#127981;</p>
+      <h3 style="color: #818cf8;">Creational</h3>
+      <p style="font-size: 0.9rem;">How objects are <strong>created</strong></p>
+      <ul style="margin-top: 0.8rem; font-size: 0.85rem; text-align: left;">
+        <li>Singleton</li>
+        <li>Factory Method</li>
+        <li>Abstract Factory</li>
+        <li>Builder</li>
+        <li>Prototype</li>
+      </ul>
+    </div>
+    <div class="col reveal-block" style="border-color: #34d399; text-align: center;">
+      <p style="font-size: 2.5rem; margin-bottom: 0.3rem;">&#129513;</p>
+      <h3 style="color: #34d399;">Structural</h3>
+      <p style="font-size: 0.9rem;">How objects are <strong>composed</strong></p>
+      <ul style="margin-top: 0.8rem; font-size: 0.85rem; text-align: left;">
+        <li>Adapter</li>
+        <li>Decorator</li>
+        <li>Proxy</li>
+        <li>Composite</li>
+        <li>Facade</li>
+      </ul>
+    </div>
+    <div class="col reveal-block" style="border-color: #fbbf24; text-align: center;">
+      <p style="font-size: 2.5rem; margin-bottom: 0.3rem;">&#128172;</p>
+      <h3 style="color: #fbbf24;">Behavioral</h3>
+      <p style="font-size: 0.9rem;">How objects <strong>communicate</strong></p>
+      <ul style="margin-top: 0.8rem; font-size: 0.85rem; text-align: left;">
+        <li>Observer</li>
+        <li>Strategy</li>
+        <li>Iterator</li>
+        <li>State</li>
+        <li>Template Method</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <h2><span style="color: #fbbf24;">Strategy</span> Pattern</h2>
+  <p style="color: var(--text); margin-top: 1rem; font-size: 1.1rem;">Define a family of <strong>algorithms</strong>, put each in a separate class,<br>and make them <strong>interchangeable</strong>.</p>
+  <div style="display: flex; justify-content: center; margin-top: 1.8rem;">
+    <img src="assets/dp-strategy.png" alt="Strategy pattern illustration" style="max-height: 340px; border-radius: 8px; background: white; padding: 10px;">
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #fbbf24;">Strategy</span> &mdash; Real-world Analogy</h2>
+  <div class="layout">
+    <div class="text">
+      <p style="margin-bottom: 1rem;">Imagine you have to get to the <strong>airport</strong>. Different strategies:</p>
+      <ul>
+        <li>&#128652; <strong>Bus</strong> &mdash; cheapest, but slowest</li>
+        <li>&#128661; <strong>Taxi</strong> &mdash; fast and comfortable, but expensive</li>
+        <li>&#128690; <strong>Bicycle</strong> &mdash; free and healthy, but weather-dependent</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.2rem;">Same <strong>goal</strong> (reach the airport), different <strong>strategies</strong>. You pick one depending on <strong>budget</strong>, <strong>time</strong>, or <strong>weather</strong>.</div>
+    </div>
+    <div class="visual">
+      <img src="assets/dp-strategy-comic.png" alt="Transportation strategies: bus, cab, and bicycle to reach the airport" style="max-width: 100%; max-height: 440px; border-radius: 8px; background: white; padding: 8px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #fbbf24;">Strategy</span> &mdash; The Solution</h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <ul>
+      <li>&#128451;&#65039; <strong>Extract</strong> each algorithm into its own class (a "strategy")</li>
+      <li>&#128260; All strategies implement the <strong>same interface</strong></li>
+      <li>&#128279; The <strong>context</strong> object holds a reference to a strategy and delegates work to it</li>
+      <li>&#128257; Swap strategies at <strong>runtime</strong> without changing the context</li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <h2 style="text-align: center;"><span style="color: #fbbf24;">Strategy</span> &mdash; Structure</h2>
+  <svg viewBox="0 0 800 290" width="960" style="max-width: 100%; height: auto; display: block; margin: 2rem auto 0;">
+    <g class="anim-fade" style="animation-delay: 0.1s;">
+      <rect x="310" y="10" width="180" height="60" rx="8" fill="var(--code-bg)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="400" y="36" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="Outfit, sans-serif">Context</text>
+      <text x="400" y="56" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="JetBrains Mono, monospace">- strategy: Strategy</text>
+    </g>
+
+    <g class="anim-fade" style="animation-delay: 0.45s;">
+      <line x1="400" y1="70" x2="400" y2="95" stroke="var(--muted)" stroke-width="1.8"/>
+      <polygon points="400,105 392,95 408,95" fill="none" stroke="var(--muted)" stroke-width="1.8"/>
+    </g>
+
+    <g class="anim-fade" style="animation-delay: 0.75s;">
+      <rect x="290" y="107" width="220" height="60" rx="8" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6 3"/>
+      <text x="400" y="133" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700" font-family="Outfit, sans-serif">&laquo;interface&raquo; Strategy</text>
+      <text x="400" y="153" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="JetBrains Mono, monospace">+ execute()</text>
+    </g>
+
+    <g class="anim-fade" style="animation-delay: 1.05s;">
+      <polygon points="400,170 390,185 410,185" fill="var(--code-bg)" stroke="var(--muted)" stroke-width="1.8"/>
+      <line x1="400" y1="185" x2="400" y2="205" stroke="var(--muted)" stroke-width="1.8"/>
+      <line x1="145" y1="205" x2="655" y2="205" stroke="var(--muted)" stroke-width="1.8"/>
+      <line x1="145" y1="205" x2="145" y2="225" stroke="var(--muted)" stroke-width="1.8"/>
+      <line x1="400" y1="205" x2="400" y2="225" stroke="var(--muted)" stroke-width="1.8"/>
+      <line x1="655" y1="205" x2="655" y2="225" stroke="var(--muted)" stroke-width="1.8"/>
+    </g>
+
+    <g class="anim-fade" style="animation-delay: 1.35s;">
+      <rect x="60" y="225" width="170" height="50" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="1.8"/>
+      <text x="145" y="255" text-anchor="middle" fill="#34d399" font-size="12" font-weight="600" font-family="Outfit, sans-serif">ConcreteStrategyA</text>
+    </g>
+
+    <g class="anim-fade" style="animation-delay: 1.55s;">
+      <rect x="315" y="225" width="170" height="50" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="1.8"/>
+      <text x="400" y="255" text-anchor="middle" fill="#34d399" font-size="12" font-weight="600" font-family="Outfit, sans-serif">ConcreteStrategyB</text>
+    </g>
+
+    <g class="anim-fade" style="animation-delay: 1.75s;">
+      <rect x="570" y="225" width="170" height="50" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="1.8"/>
+      <text x="655" y="255" text-anchor="middle" fill="#34d399" font-size="12" font-weight="600" font-family="Outfit, sans-serif">ConcreteStrategyC</text>
+    </g>
+  </svg>
+</div>
+
+<div class="slide reveal-slide">
+  <h2><span style="color: #fbbf24;">Strategy</span> in Python</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <pre style="font-size: 0.68rem;"><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+
+<span class="kw">class</span> <span class="cls">RouteStrategy</span>(ABC):
+    @abstractmethod
+    <span class="kw">def</span> <span class="fn">calculate_route</span>(<span class="par">self</span>, origin, destination):
+        <span class="kw">pass</span>
+
+<span class="kw">class</span> <span class="cls">WalkingStrategy</span>(<span class="cls">RouteStrategy</span>):
+    <span class="kw">def</span> <span class="fn">calculate_route</span>(<span class="par">self</span>, origin, destination):
+        <span class="kw">return</span> <span class="str">f"Walking from {origin} to {destination} via parks"</span>
+
+<span class="kw">class</span> <span class="cls">RoadStrategy</span>(<span class="cls">RouteStrategy</span>):
+    <span class="kw">def</span> <span class="fn">calculate_route</span>(<span class="par">self</span>, origin, destination):
+        <span class="kw">return</span> <span class="str">f"Driving from {origin} to {destination} via highway"</span>
+
+<span class="kw">class</span> <span class="cls">PublicTransportStrategy</span>(<span class="cls">RouteStrategy</span>):
+    <span class="kw">def</span> <span class="fn">calculate_route</span>(<span class="par">self</span>, origin, destination):
+        <span class="kw">return</span> <span class="str">f"Taking bus from {origin} to {destination}"</span></pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.68rem; margin-top: 1rem;"><span class="kw">class</span> <span class="cls">Navigator</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, strategy: <span class="cls">RouteStrategy</span>):
+        <span class="par">self</span>.strategy = strategy
+
+    <span class="kw">def</span> <span class="fn">navigate</span>(<span class="par">self</span>, origin, destination):
+        <span class="kw">return</span> <span class="par">self</span>.strategy.<span class="fn">calculate_route</span>(origin, destination)
+
+nav = <span class="cls">Navigator</span>(<span class="cls">WalkingStrategy</span>())
+<span class="fn">print</span>(nav.<span class="fn">navigate</span>(<span class="str">"Home"</span>, <span class="str">"Airport"</span>))
+
+nav.strategy = <span class="cls">RoadStrategy</span>()  <span class="cmt"># swap at runtime!</span>
+<span class="fn">print</span>(nav.<span class="fn">navigate</span>(<span class="str">"Home"</span>, <span class="str">"Airport"</span>))</pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #fbbf24;">Strategy</span> &mdash; Pros &amp; Cons</h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div>
+      <p style="color: var(--green); font-weight: 700; margin-bottom: 1rem;">&#9989; Pros</p>
+      <ul>
+        <li><strong>Swap algorithms</strong> at runtime</li>
+        <li><strong>Isolate</strong> implementation details of each algorithm</li>
+        <li><strong>OCP</strong> &mdash; add new strategies without modifying context</li>
+        <li><strong>Replace</strong> inheritance with composition</li>
+      </ul>
+    </div>
+    <div>
+      <p style="color: var(--accent); font-weight: 700; margin-bottom: 1rem;">&#10060; Cons</p>
+      <ul>
+        <li><strong>Overkill</strong> if you only have a couple of algorithms that rarely change</li>
+        <li>Clients must <strong>know the differences</strong> between strategies to pick the right one</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <h2><span style="color: #34d399;">Decorator</span> Pattern</h2>
+  <p style="color: var(--text); margin-top: 1rem; font-size: 1.1rem;">Attach <strong>new behaviors</strong> to objects by wrapping them<br>in special <strong>wrapper objects</strong>.</p>
+  <div style="display: flex; justify-content: center; margin-top: 1.8rem;">
+    <img src="assets/dp-decorator.png" alt="Decorator pattern illustration" style="max-height: 340px; border-radius: 8px; background: white; padding: 10px;">
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #34d399;">Decorator</span> &mdash; Real-world Analogy</h2>
+  <div class="layout">
+    <div class="text">
+      <p style="margin-bottom: 1.2rem;">Wearing <strong>layers of clothing</strong>:</p>
+      <ul>
+        <li>&#128085; You start with a <strong>t-shirt</strong> (base object)</li>
+        <li>&#129507; Add a <strong>sweater</strong> when it's cold (decorator 1)</li>
+        <li>&#129509; Put on a <strong>jacket</strong> for rain (decorator 2)</li>
+        <li>&#127746; Add a <strong>raincoat</strong> for heavy rain (decorator 3)</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.2rem;">Each layer <strong>wraps</strong> the previous one. You can add or remove layers without changing the t-shirt itself.</div>
+    </div>
+    <div class="visual">
+      <img src="assets/dp-decorator-comic.png" alt="Decorator analogy: layering clothes — t-shirt, sweater, jacket, raincoat" style="max-width: 100%; max-height: 440px; border-radius: 8px; background: white; padding: 8px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Decorator</span> &mdash; OOP Pattern</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <pre style="font-size: 0.68rem;"><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+
+<span class="kw">class</span> <span class="cls">Text</span>(ABC):
+    @abstractmethod
+    <span class="kw">def</span> <span class="fn">render</span>(<span class="par">self</span>):
+        <span class="kw">pass</span>
+
+<span class="kw">class</span> <span class="cls">PlainText</span>(<span class="cls">Text</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, content):
+        <span class="par">self</span>.content = content
+
+    <span class="kw">def</span> <span class="fn">render</span>(<span class="par">self</span>):
+        <span class="kw">return</span> <span class="par">self</span>.content
+
+<span class="kw">class</span> <span class="cls">TextDecorator</span>(<span class="cls">Text</span>):
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, wrapped: <span class="cls">Text</span>):
+        <span class="par">self</span>.wrapped = wrapped
+
+<span class="kw">class</span> <span class="cls">BoldText</span>(<span class="cls">TextDecorator</span>):
+    <span class="kw">def</span> <span class="fn">render</span>(<span class="par">self</span>):
+        <span class="kw">return</span> <span class="str">f"&lt;b&gt;{self.wrapped.render()}&lt;/b&gt;"</span>
+
+<span class="kw">class</span> <span class="cls">ItalicText</span>(<span class="cls">TextDecorator</span>):
+    <span class="kw">def</span> <span class="fn">render</span>(<span class="par">self</span>):
+        <span class="kw">return</span> <span class="str">f"&lt;i&gt;{self.wrapped.render()}&lt;/i&gt;"</span></pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.68rem; margin-top: 0.5rem;">text = <span class="cls">PlainText</span>(<span class="str">"Hello"</span>)
+bold = <span class="cls">BoldText</span>(text)
+bold_italic = <span class="cls">ItalicText</span>(bold)
+<span class="fn">print</span>(bold_italic.<span class="fn">render</span>())  <span class="cmt"># &lt;i&gt;&lt;b&gt;Hello&lt;/b&gt;&lt;/i&gt;</span></pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Python Decorators</span> (functions)</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-bottom: 0.5rem;">Python has built-in decorator <strong>syntax</strong> using <code style="color: var(--accent);">@</code>:</p>
+      <pre style="font-size: 0.75rem;"><span class="kw">import</span> time
+
+<span class="kw">def</span> <span class="fn">time_logger</span>(func):
+    <span class="kw">def</span> <span class="fn">wrapper</span>(*args, **kwargs):
+        start = time.<span class="fn">time</span>()
+        result = <span class="fn">func</span>(*args, **kwargs)
+        elapsed = time.<span class="fn">time</span>() - start
+        <span class="fn">print</span>(<span class="str">f"{func.__name__} took {elapsed:.4f}s"</span>)
+        <span class="kw">return</span> result
+    <span class="kw">return</span> wrapper</pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.75rem; margin-top: 1rem;">@time_logger
+<span class="kw">def</span> <span class="fn">process_data</span>(data):
+    time.<span class="fn">sleep</span>(<span class="num">0.5</span>)
+    <span class="kw">return</span> <span class="str">f"Processed {len(data)} items"</span>
+
+<span class="fn">process_data</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>])
+<span class="cmt"># process_data took 0.5012s</span></pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Another</span> Example: <code style="color: var(--accent);">@auth_required</code></h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-bottom: 0.5rem;">Guard a function so only authenticated users can call it:</p>
+      <pre style="font-size: 0.75rem;"><span class="kw">def</span> <span class="fn">auth_required</span>(func):
+    <span class="kw">def</span> <span class="fn">wrapper</span>(user, *args, **kwargs):
+        <span class="kw">if</span> <span class="kw">not</span> user.is_authenticated:
+            <span class="kw">raise</span> <span class="cls">PermissionError</span>(<span class="str">"Login required"</span>)
+        <span class="kw">return</span> <span class="fn">func</span>(user, *args, **kwargs)
+    <span class="kw">return</span> wrapper</pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.75rem; margin-top: 1rem;">@auth_required
+<span class="kw">def</span> <span class="fn">view_profile</span>(user):
+    <span class="kw">return</span> <span class="str">f"Welcome, {user.name}"</span>
+
+<span class="fn">view_profile</span>(alice)   <span class="cmt"># Welcome, Alice</span>
+<span class="fn">view_profile</span>(guest)   <span class="cmt"># PermissionError: Login required</span></pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #34d399;">Decorator</span> &mdash; Pros &amp; Cons</h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div>
+      <p style="color: var(--green); font-weight: 700; margin-bottom: 1rem;">&#9989; Pros</p>
+      <ul>
+        <li><strong>Extend behavior</strong> without subclassing</li>
+        <li><strong>Add/remove</strong> at runtime</li>
+        <li><strong>Combine</strong> multiple behaviors by stacking decorators</li>
+        <li><strong>SRP</strong> &mdash; each decorator handles one concern</li>
+      </ul>
+    </div>
+    <div>
+      <p style="color: var(--accent); font-weight: 700; margin-bottom: 1rem;">&#10060; Cons</p>
+      <ul>
+        <li><strong>Hard to remove</strong> a specific wrapper from the middle of a stack</li>
+        <li><strong>Order-dependent</strong> &mdash; stacking order matters</li>
+        <li><strong>Complex configuration</strong> with many layers</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Creational Pattern</p>
+  <p style="font-size: 2rem; color: var(--heading); font-weight: 700; margin-top: 0.5rem;">Factory Method</p>
+  <p style="color: var(--muted); margin-top: 0.5rem;">Define an interface for creating objects &mdash; let subclasses decide which class to instantiate</p>
+  <div style="display: flex; justify-content: center; margin-top: 1.8rem;">
+    <img src="assets/dp-factory.png" alt="Factory Method pattern illustration" style="max-height: 340px; border-radius: 8px; background: white; padding: 10px;">
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Factory Method: <span class="accent">Problem</span></h2>
+  <div class="layout">
+    <div class="text">
+      <p style="margin-bottom: 1rem;">Imagine a logistics app that initially only handles <strong>truck transport</strong>.</p>
+      <ul>
+        <li>&#128666; All your code is tightly coupled to the <code style="color: var(--accent);">Truck</code> class</li>
+        <li>&#128674; Now you need to add <strong>Ship</strong> transport &mdash; but <code style="color: var(--accent);">Truck</code> is hardcoded everywhere</li>
+        <li>&#128165; Adding each new transport type requires changing existing code</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.2rem; border-color: var(--accent);">This violates the <strong>Open-Closed Principle</strong> &mdash; we're modifying existing code to add new behavior.</div>
+    </div>
+    <div class="visual">
+      <img src="assets/dp-factory-problem.png" alt="Factory Method problem: logistics app tightly coupled to Truck class, can't accommodate Ship" style="max-width: 100%; max-height: 440px; border-radius: 8px; background: white; padding: 8px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Factory Method: <span class="accent">Solution</span></h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#128296; Define a <strong>factory method</strong> in the base class</li>
+        <li>&#128260; Subclasses <strong>override</strong> it to create specific products</li>
+        <li>&#128994; New transport? Just add a new subclass &mdash; no existing code changes</li>
+      </ul>
+    </div>
+    <div class="visual" style="flex: 0 0 280px;">
+      <svg viewBox="0 0 280 180" width="280">
+        <rect x="70" y="5" width="140" height="40" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
+        <text x="140" y="18" text-anchor="middle" fill="var(--muted)" font-size="8" font-family="JetBrains Mono, monospace">&#171;abstract&#187;</text>
+        <text x="140" y="35" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">Transport</text>
+        <line x1="70" y1="80" x2="140" y2="50" stroke="var(--muted)" stroke-width="1.5"/>
+        <polygon points="140,50 130,58 136,50" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+        <line x1="210" y1="80" x2="140" y2="50" stroke="var(--muted)" stroke-width="1.5"/>
+        <polygon points="140,50 144,58 150,50" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+        <rect x="10" y="80" width="110" height="35" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="1.5"/>
+        <text x="65" y="102" text-anchor="middle" fill="var(--heading)" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">Truck</text>
+        <rect x="160" y="80" width="110" height="35" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="1.5"/>
+        <text x="215" y="102" text-anchor="middle" fill="var(--heading)" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">Ship</text>
+
+        <rect x="70" y="140" width="140" height="30" rx="6" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="1.5"/>
+        <text x="140" y="160" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">Factory</text>
+        <line x1="140" y1="140" x2="140" y2="120" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4 3"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2>Factory Method: <span class="accent">Code</span></h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <pre style="font-size: 0.72rem;"><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+
+<span class="kw">class</span> <span class="cls">Transport</span>(ABC):
+    @abstractmethod
+    <span class="kw">def</span> <span class="fn">deliver</span>(<span class="par">self</span>):
+        <span class="kw">pass</span>
+
+<span class="kw">class</span> <span class="cls">Truck</span>(<span class="cls">Transport</span>):
+    <span class="kw">def</span> <span class="fn">deliver</span>(<span class="par">self</span>):
+        <span class="kw">return</span> <span class="str">"Delivering by land in a box"</span>
+
+<span class="kw">class</span> <span class="cls">Ship</span>(<span class="cls">Transport</span>):
+    <span class="kw">def</span> <span class="fn">deliver</span>(<span class="par">self</span>):
+        <span class="kw">return</span> <span class="str">"Delivering by sea in a container"</span></pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.72rem;"><span class="kw">class</span> <span class="cls">TransportFactory</span>:
+    @staticmethod
+    <span class="kw">def</span> <span class="fn">create_transport</span>(transport_type: <span class="cls">str</span>) -> <span class="cls">Transport</span>:
+        factories = {
+            <span class="str">"truck"</span>: <span class="cls">Truck</span>,
+            <span class="str">"ship"</span>: <span class="cls">Ship</span>,
+        }
+        <span class="kw">return</span> factories[transport_type]()</pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.72rem;">transport = <span class="cls">TransportFactory</span>.create_transport(<span class="str">"ship"</span>)
+<span class="fn">print</span>(transport.deliver())
+<span class="cmt"># "Delivering by sea in a container"</span></pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Factory Method: <span class="accent">Pros &amp; Cons</span></h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div class="col" style="border-color: var(--green);">
+      <h3 style="color: var(--green);">&#128994; Pros</h3>
+      <ul style="font-size: 0.9rem;">
+        <li>Follows <strong>Open-Closed Principle</strong></li>
+        <li>Loose coupling between creator and products</li>
+        <li>Easy to add new product types</li>
+        <li><strong>Single Responsibility</strong> &mdash; creation logic in one place</li>
+      </ul>
+    </div>
+    <div class="col" style="border-color: var(--accent);">
+      <h3 style="color: var(--accent);">&#128308; Cons</h3>
+      <ul style="font-size: 0.9rem;">
+        <li>Can lead to many subclasses</li>
+        <li>More complex than direct instantiation</li>
+        <li>Overkill for simple cases with few types</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Structural Pattern</p>
+  <p style="font-size: 2rem; color: var(--heading); font-weight: 700; margin-top: 0.5rem;">Facade</p>
+  <p style="color: var(--muted); margin-top: 0.5rem;">Provide a simplified interface to a complex subsystem</p>
+  <div style="display: flex; justify-content: center; margin-top: 1.8rem;">
+    <img src="assets/dp-facade.png" alt="Facade pattern illustration" style="max-height: 340px; border-radius: 8px; background: white; padding: 10px;">
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Facade: <span class="accent">Problem</span></h2>
+  <div style="max-width: 700px;">
+    <ul>
+      <li>&#128218; You're working with a complex library or framework</li>
+      <li>&#128736;&#65039; You need to initialize <strong>many objects</strong>, track dependencies, execute methods in the correct order</li>
+      <li>&#128165; Your business logic becomes <strong>tightly coupled</strong> to implementation details of 3rd-party code</li>
+      <li>&#128563; Code becomes <strong>hard to read and maintain</strong></li>
+    </ul>
+    <div class="callout" style="margin-top: 1.5rem; border-color: var(--accent);">Without a Facade, client code must know <strong>all the internals</strong> of the subsystem.</div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Facade: <span class="accent">Solution</span></h2>
+  <div style="max-width: 700px;">
+    <ul>
+      <li>&#128451;&#65039; Create a class that provides a <strong>simple, high-level interface</strong></li>
+      <li>&#128230; It wraps the complex subsystem and delegates calls internally</li>
+      <li>&#128994; Clients interact with the Facade &mdash; <strong>not</strong> the subsystem directly</li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <h2 style="text-align: center;">Real-world: <span class="accent">Phone Operator</span></h2>
+  <div style="display: flex; justify-content: center; margin-top: 1.2rem;">
+    <img src="assets/dp-facade-live.png" alt="Customer on phone talking to a call center operator who orchestrates warehouse, packaging, suppliers, delivery, and taxes" style="max-width: 100%; max-height: 500px; border-radius: 8px; background: white; padding: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+  </div>
+  <p style="text-align: center; color: var(--muted); font-size: 0.95rem; margin-top: 1.2rem; max-width: 820px; margin-left: auto; margin-right: auto;">The <strong style="color: var(--heading);">customer</strong> talks only to the <strong style="color: var(--heading);">operator</strong>. The warehouse, packaging, suppliers, delivery, and taxes are all <strong>hidden behind the facade</strong>.</p>
+</div>
+
+<div class="slide">
+  <h2>Real-world: <span class="accent">Video Conversion Library</span></h2>
+  <div class="layout">
+    <div class="text">
+      <p>A <strong>video conversion library</strong> internally uses many classes:</p>
+      <ul style="margin-top: 1rem;">
+        <li>&#127916; <strong>VideoFile</strong>, <strong>OggCompressionCodec</strong>, <strong>MPEG4CompressionCodec</strong></li>
+        <li>&#127925; <strong>AudioMixer</strong>, <strong>BitrateReader</strong></li>
+        <li>&#128249; <strong>CodecFactory</strong>, format-specific handlers&hellip;</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.2rem;">Without a facade, the client must orchestrate all of these in the right order.</div>
+    </div>
+    <div class="visual">
+      <img src="assets/dp-facade-example.png" alt="Video conversion facade example diagram" style="max-width: 100%; max-height: 440px; border-radius: 8px; background: white; padding: 8px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Facade: <span class="accent">Structure</span></h2>
+  <div style="display: flex; justify-content: center;">
+    <svg viewBox="0 0 500 220" width="550">
+      <rect x="180" y="5" width="140" height="40" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
+      <text x="250" y="30" text-anchor="middle" fill="var(--heading)" font-size="13" font-weight="600" font-family="JetBrains Mono, monospace">Client</text>
+
+      <line x1="250" y1="45" x2="250" y2="75" stroke="var(--muted)" stroke-width="1.5"/>
+      <polygon points="250,75 246,69 254,69" fill="var(--muted)"/>
+
+      <rect x="150" y="80" width="200" height="50" rx="8" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="2.5"/>
+      <text x="250" y="100" text-anchor="middle" fill="#fbbf24" font-size="15" font-weight="700" font-family="JetBrains Mono, monospace">Facade</text>
+      <text x="250" y="120" text-anchor="middle" fill="var(--muted)" font-size="9" font-family="Outfit, sans-serif">Simple, unified interface</text>
+
+      <line x1="190" y1="130" x2="80" y2="165" stroke="var(--muted)" stroke-width="1.5"/>
+      <line x1="250" y1="130" x2="250" y2="165" stroke="var(--muted)" stroke-width="1.5"/>
+      <line x1="310" y1="130" x2="420" y2="165" stroke="var(--muted)" stroke-width="1.5"/>
+
+      <rect x="20" y="168" width="120" height="40" rx="6" fill="var(--code-bg)" stroke="var(--border)" stroke-width="1.5"/>
+      <text x="80" y="193" text-anchor="middle" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">SubsystemA</text>
+      <rect x="190" y="168" width="120" height="40" rx="6" fill="var(--code-bg)" stroke="var(--border)" stroke-width="1.5"/>
+      <text x="250" y="193" text-anchor="middle" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">SubsystemB</text>
+      <rect x="360" y="168" width="120" height="40" rx="6" fill="var(--code-bg)" stroke="var(--border)" stroke-width="1.5"/>
+      <text x="420" y="193" text-anchor="middle" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">SubsystemC</text>
+    </svg>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2>Facade: <span class="accent">Code</span></h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <pre style="font-size: 0.68rem;"><span class="kw">class</span> <span class="cls">VideoFile</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, filename):
+        <span class="par">self</span>.filename = filename
+
+<span class="kw">class</span> <span class="cls">CodecFactory</span>:
+    <span class="kw">def</span> <span class="fn">extract</span>(<span class="par">self</span>, file):
+        <span class="kw">return</span> <span class="str">f"codec for </span>{file.filename}<span class="str">"</span>
+
+<span class="kw">class</span> <span class="cls">BitrateReader</span>:
+    <span class="kw">def</span> <span class="fn">read</span>(<span class="par">self</span>, file, codec):
+        <span class="kw">return</span> <span class="str">f"reading </span>{file.filename}<span class="str">"</span>
+
+<span class="kw">class</span> <span class="cls">AudioMixer</span>:
+    <span class="kw">def</span> <span class="fn">fix</span>(<span class="par">self</span>, result):
+        <span class="kw">return</span> <span class="str">f"fixing audio: </span>{result}<span class="str">"</span></pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.68rem;"><span class="kw">class</span> <span class="cls">VideoConverter</span>:
+    <span class="kw">def</span> <span class="fn">convert</span>(<span class="par">self</span>, filename, format):
+        file = <span class="cls">VideoFile</span>(filename)
+        codec = <span class="cls">CodecFactory</span>().extract(file)
+        result = <span class="cls">BitrateReader</span>().read(file, codec)
+        result = <span class="cls">AudioMixer</span>().fix(result)
+        <span class="kw">return</span> <span class="str">f"</span>{filename}<span class="str"> converted to </span>{format}<span class="str">"</span></pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.68rem;">converter = <span class="cls">VideoConverter</span>()
+<span class="fn">print</span>(converter.convert(<span class="str">"funny_cats.ogg"</span>, <span class="str">"mp4"</span>))
+<span class="cmt"># "funny_cats.ogg converted to mp4"</span></pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Facade: <span class="accent">Pros &amp; Cons</span></h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div class="col" style="border-color: var(--green);">
+      <h3 style="color: var(--green);">&#128994; Pros</h3>
+      <ul style="font-size: 0.9rem;">
+        <li><strong>Isolate complexity</strong> from client code</li>
+        <li>Promotes <strong>loose coupling</strong></li>
+        <li>Makes subsystem easier to use</li>
+        <li>Can structure subsystem into <strong>layers</strong></li>
+      </ul>
+    </div>
+    <div class="col" style="border-color: var(--accent);">
+      <h3 style="color: var(--accent);">&#128308; Cons</h3>
+      <ul style="font-size: 0.9rem;">
+        <li>Can become a <strong>god object</strong> coupled to everything</li>
+        <li>May hide necessary complexity</li>
+        <li>Extra layer of indirection</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Facade: <span class="accent">When to Use</span></h2>
+  <div style="max-width: 700px;">
+    <ul>
+      <li>&#128451;&#65039; You need a <strong>limited, simple interface</strong> to a complex subsystem</li>
+      <li>&#128194; You want to <strong>structure a subsystem into layers</strong></li>
+      <li>&#128218; You're wrapping a 3rd-party library and want to shield your code from its API changes</li>
+      <li>&#128101; You want to provide a <strong>convenient default</strong> while still allowing advanced access</li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Behavioral Pattern</p>
+  <p style="font-size: 2rem; color: var(--heading); font-weight: 700; margin-top: 0.5rem;">Iterator</p>
+  <p style="color: var(--muted); margin-top: 0.5rem;">Traverse a collection without exposing its internal structure</p>
+  <div style="display: flex; justify-content: center; margin-top: 1.8rem;">
+    <img src="assets/dp-iterator.png" alt="Iterator pattern illustration" style="max-height: 340px; border-radius: 8px; background: white; padding: 10px;">
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span class="accent">Iterator</span> &mdash; Real-world Analogy</h2>
+  <div class="layout">
+    <div class="text">
+      <p style="margin-bottom: 1rem;">Think of <strong>visiting a city</strong> as a tourist:</p>
+      <ul>
+        <li>&#128506;&#65039; The city has <strong>many landmarks</strong> scattered across districts</li>
+        <li>&#128221; You use a <strong>guidebook or map</strong> that shows you the order to visit them</li>
+        <li>&#128694; You walk from one to the next &mdash; without knowing the city's street layout</li>
+        <li>&#127760; Different guides (sightseeing, food tour, art tour) offer <strong>different orders</strong> over the same city</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.2rem;">The guide is the <strong>iterator</strong>. The city is the <strong>collection</strong>. You traverse the landmarks without caring how they're stored internally.</div>
+    </div>
+    <div class="visual">
+      <img src="assets/dp-iterator-comic.png" alt="Tourist following a guide through city landmarks — the iterator pattern analogy" style="max-width: 100%; max-height: 420px; border-radius: 8px; background: white; padding: 8px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Iterator: <span class="accent">Problem</span></h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#128230; Collections can have <strong>different structures</strong>: list, tree, stack, graph</li>
+        <li>&#128260; Each structure stores elements differently</li>
+        <li>&#128165; Client code shouldn't need to know <strong>how</strong> elements are stored to iterate over them</li>
+        <li>&#128563; Mixing traversal logic with business logic makes code <strong>hard to maintain</strong></li>
+      </ul>
+      <div class="callout" style="margin-top: 1.2rem; border-color: var(--accent);">We need a way to access elements <strong>sequentially</strong> without exposing the underlying representation.</div>
+    </div>
+    <div class="visual">
+      <img src="assets/dp-iterator-problem.png" alt="Different collection structures require different traversal logic" style="max-width: 100%; max-height: 400px; border-radius: 8px; background: white; padding: 8px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2 style="text-align: center;">Iterator: <span class="accent">Problem</span> (continued)</h2>
+  <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
+    <img src="assets/dp-iterator-problem2.png" alt="Client code gets bloated with traversal logic for different collection types" style="max-width: 100%; max-height: 400px; border-radius: 8px; background: white; padding: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+  </div>
+  <p style="text-align: center; color: var(--muted); font-size: 0.95rem; margin-top: 1.2rem; max-width: 820px; margin-left: auto; margin-right: auto;">Adding new collection types <strong>bloats the client</strong> with more traversal variants. Every new structure forces every consumer to learn its internals.</p>
+</div>
+
+<div class="slide">
+  <h2>Iterator: <span class="accent">Solution</span></h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#128296; Extract traversal behavior into a separate <strong>iterator object</strong></li>
+        <li>&#128301; In Python: implement <code style="color: var(--accent);">__iter__</code> and <code style="color: var(--accent);">__next__</code></li>
+        <li>&#128994; The collection provides an iterator &mdash; clients use it without knowing internals</li>
+        <li>&#128257; Multiple iterators can traverse the same collection independently</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.2rem;">Python has this built in! Every <code style="color: var(--accent);">for</code> loop uses the iterator protocol.</div>
+    </div>
+    <div class="visual">
+      <img src="assets/dp-iterator-solution.png" alt="Iterator pattern solution: collection returns iterator objects; client traverses through the iterator interface" style="max-width: 100%; max-height: 460px; border-radius: 8px; background: white; padding: 8px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2>Python <span class="accent">Generators</span> &mdash; iterators made simple</h2>
+  <p style="color: var(--muted); margin-bottom: 1rem; max-width: 780px;">Writing <code style="color: var(--cyan);">__iter__</code> + <code style="color: var(--cyan);">__next__</code> is verbose. Python offers a shortcut: <strong>generator functions</strong>. Use <code style="color: var(--accent);">yield</code> instead of <code style="color: var(--accent);">return</code> &mdash; Python builds the iterator for you.</p>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-bottom: 0.3rem; font-size: 0.88rem;">A full generator in 4 lines:</p>
+      <pre style="font-size: 0.78rem;"><span class="kw">def</span> <span class="fn">countdown</span>(n):
+    <span class="kw">while</span> n > <span class="num">0</span>:
+        <span class="kw">yield</span> n
+        n -= <span class="num">1</span>
+
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">countdown</span>(<span class="num">3</span>):
+    <span class="fn">print</span>(i)  <span class="cmt"># 3, 2, 1</span></pre>
+    </div>
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-top: 0.8rem; margin-bottom: 0.3rem; font-size: 0.88rem;">How it works &mdash; each <code style="color: var(--accent);">yield</code> pauses and resumes:</p>
+      <ul style="font-size: 0.95rem;">
+        <li>&#9989; Calling <code style="color: var(--cyan);">countdown(3)</code> returns a <strong>generator object</strong>, an iterator for free</li>
+        <li>&#127919; <code style="color: var(--accent);">yield n</code> pauses execution and hands <code>n</code> to the caller</li>
+        <li>&#128257; Next iteration resumes <strong>right after the yield</strong> with local state intact</li>
+        <li>&#9989; When the function ends, <code style="color: var(--cyan);">StopIteration</code> is raised automatically</li>
+      </ul>
+    </div>
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-top: 0.8rem; margin-bottom: 0.3rem; font-size: 0.88rem;">Also: <strong>generator expressions</strong> &mdash; one-liners:</p>
+      <pre style="font-size: 0.78rem;">squares = (x * x <span class="kw">for</span> x <span class="kw">in</span> <span class="fn">range</span>(<span class="num">10</span>))
+<span class="fn">print</span>(<span class="fn">next</span>(squares))  <span class="cmt"># 0</span>
+<span class="fn">print</span>(<span class="fn">next</span>(squares))  <span class="cmt"># 1</span>
+<span class="fn">print</span>(<span class="fn">sum</span>(squares))   <span class="cmt"># 4+9+16+...+81 = 280</span></pre>
+      <div class="callout" style="margin-top: 0.8rem;">Generators are <strong>lazy</strong> &mdash; they produce values on demand, not all at once. Perfect for huge or infinite sequences.</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Iterator &amp; <span class="accent">Python's for Loop</span></h2>
+  <div style="max-width: 700px;">
+    <p style="margin-bottom: 1rem;">Python's <code style="color: var(--accent);">for</code> loop is syntactic sugar for the iterator protocol:</p>
+    <div class="two-col" style="margin-top: 1rem;">
+      <div class="col" style="border-color: var(--accent);">
+        <h3 style="color: var(--accent); font-size: 0.9rem;">Under the hood</h3>
+        <pre style="font-size: 0.72rem;"><span class="par">it</span> = <span class="fn">iter</span>(collection)
+<span class="kw">while True</span>:
+    <span class="kw">try</span>:
+        item = <span class="fn">next</span>(<span class="par">it</span>)
+    <span class="kw">except</span> <span class="cls">StopIteration</span>:
+        <span class="kw">break</span></pre>
+      </div>
+      <div class="col" style="border-color: var(--green);">
+        <h3 style="color: var(--green); font-size: 0.9rem;">What you write</h3>
+        <pre style="font-size: 0.72rem;"><span class="kw">for</span> item <span class="kw">in</span> collection:
+    process(item)</pre>
+      </div>
+    </div>
+    <div class="callout" style="margin-top: 1.5rem;">&#128161; Any object with <code style="color: var(--accent);">__iter__</code> + <code style="color: var(--accent);">__next__</code> works with <code style="color: var(--green);">for</code>, <code style="color: var(--green);">list()</code>, <code style="color: var(--green);">sum()</code>, etc.</div>
+  </div>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Behavioral Pattern</p>
+  <p style="font-size: 2rem; color: var(--heading); font-weight: 700; margin-top: 0.5rem;"><span style="color: #22d3ee;">Observer</span></p>
+  <p style="color: var(--muted); margin-top: 0.5rem;">Notify many objects when one of them changes</p>
+  <div style="display: flex; justify-content: center; margin-top: 1.8rem;">
+    <img src="assets/dp-observer.png" alt="Observer pattern illustration" style="max-height: 340px; border-radius: 8px; background: white; padding: 10px;">
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #22d3ee;">Observer</span> &mdash; Real-world Analogy</h2>
+  <div class="layout">
+    <div class="text">
+      <p style="margin-bottom: 1rem;">Think of a <strong>YouTube channel</strong>:</p>
+      <ul>
+        <li>&#127909; The <strong>channel</strong> (subject) publishes new videos</li>
+        <li>&#128100; <strong>Subscribers</strong> (observers) get notified automatically</li>
+        <li>&#10060; The channel doesn't care <em>who</em> subscribes or <em>how many</em></li>
+        <li>&#9989; Subscribers can join or leave freely &mdash; no coupling to the channel's internals</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.2rem;">One publisher, many subscribers. <strong>Loose coupling</strong>.</div>
+    </div>
+    <div class="visual" style="display: flex; align-items: center; justify-content: center;">
+      <img src="assets/youtube-subscribe.png" alt="YouTube subscribe button — the publisher-subscriber analogy for the Observer pattern" style="max-width: 100%; max-height: 340px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #22d3ee;">Observer</span> &mdash; The Problem</h2>
+  <div class="layout">
+    <div class="text">
+      <p style="margin-bottom: 0.8rem;">A <strong>Customer</strong> wants the new iPhone model that's arriving at a <strong>Store</strong> soon. Two bad options:</p>
+      <ul>
+        <li>&#128694; Customer <strong>visits daily</strong> &mdash; most trips are wasted while the product is en route</li>
+        <li>&#128231; Store <strong>emails everyone</strong> on every new product &mdash; spam for customers who don't care</li>
+      </ul>
+      <div class="callout" style="margin-top: 1rem; border-color: var(--accent);">Either the customer wastes <strong>time</strong> polling, or the store wastes resources <strong>spamming</strong> the wrong people.</div>
+    </div>
+    <div class="visual">
+      <img src="assets/dp-observer-comic.png" alt="Customer checking the store vs. store sending spam emails — both wasteful without the Observer pattern" style="max-width: 100%; max-height: 400px; border-radius: 8px; background: white; padding: 8px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2><span style="color: #22d3ee;">Observer</span> in Python</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-bottom: 0.3rem; font-size: 0.85rem;">The Subject keeps a list of observers:</p>
+      <pre style="font-size: 0.72rem;"><span class="kw">class</span> <span class="cls">Order</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>):
+        <span class="par">self</span>._observers = []
+        <span class="par">self</span>._status = <span class="str">"new"</span>
+
+    <span class="kw">def</span> <span class="fn">subscribe</span>(<span class="par">self</span>, observer):
+        <span class="par">self</span>._observers.<span class="fn">append</span>(observer)
+
+    <span class="kw">def</span> <span class="fn">set_status</span>(<span class="par">self</span>, status):
+        <span class="par">self</span>._status = status
+        <span class="kw">for</span> obs <span class="kw">in</span> <span class="par">self</span>._observers:
+            obs.<span class="fn">update</span>(<span class="par">self</span>)</pre>
+    </div>
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-top: 0.7rem; margin-bottom: 0.3rem; font-size: 0.85rem;">Observers implement a simple interface:</p>
+      <pre style="font-size: 0.72rem;"><span class="kw">class</span> <span class="cls">EmailNotifier</span>:
+    <span class="kw">def</span> <span class="fn">update</span>(<span class="par">self</span>, order):
+        <span class="fn">print</span>(<span class="fn">f</span><span class="str">"Email: order is now {order._status}"</span>)
+
+<span class="kw">class</span> <span class="cls">Logger</span>:
+    <span class="kw">def</span> <span class="fn">update</span>(<span class="par">self</span>, order):
+        <span class="fn">print</span>(<span class="fn">f</span><span class="str">"[LOG] {order._status}"</span>)</pre>
+    </div>
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-top: 0.7rem; margin-bottom: 0.3rem; font-size: 0.85rem;">Usage:</p>
+      <pre style="font-size: 0.72rem;">order = <span class="cls">Order</span>()
+order.<span class="fn">subscribe</span>(<span class="cls">EmailNotifier</span>())
+order.<span class="fn">subscribe</span>(<span class="cls">Logger</span>())
+
+order.<span class="fn">set_status</span>(<span class="str">"shipped"</span>)
+<span class="cmt"># Email: order is now shipped</span>
+<span class="cmt"># [LOG] shipped</span></pre>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #22d3ee;">Observer</span> &mdash; Pros &amp; Cons</h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div>
+      <p style="color: var(--green); font-weight: 700; margin-bottom: 1rem;">&#9989; Pros</p>
+      <ul>
+        <li><strong>Decoupled</strong> &mdash; subject and observers don't know each other's types</li>
+        <li><strong>Open for extension</strong> &mdash; add new observers without touching the subject</li>
+        <li>Perfect for <strong>event-driven</strong> systems, UI updates, pub/sub</li>
+      </ul>
+    </div>
+    <div>
+      <p style="color: var(--accent); font-weight: 700; margin-bottom: 1rem;">&#10060; Cons</p>
+      <ul>
+        <li>Notification <strong>order is unpredictable</strong></li>
+        <li>Memory leaks if observers forget to unsubscribe</li>
+        <li>Hard to debug cascading updates across many observers</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>When to Use <span class="accent">Which Pattern</span>?</h2>
+  <div style="max-width: 860px; margin-top: 1rem;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem;">
+      <thead>
+        <tr style="border-bottom: 2px solid var(--border);">
+          <th style="text-align: left; padding: 0.6rem 0.8rem; color: var(--muted); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-size: 0.78rem;">Pattern</th>
+          <th style="text-align: left; padding: 0.6rem 0.8rem; color: var(--muted); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-size: 0.78rem;">Use when&hellip;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #fbbf24;">Strategy</td>
+          <td style="padding: 0.55rem 0.8rem;">You have several algorithms doing the same thing and want to pick at runtime</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #34d399;">Decorator</td>
+          <td style="padding: 0.55rem 0.8rem;">You need to add behavior to an object <em>without</em> subclassing</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #818cf8;">Factory Method</td>
+          <td style="padding: 0.55rem 0.8rem;">Object creation logic shouldn't live in the caller</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #a78bfa;">Facade</td>
+          <td style="padding: 0.55rem 0.8rem;">Client code is drowning in subsystem complexity</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: var(--accent);">Iterator</td>
+          <td style="padding: 0.55rem 0.8rem;">You want to traverse a collection without exposing internals</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #22d3ee;">Observer</td>
+          <td style="padding: 0.55rem 0.8rem;">Multiple objects must react to a state change</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout" style="margin-top: 1.2rem;">Not sure? <strong>Write the simple version first.</strong> Refactor to a pattern when the real need appears.</div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2>Best <span class="accent">Practices</span></h2>
+  <div class="reveal-blocks" style="max-width: 760px; margin-top: 1rem;">
+    <div class="reveal-block">
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 0.7rem;">&#128270; <strong>Understand the problem fully</strong> before picking a pattern</li>
+        <li>&#128175; <strong>KISS</strong> &mdash; keep it simple, don't over-engineer</li>
+      </ul>
+    </div>
+    <div class="reveal-block">
+      <ul style="list-style: none; padding: 0; margin-top: 0.7rem;">
+        <li style="margin-bottom: 0.7rem;">&#128736;&#65039; <strong>Follow SOLID</strong> principles &mdash; patterns naturally emerge</li>
+        <li>&#128260; <strong>Refactor to patterns</strong> when the need becomes clear, not upfront</li>
+      </ul>
+    </div>
+    <div class="reveal-block">
+      <ul style="list-style: none; padding: 0; margin-top: 0.7rem;">
+        <li style="margin-bottom: 0.7rem;">&#9878;&#65039; <strong>Understand trade-offs</strong> &mdash; every pattern has pros and cons</li>
+        <li>&#128218; <strong>Spot patterns in frameworks you already use</strong>: Flask <code style="color: var(--cyan);">@app.route</code> is a Decorator, Django signals are an Observer, <code style="color: var(--cyan);">open()</code> is a Factory</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <h2 style="font-size: 2rem;">&#9888;&#65039; Anti-patterns</h2>
+  <p style="color: var(--text); margin-top: 1rem; font-size: 1.05rem;">Common solutions that are <strong>ineffective</strong> or <strong>counterproductive</strong>.</p>
+  <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
+    <img src="assets/dp-antipatterns.png" alt="Anti-patterns illustration" style="max-height: 400px; border-radius: 8px; background: white; padding: 10px;">
+  </div>
+</div>
+
+<div class="slide">
+  <h2>&#128683; Anti-pattern: <span class="accent">God Object</span></h2>
+  <div class="layout">
+    <div class="text">
+      <p style="margin-bottom: 1rem;">A single object that <strong>does too much</strong> &mdash; knows too much, controls too much.</p>
+      <pre style="font-size: 0.72rem;"><span class="kw">class</span> <span class="cls">Application</span>:
+    <span class="kw">def</span> <span class="fn">authenticate_user</span>(...): ...
+    <span class="kw">def</span> <span class="fn">process_payment</span>(...): ...
+    <span class="kw">def</span> <span class="fn">send_email</span>(...): ...
+    <span class="kw">def</span> <span class="fn">generate_report</span>(...): ...
+    <span class="kw">def</span> <span class="fn">manage_inventory</span>(...): ...
+    <span class="kw">def</span> <span class="fn">handle_shipping</span>(...): ...</pre>
+      <div class="callout" style="margin-top: 1rem;">&#10060; Violates <strong>SRP</strong>. Break into focused classes: <code>AuthService</code>, <code>PaymentService</code>, etc.</div>
+    </div>
+    <div class="visual">
+      <img src="assets/dp-godclass.png" alt="God Class anti-pattern visualization: one massive class absorbing all responsibilities" style="max-width: 100%; max-height: 420px; border-radius: 8px; background: white; padding: 8px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>&#128683; Anti-pattern: <span class="accent">Spaghetti Code</span></h2>
+  <div class="layout">
+    <div class="text">
+      <p style="margin-bottom: 1rem;">Tangled control flow, deeply nested, hard to follow.</p>
+      <pre style="font-size: 0.7rem;"><span class="kw">def</span> <span class="fn">process</span>(data):
+    <span class="kw">if</span> data:
+        <span class="kw">for</span> item <span class="kw">in</span> data:
+            <span class="kw">if</span> item.active:
+                <span class="kw">if</span> item.type == <span class="str">"A"</span>:
+                    <span class="kw">if</span> item.value > <span class="num">0</span>:
+                        <span class="kw">for</span> sub <span class="kw">in</span> item.children:
+                            <span class="kw">if</span> sub.valid:
+                                ...</pre>
+      <ul style="margin-top: 1rem;">
+        <li>&#128683; Hard to <strong>read</strong>, <strong>debug</strong>, and <strong>test</strong></li>
+        <li>&#9989; Fix with: <strong>early returns</strong>, <strong>extract methods</strong>, <strong>design patterns</strong></li>
+      </ul>
+    </div>
+    <div class="visual">
+      <img src="assets/dp-spaghetti.png" alt="Spaghetti code visualization — tangled dependencies" style="max-width: 100%; max-height: 420px; border-radius: 8px; background: white; padding: 8px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>&#128683; Anti-pattern: <span class="accent">Golden Hammer</span></h2>
+  <div class="layout">
+    <div class="text">
+      <p style="margin-bottom: 0.8rem; font-style: italic; color: var(--muted);">"If all you have is a hammer, everything looks like a nail."</p>
+      <p style="margin-bottom: 1rem;">You just learned 6 design patterns. Now <strong>every problem</strong> looks like one of them.</p>
+      <pre style="font-size: 0.66rem;"><span class="cmt"># "I need to add two numbers. Obviously Strategy."</span>
+<span class="kw">class</span> <span class="cls">AdditionStrategy</span>:
+    <span class="kw">def</span> <span class="fn">execute</span>(<span class="par">self</span>, a, b): <span class="kw">return</span> a + b
+
+<span class="kw">class</span> <span class="cls">Calculator</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, s): <span class="par">self</span>.s = s
+    <span class="kw">def</span> <span class="fn">calc</span>(<span class="par">self</span>, a, b): <span class="kw">return</span> <span class="par">self</span>.s.<span class="fn">execute</span>(a, b)
+
+calc = <span class="cls">Calculator</span>(<span class="cls">AdditionStrategy</span>())
+result = calc.<span class="fn">calc</span>(<span class="num">2</span>, <span class="num">3</span>)  <span class="cmt"># 20 lines to compute 2 + 3</span></pre>
+      <div class="callout" style="margin-top: 1rem;">&#9989; Use patterns when they <strong>simplify</strong>, not when they impress. A function is often enough.</div>
+    </div>
+    <div class="visual" style="display: flex; align-items: center; justify-content: center;">
+      <img src="assets/dp-hammer.webp" alt="Mjölnir — the Golden Hammer" style="max-width: 100%; max-height: 420px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>&#128683; Anti-pattern: <span class="accent">Copy-Paste Programming</span></h2>
+  <div style="max-width: 720px; margin-top: 1rem;">
+    <p style="margin-bottom: 1rem;">The same logic repeated 5 times, each slightly different. Fix a bug in one place &mdash; it still lives in the other four.</p>
+    <pre style="font-size: 0.72rem;"><span class="kw">def</span> <span class="fn">process_customer</span>(data):
+    <span class="kw">if</span> <span class="kw">not</span> data: <span class="kw">return</span>
+    cleaned = data.<span class="fn">strip</span>().<span class="fn">lower</span>()
+    db.<span class="fn">save</span>(<span class="str">"customer"</span>, cleaned)
+
+<span class="kw">def</span> <span class="fn">process_order</span>(data):
+    <span class="kw">if</span> <span class="kw">not</span> data: <span class="kw">return</span>
+    cleaned = data.<span class="fn">strip</span>().<span class="fn">lower</span>()
+    db.<span class="fn">save</span>(<span class="str">"order"</span>, cleaned)
+
+<span class="kw">def</span> <span class="fn">process_product</span>(data):
+    <span class="kw">if</span> <span class="kw">not</span> data: <span class="kw">return</span>
+    cleaned = data.<span class="fn">strip</span>().<span class="fn">lower</span>()
+    db.<span class="fn">save</span>(<span class="str">"product"</span>, cleaned)</pre>
+    <div class="callout" style="margin-top: 1rem;">&#9989; <strong>DRY</strong> (Don't Repeat Yourself) &mdash; extract the shared logic into one function that takes the entity type as a parameter.</div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>&#128683; Anti-pattern: <span class="accent">Singleton Abuse</span></h2>
+  <div style="max-width: 720px; margin-top: 1rem;">
+    <p style="margin-bottom: 1rem;">You learned Singleton in Lecture 8. Now <strong>every service</strong> is a Singleton &mdash; which makes them all <em>hidden global state</em>.</p>
+    <pre style="font-size: 0.72rem;"><span class="kw">class</span> <span class="cls">UserService</span>(<span class="cls">Singleton</span>): ...
+<span class="kw">class</span> <span class="cls">OrderService</span>(<span class="cls">Singleton</span>): ...
+<span class="kw">class</span> <span class="cls">EmailService</span>(<span class="cls">Singleton</span>): ...
+<span class="kw">class</span> <span class="cls">PaymentService</span>(<span class="cls">Singleton</span>): ...
+
+<span class="cmt"># Now every test shares state. Tests pollute each other.</span>
+<span class="cmt"># Dependencies are invisible. Swapping for a mock is painful.</span></pre>
+    <ul style="margin-top: 1rem;">
+      <li>&#128683; <strong>Testability</strong> drops &mdash; global state carries between tests</li>
+      <li>&#128683; <strong>Hidden dependencies</strong> &mdash; you can't tell what a class needs just by reading its constructor</li>
+      <li>&#9989; Prefer <strong>dependency injection</strong> (DIP from SOLID). Use Singleton only for <em>genuinely</em> global things: config, logging.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <p class="anim-fade-up" style="font-size: 1.8rem; color: var(--heading); font-weight: 700;">&#129302; AI &amp; Design Patterns</p>
+  <p class="anim-fade" style="animation-delay: 0.3s; color: var(--muted); margin-top: 0.5rem; font-size: 1.05rem; font-style: italic;">AI knows every GoF pattern by heart &mdash; do you still need to learn them?</p>
+</div>
+
+<div class="slide">
+  <h2>&#129302; Why Patterns Matter <span class="accent">More</span> with AI</h2>
+  <div style="max-width: 720px; margin-top: 1rem;">
+    <ul>
+      <li>&#128172; Patterns are a <strong>shared vocabulary</strong> &mdash; between humans AND between humans and AI</li>
+      <li>&#128269; When AI generates code, recognizing the pattern is how you <strong>review and trust</strong> it</li>
+      <li>&#127919; You can <em>ask</em> AI: "Refactor this to use the Strategy pattern" &mdash; and understand the result</li>
+      <li>&#9888;&#65039; Without pattern knowledge, AI output is a <strong>black box</strong> &mdash; you accept or reject on vibes</li>
+    </ul>
+    <div class="callout" style="margin-top: 1.2rem;">Patterns don't become obsolete &mdash; they become the <strong>interface</strong> between you and AI-generated code.</div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>&#129302; AI &amp; Patterns: <span class="accent">Pros &amp; Cons</span></h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div>
+      <p style="color: var(--green); font-weight: 700; margin-bottom: 1rem;">&#9989; Pros</p>
+      <ul>
+        <li>&#128161; Can <strong>suggest the right pattern</strong> for a described problem</li>
+        <li>&#9889; Generates <strong>pattern boilerplate</strong> in seconds (Strategy, Factory skeletons)</li>
+        <li>&#128218; Explains why an existing codebase uses a specific pattern</li>
+        <li>&#128260; Refactors tangled code toward a clean pattern on request</li>
+      </ul>
+    </div>
+    <div>
+      <p style="color: var(--accent); font-weight: 700; margin-bottom: 1rem;">&#10060; Cons</p>
+      <ul>
+        <li>&#128296; <strong>Golden Hammer</strong> &mdash; AI loves patterns, will use them where a 3-line function works</li>
+        <li>&#129318; Can invent "standard" patterns that don't actually exist</li>
+        <li>&#128504;&#65039; Doesn't weigh <strong>trade-offs</strong> in your specific codebase context</li>
+        <li>&#128274; Critical design calls (which pattern, if any) still need <strong>human judgment</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout" style="margin-top: 1.2rem; max-width: 820px; border-color: var(--accent);"><strong>The rule:</strong> AI suggests patterns &mdash; <strong>you decide if they fit</strong>. Knowing the patterns is how you can tell.</div>
+</div>
+
+<div class="slide">
+  <h2>Key <span class="accent">Takeaways</span></h2>
+  <div style="max-width: 700px; margin-top: 1rem;">
+    <ul>
+      <li><strong style="color: #fbbf24;">Strategy</strong> &mdash; <strong>swappable algorithms</strong> behind a common interface. Pick the right one at runtime</li>
+      <li style="margin-top: 0.75rem;"><strong style="color: #34d399;">Decorator</strong> &mdash; <strong>layered behaviors</strong> by wrapping objects. Extend without subclassing</li>
+      <li style="margin-top: 0.75rem;"><strong style="color: #818cf8;">Factory Method</strong> &mdash; <strong>delegate creation</strong> to subclasses. Add new types without changing existing code</li>
+      <li style="margin-top: 0.75rem;"><strong style="color: #a78bfa;">Facade</strong> &mdash; <strong>simplified interface</strong> to a complex subsystem. Hide the complexity</li>
+      <li style="margin-top: 0.75rem;"><strong style="color: var(--accent);">Iterator</strong> &mdash; <strong>sequential access</strong> without exposing internals. Python's <code style="color: var(--accent);">for</code> loop uses it</li>
+      <li style="margin-top: 0.75rem;"><strong style="color: #22d3ee;">Observer</strong> &mdash; <strong>one-to-many notifications</strong>. Decouples publishers from subscribers</li>
+    </ul>
+    <div class="callout" style="margin-top: 1.5rem;">Patterns are <strong>tools</strong>, not rules. Use them when they simplify, not when they impress.</div>
+  </div>
+</div>
+
+<div class="slide center">
+  <h2>Next Up</h2>
+  <p style="color: var(--text); margin-top: 1.5rem; font-size: 1.3rem;"><strong style="color: var(--accent);">Libraries &amp; Frameworks</strong></p>
+  <div style="margin-top: 2rem;">
+    <svg viewBox="0 0 420 110" width="420">
+      <rect x="5" y="10" width="95" height="90" rx="8" fill="var(--code-bg)" stroke="#22d3ee" stroke-width="2"/>
+      <text x="52" y="55" text-anchor="middle" fill="#22d3ee" font-size="13" font-weight="700" font-family="Outfit, sans-serif">pandas</text>
+      <text x="52" y="75" text-anchor="middle" fill="var(--muted)" font-size="9" font-family="Outfit, sans-serif">data</text>
+
+      <rect x="110" y="10" width="95" height="90" rx="8" fill="var(--code-bg)" stroke="#34d399" stroke-width="2"/>
+      <text x="157" y="55" text-anchor="middle" fill="#34d399" font-size="13" font-weight="700" font-family="Outfit, sans-serif">NumPy</text>
+      <text x="157" y="75" text-anchor="middle" fill="var(--muted)" font-size="9" font-family="Outfit, sans-serif">numeric</text>
+
+      <rect x="215" y="10" width="95" height="90" rx="8" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="262" y="55" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700" font-family="Outfit, sans-serif">FastAPI</text>
+      <text x="262" y="75" text-anchor="middle" fill="var(--muted)" font-size="9" font-family="Outfit, sans-serif">web</text>
+
+      <rect x="320" y="10" width="95" height="90" rx="8" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="2"/>
+      <text x="367" y="55" text-anchor="middle" fill="#a78bfa" font-size="13" font-weight="700" font-family="Outfit, sans-serif">Flask</text>
+      <text x="367" y="75" text-anchor="middle" fill="var(--muted)" font-size="9" font-family="Outfit, sans-serif">web</text>
+    </svg>
+  </div>
+  <p style="color: var(--muted); font-size: 0.95rem; margin-top: 2rem;">Pandas, NumPy, FastAPI, Flask &mdash; and how to build your own.</p>
+</div>
+
+<div class="nav">
+  <button id="skip-quiz" class="skip-quiz" onclick="skipQuiz()">Skip Quiz &nbsp;&#9654;</button>
+  <button id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode" style="font-size: 1.2rem;">&#9788;</button>
+  <button id="prev" onclick="navigate(-1)">&lsaquo;</button>
+  <span class="counter" id="counter"></span>
+  <button id="next" onclick="navigate(1)">&rsaquo;</button>
+</div>
+
+<script src="shared.js"></script>
+<script>
+(function() {
+  var origShow = show;
+  show = function(i) {
+    origShow(i);
+    var s = document.querySelectorAll('.slide')[current];
+    if (s.classList.contains('reveal-slide') && !s.classList.contains('step-1')) {
+      s.classList.add('step-1');
+    }
+  };
+  var origNavigate = navigate;
+  navigate = function(d) {
+    var s = document.querySelectorAll('.slide')[current];
+    if (d === 1 && s.classList.contains('reveal-slide')) {
+      if (!s.classList.contains('step-2')) { s.classList.add('step-2'); return; }
+      if (!s.classList.contains('step-3')) { s.classList.add('step-3'); return; }
+    }
+    origNavigate(d);
+  };
+  var hash = parseInt(location.hash.replace('#', ''), 10);
+  if (hash > 0 && hash <= total) show(hash - 1);
+  window.addEventListener('hashchange', function() {
+    var h = parseInt(location.hash.replace('#', ''), 10);
+    if (h > 0 && h <= total) show(h - 1);
+  });
+  var origShow2 = show;
+  show = function(i) {
+    origShow2(i);
+    history.replaceState(null, '', '#' + (current + 1));
+  };
+})();
+</script>
+</body>
+</html>
