@@ -58,7 +58,7 @@
     <svg viewBox="0 0 600 160" width="900" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
       <rect x="0" y="5" width="185" height="150" rx="12" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2.5"/>
       <text x="92" y="40" text-anchor="middle" fill="#818cf8" font-size="16" font-weight="800" font-family="Outfit, sans-serif">Creational</text>
-      <text x="92" y="78" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="JetBrains Mono, monospace">Factory Method</text>
+      <text x="92" y="78" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="JetBrains Mono, monospace">Factory</text>
       <text x="92" y="98" text-anchor="middle" fill="var(--muted)" font-size="10" font-style="italic" font-family="Outfit, sans-serif">how objects are built</text>
 
       <rect x="207" y="5" width="185" height="150" rx="12" fill="var(--code-bg)" stroke="#34d399" stroke-width="2.5"/>
@@ -225,7 +225,7 @@ pizza = <span class="cls">Pizza</span>(<span class="str">"L"</span>, <span class
     <div style="margin-left: 2rem; margin-top: 0.5rem; font-size: 0.95rem;">
       <p>&#128993; <strong style="color: #fbbf24;">Strategy</strong> &mdash; swappable algorithms</p>
       <p>&#128994; <strong style="color: #34d399;">Decorator</strong> &mdash; layered behaviors</p>
-      <p>&#128312; <strong style="color: #818cf8;">Factory Method</strong> &mdash; delegated creation</p>
+      <p>&#128312; <strong style="color: #818cf8;">Factory</strong> &mdash; centralized creation</p>
       <p>&#128311; <strong style="color: #a78bfa;">Facade</strong> &mdash; simplified interface</p>
       <p>&#128308; <strong style="color: var(--accent);">Iterator</strong> &mdash; sequential access</p>
       <p>&#128995; <strong style="color: #22d3ee;">Observer</strong> &mdash; one-to-many notifications</p>
@@ -590,7 +590,7 @@ bold_italic = <span class="cls">ItalicText</span>(bold)
 
 <div class="slide center" style="background: var(--surface);">
   <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Creational Pattern</p>
-  <p style="font-size: 2rem; color: var(--heading); font-weight: 700; margin-top: 0.5rem;">Factory Method</p>
+  <p style="font-size: 2rem; color: var(--heading); font-weight: 700; margin-top: 0.5rem;">Factory</p>
   <p style="color: var(--muted); margin-top: 0.5rem;">Define an interface for creating objects &mdash; let subclasses decide which class to instantiate</p>
   <div style="display: flex; justify-content: center; margin-top: 1.8rem;">
     <img src="assets/dp-factory.png" alt="Factory Method pattern illustration" style="max-height: 340px; border-radius: 8px; background: white; padding: 10px;">
@@ -598,16 +598,27 @@ bold_italic = <span class="cls">ItalicText</span>(bold)
 </div>
 
 <div class="slide">
-  <h2>Factory Method: <span class="accent">Problem</span></h2>
+  <h2>Factory: <span class="accent">Problem</span></h2>
   <div class="layout">
     <div class="text">
-      <p style="margin-bottom: 1rem;">Imagine a logistics app that initially only handles <strong>truck transport</strong>.</p>
-      <ul>
-        <li>&#128666; All your code is tightly coupled to the <code style="color: var(--accent);">Truck</code> class</li>
-        <li>&#128674; Now you need to add <strong>Ship</strong> transport &mdash; but <code style="color: var(--accent);">Truck</code> is hardcoded everywhere</li>
-        <li>&#128165; Adding each new transport type requires changing existing code</li>
-      </ul>
-      <div class="callout" style="margin-top: 1.2rem; border-color: var(--accent);">This violates the <strong>Open-Closed Principle</strong> &mdash; we're modifying existing code to add new behavior.</div>
+      <p style="margin-bottom: 0.8rem;">A logistics app that initially handles only <strong>truck transport</strong>:</p>
+      <pre style="font-size: 0.7rem;"><span class="kw">class</span> <span class="cls">Logistics</span>:
+    <span class="kw">def</span> <span class="fn">plan_delivery</span>(<span class="par">self</span>, order):
+        truck = <span class="cls">Truck</span>()          <span class="cmt"># hardcoded!</span>
+        truck.<span class="fn">load</span>(order)
+        truck.<span class="fn">deliver</span>()
+
+<span class="cmt"># Now we need ships too &mdash; and drones, trains...</span>
+<span class="kw">class</span> <span class="cls">Logistics</span>:
+    <span class="kw">def</span> <span class="fn">plan_delivery</span>(<span class="par">self</span>, order):
+        <span class="kw">if</span> order.destination == <span class="str">"overseas"</span>:
+            ship = <span class="cls">Ship</span>()
+            ship.<span class="fn">load</span>(order); ship.<span class="fn">deliver</span>()
+        <span class="kw">else</span>:
+            truck = <span class="cls">Truck</span>()
+            truck.<span class="fn">load</span>(order); truck.<span class="fn">deliver</span>()
+        <span class="cmt"># every new transport = edit this method</span></pre>
+      <div class="callout" style="margin-top: 1rem; border-color: var(--accent);">Violates the <strong>Open-Closed Principle</strong>.</div>
     </div>
     <div class="visual">
       <img src="assets/dp-factory-problem.png" alt="Factory Method problem: logistics app tightly coupled to Truck class, can't accommodate Ship" style="max-width: 100%; max-height: 440px; border-radius: 8px; background: white; padding: 8px;">
@@ -615,40 +626,45 @@ bold_italic = <span class="cls">ItalicText</span>(bold)
   </div>
 </div>
 
-<div class="slide">
-  <h2>Factory Method: <span class="accent">Solution</span></h2>
+<div class="slide reveal-slide">
+  <h2>Factory: <span class="accent">Solution</span></h2>
   <div class="layout">
     <div class="text">
       <ul>
-        <li>&#128296; Define a <strong>factory method</strong> in the base class</li>
-        <li>&#128260; Subclasses <strong>override</strong> it to create specific products</li>
-        <li>&#128994; New transport? Just add a new subclass &mdash; no existing code changes</li>
+        <li>&#128296; <strong>Centralize</strong> all creation logic in one place</li>
+        <li>&#128994; Clients ask <em>what</em> they need &mdash; the factory picks <em>which class</em></li>
+        <li>&#128257; Adding a new product = <strong>one edit</strong> to the factory, zero changes to callers</li>
       </ul>
+      <div class="callout" style="margin-top: 1rem;">Most useful when <strong>many inputs</strong> determine <strong>which class</strong> to instantiate &mdash; all that complexity lives in <strong>one place</strong>.</div>
+      <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--muted);">&#9654; The diagram on the right shows <strong>Factory Method</strong> (GoF) &mdash; a polymorphic variant with subclass overrides. In Python, the <strong>Simple Factory</strong> below (a single <code>create()</code> with <code>if</code>/<code>else</code>) is what you'll use 95% of the time.</p>
     </div>
-    <div class="visual" style="flex: 0 0 280px;">
-      <svg viewBox="0 0 280 180" width="280">
-        <rect x="70" y="5" width="140" height="40" rx="6" fill="var(--code-bg)" stroke="#818cf8" stroke-width="2"/>
-        <text x="140" y="18" text-anchor="middle" fill="var(--muted)" font-size="8" font-family="JetBrains Mono, monospace">&#171;abstract&#187;</text>
-        <text x="140" y="35" text-anchor="middle" fill="var(--heading)" font-size="12" font-weight="600" font-family="JetBrains Mono, monospace">Transport</text>
-        <line x1="70" y1="80" x2="140" y2="50" stroke="var(--muted)" stroke-width="1.5"/>
-        <polygon points="140,50 130,58 136,50" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
-        <line x1="210" y1="80" x2="140" y2="50" stroke="var(--muted)" stroke-width="1.5"/>
-        <polygon points="140,50 144,58 150,50" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
-        <rect x="10" y="80" width="110" height="35" rx="6" fill="var(--code-bg)" stroke="#a78bfa" stroke-width="1.5"/>
-        <text x="65" y="102" text-anchor="middle" fill="var(--heading)" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">Truck</text>
-        <rect x="160" y="80" width="110" height="35" rx="6" fill="var(--code-bg)" stroke="#34d399" stroke-width="1.5"/>
-        <text x="215" y="102" text-anchor="middle" fill="var(--heading)" font-size="11" font-weight="600" font-family="JetBrains Mono, monospace">Ship</text>
+    <div class="visual">
+      <div class="reveal-blocks">
+        <div class="reveal-block">
+          <img src="assets/dp-factory-solution.png" alt="Factory Method solution diagram" style="max-width: 100%; max-height: 400px; border-radius: 8px; background: white; padding: 8px;">
+        </div>
+        <div class="reveal-block">
+          <p style="color: var(--muted); margin-top: 0.7rem; margin-bottom: 0.3rem; font-size: 0.85rem;">In practice &mdash; many params &rarr; one of many classes:</p>
+          <pre style="font-size: 0.68rem;"><span class="kw">class</span> <span class="cls">TransportFactory</span>:
+    @<span class="fn">staticmethod</span>
+    <span class="kw">def</span> <span class="fn">create</span>(destination, weight, urgent):
+        <span class="kw">if</span> destination == <span class="str">"overseas"</span>:
+            <span class="kw">return</span> <span class="cls">Ship</span>(weight)
+        <span class="kw">if</span> urgent <span class="kw">and</span> weight &lt; <span class="num">10</span>:
+            <span class="kw">return</span> <span class="cls">Drone</span>(weight)
+        <span class="kw">if</span> weight &gt; <span class="num">1000</span>:
+            <span class="kw">return</span> <span class="cls">Train</span>(weight)
+        <span class="kw">return</span> <span class="cls">Truck</span>(weight)
 
-        <rect x="70" y="140" width="140" height="30" rx="6" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="1.5"/>
-        <text x="140" y="160" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600" font-family="JetBrains Mono, monospace">Factory</text>
-        <line x1="140" y1="140" x2="140" y2="120" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4 3"/>
-      </svg>
+t = <span class="cls">TransportFactory</span>.<span class="fn">create</span>(<span class="str">"overseas"</span>, <span class="num">50</span>, <span class="kw">False</span>)</pre>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="slide reveal-slide">
-  <h2>Factory Method: <span class="accent">Code</span></h2>
+  <h2>Factory: <span class="accent">Code</span></h2>
   <div class="reveal-blocks">
     <div class="reveal-block">
       <pre style="font-size: 0.72rem;"><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
@@ -685,7 +701,7 @@ bold_italic = <span class="cls">ItalicText</span>(bold)
 </div>
 
 <div class="slide">
-  <h2>Factory Method: <span class="accent">Pros &amp; Cons</span></h2>
+  <h2>Factory: <span class="accent">Pros &amp; Cons</span></h2>
   <div class="two-col" style="margin-top: 1rem;">
     <div class="col" style="border-color: var(--green);">
       <h3 style="color: var(--green);">&#128994; Pros</h3>
@@ -1124,7 +1140,7 @@ order.<span class="fn">set_status</span>(<span class="str">"shipped"</span>)
           <td style="padding: 0.55rem 0.8rem;">You need to add behavior to an object <em>without</em> subclassing</td>
         </tr>
         <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #818cf8;">Factory Method</td>
+          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #818cf8;">Factory</td>
           <td style="padding: 0.55rem 0.8rem;">Object creation logic shouldn't live in the caller</td>
         </tr>
         <tr style="border-bottom: 1px solid var(--border);">
@@ -1268,25 +1284,6 @@ result = calc.<span class="fn">calc</span>(<span class="num">2</span>, <span cla
   </div>
 </div>
 
-<div class="slide">
-  <h2>&#128683; Anti-pattern: <span class="accent">Singleton Abuse</span></h2>
-  <div style="max-width: 720px; margin-top: 1rem;">
-    <p style="margin-bottom: 1rem;">You learned Singleton in Lecture 8. Now <strong>every service</strong> is a Singleton &mdash; which makes them all <em>hidden global state</em>.</p>
-    <pre style="font-size: 0.72rem;"><span class="kw">class</span> <span class="cls">UserService</span>(<span class="cls">Singleton</span>): ...
-<span class="kw">class</span> <span class="cls">OrderService</span>(<span class="cls">Singleton</span>): ...
-<span class="kw">class</span> <span class="cls">EmailService</span>(<span class="cls">Singleton</span>): ...
-<span class="kw">class</span> <span class="cls">PaymentService</span>(<span class="cls">Singleton</span>): ...
-
-<span class="cmt"># Now every test shares state. Tests pollute each other.</span>
-<span class="cmt"># Dependencies are invisible. Swapping for a mock is painful.</span></pre>
-    <ul style="margin-top: 1rem;">
-      <li>&#128683; <strong>Testability</strong> drops &mdash; global state carries between tests</li>
-      <li>&#128683; <strong>Hidden dependencies</strong> &mdash; you can't tell what a class needs just by reading its constructor</li>
-      <li>&#9989; Prefer <strong>dependency injection</strong> (DIP from SOLID). Use Singleton only for <em>genuinely</em> global things: config, logging.</li>
-    </ul>
-  </div>
-</div>
-
 <div class="slide center" style="background: var(--surface);">
   <p class="anim-fade-up" style="font-size: 1.8rem; color: var(--heading); font-weight: 700;">&#129302; AI &amp; Design Patterns</p>
   <p class="anim-fade" style="animation-delay: 0.3s; color: var(--muted); margin-top: 0.5rem; font-size: 1.05rem; font-style: italic;">AI knows every GoF pattern by heart &mdash; do you still need to learn them?</p>
@@ -1361,15 +1358,22 @@ reader.<span class="fn">read</span>()</pre>
 <div class="slide quiz-slide">
   <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(End of Lecture)</span></h2>
   <p style="color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">And this one?</p>
-  <pre style="font-size: 0.72rem;"><span class="kw">class</span> <span class="cls">TaxCalculator</span>:
+  <pre style="font-size: 0.7rem;"><span class="kw">class</span> <span class="cls">UsaTax</span>:
+    <span class="kw">def</span> <span class="fn">apply</span>(<span class="par">self</span>, amount):
+        <span class="kw">return</span> amount * <span class="num">0.08</span>
+
+<span class="kw">class</span> <span class="cls">EuTax</span>:
+    <span class="kw">def</span> <span class="fn">apply</span>(<span class="par">self</span>, amount):
+        <span class="kw">return</span> amount * <span class="num">0.20</span>
+
+<span class="kw">class</span> <span class="cls">TaxCalculator</span>:
     <span class="kw">def</span> <span class="fn">__init__</span>(<span class="par">self</span>, rule):
         <span class="par">self</span>._rule = rule
-
     <span class="kw">def</span> <span class="fn">calc</span>(<span class="par">self</span>, amount):
-        <span class="kw">return</span> <span class="par">self</span>._rule(amount)
+        <span class="kw">return</span> <span class="par">self</span>._rule.<span class="fn">apply</span>(amount)
 
-usa = <span class="cls">TaxCalculator</span>(<span class="kw">lambda</span> x: x * <span class="num">0.08</span>)
-eu  = <span class="cls">TaxCalculator</span>(<span class="kw">lambda</span> x: x * <span class="num">0.20</span>)</pre>
+usa = <span class="cls">TaxCalculator</span>(<span class="cls">UsaTax</span>())
+eu  = <span class="cls">TaxCalculator</span>(<span class="cls">EuTax</span>())</pre>
   <div class="two-col quiz-answers" style="margin-top: 1rem; max-width: 700px;">
     <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">A) Factory Method</p></div>
     <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">B) Decorator</p></div>
@@ -1385,7 +1389,7 @@ eu  = <span class="cls">TaxCalculator</span>(<span class="kw">lambda</span> x: x
     <ul>
       <li><strong style="color: #fbbf24;">Strategy</strong> &mdash; <strong>swappable algorithms</strong> behind a common interface. Pick the right one at runtime</li>
       <li style="margin-top: 0.75rem;"><strong style="color: #34d399;">Decorator</strong> &mdash; <strong>layered behaviors</strong> by wrapping objects. Extend without subclassing</li>
-      <li style="margin-top: 0.75rem;"><strong style="color: #818cf8;">Factory Method</strong> &mdash; <strong>delegate creation</strong> to subclasses. Add new types without changing existing code</li>
+      <li style="margin-top: 0.75rem;"><strong style="color: #818cf8;">Factory</strong> &mdash; <strong>centralize creation logic</strong> in one place. Clients ask for a product by description; the factory picks the right class</li>
       <li style="margin-top: 0.75rem;"><strong style="color: #a78bfa;">Facade</strong> &mdash; <strong>simplified interface</strong> to a complex subsystem. Hide the complexity</li>
       <li style="margin-top: 0.75rem;"><strong style="color: var(--accent);">Iterator</strong> &mdash; <strong>sequential access</strong> without exposing internals. Python's <code style="color: var(--accent);">for</code> loop uses it</li>
       <li style="margin-top: 0.75rem;"><strong style="color: #22d3ee;">Observer</strong> &mdash; <strong>one-to-many notifications</strong>. Decouples publishers from subscribers</li>
@@ -1417,6 +1421,104 @@ eu  = <span class="cls">TaxCalculator</span>(<span class="kw">lambda</span> x: x
     </svg>
   </div>
   <p style="color: var(--muted); font-size: 0.95rem; margin-top: 2rem;">Pandas, NumPy, FastAPI, Flask &mdash; and how to build your own.</p>
+</div>
+
+<div class="slide center" style="background: var(--surface);">
+  <p style="color: var(--accent); font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.4rem;">&#128226; Coursework Deadline</p>
+  <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Sunday <strong style="color: var(--heading);">April 26</strong>, <strong style="color: var(--heading);">23:59</strong> Vilnius time</p>
+
+  <p style="color: var(--muted); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.8rem;">Time remaining</p>
+  <p id="deadline-countdown" style="font-size: 5.2rem; color: var(--accent); font-weight: 800; font-family: JetBrains Mono, monospace; line-height: 1; letter-spacing: 1px; text-shadow: 0 0 32px rgba(239, 68, 68, 0.55);">&mdash;&mdash;h &mdash;&mdash;m &mdash;&mdash;s</p>
+
+  <p style="color: var(--muted); margin-top: 2rem; font-size: 0.95rem;">Submit <strong style="color: var(--heading);">before</strong> this moment. After this moment, it's late.</p>
+</div>
+
+<script>
+(function() {
+  var deadline = new Date(Date.UTC(2026, 3, 26, 20, 59, 0));
+  var el = document.getElementById('deadline-countdown');
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function tick() {
+    if (!el) return;
+    var diff = deadline - new Date();
+    if (diff <= 0) { el.textContent = 'TIME IS UP'; return; }
+    var totalH = Math.floor(diff / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    el.textContent = pad(totalH) + 'h ' + pad(m) + 'm ' + pad(s) + 's';
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
+<div class="slide reveal-slide">
+  <h2>&#128203; Coursework <span class="accent">FAQ</span></h2>
+  <div class="reveal-blocks" style="max-width: 880px; margin-top: 1.2rem;">
+    <div class="reveal-block" style="margin-bottom: 0.8rem; background: var(--code-bg); border-left: 4px solid var(--accent); border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>What about April 27 at 09:00?</strong></p>
+      <p style="margin-top: 0.3rem; color: var(--accent);"><strong>&#10060; Now you're just being optimistic.</strong></p>
+    </div>
+    <div class="reveal-block" style="margin-bottom: 0.8rem; background: var(--code-bg); border-left: 4px solid var(--accent); border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>What about April 27 at 00:30?</strong></p>
+      <p style="margin-top: 0.3rem; color: var(--accent);"><strong>&#10060; Still after.</strong> &nbsp;<span style="color: var(--muted);">Time is linear.</span></p>
+    </div>
+    <div class="reveal-block" style="background: var(--code-bg); border-left: 4px solid var(--accent); border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>Is April 27 at 00:00:01 after the deadline?</strong></p>
+      <p style="margin-top: 0.3rem; color: var(--accent);"><strong>&#10060; Yes.</strong> &nbsp;<span style="color: var(--muted);">It is. Sorry.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2>&#128203; Coursework <span class="accent">FAQ</span> &mdash; Cutting it close</h2>
+  <div class="reveal-blocks" style="max-width: 880px; margin-top: 1.2rem;">
+    <div class="reveal-block" style="margin-bottom: 0.8rem; background: var(--code-bg); border-left: 4px solid #fbbf24; border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>Is April 26 at 23:59:59 OK?</strong></p>
+      <p style="margin-top: 0.3rem; color: #fbbf24;"><strong>&#9888;&#65039; Technically.</strong> &nbsp;<span style="color: var(--muted);">Pure adrenaline. Don't.</span></p>
+    </div>
+    <div class="reveal-block" style="margin-bottom: 0.8rem; background: var(--code-bg); border-left: 4px solid var(--green); border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>Is April 26 at 23:58 OK?</strong></p>
+      <p style="margin-top: 0.3rem; color: var(--green);"><strong>&#9989; Yes.</strong> &nbsp;<span style="color: var(--muted);">Responsible adult behavior.</span></p>
+    </div>
+    <div class="reveal-block" style="background: var(--code-bg); border-left: 4px solid var(--cyan); border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>What if I'm in a different time zone?</strong></p>
+      <p style="margin-top: 0.3rem;">&#127759; <span style="color: var(--muted);">23:59 <strong>Vilnius time</strong>. Set your watch.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2>&#128203; Coursework <span class="accent">FAQ</span> &mdash; Excuses</h2>
+  <div class="reveal-blocks" style="max-width: 880px; margin-top: 1.2rem;">
+    <div class="reveal-block" style="margin-bottom: 0.8rem; background: var(--code-bg); border-left: 4px solid var(--accent); border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>My laptop crashed at 23:58.</strong></p>
+      <p style="margin-top: 0.3rem;"><span style="color: var(--muted);">Should've submitted at 23:00. &#129335;</span></p>
+    </div>
+    <div class="reveal-block" style="margin-bottom: 0.8rem; background: var(--code-bg); border-left: 4px solid var(--accent); border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>Can I email the file instead?</strong></p>
+      <p style="margin-top: 0.3rem; color: var(--accent);"><strong>&#10060; No.</strong> <span style="color: var(--muted);">Use <strong style="color: var(--heading);">GitHub</strong> and <strong style="color: var(--heading);">Moodle</strong>.</span></p>
+    </div>
+    <div class="reveal-block" style="background: var(--code-bg); border-left: 4px solid var(--accent); border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>My cat walked on the keyboard and deleted my project.</strong></p>
+      <p style="margin-top: 0.3rem;">&#128008; <span style="color: var(--muted);">Use git. <code style="color: var(--cyan);">git push</code> = cat-proof.</span></p>
+    </div>
+  </div>
+</div>
+
+<div class="slide reveal-slide">
+  <h2>&#128203; Coursework <span class="accent">FAQ</span> &mdash; The bigger picture</h2>
+  <div class="reveal-blocks" style="max-width: 880px; margin-top: 1.2rem;">
+    <div class="reveal-block" style="margin-bottom: 0.8rem; background: var(--code-bg); border-left: 4px solid var(--accent); border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>Can I get an extension?</strong></p>
+      <p style="margin-top: 0.3rem; color: var(--accent);"><strong>&#10060; No.</strong> &nbsp;<span style="color: var(--muted);">Unless you have a <strong style="color: var(--heading);">really good reason</strong>.</span></p>
+      <p style="margin-top: 0.6rem; padding-left: 0.8rem; border-left: 2px solid var(--muted); color: var(--muted); font-style: italic; font-size: 0.88rem; line-height: 1.5;">Real one from 2 years ago: <span style="color: var(--text);">"My neighbor's room caught on fire, I had to evacuate. By the time I got back it was 4 am. Can I have a second chance to defend my last 2 labs?"</span> &nbsp;&#9989; That worked.</p>
+    </div>
+    <div class="reveal-block" style="background: var(--code-bg); border-left: 4px solid var(--green); border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>When should I actually start?</strong></p>
+      <p style="margin-top: 0.3rem; color: var(--green);"><strong>Right now.</strong> &nbsp;<span style="color: var(--muted);">Sunday is &#8804; 48h away.</span></p>
+    </div>
+  </div>
 </div>
 
 <div class="nav">
