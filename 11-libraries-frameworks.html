@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Libraries &amp; Frameworks: Course 11 — Python OOP</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="vgtu.jpg">
+<link rel="stylesheet" href="shared.css">
+<style>
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.04); }
+  }
+  @keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .pulse-glow { animation: pulseGlow 2.4s ease-in-out infinite; }
+  .reveal-slide .reveal-blocks .reveal-block { opacity: 0; transform: translateY(8px); transition: opacity 0.4s, transform 0.4s; }
+  .reveal-slide.step-1 .reveal-blocks .reveal-block:nth-child(1) { opacity: 1; transform: translateY(0); }
+  .reveal-slide.step-2 .reveal-blocks .reveal-block:nth-child(-n+2) { opacity: 1; transform: translateY(0); }
+  .reveal-slide.step-3 .reveal-blocks .reveal-block { opacity: 1; transform: translateY(0); }
+  pre { overflow-x: auto; max-width: 100%; }
+  .two-col, .three-col { overflow: hidden; }
+  svg { max-width: 100%; height: auto; }
+  .col { overflow: hidden; word-wrap: break-word; }
+  .lib-card {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    transition: all 0.2s;
+  }
+  .lib-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .lib-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+  .vs-line {
+    border-left: 2px dashed var(--border);
+    padding-left: 1.2rem;
+  }
+  .scale-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.8rem;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<div class="mobile-warning">
+  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+  </svg>
+  <h2>Please use a larger screen</h2>
+  <p>This presentation is designed for desktop or projector displays.</p>
+  <a href="index.html">&larr; Back to curriculum</a>
+</div>
+
+<div class="progress" id="progress"></div>
+
+<div class="visma-logo" style="display: flex; align-items: center; gap: 16px;">
+  <svg width="100" height="24" viewBox="30 75 165 45" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32.228 81.327c8.803.852 18.458 5.253 23.996 11.643 7.099 8.093 4.686 16.187-5.396 18.032-10.081 1.988-23.996-3.123-31.095-11.217-5.396-6.248-5.253-12.495-.284-15.902l27.971 20.73-15.192-23.286z" fill="#c92043"/>
+    <path d="M170.805 111.002l-3.549-14.199c-.428-1.703-.711-3.407-.994-4.969h-.143c-.283 1.704-.426 3.266-.852 5.111l-3.551 14.057h-6.105l8.094-29.533h4.828l8.52 29.533h-6.248zM77.663 81.469l3.55 14.198c.568 1.704.71 3.409.994 4.969h.142c.284-1.703.426-3.408.852-5.111l3.55-14.056h6.105l-8.093 29.533h-4.828l-8.519-29.533h6.247zM97.256 81.469h5.822v29.533h-5.822V81.469zM136.02 81.469L139 98.934l2.414-17.465h7.809l2.982 29.533h-5.963l-1.42-21.298-.994 7.241-2.414 14.057h-4.543l-2.84-14.199-.994-6.531v-.568h-.142l-.852 21.298h-6.248l2.557-29.533h7.668zM117.561 81.469c-.994.71-1.703 1.987-2.271 3.265-1.562 3.55.141 6.389 1.561 8.945.143.284.428.71.568 1.136 3.266 5.395 4.402 9.37 2.131 15.049l-.568 1.137h-7.1c.852-.711 1.703-1.703 2.129-2.84 1.705-3.834-.283-7.383-2.129-10.934-2.129-4.117-4.402-8.376-1.988-14.198.143-.568.711-1.562.711-1.562h6.956v.002z" fill="var(--heading)"/>
+  </svg>
+  <span style="color: var(--border); font-size: 1.2rem;">|</span>
+  <img src="vgtu.jpg" alt="VILNIUS TECH" height="28" style="border-radius: 4px;">
+</div>
+
+<!-- 1. TITLE SLIDE -->
+<div class="slide active center">
+  <p style="color: var(--accent); font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Python Object Oriented Programming</p>
+  <h1>Libraries <span style="color: var(--muted); font-weight: 300;">&amp;</span> Frameworks</h1>
+  <p class="subtitle">Course 11</p>
+  <div style="margin-top: 2.5rem;">
+    <svg viewBox="0 0 700 200" width="900" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+      <rect x="20" y="20" width="300" height="160" rx="14" fill="var(--code-bg)" stroke="#22d3ee" stroke-width="2.5"/>
+      <text x="170" y="55" text-anchor="middle" fill="#22d3ee" font-size="20" font-weight="800" font-family="Outfit, sans-serif">Library</text>
+      <text x="170" y="85" text-anchor="middle" fill="var(--muted)" font-size="11" font-style="italic" font-family="Outfit, sans-serif">"You call the code"</text>
+      <text x="170" y="118" text-anchor="middle" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">numpy &middot; pandas &middot; requests</text>
+      <text x="170" y="138" text-anchor="middle" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">matplotlib &middot; datetime</text>
+      <text x="170" y="165" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif">a toolbox you reach into</text>
+
+      <text x="360" y="105" text-anchor="middle" fill="var(--accent)" font-size="20" font-weight="800" font-family="Outfit, sans-serif">vs.</text>
+
+      <rect x="400" y="20" width="280" height="160" rx="14" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="2.5"/>
+      <text x="540" y="55" text-anchor="middle" fill="#fbbf24" font-size="20" font-weight="800" font-family="Outfit, sans-serif">Framework</text>
+      <text x="540" y="85" text-anchor="middle" fill="var(--muted)" font-size="11" font-style="italic" font-family="Outfit, sans-serif">"The code calls you"</text>
+      <text x="540" y="118" text-anchor="middle" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">django &middot; flask &middot; fastapi</text>
+      <text x="540" y="138" text-anchor="middle" fill="var(--text)" font-size="11" font-family="JetBrains Mono, monospace">pytest &middot; sqlalchemy</text>
+      <text x="540" y="165" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif">a skeleton you fill in</text>
+    </svg>
+  </div>
+  <p style="color: var(--muted); font-size: 0.9rem; margin-top: 2rem;">
+    <span class="tag">&larr;</span> <span class="tag">&rarr;</span> to navigate
+  </p>
+</div>
+
+<!-- 2. CURRICULUM -->
+<div class="slide">
+  <h2>Course Curriculum</h2>
+  <p style="color: var(--heading); margin-bottom: 1.5rem;">Where we are in the journey</p>
+  <ul class="curriculum-list">
+    <li style="color: var(--muted);">0. Introduction to the course</li>
+    <li style="color: var(--muted);">1. Classes vs. Objects</li>
+    <li style="color: var(--muted);">2. Encapsulation &amp; Access Control</li>
+    <li style="color: var(--muted);">3. Inheritance</li>
+    <li style="color: var(--muted);">4. Polymorphism &amp; PEP 8</li>
+    <li style="color: var(--muted);">5. Composition &amp; Aggregation</li>
+    <li style="color: var(--muted);">6. Exception Handling &amp; Logging</li>
+    <li style="color: var(--muted);">7. SOLID Principles</li>
+    <li style="color: var(--muted);">8. UML &amp; Design Patterns</li>
+    <li style="color: var(--muted);">9. Unit Testing &amp; TDD</li>
+    <li style="color: var(--muted);">10. Design Patterns (2nd part)</li>
+    <li class="current" style="color: var(--accent); font-weight: 600;">11. Libraries &amp; Frameworks</li>
+    <li>12. Recap &amp; Consultation</li>
+  </ul>
+</div>
+
+<!-- 3. QUIZ — Lecture 10 (Observer / Decorator) -->
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Lecture 10)</span></h2>
+  <p style="color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">Which design pattern does this code demonstrate?</p>
+  <pre style="font-size: 0.72rem;"><span class="kw">def</span> <span class="fn">log_calls</span>(func):
+    <span class="kw">def</span> <span class="fn">wrapper</span>(*args, **kwargs):
+        <span class="fn">print</span>(<span class="str">f"calling </span>{func.__name__}<span class="str">"</span>)
+        <span class="kw">return</span> <span class="fn">func</span>(*args, **kwargs)
+    <span class="kw">return</span> wrapper
+
+@log_calls
+<span class="kw">def</span> <span class="fn">save</span>(data):
+    ...</pre>
+  <div class="two-col quiz-answers" style="margin-top: 1rem; max-width: 700px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">A) Observer</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">B) Strategy</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);"><strong>C) Decorator</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1rem; color: var(--green);">D) Iterator</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 0.6rem; font-size: 0.9rem;"><strong>Decorator</strong> wraps a function to add behavior <em>without modifying it</em>. Python's <code style="color: var(--accent);">@</code> syntax is sugar over <code>save = log_calls(save)</code>.</p>
+</div>
+<div class="slide">
+  <p style="color: var(--accent); font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Recap: Lecture 10</p>
+  <h2>Design Patterns: <span style="color: #34d399;">Decorator</span></h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#129507; <strong>Wrap</strong> an object to add behavior &mdash; without changing it</li>
+        <li>&#128257; Stack multiple decorators &mdash; like <strong>layers of clothing</strong></li>
+        <li>&#127919; Python sugar: <code style="color: var(--accent);">@decorator</code> above a function</li>
+        <li>&#128209; Use it for logging, auth, caching, retries, timing&hellip;</li>
+      </ul>
+    </div>
+    <div class="visual">
+      <pre style="font-size: 0.78rem;">@time_logger
+@auth_required
+<span class="kw">def</span> <span class="fn">view_profile</span>(user):
+    <span class="kw">return</span> user.name
+
+<span class="cm"># wrapped: time_logger(auth_required(view_profile))</span></pre>
+    </div>
+  </div>
+</div>
+
+<!-- 4. QUIZ — Lecture 09 (Mock / pytest) -->
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Lecture 09)</span></h2>
+  <p style="color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">What is the purpose of <code style="color: var(--accent);">Mock()</code> in this test?</p>
+  <pre style="font-size: 0.72rem;"><span class="kw">from</span> unittest.mock <span class="kw">import</span> <span class="cls">Mock</span>
+
+db = <span class="cls">Mock</span>()
+db.fetch.return_value = {<span class="str">"id"</span>: <span class="num">1</span>, <span class="str">"name"</span>: <span class="str">"Alice"</span>}
+
+service = <span class="cls">UserService</span>(db)
+user = service.<span class="fn">get_user</span>(<span class="num">1</span>)
+
+db.fetch.<span class="fn">assert_called_once_with</span>(<span class="num">1</span>)</pre>
+  <div class="two-col quiz-answers" style="margin-top: 1rem; max-width: 700px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 0.95rem; color: var(--green);">A) To speed up tests by parallelization</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 0.95rem; color: var(--green);"><strong>B) Replace a real dependency with a controllable fake</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 0.95rem; color: var(--green);">C) Generate random test data automatically</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 0.95rem; color: var(--green);">D) Save real database calls to disk</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 0.6rem; font-size: 0.9rem;">Mocks <strong>isolate the unit under test</strong>: no real DB, no real network, no real file. You can program return values and verify how the dependency was called.</p>
+</div>
+<div class="slide">
+  <p style="color: var(--accent); font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Recap: Lecture 09</p>
+  <h2>Unit Testing: <span class="accent">Mocks &amp; Fixtures</span></h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#127981; <strong>Unit</strong> tests focus on <em>one</em> class &mdash; isolate everything else</li>
+        <li>&#129512; <strong>Mock</strong> replaces real dependencies (DB, API, time) with fakes</li>
+        <li>&#128221; <code style="color: var(--cyan);">@pytest.fixture</code> &mdash; reusable setup, runs per test</li>
+        <li>&#9989; AAA: <strong>Arrange &mdash; Act &mdash; Assert</strong></li>
+      </ul>
+    </div>
+    <div class="visual">
+      <pre style="font-size: 0.75rem;"><span class="kw">@pytest.fixture</span>
+<span class="kw">def</span> <span class="fn">empty_account</span>():
+    <span class="kw">return</span> <span class="cls">Account</span>()
+
+<span class="kw">def</span> <span class="fn">test_deposit</span>(empty_account):
+    empty_account.<span class="fn">deposit</span>(<span class="num">100</span>)
+    <span class="kw">assert</span> empty_account.balance == <span class="num">100</span></pre>
+    </div>
+  </div>
+</div>
+
+<!-- 5. QUIZ — Lecture 08 (UML multiplicity) -->
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Lecture 08)</span></h2>
+  <p style="color: var(--accent); font-size: 1.05rem; font-weight: 600; margin-bottom: 1rem;">In a UML diagram, what does the multiplicity <code style="color: var(--accent);">1..*</code> mean?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 700px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 0.95rem; color: var(--green);">A) Exactly one</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 0.95rem; color: var(--green);">B) Zero or one (optional)</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 0.95rem; color: var(--green);"><strong>C) One or more (at least one)</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 0.95rem; color: var(--green);">D) Any number, including zero</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1rem; font-size: 0.9rem;">Cheat sheet: <code style="color: var(--cyan);">1</code> = exactly one &middot; <code style="color: var(--cyan);">0..1</code> = optional &middot; <code style="color: var(--cyan);">1..*</code> = one or more &middot; <code style="color: var(--cyan);">*</code> = any number, zero allowed.</p>
+</div>
+<div class="slide">
+  <p style="color: var(--accent); font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;">Recap: Lecture 08</p>
+  <h2>UML <span class="accent">Multiplicity</span></h2>
+  <div style="display: flex; justify-content: center; margin-top: 0.6rem;">
+    <svg viewBox="0 0 720 240" width="780" style="max-width: 100%;">
+      <rect x="40" y="20" width="160" height="44" rx="8" fill="var(--code-bg)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="120" y="48" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">Order</text>
+
+      <rect x="520" y="20" width="160" height="44" rx="8" fill="var(--code-bg)" stroke="#34d399" stroke-width="2"/>
+      <text x="600" y="48" text-anchor="middle" fill="var(--heading)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">LineItem</text>
+
+      <line x1="200" y1="42" x2="520" y2="42" stroke="var(--text)" stroke-width="1.8"/>
+      <text x="220" y="35" fill="var(--accent)" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">1</text>
+      <text x="490" y="35" fill="#34d399" font-size="14" font-weight="700" font-family="JetBrains Mono, monospace">1..*</text>
+      <text x="360" y="35" text-anchor="middle" fill="var(--muted)" font-size="11" font-style="italic" font-family="Outfit, sans-serif">contains</text>
+
+      <text x="360" y="105" text-anchor="middle" fill="var(--text)" font-size="14" font-family="Outfit, sans-serif">An <strong>Order</strong> contains <strong>at least one</strong> LineItem.</text>
+
+      <text x="360" y="155" text-anchor="middle" fill="var(--muted)" font-size="13" font-family="Outfit, sans-serif">Multiplicity cheat sheet:</text>
+      <text x="180" y="190" text-anchor="middle" fill="var(--accent)" font-size="14" font-family="JetBrains Mono, monospace">1</text>
+      <text x="180" y="212" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif">exactly one</text>
+      <text x="320" y="190" text-anchor="middle" fill="#22d3ee" font-size="14" font-family="JetBrains Mono, monospace">0..1</text>
+      <text x="320" y="212" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif">optional</text>
+      <text x="460" y="190" text-anchor="middle" fill="#34d399" font-size="14" font-family="JetBrains Mono, monospace">1..*</text>
+      <text x="460" y="212" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif">one or more</text>
+      <text x="600" y="190" text-anchor="middle" fill="#fbbf24" font-size="14" font-family="JetBrains Mono, monospace">*</text>
+      <text x="600" y="212" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif">any (incl. zero)</text>
+    </svg>
+  </div>
+</div>
+
+<!-- 6. AGENDA -->
+<div class="slide">
+  <h2>Agenda for <span class="accent">Today</span></h2>
+  <div style="max-width: 720px; margin-top: 1rem;">
+    <ul>
+      <li>&#128218; <strong>Libraries</strong> &mdash; what they are, how to use them</li>
+      <li>&#128202; A tour of <strong>Python's most-loved libraries</strong>:</li>
+    </ul>
+    <div style="margin-left: 2rem; margin-top: 0.5rem; font-size: 0.95rem;">
+      <p>&#128293; <strong style="color: #fbbf24;">numpy</strong> &middot; <strong style="color: #34d399;">pandas</strong> &middot; <strong style="color: #22d3ee;">matplotlib</strong> &middot; <strong style="color: #a78bfa;">requests</strong></p>
+      <p>&#9201;&#65039; <strong style="color: #f472b6;">datetime</strong> &middot; <strong style="color: var(--accent);">unittest</strong> / <strong style="color: var(--accent);">pytest</strong></p>
+    </div>
+    <ul style="margin-top: 0.8rem;">
+      <li>&#127981; <strong>Frameworks</strong> &mdash; the Hollywood principle</li>
+      <li>&#127759; <strong>Django</strong> &mdash; batteries-included web framework</li>
+      <li>&#9889; <strong>Flask</strong> &mdash; the microframework</li>
+      <li>&#128640; <strong>Python at scale</strong> &mdash; Instagram, Netflix, Spotify, NASA</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============== SECTION: LIBRARIES ============== -->
+<div class="slide center" style="background: var(--surface);">
+  <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Section 1</p>
+  <h2 style="font-size: 3rem; color: #22d3ee;">Libraries</h2>
+  <p style="color: var(--muted); margin-top: 0.8rem; font-style: italic;">"A bag of useful tools you reach into when you need them."</p>
+</div>
+
+<!-- 7. Library — definition -->
+<div class="slide">
+  <h2>What is a <span style="color: #22d3ee;">Library</span>?</h2>
+  <div class="layout">
+    <div class="text">
+      <p style="font-size: 1.15rem; margin-bottom: 1.2rem;">A <strong>library</strong> is a set of related, low-level components that developers <strong>invoke</strong> to achieve a specific outcome.</p>
+      <p style="color: var(--muted); margin-bottom: 0.8rem;">Common library tasks:</p>
+      <ul>
+        <li>&#128197; Date &amp; time formatting</li>
+        <li>&#127760; Establishing network connections</li>
+        <li>&#128193; File processing &amp; I/O</li>
+        <li>&#128202; Data analysis &amp; visualization</li>
+        <li>&#128274; Cryptography, parsing, math&hellip;</li>
+      </ul>
+    </div>
+    <div class="visual">
+      <svg viewBox="0 0 320 280" width="320">
+        <rect x="20" y="20" width="280" height="240" rx="14" fill="var(--code-bg)" stroke="#22d3ee" stroke-width="2"/>
+        <text x="160" y="50" text-anchor="middle" fill="#22d3ee" font-size="15" font-weight="700" font-family="Outfit, sans-serif">your_app.py</text>
+        <line x1="40" y1="65" x2="280" y2="65" stroke="var(--border)"/>
+        <text x="40" y="90" fill="var(--accent)" font-size="11" font-family="JetBrains Mono, monospace">import</text>
+        <text x="90" y="90" fill="#22d3ee" font-size="11" font-family="JetBrains Mono, monospace">requests</text>
+        <text x="40" y="115" fill="var(--accent)" font-size="11" font-family="JetBrains Mono, monospace">import</text>
+        <text x="90" y="115" fill="#22d3ee" font-size="11" font-family="JetBrains Mono, monospace">pandas</text>
+        <text x="150" y="115" fill="var(--accent)" font-size="11" font-family="JetBrains Mono, monospace">as</text>
+        <text x="180" y="115" fill="#22d3ee" font-size="11" font-family="JetBrains Mono, monospace">pd</text>
+        <text x="40" y="155" fill="var(--muted)" font-size="11" font-family="JetBrains Mono, monospace">data = pd.</text>
+        <text x="115" y="155" fill="#34d399" font-size="11" font-family="JetBrains Mono, monospace">read_csv</text>
+        <text x="170" y="155" fill="var(--muted)" font-size="11" font-family="JetBrains Mono, monospace">(...)</text>
+        <text x="40" y="180" fill="var(--muted)" font-size="11" font-family="JetBrains Mono, monospace">r = requests.</text>
+        <text x="135" y="180" fill="#34d399" font-size="11" font-family="JetBrains Mono, monospace">get</text>
+        <text x="160" y="180" fill="var(--muted)" font-size="11" font-family="JetBrains Mono, monospace">(url)</text>
+
+        <text x="160" y="225" text-anchor="middle" fill="var(--muted)" font-size="11" font-style="italic" font-family="Outfit, sans-serif">YOU decide what to call</text>
+        <text x="160" y="245" text-anchor="middle" fill="var(--muted)" font-size="11" font-style="italic" font-family="Outfit, sans-serif">and when</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- 8. How to use libraries (3 reveal steps) -->
+<div class="slide reveal-slide">
+  <h2>How to <span class="accent">use</span> a library</h2>
+  <div class="reveal-blocks" style="max-width: 880px;">
+    <div class="reveal-block" style="margin-bottom: 0.8rem; background: var(--code-bg); border-left: 4px solid #22d3ee; border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>1. &#128229; Import</strong> &mdash; bring it into your namespace</p>
+      <p style="margin-top: 0.3rem; color: var(--muted); font-size: 0.9rem;">Whole module, single function, or with an alias: <code style="color: var(--cyan);">import pandas as pd</code></p>
+    </div>
+    <div class="reveal-block" style="margin-bottom: 0.8rem; background: var(--code-bg); border-left: 4px solid #34d399; border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>2. &#128214; Read the docs</strong> &mdash; before guessing</p>
+      <p style="margin-top: 0.3rem; color: var(--muted); font-size: 0.9rem;">Every library has docs with parameters, return values, examples. Bookmark them.</p>
+    </div>
+    <div class="reveal-block" style="background: var(--code-bg); border-left: 4px solid #a78bfa; border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>3. &#9881;&#65039; Use it &mdash; and manage your dependencies</strong></p>
+      <p style="margin-top: 0.3rem; color: var(--muted); font-size: 0.9rem;">Call its functions/classes like your own code. Then pin versions with <code style="color: var(--cyan);">pip</code>, <code style="color: var(--cyan);">uv</code>, or <code style="color: var(--cyan);">poetry</code> &mdash; <code style="color: var(--cyan);">requirements.txt</code> or <code style="color: var(--cyan);">pyproject.toml</code>. Reproducibility matters.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 9. The Python ecosystem (overview) -->
+<div class="slide">
+  <h2>Python's <span class="accent">Ecosystem</span></h2>
+  <div class="three-col" style="margin-top: 1.2rem;">
+    <div class="col" style="border-color: #fbbf24;">
+      <p style="font-size: 2rem; margin-bottom: 0.4rem;">&#128202;</p>
+      <h3 style="color: #fbbf24;">Data &amp; Science</h3>
+      <p style="font-size: 0.85rem;"><strong>numpy</strong> &middot; <strong>pandas</strong> &middot; <strong>scipy</strong></p>
+      <p style="font-size: 0.85rem;"><strong>matplotlib</strong> &middot; <strong>seaborn</strong></p>
+      <p style="font-size: 0.85rem;"><strong>scikit-learn</strong> &middot; <strong>pytorch</strong></p>
+    </div>
+    <div class="col" style="border-color: #a78bfa;">
+      <p style="font-size: 2rem; margin-bottom: 0.4rem;">&#127760;</p>
+      <h3 style="color: #a78bfa;">Web &amp; Network</h3>
+      <p style="font-size: 0.85rem;"><strong>requests</strong> &middot; <strong>httpx</strong></p>
+      <p style="font-size: 0.85rem;"><strong>beautifulsoup</strong> &middot; <strong>lxml</strong></p>
+      <p style="font-size: 0.85rem;"><strong>websockets</strong> &middot; <strong>aiohttp</strong></p>
+    </div>
+    <div class="col" style="border-color: #34d399;">
+      <p style="font-size: 2rem; margin-bottom: 0.4rem;">&#128736;&#65039;</p>
+      <h3 style="color: #34d399;">Tooling</h3>
+      <p style="font-size: 0.85rem;"><strong>pytest</strong> &middot; <strong>unittest</strong></p>
+      <p style="font-size: 0.85rem;"><strong>black</strong> &middot; <strong>ruff</strong> &middot; <strong>mypy</strong></p>
+      <p style="font-size: 0.85rem;"><strong>logging</strong> &middot; <strong>datetime</strong></p>
+    </div>
+  </div>
+  <p style="text-align: center; color: var(--muted); margin-top: 1.6rem; font-size: 0.95rem;">&#128293; <strong>500,000+</strong> packages on PyPI &mdash; the Python Package Index</p>
+</div>
+
+<!-- 10. matplotlib -->
+<div class="slide">
+  <h2><span style="color: #22d3ee;">matplotlib</span> &mdash; plotting</h2>
+  <div class="layout">
+    <div class="text">
+      <p>A plotting library for <strong>static, animated, and interactive</strong> visualizations in Python.</p>
+      <ul style="margin-top: 1rem;">
+        <li>&#128200; Line, bar, scatter, histograms, heatmaps&hellip;</li>
+        <li>&#127912; Object-oriented API for embedding plots in apps</li>
+        <li>&#128194; Foundation many other libs build on (seaborn, pandas plotting)</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.2rem;">If you've ever seen a Python chart in a paper, blog, or notebook &mdash; it's almost certainly matplotlib.</div>
+    </div>
+    <div class="visual">
+      <pre style="font-size: 0.78rem;"><span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+
+x = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>]
+y = [<span class="num">1</span>, <span class="num">4</span>, <span class="num">9</span>, <span class="num">16</span>, <span class="num">25</span>]
+
+plt.<span class="fn">plot</span>(x, y, marker=<span class="str">"o"</span>)
+plt.<span class="fn">title</span>(<span class="str">"y = x&sup2;"</span>)
+plt.<span class="fn">xlabel</span>(<span class="str">"x"</span>)
+plt.<span class="fn">ylabel</span>(<span class="str">"y"</span>)
+plt.<span class="fn">show</span>()</pre>
+    </div>
+  </div>
+</div>
+
+<!-- 11. numpy -->
+<div class="slide">
+  <h2><span style="color: #fbbf24;">numpy</span> &mdash; arrays &amp; math</h2>
+  <div class="layout">
+    <div class="text">
+      <p><strong>numpy</strong> is the fundamental package for scientific computing in Python.</p>
+      <ul style="margin-top: 1rem;">
+        <li>&#9889; Fast operations on N-dimensional arrays</li>
+        <li>&#128290; Linear algebra, FFT, random simulation</li>
+        <li>&#128202; Statistics, sorting, shape manipulation</li>
+        <li>&#129520; Built on optimized C &mdash; <em>much</em> faster than Python lists</li>
+      </ul>
+    </div>
+    <div class="visual">
+      <pre style="font-size: 0.72rem;"><span class="kw">import</span> numpy <span class="kw">as</span> np
+
+x = np.<span class="fn">arange</span>(<span class="num">15</span>).<span class="fn">reshape</span>(<span class="num">3</span>, <span class="num">5</span>)
+x[<span class="num">1</span>:, ::<span class="num">2</span>] = <span class="num">-99</span>
+
+<span class="cm"># [[  0   1   2   3   4]</span>
+<span class="cm">#  [-99   6 -99   8 -99]</span>
+<span class="cm">#  [-99  11 -99  13 -99]]</span>
+
+x.<span class="fn">max</span>(axis=<span class="num">1</span>)
+<span class="cm"># array([ 4,  8, 13])</span>
+
+rng = np.random.<span class="fn">default_rng</span>()
+samples = rng.<span class="fn">normal</span>(size=<span class="num">2500</span>)</pre>
+    </div>
+  </div>
+</div>
+
+<!-- 12. requests -->
+<div class="slide">
+  <h2><span style="color: #a78bfa;">requests</span> &mdash; HTTP for humans</h2>
+  <div class="layout">
+    <div class="text">
+      <p>Makes HTTP &amp; HTTPS requests a breeze. Functions for interacting with web APIs and managing responses.</p>
+      <ul style="margin-top: 1rem;">
+        <li>&#128231; <code style="color: var(--cyan);">GET</code>, <code style="color: var(--cyan);">POST</code>, <code style="color: var(--cyan);">PUT</code>, <code style="color: var(--cyan);">DELETE</code> &mdash; one-liners</li>
+        <li>&#128221; Handles JSON, headers, sessions, cookies</li>
+        <li>&#128274; Auth, redirects, SSL &mdash; sensible defaults</li>
+      </ul>
+    </div>
+    <div class="visual">
+      <pre style="font-size: 0.72rem;"><span class="kw">import</span> requests
+
+url = <span class="str">"https://api.github.com/users/torvalds"</span>
+response = requests.<span class="fn">get</span>(url)
+
+<span class="kw">if</span> response.status_code == <span class="num">200</span>:
+    data = response.<span class="fn">json</span>()
+    <span class="fn">print</span>(<span class="str">f"Name: </span>{data[<span class="str">'name'</span>]}<span class="str">"</span>)
+    <span class="fn">print</span>(<span class="str">f"Followers: </span>{data[<span class="str">'followers'</span>]}<span class="str">"</span>)
+<span class="kw">else</span>:
+    <span class="fn">print</span>(<span class="str">f"Failed: </span>{response.status_code}<span class="str">"</span>)</pre>
+    </div>
+  </div>
+</div>
+
+<!-- 13. datetime -->
+<div class="slide">
+  <h2><span style="color: #f472b6;">datetime</span> &mdash; dates &amp; times</h2>
+  <div class="layout">
+    <div class="text">
+      <p>A <strong>standard library</strong> module &mdash; no install needed. Handles dates, times, durations, time zones.</p>
+      <ul style="margin-top: 1rem;">
+        <li>&#128197; <code style="color: var(--cyan);">date</code>, <code style="color: var(--cyan);">time</code>, <code style="color: var(--cyan);">datetime</code></li>
+        <li>&#9201;&#65039; <code style="color: var(--cyan);">timedelta</code> for arithmetic on times</li>
+        <li>&#127760; <code style="color: var(--cyan);">timezone</code> &mdash; never store naive UTC times!</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.2rem;">Tip: timezone-aware <code>datetime</code> + UTC storage saves you from <em>real</em> bugs at 03:00 on DST night.</div>
+    </div>
+    <div class="visual">
+      <pre style="font-size: 0.78rem;"><span class="kw">from</span> datetime <span class="kw">import</span> <span class="cls">datetime</span>, <span class="cls">date</span>, <span class="cls">time</span>, <span class="cls">timezone</span>
+
+date1 = <span class="cls">date</span>(<span class="num">2026</span>, <span class="num">5</span>, <span class="num">7</span>)
+time1 = <span class="cls">time</span>(<span class="num">14</span>, <span class="num">30</span>)
+
+<span class="cm"># Always use timezone-aware datetimes!</span>
+dt = <span class="cls">datetime</span>(<span class="num">2026</span>, <span class="num">5</span>, <span class="num">7</span>, <span class="num">14</span>, <span class="num">30</span>, tzinfo=<span class="cls">timezone</span>.utc)
+now = <span class="cls">datetime</span>.<span class="fn">now</span>(<span class="cls">timezone</span>.utc)
+
+delta = now - dt
+<span class="fn">print</span>(<span class="str">f"Date: </span>{date1}<span class="str">"</span>)
+<span class="fn">print</span>(<span class="str">f"Now (UTC): </span>{now}<span class="str">"</span>)
+<span class="fn">print</span>(<span class="str">f"Delta: </span>{delta}<span class="str">"</span>)</pre>
+    </div>
+  </div>
+</div>
+
+<!-- 14. unittest / pytest -->
+<div class="slide">
+  <h2><span class="accent">unittest</span> &amp; <span class="accent">pytest</span> &mdash; testing</h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div class="col" style="border-color: #818cf8;">
+      <p class="lib-badge" style="background: rgba(129, 140, 248, 0.15); color: #818cf8;">stdlib</p>
+      <h3 style="color: #818cf8;">unittest</h3>
+      <ul style="font-size: 0.92rem; margin-top: 0.5rem;">
+        <li>Built into Python &mdash; no install</li>
+        <li>Test discovery, fixtures, suites</li>
+        <li>JUnit-style: <code style="color: var(--cyan);">class</code> + <code style="color: var(--cyan);">setUp</code></li>
+      </ul>
+      <pre style="font-size: 0.72rem; margin-top: 0.6rem;"><span class="kw">class</span> <span class="cls">TestMath</span>(unittest.<span class="cls">TestCase</span>):
+    <span class="kw">def</span> <span class="fn">test_add</span>(<span class="par">self</span>):
+        <span class="par">self</span>.<span class="fn">assertEqual</span>(<span class="num">1</span>+<span class="num">1</span>, <span class="num">2</span>)</pre>
+    </div>
+    <div class="col" style="border-color: #34d399;">
+      <p class="lib-badge" style="background: rgba(52, 211, 153, 0.15); color: #34d399;">pip install</p>
+      <h3 style="color: #34d399;">pytest</h3>
+      <ul style="font-size: 0.92rem; margin-top: 0.5rem;">
+        <li>Concise &mdash; just plain functions</li>
+        <li>Powerful fixtures &amp; parametrization</li>
+        <li>Plugins galore (<code style="color: var(--cyan);">pytest-cov</code>, <code style="color: var(--cyan);">pytest-mock</code>)</li>
+      </ul>
+      <pre style="font-size: 0.72rem; margin-top: 0.6rem;"><span class="kw">def</span> <span class="fn">test_add</span>():
+    <span class="kw">assert</span> <span class="num">1</span> + <span class="num">1</span> == <span class="num">2</span></pre>
+    </div>
+  </div>
+  <p style="margin-top: 1rem; color: var(--muted); font-size: 0.9rem; text-align: center;">&#9989; Most modern Python projects use <strong>pytest</strong> &mdash; less ceremony, better output, huge ecosystem.</p>
+</div>
+
+<!-- 15. Pandas — section divider -->
+<div class="slide center" style="background: var(--surface);">
+  <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Spotlight</p>
+  <h2 style="font-size: 3rem; color: #34d399;">pandas</h2>
+  <p style="color: var(--text); margin-top: 0.8rem; font-size: 1.1rem;">A superpower for working with <strong>tables of data</strong>.</p>
+  <p style="color: var(--muted); margin-top: 0.4rem; font-style: italic;">Excel, supercharged. With code.</p>
+</div>
+
+<!-- 16. Pandas overview -->
+<div class="slide">
+  <h2>What can <span style="color: #34d399;">pandas</span> do?</h2>
+  <div style="max-width: 760px; margin-top: 0.5rem;">
+    <ul>
+      <li>&#128193; <strong>Read &amp; Write</strong> &mdash; CSV, Excel, SQL, JSON, Parquet, HDF5</li>
+      <li>&#128270; <strong>Explore</strong> &mdash; peek, summary, describe()</li>
+      <li>&#129529; <strong>Clean</strong> &mdash; missing values, duplicates, types</li>
+      <li>&#128296; <strong>Manipulate</strong> &mdash; filter, group, merge, pivot</li>
+      <li>&#128202; <strong>Analyze</strong> &mdash; statistics, time series, rolling windows</li>
+      <li>&#127912; <strong>Visualize</strong> &mdash; integrates with matplotlib &amp; seaborn</li>
+    </ul>
+    <div class="callout" style="margin-top: 1.4rem;">Plays well with the rest of the ecosystem &mdash; numpy under the hood, scikit-learn for ML, matplotlib for plots.</div>
+  </div>
+</div>
+
+<!-- 17. Pandas — data file -->
+<div class="slide">
+  <h2><span style="color: #34d399;">pandas</span> &mdash; the example dataset</h2>
+  <p style="color: var(--muted); margin-bottom: 1rem;">Throughout the examples we'll use a <strong>cars.csv</strong> file:</p>
+  <div style="max-width: 780px;">
+    <table class="access-table" style="font-size: 0.9rem;">
+      <thead>
+        <tr><th>Make</th><th>Model</th><th>Year</th><th>Color</th><th>Mileage</th><th>Price</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Toyota</td><td>Corolla</td><td>2020</td><td>Black</td><td>45 000</td><td>15 500</td></tr>
+        <tr><td>Honda</td><td>Civic</td><td>2018</td><td>Red</td><td>62 000</td><td>13 200</td></tr>
+        <tr><td>Toyota</td><td>RAV4</td><td>2022</td><td>White</td><td>21 000</td><td>26 800</td></tr>
+        <tr><td>Ford</td><td>Focus</td><td>2019</td><td>Black</td><td>78 000</td><td>9 900</td></tr>
+        <tr><td>Honda</td><td>Accord</td><td>2021</td><td>Black</td><td>32 000</td><td>22 100</td></tr>
+        <tr><td>Ford</td><td>Mustang</td><td>2023</td><td>Red</td><td>8 500</td><td>41 700</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top: 1rem; color: var(--muted); font-size: 0.9rem;">&#128221; A <strong>DataFrame</strong> is essentially this: rows + named columns + types.</p>
+</div>
+
+<!-- 18. Pandas Example 1 — Load CSV -->
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Example 1</span> &mdash; Load &amp; Inspect</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <pre style="font-size: 0.78rem;"><span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+df_cars = pd.<span class="fn">read_csv</span>(<span class="str">"cars.csv"</span>)
+<span class="fn">print</span>(df_cars)</pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.72rem; margin-top: 0.6rem;"><span class="cm">    Make    Model  Year  Color  Mileage  Price</span>
+<span class="cm">0  Toyota  Corolla  2020  Black    45000  15500</span>
+<span class="cm">1   Honda    Civic  2018    Red    62000  13200</span>
+<span class="cm">2  Toyota     RAV4  2022  White    21000  26800</span>
+<span class="cm">3    Ford    Focus  2019  Black    78000   9900</span>
+<span class="cm">4   Honda   Accord  2021  Black    32000  22100</span>
+<span class="cm">5    Ford  Mustang  2023    Red     8500  41700</span></pre>
+      <p style="color: var(--muted); margin-top: 0.6rem; font-size: 0.9rem;">&#128270; Useful next steps: <code style="color: var(--cyan);">df.head()</code>, <code style="color: var(--cyan);">df.info()</code>, <code style="color: var(--cyan);">df.describe()</code>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 19. Pandas Example 2 — Filter -->
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Example 2</span> &mdash; Filter rows</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-bottom: 0.4rem;">Find <strong>black cars from 2020 onwards</strong>:</p>
+      <pre style="font-size: 0.78rem;"><span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+df_cars = pd.<span class="fn">read_csv</span>(<span class="str">"cars.csv"</span>)
+
+mask = (df_cars[<span class="str">"Color"</span>] == <span class="str">"Black"</span>) &amp; (df_cars[<span class="str">"Year"</span>] &gt;= <span class="num">2020</span>)
+black_2020 = df_cars[mask]
+<span class="fn">print</span>(black_2020)</pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.72rem; margin-top: 0.6rem;"><span class="cm">    Make    Model  Year  Color  Mileage  Price</span>
+<span class="cm">0  Toyota  Corolla  2020  Black    45000  15500</span>
+<span class="cm">4   Honda   Accord  2021  Black    32000  22100</span></pre>
+      <p style="color: var(--muted); margin-top: 0.6rem; font-size: 0.9rem;">&#128161; Boolean indexing is <strong>vectorized</strong> &mdash; no Python loops, fast on millions of rows.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 20. Pandas Example 3 — Group + Aggregate -->
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Example 3</span> &mdash; Group &amp; aggregate</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-bottom: 0.4rem;">Average mileage and price <strong>per make</strong>:</p>
+      <pre style="font-size: 0.78rem;">avg = (df_cars
+       .<span class="fn">groupby</span>(<span class="str">"Make"</span>)
+       .<span class="fn">agg</span>({<span class="str">"Mileage"</span>: <span class="str">"mean"</span>, <span class="str">"Price"</span>: <span class="str">"mean"</span>})
+       .<span class="fn">rename</span>(columns={
+           <span class="str">"Mileage"</span>: <span class="str">"Avg Mileage"</span>,
+           <span class="str">"Price"</span>: <span class="str">"Avg Price"</span>,
+       }))
+<span class="fn">print</span>(avg)</pre>
+    </div>
+    <div class="reveal-block">
+      <pre style="font-size: 0.72rem; margin-top: 0.6rem;"><span class="cm">         Avg Mileage   Avg Price</span>
+<span class="cm">Make</span>
+<span class="cm">Ford         43250.0     25800.0</span>
+<span class="cm">Honda        47000.0     17650.0</span>
+<span class="cm">Toyota       33000.0     21150.0</span></pre>
+      <p style="color: var(--muted); margin-top: 0.6rem; font-size: 0.9rem;">&#128202; <code style="color: var(--cyan);">groupby().agg()</code> is the SQL-ish workhorse of pandas. Built-in aggregations: <code>mean</code>, <code>sum</code>, <code>min</code>, <code>max</code>, <code>count</code>, <code>std</code>&hellip;</p>
+    </div>
+  </div>
+</div>
+
+<!-- 21. Pandas Example 4 — Counts -->
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Example 4</span> &mdash; Counts &amp; newest car</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-bottom: 0.4rem;">How many cars per color?</p>
+      <pre style="font-size: 0.78rem;">color_counts = df_cars[<span class="str">"Color"</span>].<span class="fn">value_counts</span>()
+<span class="fn">print</span>(color_counts)
+<span class="cm"># Black    3</span>
+<span class="cm"># Red      2</span>
+<span class="cm"># White    1</span></pre>
+    </div>
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-top: 0.6rem; margin-bottom: 0.4rem;">Newest car per make:</p>
+      <pre style="font-size: 0.78rem;">newest = (df_cars
+          .<span class="fn">sort_values</span>(<span class="str">"Year"</span>, ascending=<span class="kw">False</span>)
+          .<span class="fn">groupby</span>(<span class="str">"Make"</span>, as_index=<span class="kw">False</span>)
+          .<span class="fn">first</span>())
+<span class="fn">print</span>(newest[[<span class="str">"Make"</span>, <span class="str">"Model"</span>, <span class="str">"Year"</span>]])
+<span class="cm"># Ford   Mustang  2023</span>
+<span class="cm"># Honda  Accord   2021</span>
+<span class="cm"># Toyota RAV4     2022</span></pre>
+    </div>
+  </div>
+</div>
+
+<!-- 22. Pandas Example 5 — Compute & Save -->
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Example 5</span> &mdash; Compute &amp; save</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-bottom: 0.4rem;">Calculate depreciation (10% per year) &mdash; add a new column:</p>
+      <pre style="font-size: 0.78rem;">YEAR_NOW = <span class="num">2026</span>
+
+df_cars[<span class="str">"Depreciation"</span>] = (
+    df_cars[<span class="str">"Price"</span>] * <span class="num">0.1</span> * (YEAR_NOW - df_cars[<span class="str">"Year"</span>])
+)
+<span class="fn">print</span>(df_cars[[<span class="str">"Make"</span>, <span class="str">"Model"</span>, <span class="str">"Year"</span>, <span class="str">"Price"</span>, <span class="str">"Depreciation"</span>]])</pre>
+    </div>
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-top: 0.6rem; margin-bottom: 0.4rem;">Write the updated table to a new CSV:</p>
+      <pre style="font-size: 0.78rem;">df_cars.<span class="fn">to_csv</span>(<span class="str">"updated_cars.csv"</span>, index=<span class="kw">False</span>)</pre>
+      <div class="callout" style="margin-top: 0.8rem;">&#128161; <strong>Vectorized arithmetic</strong> on whole columns &mdash; no <code>for</code> loop. That's the pandas way.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 23. pandas summary -->
+<div class="slide">
+  <h2><span style="color: #34d399;">pandas</span> &mdash; why it matters</h2>
+  <div class="three-col" style="margin-top: 1.2rem;">
+    <div class="col" style="border-color: #34d399; text-align: center;">
+      <p style="font-size: 2.2rem; margin-bottom: 0.4rem;">&#9889;</p>
+      <h3 style="color: #34d399;">Efficiency</h3>
+      <p style="font-size: 0.9rem;">Complex transformations in a few lines &mdash; saves hours.</p>
+    </div>
+    <div class="col" style="border-color: #34d399; text-align: center;">
+      <p style="font-size: 2.2rem; margin-bottom: 0.4rem;">&#129513;</p>
+      <h3 style="color: #34d399;">Versatility</h3>
+      <p style="font-size: 0.9rem;">Data scientist, analyst, ETL engineer &mdash; one tool for all.</p>
+    </div>
+    <div class="col" style="border-color: #34d399; text-align: center;">
+      <p style="font-size: 2.2rem; margin-bottom: 0.4rem;">&#128268;</p>
+      <h3 style="color: #34d399;">Integration</h3>
+      <p style="font-size: 0.9rem;">numpy &middot; matplotlib &middot; scikit-learn &middot; sqlalchemy.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============== SECTION: FRAMEWORKS ============== -->
+<div class="slide center" style="background: var(--surface);">
+  <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Section 2</p>
+  <h2 style="font-size: 3rem; color: #fbbf24;">Frameworks</h2>
+  <p style="color: var(--muted); margin-top: 0.8rem; font-style: italic;">"A skeleton you fill in &mdash; the recipe you follow."</p>
+</div>
+
+<!-- 24. What is a framework? -->
+<div class="slide">
+  <h2>What is a <span style="color: #fbbf24;">Framework</span>?</h2>
+  <div class="layout">
+    <div class="text">
+      <p style="font-size: 1.1rem; margin-bottom: 1rem;">A framework provides the <strong>foundational structure</strong> for developing software.</p>
+      <ul>
+        <li>&#129521; A <strong>skeleton</strong> &mdash; you add your code to it</li>
+        <li>&#127939;&#65039; <strong>Rapid development</strong> via predefined structures</li>
+        <li>&#128209; <strong>Standardizes</strong> the development process</li>
+        <li>&#127981; <strong>Dictates the architecture</strong> of your application</li>
+      </ul>
+      <div class="callout" style="margin-top: 1rem;">A library <em>offers</em> functionality. A framework <em>imposes</em> a structure.</div>
+    </div>
+    <div class="visual">
+      <svg viewBox="0 0 320 280" width="320">
+        <rect x="20" y="20" width="280" height="240" rx="14" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="2"/>
+        <text x="160" y="46" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="700" font-family="Outfit, sans-serif">Framework's structure</text>
+
+        <rect x="50" y="65" width="220" height="34" rx="6" fill="rgba(251, 191, 36, 0.1)" stroke="#fbbf24" stroke-width="1.4"/>
+        <text x="160" y="86" text-anchor="middle" fill="#fbbf24" font-size="11" font-family="JetBrains Mono, monospace">URL Routing</text>
+
+        <rect x="50" y="108" width="220" height="34" rx="6" fill="rgba(251, 191, 36, 0.1)" stroke="#fbbf24" stroke-width="1.4"/>
+        <text x="160" y="129" text-anchor="middle" fill="#fbbf24" font-size="11" font-family="JetBrains Mono, monospace">Models / ORM</text>
+
+        <rect x="50" y="151" width="220" height="34" rx="6" stroke-dasharray="4 3" fill="rgba(239, 68, 68, 0.08)" stroke="var(--accent)" stroke-width="1.4"/>
+        <text x="160" y="172" text-anchor="middle" fill="var(--accent)" font-size="11" font-family="JetBrains Mono, monospace">YOUR business logic</text>
+
+        <rect x="50" y="194" width="220" height="34" rx="6" fill="rgba(251, 191, 36, 0.1)" stroke="#fbbf24" stroke-width="1.4"/>
+        <text x="160" y="215" text-anchor="middle" fill="#fbbf24" font-size="11" font-family="JetBrains Mono, monospace">Templates / Views</text>
+
+        <text x="160" y="248" text-anchor="middle" fill="var(--muted)" font-size="11" font-style="italic" font-family="Outfit, sans-serif">you fill in the gap</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- 25. Library vs Framework analogy: kitchen -->
+<div class="slide">
+  <h2>Real-world: <span class="accent">Kitchen vs. Recipe</span></h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div>
+      <p style="font-size: 3rem; text-align: center; margin-bottom: 0.4rem;">&#127859;</p>
+      <p style="text-align: center; color: #22d3ee; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">Library = Kitchen tools</p>
+      <ul style="margin-top: 0.8rem; font-size: 0.95rem;">
+        <li>Spatulas, knives, measuring cups</li>
+        <li>You pick the right tool for the task</li>
+        <li>The tools don't tell you what to cook</li>
+        <li>You're in <strong>full control</strong></li>
+      </ul>
+    </div>
+    <div class="vs-line">
+      <p style="font-size: 3rem; text-align: center; margin-bottom: 0.4rem;">&#128214;</p>
+      <p style="text-align: center; color: #fbbf24; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">Framework = Recipe book</p>
+      <ul style="margin-top: 0.8rem; font-size: 0.95rem;">
+        <li>Specifies ingredients &amp; steps</li>
+        <li>You can tweak details, not the structure</li>
+        <li>The recipe <strong>guides</strong> the outcome</li>
+        <li>The recipe is in <strong>charge</strong></li>
+      </ul>
+    </div>
+  </div>
+  <p style="text-align: center; color: var(--muted); margin-top: 1.5rem; font-size: 0.95rem; font-style: italic;">Same kitchen, different kind of help.</p>
+</div>
+
+<!-- 26. Inversion of Control - Hollywood principle -->
+<div class="slide center" style="background: var(--surface);">
+  <p style="color: var(--accent); font-size: 0.9rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">The Hollywood Principle</p>
+  <h2 style="font-size: 2.6rem; color: var(--heading); max-width: 760px;">"Don't call us &mdash; <br><span style="color: var(--accent);">we'll call you.</span>"</h2>
+  <p style="color: var(--muted); margin-top: 1.2rem; font-style: italic; font-size: 1rem;">a.k.a. <strong>Inversion of Control (IoC)</strong></p>
+</div>
+
+<!-- 26. IoC explained -->
+<div class="slide">
+  <h2>Inversion of <span class="accent">Control</span></h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div class="col" style="border-color: #22d3ee;">
+      <p class="lib-badge" style="background: rgba(34, 211, 238, 0.15); color: #22d3ee;">Library</p>
+      <h3 style="color: #22d3ee;">Your code calls library code</h3>
+      <pre style="font-size: 0.75rem; margin-top: 0.6rem;"><span class="cm"># your_app.py</span>
+<span class="kw">import</span> requests
+
+<span class="kw">def</span> <span class="fn">main</span>():
+    r = requests.<span class="fn">get</span>(URL)
+    <span class="cls">Database</span>.<span class="fn">save</span>(r.json())
+
+<span class="fn">main</span>()  <span class="cm"># YOU run the show</span></pre>
+      <p style="color: var(--muted); font-size: 0.88rem; margin-top: 0.6rem;">&#128073; You decide <strong>when</strong> and <strong>which</strong> functions to call.</p>
+    </div>
+    <div class="col" style="border-color: #fbbf24;">
+      <p class="lib-badge" style="background: rgba(251, 191, 36, 0.15); color: #fbbf24;">Framework</p>
+      <h3 style="color: #fbbf24;">Framework code calls your code</h3>
+      <pre style="font-size: 0.75rem; margin-top: 0.6rem;"><span class="cm"># views.py (Django)</span>
+<span class="kw">def</span> <span class="fn">book_list</span>(request):
+    <span class="kw">return</span> <span class="fn">render</span>(...)
+
+<span class="cm"># Django runs the loop &mdash;</span>
+<span class="cm"># calls book_list when needed</span></pre>
+      <p style="color: var(--muted); font-size: 0.88rem; margin-top: 0.6rem;">&#128073; You write the <strong>parts</strong>, the framework runs them.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 28. Library vs Framework comparison table -->
+<div class="slide">
+  <h2><span style="color: #22d3ee;">Library</span> vs. <span style="color: #fbbf24;">Framework</span></h2>
+  <div style="max-width: 880px; margin-top: 0.5rem;">
+    <table class="access-table" style="font-size: 0.95rem;">
+      <thead>
+        <tr><th>&nbsp;</th><th style="color: #22d3ee;">Library</th><th style="color: #fbbf24;">Framework</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Control flow</strong></td>
+          <td>You call it</td>
+          <td>It calls you</td>
+        </tr>
+        <tr>
+          <td><strong>Scope</strong></td>
+          <td>Specific operations</td>
+          <td>Full app architecture</td>
+        </tr>
+        <tr>
+          <td><strong>Complexity</strong></td>
+          <td>Smaller, focused</td>
+          <td>Larger, opinionated</td>
+        </tr>
+        <tr>
+          <td><strong>Replaceability</strong></td>
+          <td>Swap easily</td>
+          <td>Hard to migrate away</td>
+        </tr>
+        <tr>
+          <td><strong>Examples</strong></td>
+          <td>numpy, requests, pandas</td>
+          <td>Django, Flask, FastAPI</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 29. Components of a framework -->
+<div class="slide">
+  <h2>Components of a <span class="accent">Framework</span></h2>
+  <div class="three-col" style="margin-top: 1.2rem;">
+    <div class="col" style="border-color: #34d399; text-align: center;">
+      <p style="font-size: 2.2rem; margin-bottom: 0.4rem;">&#128202;</p>
+      <h3 style="color: #34d399;">ORM</h3>
+      <p style="font-size: 0.9rem;">Map Python objects to database tables &mdash; SQL without writing SQL.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.78rem; color: var(--muted); font-family: 'JetBrains Mono', monospace;">User.objects.filter(...)</p>
+    </div>
+    <div class="col" style="border-color: #22d3ee; text-align: center;">
+      <p style="font-size: 2.2rem; margin-bottom: 0.4rem;">&#128279;</p>
+      <h3 style="color: #22d3ee;">Routing</h3>
+      <p style="font-size: 0.9rem;">URL patterns &rarr; functions. Defines what runs for each request.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.78rem; color: var(--muted); font-family: 'JetBrains Mono', monospace;">/books/&lt;id&gt; &rarr; book_view</p>
+    </div>
+    <div class="col" style="border-color: #fbbf24; text-align: center;">
+      <p style="font-size: 2.2rem; margin-bottom: 0.4rem;">&#127912;</p>
+      <h3 style="color: #fbbf24;">Templates</h3>
+      <p style="font-size: 0.9rem;">Render data into HTML, JSON, emails &mdash; with placeholders &amp; loops.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.78rem; color: var(--muted); font-family: 'JetBrains Mono', monospace;">{{ user.name }}</p>
+    </div>
+  </div>
+  <p style="text-align: center; color: var(--muted); margin-top: 1.4rem; font-size: 0.95rem;">&#9989; Plus: auth, sessions, admin, forms, migrations, testing utilities&hellip; <em>batteries included</em>.</p>
+</div>
+
+<!-- 30. MVC / MVT -->
+<div class="slide">
+  <h2>Architecture: <span class="accent">MVC / MVT</span></h2>
+  <div style="display: flex; justify-content: center; margin-top: 0.6rem;">
+    <svg viewBox="0 0 720 280" width="780" style="max-width: 100%;">
+      <rect x="40" y="40" width="180" height="80" rx="10" fill="var(--code-bg)" stroke="#34d399" stroke-width="2"/>
+      <text x="130" y="70" text-anchor="middle" fill="#34d399" font-size="18" font-weight="700" font-family="Outfit, sans-serif">Model</text>
+      <text x="130" y="92" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif">data &amp; rules</text>
+      <text x="130" y="108" text-anchor="middle" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">Book, User, Order</text>
+
+      <rect x="270" y="40" width="180" height="80" rx="10" fill="var(--code-bg)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="360" y="70" text-anchor="middle" fill="#fbbf24" font-size="18" font-weight="700" font-family="Outfit, sans-serif">View</text>
+      <text x="360" y="92" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif">orchestration</text>
+      <text x="360" y="108" text-anchor="middle" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">book_list(request)</text>
+
+      <rect x="500" y="40" width="180" height="80" rx="10" fill="var(--code-bg)" stroke="#22d3ee" stroke-width="2"/>
+      <text x="590" y="70" text-anchor="middle" fill="#22d3ee" font-size="18" font-weight="700" font-family="Outfit, sans-serif">Template</text>
+      <text x="590" y="92" text-anchor="middle" fill="var(--muted)" font-size="11" font-family="Outfit, sans-serif">presentation</text>
+      <text x="590" y="108" text-anchor="middle" fill="var(--text)" font-size="10" font-family="JetBrains Mono, monospace">books.html</text>
+
+      <line x1="220" y1="80" x2="270" y2="80" stroke="var(--muted)" stroke-width="1.5"/>
+      <polygon points="270,80 262,76 262,84" fill="var(--muted)"/>
+      <line x1="450" y1="80" x2="500" y2="80" stroke="var(--muted)" stroke-width="1.5"/>
+      <polygon points="500,80 492,76 492,84" fill="var(--muted)"/>
+
+      <text x="360" y="170" text-anchor="middle" fill="var(--muted)" font-size="13" font-family="Outfit, sans-serif">Request flow</text>
+      <text x="360" y="200" text-anchor="middle" fill="var(--text)" font-size="13" font-family="JetBrains Mono, monospace">request &rarr; URL routing &rarr; View &rarr; Model (DB) &rarr; Template &rarr; HTML response</text>
+
+      <text x="360" y="245" text-anchor="middle" fill="var(--muted)" font-size="11" font-style="italic" font-family="Outfit, sans-serif">Django calls this MVT &mdash; same idea as classic MVC.</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ============== SECTION: DJANGO ============== -->
+<div class="slide center" style="background: var(--surface);">
+  <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Spotlight</p>
+  <h2 style="font-size: 3rem; color: #34d399;">Django</h2>
+  <p style="color: var(--text); margin-top: 0.6rem; font-size: 1.1rem;">A high-level web framework for <strong>perfectionists with deadlines</strong>.</p>
+  <p style="color: var(--muted); margin-top: 0.4rem; font-style: italic;">Concept &rarr; production, fast.</p>
+</div>
+
+<!-- 31. Django key features -->
+<div class="slide">
+  <h2><span style="color: #34d399;">Django</span> &mdash; key features</h2>
+  <div class="three-col" style="margin-top: 1rem;">
+    <div class="col" style="border-color: #34d399;">
+      <p style="font-size: 1.8rem;">&#128268;</p>
+      <h3 style="color: #34d399;">Batteries included</h3>
+      <p style="font-size: 0.88rem;">Auth, sessions, admin, content management, sitemaps, RSS &mdash; out of the box.</p>
+    </div>
+    <div class="col" style="border-color: #818cf8;">
+      <p style="font-size: 1.8rem;">&#129489;&#8205;&#128187;</p>
+      <h3 style="color: #818cf8;">Auto admin</h3>
+      <p style="font-size: 0.88rem;">A full admin UI generated from your models. Manage data with zero extra code.</p>
+    </div>
+    <div class="col" style="border-color: var(--accent);">
+      <p style="font-size: 1.8rem;">&#128274;</p>
+      <h3 style="color: var(--accent);">Security</h3>
+      <p style="font-size: 0.88rem;">Defends against SQL injection, XSS, CSRF, clickjacking by default.</p>
+    </div>
+  </div>
+  <div class="three-col" style="margin-top: 1rem;">
+    <div class="col" style="border-color: #22d3ee;">
+      <p style="font-size: 1.8rem;">&#128218;</p>
+      <h3 style="color: #22d3ee;">Top-tier docs</h3>
+      <p style="font-size: 0.88rem;">Comprehensive, regularly updated, beginner-friendly &mdash; one of the best in open source.</p>
+    </div>
+    <div class="col" style="border-color: #fbbf24;">
+      <p style="font-size: 1.8rem;">&#128101;</p>
+      <h3 style="color: #fbbf24;">Vibrant community</h3>
+      <p style="font-size: 0.88rem;">Thousands of plugins (django-rest-framework, channels, allauth&hellip;).</p>
+    </div>
+    <div class="col" style="border-color: #f472b6;">
+      <p style="font-size: 1.8rem;">&#9889;</p>
+      <h3 style="color: #f472b6;">Fast to build</h3>
+      <p style="font-size: 0.88rem;">From idea to running app in <strong>minutes</strong>, not days.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 32. Django setup -->
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Django</span> &mdash; bootstrap a project</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-bottom: 0.4rem;">Three commands &mdash; you have a running web app:</p>
+      <pre style="font-size: 0.82rem;">$ pip install django
+
+$ django-admin startproject mysite
+
+$ cd mysite
+$ python manage.py startapp blog
+
+$ python manage.py runserver
+<span class="cm"># Starting development server at http://127.0.0.1:8000/</span></pre>
+    </div>
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-top: 0.7rem; margin-bottom: 0.3rem;">Project structure that gets generated:</p>
+      <pre style="font-size: 0.78rem;">mysite/
+&#9500;&#9472;&#9472; manage.py            <span class="cm"># CLI entrypoint</span>
+&#9500;&#9472;&#9472; mysite/
+&#9474;   &#9500;&#9472;&#9472; settings.py      <span class="cm"># config</span>
+&#9474;   &#9500;&#9472;&#9472; urls.py          <span class="cm"># URL routing</span>
+&#9474;   &#9492;&#9472;&#9472; wsgi.py          <span class="cm"># server hook</span>
+&#9492;&#9472;&#9472; blog/
+    &#9500;&#9472;&#9472; models.py        <span class="cm"># &lt;-- you</span>
+    &#9500;&#9472;&#9472; views.py         <span class="cm"># &lt;-- you</span>
+    &#9492;&#9472;&#9472; templates/       <span class="cm"># &lt;-- you</span></pre>
+    </div>
+  </div>
+</div>
+
+<!-- 33. Django models -->
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Django</span> &mdash; Models (the M)</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-bottom: 0.4rem;">Define your data as Python classes &mdash; Django writes the SQL:</p>
+      <pre style="font-size: 0.78rem;"><span class="cm"># blog/models.py</span>
+<span class="kw">from</span> django.db <span class="kw">import</span> models
+
+<span class="kw">class</span> <span class="cls">Author</span>(models.<span class="cls">Model</span>):
+    name = models.<span class="cls">CharField</span>(max_length=<span class="num">100</span>)
+
+<span class="kw">class</span> <span class="cls">Book</span>(models.<span class="cls">Model</span>):
+    title = models.<span class="cls">CharField</span>(max_length=<span class="num">200</span>)
+    author = models.<span class="cls">ForeignKey</span>(<span class="cls">Author</span>, on_delete=models.<span class="cls">CASCADE</span>)
+    published = models.<span class="cls">DateField</span>()</pre>
+    </div>
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-top: 0.7rem; margin-bottom: 0.3rem;">Migrations &amp; queries &mdash; SQL without writing SQL:</p>
+      <pre style="font-size: 0.78rem;">$ python manage.py makemigrations
+$ python manage.py migrate
+
+<span class="cm"># In Python:</span>
+recent = <span class="cls">Book</span>.objects.<span class="fn">filter</span>(published__year=<span class="num">2026</span>)
+<span class="kw">for</span> book <span class="kw">in</span> recent:
+    <span class="fn">print</span>(book.title, <span class="str">"&mdash;"</span>, book.author.name)</pre>
+    </div>
+  </div>
+</div>
+
+<!-- 34. Django URLs + Views -->
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Django</span> &mdash; URLs &amp; Views</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-bottom: 0.3rem;"><strong>urls.py</strong> &mdash; map URLs to view functions:</p>
+      <pre style="font-size: 0.78rem;"><span class="kw">from</span> django.urls <span class="kw">import</span> path
+<span class="kw">from</span> .views <span class="kw">import</span> book_list, book_detail
+
+urlpatterns = [
+    <span class="fn">path</span>(<span class="str">""</span>, book_list, name=<span class="str">"book-list"</span>),
+    <span class="fn">path</span>(<span class="str">"&lt;int:book_id&gt;/"</span>, book_detail, name=<span class="str">"book-detail"</span>),
+]
+<span class="cm"># mounted at /books/ in the project urls.py</span></pre>
+    </div>
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-top: 0.7rem; margin-bottom: 0.3rem;"><strong>views.py</strong> &mdash; business logic for each URL:</p>
+      <pre style="font-size: 0.78rem;"><span class="kw">from</span> django.shortcuts <span class="kw">import</span> render
+<span class="kw">from</span> .models <span class="kw">import</span> <span class="cls">Book</span>
+
+<span class="kw">def</span> <span class="fn">book_list</span>(request):
+    books = <span class="cls">Book</span>.objects.<span class="fn">all</span>()
+    <span class="kw">return</span> <span class="fn">render</span>(request, <span class="str">"books.html"</span>, {<span class="str">"books"</span>: books})</pre>
+      <p style="color: var(--muted); margin-top: 0.5rem; font-size: 0.85rem;">&#128073; Note: Django <strong>calls</strong> <code style="color: var(--cyan);">book_list(request)</code>. You never invoke it &mdash; that's <strong>IoC</strong>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 35. Django Templates -->
+<div class="slide reveal-slide">
+  <h2><span style="color: #34d399;">Django</span> &mdash; Templates (the T)</h2>
+  <div class="reveal-blocks">
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-bottom: 0.3rem;"><strong>templates/books.html</strong> &mdash; HTML with placeholders:</p>
+      <pre style="font-size: 0.78rem;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Book List&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Books&lt;/h1&gt;
+  &lt;ul&gt;
+    {% for book in books %}
+      &lt;li&gt;{{ book.title }} &mdash; {{ book.author.name }}&lt;/li&gt;
+    {% empty %}
+      &lt;li&gt;No books yet.&lt;/li&gt;
+    {% endfor %}
+  &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    </div>
+    <div class="reveal-block">
+      <p style="color: var(--muted); margin-top: 0.7rem; font-size: 0.9rem;">&#128218; <code style="color: var(--cyan);">{{ &hellip; }}</code> renders a value. <code style="color: var(--cyan);">{% &hellip; %}</code> runs logic (loops, conditions). HTML is <strong>auto-escaped</strong> &mdash; XSS protection by default.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============== SECTION: FLASK (alternative framework) ============== -->
+<div class="slide center" style="background: var(--surface);">
+  <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Alternative Framework</p>
+  <h2 style="font-size: 3rem; color: #f472b6;">Flask</h2>
+  <p style="color: var(--text); margin-top: 0.6rem; font-size: 1.1rem;">A <strong>microframework</strong> &mdash; small, flexible, opinionated about <em>nothing</em>.</p>
+</div>
+
+<!-- Flask intro -->
+<div class="slide">
+  <h2><span style="color: #f472b6;">Flask</span> &mdash; tiny by design</h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#129518; <strong>Microframework</strong> &mdash; minimal core, no required components</li>
+        <li>&#129512; Doesn't require a particular ORM, template engine, or auth system</li>
+        <li>&#128640; Easy to <strong>get started</strong> &mdash; "Hello World" in 7 lines</li>
+        <li>&#128296; You assemble your own stack &mdash; SQLAlchemy, Jinja2, Marshmallow&hellip;</li>
+      </ul>
+      <div class="callout" style="margin-top: 1rem;">Where Django says "<em>we packed everything</em>", Flask says "<em>here's a router; bring your own everything</em>".</div>
+    </div>
+    <div class="visual">
+      <pre style="font-size: 0.78rem;"><span class="kw">from</span> flask <span class="kw">import</span> <span class="cls">Flask</span>
+
+app = <span class="cls">Flask</span>(__name__)
+
+@app.<span class="fn">route</span>(<span class="str">"/"</span>)
+<span class="kw">def</span> <span class="fn">home</span>():
+    <span class="kw">return</span> <span class="str">"Hello, world!"</span>
+
+@app.<span class="fn">route</span>(<span class="str">"/books/&lt;int:book_id&gt;"</span>)
+<span class="kw">def</span> <span class="fn">book</span>(book_id):
+    <span class="kw">return</span> <span class="str">f"Book </span>{book_id}<span class="str">"</span>
+
+<span class="kw">if</span> __name__ == <span class="str">"__main__"</span>:
+    app.<span class="fn">run</span>()</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Django vs Flask -->
+<div class="slide">
+  <h2><span style="color: #34d399;">Django</span> vs. <span style="color: #f472b6;">Flask</span></h2>
+  <div style="max-width: 880px;">
+    <table class="access-table" style="font-size: 0.95rem;">
+      <thead>
+        <tr><th>&nbsp;</th><th style="color: #34d399;">Django</th><th style="color: #f472b6;">Flask</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Philosophy</strong></td><td>Batteries included</td><td>Bring your own batteries</td></tr>
+        <tr><td><strong>Size</strong></td><td>Large &mdash; full-featured</td><td>Tiny core, plugins on top</td></tr>
+        <tr><td><strong>ORM</strong></td><td>Built-in (Django ORM)</td><td>None &mdash; pick SQLAlchemy or other</td></tr>
+        <tr><td><strong>Admin UI</strong></td><td>Auto-generated, free</td><td>None &mdash; build it yourself</td></tr>
+        <tr><td><strong>Best for</strong></td><td>CMS, complex apps, fast MVPs</td><td>APIs, microservices, prototypes</td></tr>
+        <tr><td><strong>Learning curve</strong></td><td>Steeper at first</td><td>Easy &mdash; harder later</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="text-align: center; margin-top: 1rem; color: var(--muted); font-size: 0.92rem;">&#128161; Also worth knowing: <strong>FastAPI</strong> &mdash; modern, async, type-hint-driven; <strong>Streamlit</strong> &mdash; data dashboards in pure Python.</p>
+</div>
+
+<!-- ============== SECTION: PYTHON AT SCALE ============== -->
+<div class="slide center" style="background: var(--surface);">
+  <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Section 3</p>
+  <h2 style="font-size: 3rem;">"<span style="color: var(--muted);">Python doesn't scale.</span>"</h2>
+  <p style="color: var(--muted); margin-top: 0.6rem; font-style: italic;">&mdash; somebody on the internet, probably</p>
+</div>
+
+<!-- 37. Myths -->
+<div class="slide">
+  <h2>The <span class="accent">Myths</span></h2>
+  <div style="max-width: 760px; margin-top: 0.6rem;">
+    <div style="background: var(--code-bg); border-left: 4px solid var(--accent); border-radius: 8px; padding: 0.9rem 1.2rem; margin-bottom: 0.7rem;">
+      <p style="font-size: 1.05rem; color: var(--heading);">&#10060; "Python is too slow."</p>
+    </div>
+    <div style="background: var(--code-bg); border-left: 4px solid var(--accent); border-radius: 8px; padding: 0.9rem 1.2rem; margin-bottom: 0.7rem;">
+      <p style="font-size: 1.05rem; color: var(--heading);">&#10060; "Python doesn't scale to millions of API requests."</p>
+    </div>
+    <div style="background: var(--code-bg); border-left: 4px solid var(--accent); border-radius: 8px; padding: 0.9rem 1.2rem; margin-bottom: 0.7rem;">
+      <p style="font-size: 1.05rem; color: var(--heading);">&#10060; "Python isn't concurrent / multi-threaded."</p>
+    </div>
+    <div style="background: var(--code-bg); border-left: 4px solid var(--accent); border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1.05rem; color: var(--heading);">&#10060; "No serious company uses Python at scale &mdash; only Java or Go."</p>
+    </div>
+    <p style="margin-top: 1.2rem; color: var(--muted); text-align: center; font-style: italic;">Let's look at the receipts.</p>
+  </div>
+</div>
+
+<!-- 38. Instagram -->
+<div class="slide">
+  <h2>&#128247; Instagram &mdash; <span class="accent">Python &amp; Django</span></h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#128197; Started on <strong>Django</strong> in 2010 &mdash; 2 weeks to launch, 5M users by summer 2011</li>
+        <li>&#128202; By 2016: <strong>95M photos &amp; videos</strong> uploaded daily, <strong>4.2B likes</strong>/day</li>
+        <li>&#128640; Tens of thousands of <strong>Django servers</strong>, globally distributed, fault-tolerant</li>
+        <li>&#128293; Still a <strong>monolithic Django codebase</strong> at its core</li>
+      </ul>
+      <div class="callout" style="margin-top: 1rem;">"Python doesn't scale" said no Instagram engineer ever.</div>
+    </div>
+    <div class="visual">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.6rem;">
+        <div class="scale-badge">95M uploads / day</div>
+        <div class="scale-badge">4.2B likes / day</div>
+        <div class="scale-badge">2B+ users</div>
+        <div class="scale-badge">PostgreSQL + Django ORM</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 39. Spotify, YouTube -->
+<div class="slide">
+  <h2>&#127925; Spotify &amp; &#128250; YouTube</h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div class="col" style="border-color: #34d399;">
+      <p style="font-size: 2rem;">&#127925;</p>
+      <h3 style="color: #34d399;">Spotify</h3>
+      <p style="font-size: 0.95rem;">Powers backend <strong>APIs</strong>, recommendations, data pipelines.</p>
+      <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.85rem;">Hundreds of millions of streams a day &mdash; Python in the hot path.</p>
+    </div>
+    <div class="col" style="border-color: var(--accent);">
+      <p style="font-size: 2rem;">&#128250;</p>
+      <h3 style="color: var(--accent);">YouTube</h3>
+      <p style="font-size: 0.95rem;">Started on PHP &mdash; <strong>migrated to Django</strong> &amp; Python.</p>
+      <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.85rem;">Billions of video views per day. Python at one of the largest scales in computing history.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 40. Google + Netflix -->
+<div class="slide">
+  <h2>&#128269; Google &amp; &#127916; Netflix</h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div class="col" style="border-color: #60a5fa;">
+      <p style="font-size: 2rem;">&#128269;</p>
+      <h3 style="color: #60a5fa;">Google</h3>
+      <p style="font-size: 0.95rem;">Python since the early days &mdash; web search internals, system administration, build tools.</p>
+      <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.85rem;">3.5B+ searches/day rely on infrastructure that includes Python.</p>
+    </div>
+    <div class="col" style="border-color: #ef4444;">
+      <p style="font-size: 2rem;">&#127916;</p>
+      <h3 style="color: var(--accent);">Netflix</h3>
+      <p style="font-size: 0.95rem;">Server-side <strong>data analysis</strong>, security automation, risk classification, alerting.</p>
+      <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.85rem;">Billions of streamed hours/month &mdash; Python in pipelines &amp; ops.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 41. NASA -->
+<div class="slide">
+  <h2>&#128640; NASA &mdash; <span class="accent">Python in Space</span></h2>
+  <div class="layout">
+    <div class="text">
+      <p style="margin-bottom: 1rem;">NASA uses Python for:</p>
+      <ul>
+        <li>&#128202; Data analysis &amp; scientific computing</li>
+        <li>&#129520; Simulations and computational modeling</li>
+        <li>&#128279; System integration &amp; automation</li>
+        <li>&#128737;&#65039; Mission-critical software in Mars Rover navigation</li>
+        <li>&#128293; ARES Division &mdash; Atmospheric Reentry Engineering Simulation</li>
+      </ul>
+      <div class="callout" style="margin-top: 1rem;">If Python is reliable enough for <strong>landing on Mars</strong>, it is probably reliable enough for your CRUD app.</div>
+    </div>
+    <div class="visual" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+      <p style="font-size: 5rem; line-height: 1;">&#128752;</p>
+      <p style="text-align: center; color: var(--muted); font-style: italic;">From Mars rovers<br>to your laptop.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 44. Choosing -->
+<div class="slide">
+  <h2>How to <span class="accent">choose</span></h2>
+  <div class="three-col" style="margin-top: 1.2rem;">
+    <div class="col" style="border-color: #22d3ee; text-align: center;">
+      <p style="font-size: 2.2rem;">&#128218;</p>
+      <h3 style="color: #22d3ee;">Pick a library</h3>
+      <p style="font-size: 0.9rem;">when you need a <strong>specific capability</strong>: charts, HTTP, dates, dataframes.</p>
+    </div>
+    <div class="col" style="border-color: #fbbf24; text-align: center;">
+      <p style="font-size: 2.2rem;">&#127981;</p>
+      <h3 style="color: #fbbf24;">Pick a framework</h3>
+      <p style="font-size: 0.9rem;">when you need <strong>structure</strong> for an entire application: web app, REST API, ML pipeline.</p>
+    </div>
+    <div class="col" style="border-color: #f472b6; text-align: center;">
+      <p style="font-size: 2.2rem;">&#128293;</p>
+      <h3 style="color: #f472b6;">Combine them</h3>
+      <p style="font-size: 0.9rem;">A real app uses both: <strong>Django + pandas + requests</strong> is a normal day.</p>
+    </div>
+  </div>
+  <div class="callout" style="margin-top: 1.5rem;">&#128161; Don't pick a framework on day 1 of an idea. Start with a library; reach for a framework when the structure starts repeating.</div>
+</div>
+
+<!-- 45. Pros / Cons of frameworks -->
+<div class="slide">
+  <h2>Frameworks &mdash; <span class="accent">Pros &amp; Cons</span></h2>
+  <div class="two-col" style="margin-top: 1rem;">
+    <div class="col" style="border-color: var(--green);">
+      <h3 style="color: var(--green);">&#9989; Pros</h3>
+      <ul style="font-size: 0.9rem;">
+        <li><strong>Speed</strong> &mdash; ship features in days, not weeks</li>
+        <li><strong>Convention over configuration</strong> &mdash; less bikeshedding</li>
+        <li><strong>Security defaults</strong> &mdash; XSS, CSRF, SQL injection</li>
+        <li><strong>Ecosystem</strong> &mdash; plugins for everything</li>
+        <li><strong>Hire-friendly</strong> &mdash; new devs onboard fast</li>
+      </ul>
+    </div>
+    <div class="col" style="border-color: var(--accent);">
+      <h3 style="color: var(--accent);">&#10060; Cons</h3>
+      <ul style="font-size: 0.9rem;">
+        <li><strong>Lock-in</strong> &mdash; migrating away is painful</li>
+        <li><strong>Magic</strong> &mdash; "how did that route get registered?"</li>
+        <li><strong>Opinionated</strong> &mdash; you bend to its conventions</li>
+        <li><strong>Heavy</strong> for small projects</li>
+        <li><strong>Learning curve</strong> &mdash; multiple concepts at once</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 46. Practical tips -->
+<div class="slide reveal-slide">
+  <h2>Practical <span class="accent">Tips</span></h2>
+  <div class="reveal-blocks" style="max-width: 880px;">
+    <div class="reveal-block" style="margin-bottom: 0.7rem; background: var(--code-bg); border-left: 4px solid var(--green); border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>&#128230; Use a virtual environment</strong></p>
+      <pre style="font-size: 0.8rem; margin-top: 0.4rem;">python -m venv .venv
+source .venv/bin/activate    <span class="cm"># on Linux/macOS</span>
+.venv\Scripts\activate       <span class="cm"># on Windows</span>
+pip install -r requirements.txt</pre>
+    </div>
+    <div class="reveal-block" style="margin-bottom: 0.7rem; background: var(--code-bg); border-left: 4px solid #fbbf24; border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>&#128301; Pin your versions</strong></p>
+      <p style="margin-top: 0.3rem; color: var(--muted); font-size: 0.9rem;"><code style="color: var(--cyan);">requests==2.32.3</code>, not <code style="color: var(--cyan);">requests</code>. Reproducibility &gt; convenience. Modern tools: <strong>uv</strong>, <strong>poetry</strong>, <strong>pdm</strong>.</p>
+    </div>
+    <div class="reveal-block" style="background: var(--code-bg); border-left: 4px solid #22d3ee; border-radius: 8px; padding: 0.9rem 1.2rem;">
+      <p style="font-size: 1rem; color: var(--heading);"><strong>&#128214; Read the changelog before upgrading</strong></p>
+      <p style="margin-top: 0.3rem; color: var(--muted); font-size: 0.9rem;">Major-version bumps almost always have breaking changes. Pin in CI. Update one library at a time.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 47. Key takeaways -->
+<div class="slide">
+  <h2>Key <span class="accent">Takeaways</span></h2>
+  <div style="max-width: 760px; margin-top: 0.6rem;">
+    <ul>
+      <li>&#128218; <strong>Library</strong> &mdash; you call its code (a toolbox)</li>
+      <li>&#127981; <strong>Framework</strong> &mdash; it calls your code (a skeleton)</li>
+      <li>&#128526; The Hollywood principle: "<em>Don't call us, we'll call you</em>"</li>
+      <li>&#128202; Python's libraries cover almost any domain &mdash; numpy, pandas, requests, matplotlib, datetime, pytest&hellip;</li>
+      <li>&#127759; Django = batteries-included; Flask = minimalist; FastAPI = modern async</li>
+      <li>&#128640; Python <em>does</em> scale &mdash; ask Instagram, Netflix, Google, NASA</li>
+      <li>&#129520; Choose libraries for capabilities, frameworks for structure &mdash; combine freely</li>
+    </ul>
+  </div>
+  <div class="callout" style="margin-top: 1.5rem; max-width: 760px;">Next up: <strong>Lecture 12 &mdash; Recap &amp; Exam Consultation</strong>. We'll review the whole semester and prepare for the exam.</div>
+</div>
+
+<!-- 48. Closing slide -->
+<div class="slide center" style="background: var(--surface);">
+  <p style="color: var(--accent); font-size: 0.9rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Visma values</p>
+  <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; max-width: 700px; margin-top: 0.5rem;">
+    <p style="font-size: 1.4rem; color: var(--heading); font-weight: 600;">Entrepreneurial</p>
+    <p style="font-size: 1.4rem; color: var(--heading); font-weight: 600;">Responsible</p>
+    <p style="font-size: 1.4rem; color: var(--heading); font-weight: 600;">Dedicated</p>
+    <p style="font-size: 1.4rem; color: var(--heading); font-weight: 600;">Inclusive</p>
+  </div>
+  <p style="color: var(--muted); margin-top: 2rem; font-style: italic;">Champions of cloud software</p>
+  <p style="color: var(--muted); margin-top: 2.5rem; font-size: 0.9rem;">Thank you &mdash; questions?</p>
+</div>
+
+<div class="nav">
+  <button id="skip-quiz" class="skip-quiz" onclick="skipQuiz()">Skip Quiz &nbsp;&#9654;</button>
+  <button id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode" style="font-size: 1.2rem;">&#9788;</button>
+  <button id="prev" onclick="navigate(-1)">&lsaquo;</button>
+  <span class="counter" id="counter"></span>
+  <button id="next" onclick="navigate(1)">&rsaquo;</button>
+</div>
+
+<script src="shared.js"></script>
+<script>
+(function() {
+  var origShow = show;
+  show = function(i) {
+    origShow(i);
+    var s = document.querySelectorAll('.slide')[current];
+    if (s.classList.contains('reveal-slide') && !s.classList.contains('step-1')) {
+      s.classList.add('step-1');
+    }
+  };
+  var origNavigate = navigate;
+  navigate = function(d) {
+    var s = document.querySelectorAll('.slide')[current];
+    if (d === 1 && s.classList.contains('reveal-slide')) {
+      if (!s.classList.contains('step-2')) { s.classList.add('step-2'); return; }
+      if (!s.classList.contains('step-3')) { s.classList.add('step-3'); return; }
+    }
+    origNavigate(d);
+  };
+  var hash = parseInt(location.hash.replace('#', ''), 10);
+  if (hash > 0 && hash <= total) show(hash - 1);
+  window.addEventListener('hashchange', function() {
+    var h = parseInt(location.hash.replace('#', ''), 10);
+    if (h > 0 && h <= total) show(h - 1);
+  });
+  var origShow2 = show;
+  show = function(i) {
+    origShow2(i);
+    history.replaceState(null, '', '#' + (current + 1));
+  };
+})();
+</script>
+</body>
+</html>
