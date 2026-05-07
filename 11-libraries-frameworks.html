@@ -329,38 +329,8 @@ db.fetch.<span class="fn">assert_called_once_with</span>(<span class="num">1</sp
       <p style="margin-top: 0.3rem; color: var(--muted); font-size: 0.9rem;">Every library has docs with parameters, return values, examples. Bookmark them.</p>
     </div>
     <div class="reveal-block" style="background: var(--code-bg); border-left: 4px solid #a78bfa; border-radius: 8px; padding: 0.9rem 1.2rem;">
-      <p style="font-size: 1rem; color: var(--heading);"><strong>3. &#9881;&#65039; Use it &mdash; and manage your dependencies</strong></p>
-      <p style="margin-top: 0.3rem; color: var(--muted); font-size: 0.9rem;">Call its functions/classes like your own code. Then pin versions with <code style="color: var(--cyan);">pip</code>, <code style="color: var(--cyan);">uv</code>, or <code style="color: var(--cyan);">poetry</code> &mdash; <code style="color: var(--cyan);">requirements.txt</code> or <code style="color: var(--cyan);">pyproject.toml</code>. Reproducibility matters.</p>
-    </div>
-  </div>
-</div>
-
-<!-- 8b. Install & isolate — practical pip + venv -->
-<div class="slide">
-  <h2><span class="accent">Install</span> &amp; isolate</h2>
-  <div class="layout">
-    <div class="text">
-      <ul>
-        <li>&#128230; <strong>Virtual environment</strong> &mdash; one project, one set of versions</li>
-        <li>&#128202; <strong><code style="color: var(--cyan);">pip install</code></strong> &mdash; pulls from PyPI (500k+ packages)</li>
-        <li>&#128193; <strong><code style="color: var(--cyan);">requirements.txt</code></strong> &mdash; classic, one package per line</li>
-        <li>&#128221; <strong><code style="color: var(--cyan);">pyproject.toml</code></strong> &mdash; modern, used by <code>uv</code>, <code>poetry</code>, <code>pdm</code></li>
-      </ul>
-      <div class="callout" style="margin-top: 1rem;">Never <code>pip install</code> globally on your laptop. Always activate a venv first.</div>
-    </div>
-    <div class="visual">
-      <pre style="font-size: 0.78rem;"><span class="cm"># 1. create &amp; activate a venv</span>
-$ python -m venv .venv
-$ source .venv/bin/activate
-
-<span class="cm"># 2. install what you need</span>
-$ pip install requests pandas
-
-<span class="cm"># 3. lock it for teammates</span>
-$ pip freeze &gt; requirements.txt
-
-<span class="cm"># later: same setup, anywhere</span>
-$ pip install -r requirements.txt</pre>
+      <p style="font-size: 1rem; color: var(--heading);"><strong>3. &#9881;&#65039; Use it</strong> &mdash; call its functions and classes like your own code</p>
+      <p style="margin-top: 0.3rem; color: var(--muted); font-size: 0.9rem;">Install with <code style="color: var(--cyan);">pip install &lt;name&gt;</code> &mdash; that's all you need to get started.</p>
     </div>
   </div>
 </div>
@@ -1365,28 +1335,6 @@ app = <span class="cls">FastAPI</span>()
         <li><strong>Heavy</strong> for small projects</li>
         <li><strong>Learning curve</strong> &mdash; multiple concepts at once</li>
       </ul>
-    </div>
-  </div>
-</div>
-
-<!-- 46. Practical tips -->
-<div class="slide reveal-slide">
-  <h2>Practical <span class="accent">Tips</span></h2>
-  <div class="reveal-blocks" style="max-width: 880px;">
-    <div class="reveal-block" style="margin-bottom: 0.7rem; background: var(--code-bg); border-left: 4px solid var(--green); border-radius: 8px; padding: 0.9rem 1.2rem;">
-      <p style="font-size: 1rem; color: var(--heading);"><strong>&#128230; Use a virtual environment</strong></p>
-      <pre style="font-size: 0.8rem; margin-top: 0.4rem;">python -m venv .venv
-source .venv/bin/activate    <span class="cm"># on Linux/macOS</span>
-.venv\Scripts\activate       <span class="cm"># on Windows</span>
-pip install -r requirements.txt</pre>
-    </div>
-    <div class="reveal-block" style="margin-bottom: 0.7rem; background: var(--code-bg); border-left: 4px solid #fbbf24; border-radius: 8px; padding: 0.9rem 1.2rem;">
-      <p style="font-size: 1rem; color: var(--heading);"><strong>&#128301; Pin your versions</strong></p>
-      <p style="margin-top: 0.3rem; color: var(--muted); font-size: 0.9rem;"><code style="color: var(--cyan);">requests==2.32.3</code>, not <code style="color: var(--cyan);">requests</code>. Reproducibility &gt; convenience. Modern tools: <strong>uv</strong>, <strong>poetry</strong>, <strong>pdm</strong>.</p>
-    </div>
-    <div class="reveal-block" style="background: var(--code-bg); border-left: 4px solid #22d3ee; border-radius: 8px; padding: 0.9rem 1.2rem;">
-      <p style="font-size: 1rem; color: var(--heading);"><strong>&#128214; Read the changelog before upgrading</strong></p>
-      <p style="margin-top: 0.3rem; color: var(--muted); font-size: 0.9rem;">Major-version bumps almost always have breaking changes. Pin in CI. Update one library at a time.</p>
     </div>
   </div>
 </div>
