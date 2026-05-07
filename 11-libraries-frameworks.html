@@ -377,7 +377,7 @@ db.fetch.<span class="fn">assert_called_once_with</span>(<span class="num">1</sp
 
 <!-- 10. matplotlib -->
 <div class="slide">
-  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/matplotlib.svg" alt="matplotlib logo" style="height: 1.4em;"><span style="color: #22d3ee;">matplotlib</span> &mdash; plotting</h2>
+  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/matplotlib.svg" alt="matplotlib logo" style="height: 1.4em;"><span style="color: #22d3ee;">matplotlib</span> &mdash; plotting <a href="https://matplotlib.org/" target="_blank" rel="noopener" style="color: var(--muted); font-size: 0.7em; font-weight: 400; text-decoration: none; margin-left: auto;">&#128279; matplotlib.org</a></h2>
   <div class="layout">
     <div class="text">
       <p>A plotting library for <strong>static, animated, and interactive</strong> visualizations in Python.</p>
@@ -389,23 +389,19 @@ db.fetch.<span class="fn">assert_called_once_with</span>(<span class="num">1</sp
       <div class="callout" style="margin-top: 1.2rem;">If you've ever seen a Python chart in a paper, blog, or notebook &mdash; it's almost certainly matplotlib.</div>
     </div>
     <div class="visual">
-      <pre style="font-size: 0.78rem;"><span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
-
-x = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>]
-y = [<span class="num">1</span>, <span class="num">4</span>, <span class="num">9</span>, <span class="num">16</span>, <span class="num">25</span>]
-
-plt.<span class="fn">plot</span>(x, y, marker=<span class="str">"o"</span>)
-plt.<span class="fn">title</span>(<span class="str">"y = x&sup2;"</span>)
-plt.<span class="fn">xlabel</span>(<span class="str">"x"</span>)
-plt.<span class="fn">ylabel</span>(<span class="str">"y"</span>)
-plt.<span class="fn">show</span>()</pre>
+      <img src="assets/matplotlib-example.png" alt="matplotlib chart example" style="max-width: 100%; max-height: 440px; border-radius: 8px; background: white; padding: 8px;">
     </div>
   </div>
 </div>
 
+<!-- 10b. matplotlib gallery — full screen -->
+<div class="slide" style="padding: 0;">
+  <img src="assets/matplotlib-gallery.png" alt="matplotlib gallery — collection of chart styles" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: white;">
+</div>
+
 <!-- 11. numpy -->
 <div class="slide">
-  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/numpy.svg" alt="numpy logo" style="height: 1.4em;"><span style="color: #fbbf24;">numpy</span> &mdash; arrays &amp; math</h2>
+  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/numpy.svg" alt="numpy logo" style="height: 1.4em;"><span style="color: #fbbf24;">numpy</span> &mdash; arrays &amp; math <a href="https://numpy.org/doc/stable/" target="_blank" rel="noopener" style="color: var(--muted); font-size: 0.7em; font-weight: 400; text-decoration: none; margin-left: auto;">&#128279; numpy.org</a></h2>
   <div class="layout">
     <div class="text">
       <p><strong>numpy</strong> is the fundamental package for scientific computing in Python.</p>
@@ -429,15 +425,22 @@ x[<span class="num">1</span>:, ::<span class="num">2</span>] = <span class="num"
 x.<span class="fn">max</span>(axis=<span class="num">1</span>)
 <span class="cm"># array([ 4,  8, 13])</span>
 
-rng = np.random.<span class="fn">default_rng</span>()
-samples = rng.<span class="fn">normal</span>(size=<span class="num">2500</span>)</pre>
+<span class="cm"># vectorized math &mdash; one operation, every element</span>
+prices = np.<span class="fn">array</span>([<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>, <span class="num">40</span>])
+prices * <span class="num">1.21</span>      <span class="cm"># add 21% VAT to every price</span>
+<span class="cm"># array([12.1, 24.2, 36.3, 48.4])</span>
+
+<span class="cm"># stats over a whole array, no for-loop</span>
+grades = np.<span class="fn">array</span>([<span class="num">72</span>, <span class="num">85</span>, <span class="num">49</span>, <span class="num">91</span>, <span class="num">60</span>])
+grades.<span class="fn">mean</span>()              <span class="cm"># 71.4</span>
+(grades &gt;= <span class="num">50</span>).<span class="fn">sum</span>()       <span class="cm"># 4 students passed</span></pre>
     </div>
   </div>
 </div>
 
 <!-- 12. requests -->
 <div class="slide">
-  <h2><span style="color: #a78bfa;">requests</span> &mdash; HTTP for humans</h2>
+  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><span style="color: #a78bfa;">requests</span> &mdash; HTTP for humans <a href="https://requests.readthedocs.io/" target="_blank" rel="noopener" style="color: var(--muted); font-size: 0.7em; font-weight: 400; text-decoration: none; margin-left: auto;">&#128279; requests.readthedocs.io</a></h2>
   <div class="layout">
     <div class="text">
       <p>Makes HTTP &amp; HTTPS requests a breeze. Functions for interacting with web APIs and managing responses.</p>
@@ -465,7 +468,7 @@ response = requests.<span class="fn">get</span>(url)
 
 <!-- 13. datetime -->
 <div class="slide">
-  <h2><span style="color: #f472b6;">datetime</span> &mdash; dates &amp; times</h2>
+  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><span style="color: #f472b6;">datetime</span> &mdash; dates &amp; times <a href="https://docs.python.org/3/library/datetime.html" target="_blank" rel="noopener" style="color: var(--muted); font-size: 0.7em; font-weight: 400; text-decoration: none; margin-left: auto;">&#128279; docs.python.org</a></h2>
   <div class="layout">
     <div class="text">
       <p>A <strong>standard library</strong> module &mdash; no install needed. Handles dates, times, durations, time zones.</p>
@@ -496,7 +499,7 @@ delta = now - dt
 
 <!-- 14. unittest / pytest -->
 <div class="slide">
-  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/pytest.svg" alt="pytest logo" style="height: 1.4em;"><span class="accent">unittest</span> &amp; <span class="accent">pytest</span> &mdash; testing</h2>
+  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/pytest.svg" alt="pytest logo" style="height: 1.4em;"><span class="accent">unittest</span> &amp; <span class="accent">pytest</span> &mdash; testing <a href="https://docs.pytest.org/" target="_blank" rel="noopener" style="color: var(--muted); font-size: 0.7em; font-weight: 400; text-decoration: none; margin-left: auto;">&#128279; docs.pytest.org</a></h2>
   <div class="two-col" style="margin-top: 1rem;">
     <div class="col" style="border-color: #818cf8;">
       <p class="lib-badge" style="background: rgba(129, 140, 248, 0.15); color: #818cf8;">stdlib</p>
@@ -532,6 +535,7 @@ delta = now - dt
   <h2 style="font-size: 3rem; color: #34d399;">pandas</h2>
   <p style="color: var(--text); margin-top: 0.8rem; font-size: 1.1rem;">A superpower for working with <strong>tables of data</strong>.</p>
   <p style="color: var(--muted); margin-top: 0.4rem; font-style: italic;">Excel, supercharged. With code.</p>
+  <a href="https://pandas.pydata.org/docs/" target="_blank" rel="noopener" style="display: inline-block; margin-top: 1.2rem; color: var(--muted); font-size: 0.95rem; text-decoration: none;">&#128279; pandas.pydata.org</a>
 </div>
 
 <!-- 16. Pandas overview -->
@@ -927,6 +931,7 @@ df_cars[<span class="str">"Depreciation"</span>] = (
   <img src="assets/logos/django.svg" alt="Django logo" style="height: 90px; margin: 0.4rem 0 0.4rem;">
   <p style="color: var(--text); margin-top: 0.4rem; font-size: 1.1rem;">A high-level web framework for <strong>perfectionists with deadlines</strong>.</p>
   <p style="color: var(--muted); margin-top: 0.4rem; font-style: italic;">Concept &rarr; production, fast.</p>
+  <a href="https://docs.djangoproject.com/" target="_blank" rel="noopener" style="display: inline-block; margin-top: 1.2rem; color: var(--muted); font-size: 0.95rem; text-decoration: none;">&#128279; docs.djangoproject.com</a>
 </div>
 
 <!-- 31. Django key features -->
@@ -1090,6 +1095,7 @@ urlpatterns = [
   <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Alternative Framework</p>
   <img src="assets/logos/flask.svg" alt="Flask logo" style="height: 110px; margin: 0.4rem 0 0.4rem;">
   <p style="color: var(--text); margin-top: 0.4rem; font-size: 1.1rem;">A <strong>microframework</strong> &mdash; small, flexible, opinionated about <em>nothing</em>.</p>
+  <a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener" style="display: inline-block; margin-top: 1.2rem; color: var(--muted); font-size: 0.95rem; text-decoration: none;">&#128279; flask.palletsprojects.com</a>
 </div>
 
 <!-- Flask intro -->
@@ -1126,7 +1132,7 @@ app = <span class="cls">Flask</span>(__name__)
 
 <!-- FastAPI spotlight -->
 <div class="slide">
-  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/fastapi.svg" alt="FastAPI logo" style="height: 1.5em;"> &mdash; modern &amp; async</h2>
+  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/fastapi.svg" alt="FastAPI logo" style="height: 1.5em;"> &mdash; modern &amp; async <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener" style="color: var(--muted); font-size: 0.7em; font-weight: 400; text-decoration: none; margin-left: auto;">&#128279; fastapi.tiangolo.com</a></h2>
   <div class="layout">
     <div class="text">
       <ul>
