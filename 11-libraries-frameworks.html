@@ -335,6 +335,36 @@ db.fetch.<span class="fn">assert_called_once_with</span>(<span class="num">1</sp
   </div>
 </div>
 
+<!-- 8b. Install & isolate — practical pip + venv -->
+<div class="slide">
+  <h2><span class="accent">Install</span> &amp; isolate</h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#128230; <strong>Virtual environment</strong> &mdash; one project, one set of versions</li>
+        <li>&#128202; <strong><code style="color: var(--cyan);">pip install</code></strong> &mdash; pulls from PyPI (500k+ packages)</li>
+        <li>&#128193; <strong><code style="color: var(--cyan);">requirements.txt</code></strong> &mdash; classic, one package per line</li>
+        <li>&#128221; <strong><code style="color: var(--cyan);">pyproject.toml</code></strong> &mdash; modern, used by <code>uv</code>, <code>poetry</code>, <code>pdm</code></li>
+      </ul>
+      <div class="callout" style="margin-top: 1rem;">Never <code>pip install</code> globally on your laptop. Always activate a venv first.</div>
+    </div>
+    <div class="visual">
+      <pre style="font-size: 0.78rem;"><span class="cm"># 1. create &amp; activate a venv</span>
+$ python -m venv .venv
+$ source .venv/bin/activate
+
+<span class="cm"># 2. install what you need</span>
+$ pip install requests pandas
+
+<span class="cm"># 3. lock it for teammates</span>
+$ pip freeze &gt; requirements.txt
+
+<span class="cm"># later: same setup, anywhere</span>
+$ pip install -r requirements.txt</pre>
+    </div>
+  </div>
+</div>
+
 <!-- 9. The Python ecosystem (overview) -->
 <div class="slide">
   <h2>Python's <span class="accent">Ecosystem</span></h2>
@@ -1089,7 +1119,7 @@ urlpatterns = [
         <li>&#129518; <strong>Microframework</strong> &mdash; minimal core, no required components</li>
         <li>&#129512; Doesn't require a particular ORM, template engine, or auth system</li>
         <li>&#128640; Easy to <strong>get started</strong> &mdash; "Hello World" in 7 lines</li>
-        <li>&#128296; You assemble your own stack &mdash; SQLAlchemy, Jinja2, Marshmallow&hellip;</li>
+        <li>&#128296; You assemble your own stack &mdash; <strong>SQLAlchemy</strong> (ORM), <strong>Jinja2</strong> (templates), <strong>Marshmallow</strong> (serialization)</li>
       </ul>
       <div class="callout" style="margin-top: 1rem;">Where Django says "<em>we packed everything</em>", Flask says "<em>here's a router; bring your own everything</em>".</div>
     </div>
@@ -1112,6 +1142,39 @@ app = <span class="cls">Flask</span>(__name__)
   </div>
 </div>
 
+<!-- FastAPI spotlight -->
+<div class="slide">
+  <h2><span style="color: #22d3ee;">FastAPI</span> &mdash; modern &amp; async</h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#9889; <strong>Async-first</strong> &mdash; built on Starlette &amp; ASGI</li>
+        <li>&#129534; <strong>Type hints drive everything</strong> &mdash; validation, docs, serialization</li>
+        <li>&#128221; <strong>Auto-generated OpenAPI / Swagger</strong> docs &mdash; no extra setup</li>
+        <li>&#129518; Powered by <strong>pydantic</strong> &mdash; type-safe data models with runtime validation</li>
+      </ul>
+      <div class="callout" style="margin-top: 1rem;">Sweet spot for <strong>APIs and microservices</strong>. Used by Uber, Netflix, Microsoft for production services.</div>
+    </div>
+    <div class="visual">
+      <pre style="font-size: 0.78rem;"><span class="kw">from</span> fastapi <span class="kw">import</span> <span class="cls">FastAPI</span>
+<span class="kw">from</span> pydantic <span class="kw">import</span> <span class="cls">BaseModel</span>
+
+<span class="kw">class</span> <span class="cls">Book</span>(<span class="cls">BaseModel</span>):
+    title: <span class="cls">str</span>
+    pages: <span class="cls">int</span>
+
+app = <span class="cls">FastAPI</span>()
+
+@app.<span class="fn">post</span>(<span class="str">"/books"</span>)
+<span class="kw">async def</span> <span class="fn">create</span>(book: <span class="cls">Book</span>):
+    <span class="kw">return</span> {<span class="str">"id"</span>: <span class="num">1</span>, **book.<span class="fn">dict</span>()}
+
+<span class="cm"># pydantic validates body automatically</span>
+<span class="cm"># /docs gets you Swagger UI for free</span></pre>
+    </div>
+  </div>
+</div>
+
 <!-- Django vs Flask -->
 <div class="slide">
   <h2><span style="color: #34d399;">Django</span> vs. <span style="color: #f472b6;">Flask</span></h2>
@@ -1130,7 +1193,7 @@ app = <span class="cls">Flask</span>(__name__)
       </tbody>
     </table>
   </div>
-  <p style="text-align: center; margin-top: 1rem; color: var(--muted); font-size: 0.92rem;">&#128161; Also worth knowing: <strong>FastAPI</strong> &mdash; modern, async, type-hint-driven; <strong>Streamlit</strong> &mdash; data dashboards in pure Python.</p>
+  <p style="text-align: center; margin-top: 1rem; color: var(--muted); font-size: 0.92rem;">&#128161; Also worth knowing: <strong>Streamlit</strong> &mdash; data dashboards in pure Python.</p>
 </div>
 
 <!-- ============== SECTION: PYTHON AT SCALE ============== -->
@@ -1331,19 +1394,6 @@ pip install -r requirements.txt</pre>
     </ul>
   </div>
   <div class="callout" style="margin-top: 1.5rem; max-width: 760px;">Next up: <strong>Lecture 12 &mdash; Recap &amp; Exam Consultation</strong>. We'll review the whole semester and prepare for the exam.</div>
-</div>
-
-<!-- 48. Closing slide -->
-<div class="slide center" style="background: var(--surface);">
-  <p style="color: var(--accent); font-size: 0.9rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Visma values</p>
-  <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; max-width: 700px; margin-top: 0.5rem;">
-    <p style="font-size: 1.4rem; color: var(--heading); font-weight: 600;">Entrepreneurial</p>
-    <p style="font-size: 1.4rem; color: var(--heading); font-weight: 600;">Responsible</p>
-    <p style="font-size: 1.4rem; color: var(--heading); font-weight: 600;">Dedicated</p>
-    <p style="font-size: 1.4rem; color: var(--heading); font-weight: 600;">Inclusive</p>
-  </div>
-  <p style="color: var(--muted); margin-top: 2rem; font-style: italic;">Champions of cloud software</p>
-  <p style="color: var(--muted); margin-top: 2.5rem; font-size: 0.9rem;">Thank you &mdash; questions?</p>
 </div>
 
 <div class="nav">
