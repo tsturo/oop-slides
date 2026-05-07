@@ -370,22 +370,33 @@ $ pip install -r requirements.txt</pre>
   <h2>Python's <span class="accent">Ecosystem</span></h2>
   <div class="three-col" style="margin-top: 1.2rem;">
     <div class="col" style="border-color: #fbbf24;">
-      <p style="font-size: 2rem; margin-bottom: 0.4rem;">&#128202;</p>
       <h3 style="color: #fbbf24;">Data &amp; Science</h3>
+      <div style="display: flex; gap: 0.8rem; align-items: center; justify-content: center; margin: 0.6rem 0; flex-wrap: wrap;">
+        <img src="assets/logos/numpy.svg" alt="numpy" title="numpy" style="height: 28px;">
+        <img src="assets/logos/pandas.svg" alt="pandas" title="pandas" style="height: 32px;">
+        <img src="assets/logos/matplotlib.svg" alt="matplotlib" title="matplotlib" style="height: 28px;">
+      </div>
       <p style="font-size: 0.85rem;"><strong>numpy</strong> &middot; <strong>pandas</strong> &middot; <strong>scipy</strong></p>
       <p style="font-size: 0.85rem;"><strong>matplotlib</strong> &middot; <strong>seaborn</strong></p>
       <p style="font-size: 0.85rem;"><strong>scikit-learn</strong> &middot; <strong>pytorch</strong></p>
     </div>
     <div class="col" style="border-color: #a78bfa;">
-      <p style="font-size: 2rem; margin-bottom: 0.4rem;">&#127760;</p>
       <h3 style="color: #a78bfa;">Web &amp; Network</h3>
+      <div style="display: flex; gap: 0.8rem; align-items: center; justify-content: center; margin: 0.6rem 0; flex-wrap: wrap;">
+        <img src="assets/logos/django.svg" alt="Django" title="Django" style="height: 24px;">
+        <img src="assets/logos/flask.svg" alt="Flask" title="Flask" style="height: 28px;">
+        <img src="assets/logos/fastapi.svg" alt="FastAPI" title="FastAPI" style="height: 28px;">
+      </div>
       <p style="font-size: 0.85rem;"><strong>requests</strong> &middot; <strong>httpx</strong></p>
       <p style="font-size: 0.85rem;"><strong>beautifulsoup</strong> &middot; <strong>lxml</strong></p>
       <p style="font-size: 0.85rem;"><strong>websockets</strong> &middot; <strong>aiohttp</strong></p>
     </div>
     <div class="col" style="border-color: #34d399;">
-      <p style="font-size: 2rem; margin-bottom: 0.4rem;">&#128736;&#65039;</p>
       <h3 style="color: #34d399;">Tooling</h3>
+      <div style="display: flex; gap: 0.8rem; align-items: center; justify-content: center; margin: 0.6rem 0; flex-wrap: wrap;">
+        <img src="assets/logos/pytest.svg" alt="pytest" title="pytest" style="height: 32px;">
+        <img src="assets/logos/python.svg" alt="Python" title="Python" style="height: 32px;">
+      </div>
       <p style="font-size: 0.85rem;"><strong>pytest</strong> &middot; <strong>unittest</strong></p>
       <p style="font-size: 0.85rem;"><strong>black</strong> &middot; <strong>ruff</strong> &middot; <strong>mypy</strong></p>
       <p style="font-size: 0.85rem;"><strong>logging</strong> &middot; <strong>datetime</strong></p>
@@ -396,7 +407,7 @@ $ pip install -r requirements.txt</pre>
 
 <!-- 10. matplotlib -->
 <div class="slide">
-  <h2><span style="color: #22d3ee;">matplotlib</span> &mdash; plotting</h2>
+  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/matplotlib.svg" alt="matplotlib logo" style="height: 1.4em;"><span style="color: #22d3ee;">matplotlib</span> &mdash; plotting</h2>
   <div class="layout">
     <div class="text">
       <p>A plotting library for <strong>static, animated, and interactive</strong> visualizations in Python.</p>
@@ -424,7 +435,7 @@ plt.<span class="fn">show</span>()</pre>
 
 <!-- 11. numpy -->
 <div class="slide">
-  <h2><span style="color: #fbbf24;">numpy</span> &mdash; arrays &amp; math</h2>
+  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/numpy.svg" alt="numpy logo" style="height: 1.4em;"><span style="color: #fbbf24;">numpy</span> &mdash; arrays &amp; math</h2>
   <div class="layout">
     <div class="text">
       <p><strong>numpy</strong> is the fundamental package for scientific computing in Python.</p>
@@ -515,7 +526,7 @@ delta = now - dt
 
 <!-- 14. unittest / pytest -->
 <div class="slide">
-  <h2><span class="accent">unittest</span> &amp; <span class="accent">pytest</span> &mdash; testing</h2>
+  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/pytest.svg" alt="pytest logo" style="height: 1.4em;"><span class="accent">unittest</span> &amp; <span class="accent">pytest</span> &mdash; testing</h2>
   <div class="two-col" style="margin-top: 1rem;">
     <div class="col" style="border-color: #818cf8;">
       <p class="lib-badge" style="background: rgba(129, 140, 248, 0.15); color: #818cf8;">stdlib</p>
@@ -547,6 +558,7 @@ delta = now - dt
 <!-- 15. Pandas — section divider -->
 <div class="slide center" style="background: var(--surface);">
   <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Spotlight</p>
+  <img src="assets/logos/pandas.svg" alt="pandas logo" style="height: 110px; margin: 0.4rem 0 0.6rem;">
   <h2 style="font-size: 3rem; color: #34d399;">pandas</h2>
   <p style="color: var(--text); margin-top: 0.8rem; font-size: 1.1rem;">A superpower for working with <strong>tables of data</strong>.</p>
   <p style="color: var(--muted); margin-top: 0.4rem; font-style: italic;">Excel, supercharged. With code.</p>
@@ -942,8 +954,8 @@ df_cars[<span class="str">"Depreciation"</span>] = (
 <!-- ============== SECTION: DJANGO ============== -->
 <div class="slide center" style="background: var(--surface);">
   <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Spotlight</p>
-  <h2 style="font-size: 3rem; color: #34d399;">Django</h2>
-  <p style="color: var(--text); margin-top: 0.6rem; font-size: 1.1rem;">A high-level web framework for <strong>perfectionists with deadlines</strong>.</p>
+  <img src="assets/logos/django.svg" alt="Django logo" style="height: 90px; margin: 0.4rem 0 0.4rem;">
+  <p style="color: var(--text); margin-top: 0.4rem; font-size: 1.1rem;">A high-level web framework for <strong>perfectionists with deadlines</strong>.</p>
   <p style="color: var(--muted); margin-top: 0.4rem; font-style: italic;">Concept &rarr; production, fast.</p>
 </div>
 
@@ -1106,8 +1118,8 @@ urlpatterns = [
 <!-- ============== SECTION: FLASK (alternative framework) ============== -->
 <div class="slide center" style="background: var(--surface);">
   <p style="font-size: 0.9rem; color: var(--accent); font-weight: 600; letter-spacing: 3px; text-transform: uppercase;">Alternative Framework</p>
-  <h2 style="font-size: 3rem; color: #f472b6;">Flask</h2>
-  <p style="color: var(--text); margin-top: 0.6rem; font-size: 1.1rem;">A <strong>microframework</strong> &mdash; small, flexible, opinionated about <em>nothing</em>.</p>
+  <img src="assets/logos/flask.svg" alt="Flask logo" style="height: 110px; margin: 0.4rem 0 0.4rem;">
+  <p style="color: var(--text); margin-top: 0.4rem; font-size: 1.1rem;">A <strong>microframework</strong> &mdash; small, flexible, opinionated about <em>nothing</em>.</p>
 </div>
 
 <!-- Flask intro -->
@@ -1144,7 +1156,7 @@ app = <span class="cls">Flask</span>(__name__)
 
 <!-- FastAPI spotlight -->
 <div class="slide">
-  <h2><span style="color: #22d3ee;">FastAPI</span> &mdash; modern &amp; async</h2>
+  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/fastapi.svg" alt="FastAPI logo" style="height: 1.5em;"> &mdash; modern &amp; async</h2>
   <div class="layout">
     <div class="text">
       <ul>
@@ -1225,7 +1237,7 @@ app = <span class="cls">FastAPI</span>()
 
 <!-- 38. Instagram -->
 <div class="slide">
-  <h2>&#128247; Instagram &mdash; <span class="accent">Python &amp; Django</span></h2>
+  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/instagram.svg" alt="Instagram logo" style="height: 1.4em;"> Instagram &mdash; <span class="accent">Python &amp; Django</span></h2>
   <div class="layout">
     <div class="text">
       <ul>
@@ -1249,16 +1261,16 @@ app = <span class="cls">FastAPI</span>()
 
 <!-- 39. Spotify, YouTube -->
 <div class="slide">
-  <h2>&#127925; Spotify &amp; &#128250; YouTube</h2>
+  <h2>Spotify &amp; YouTube</h2>
   <div class="two-col" style="margin-top: 1rem;">
     <div class="col" style="border-color: #34d399;">
-      <p style="font-size: 2rem;">&#127925;</p>
+      <img src="assets/logos/spotify.svg" alt="Spotify logo" style="height: 60px; margin-bottom: 0.4rem;">
       <h3 style="color: #34d399;">Spotify</h3>
       <p style="font-size: 0.95rem;">Powers backend <strong>APIs</strong>, recommendations, data pipelines.</p>
       <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.85rem;">Hundreds of millions of streams a day &mdash; Python in the hot path.</p>
     </div>
     <div class="col" style="border-color: var(--accent);">
-      <p style="font-size: 2rem;">&#128250;</p>
+      <img src="assets/logos/youtube.svg" alt="YouTube logo" style="height: 60px; margin-bottom: 0.4rem;">
       <h3 style="color: var(--accent);">YouTube</h3>
       <p style="font-size: 0.95rem;">Started on PHP &mdash; <strong>migrated to Django</strong> &amp; Python.</p>
       <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.85rem;">Billions of video views per day. Python at one of the largest scales in computing history.</p>
@@ -1268,16 +1280,16 @@ app = <span class="cls">FastAPI</span>()
 
 <!-- 40. Google + Netflix -->
 <div class="slide">
-  <h2>&#128269; Google &amp; &#127916; Netflix</h2>
+  <h2>Google &amp; Netflix</h2>
   <div class="two-col" style="margin-top: 1rem;">
     <div class="col" style="border-color: #60a5fa;">
-      <p style="font-size: 2rem;">&#128269;</p>
+      <img src="assets/logos/google.svg" alt="Google logo" style="height: 60px; margin-bottom: 0.4rem;">
       <h3 style="color: #60a5fa;">Google</h3>
       <p style="font-size: 0.95rem;">Python since the early days &mdash; web search internals, system administration, build tools.</p>
       <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.85rem;">3.5B+ searches/day rely on infrastructure that includes Python.</p>
     </div>
     <div class="col" style="border-color: #ef4444;">
-      <p style="font-size: 2rem;">&#127916;</p>
+      <img src="assets/logos/netflix.svg" alt="Netflix logo" style="height: 60px; margin-bottom: 0.4rem;">
       <h3 style="color: var(--accent);">Netflix</h3>
       <p style="font-size: 0.95rem;">Server-side <strong>data analysis</strong>, security automation, risk classification, alerting.</p>
       <p style="margin-top: 0.5rem; color: var(--muted); font-size: 0.85rem;">Billions of streamed hours/month &mdash; Python in pipelines &amp; ops.</p>
@@ -1287,7 +1299,7 @@ app = <span class="cls">FastAPI</span>()
 
 <!-- 41. NASA -->
 <div class="slide">
-  <h2>&#128640; NASA &mdash; <span class="accent">Python in Space</span></h2>
+  <h2 style="display: flex; align-items: center; gap: 0.7rem;"><img src="assets/logos/nasa.svg" alt="NASA logo" style="height: 1.4em;"> NASA &mdash; <span class="accent">Python in Space</span></h2>
   <div class="layout">
     <div class="text">
       <p style="margin-bottom: 1rem;">NASA uses Python for:</p>
