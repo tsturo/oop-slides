@@ -1155,21 +1155,21 @@ app = <span class="cls">FastAPI</span>()
   </div>
 </div>
 
-<!-- Django vs Flask -->
+<!-- Django vs Flask vs FastAPI -->
 <div class="slide">
-  <h2><span style="color: #34d399;">Django</span> vs. <span style="color: #f472b6;">Flask</span></h2>
-  <div style="max-width: 880px;">
-    <table class="access-table" style="font-size: 0.95rem;">
+  <h2><span style="color: #34d399;">Django</span> vs. <span style="color: #f472b6;">Flask</span> vs. <span style="color: #22d3ee;">FastAPI</span></h2>
+  <div style="max-width: 1040px;">
+    <table class="access-table" style="font-size: 0.9rem;">
       <thead>
-        <tr><th>&nbsp;</th><th style="color: #34d399;">Django</th><th style="color: #f472b6;">Flask</th></tr>
+        <tr><th>&nbsp;</th><th style="color: #34d399;">Django</th><th style="color: #f472b6;">Flask</th><th style="color: #22d3ee;">FastAPI</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>Philosophy</strong></td><td>Batteries included</td><td>Bring your own batteries</td></tr>
-        <tr><td><strong>Size</strong></td><td>Large &mdash; full-featured</td><td>Tiny core, plugins on top</td></tr>
-        <tr><td><strong>ORM</strong></td><td>Built-in (Django ORM)</td><td>None &mdash; pick SQLAlchemy or other</td></tr>
-        <tr><td><strong>Admin UI</strong></td><td>Auto-generated, free</td><td>None &mdash; build it yourself</td></tr>
-        <tr><td><strong>Best for</strong></td><td>CMS, complex apps, fast MVPs</td><td>APIs, microservices, prototypes</td></tr>
-        <tr><td><strong>Learning curve</strong></td><td>Steeper at first</td><td>Easy &mdash; harder later</td></tr>
+        <tr><td><strong>Philosophy</strong></td><td>Batteries included</td><td>Bring your own batteries</td><td>Type-hint driven, async-first</td></tr>
+        <tr><td><strong>Size</strong></td><td>Large &mdash; full-featured</td><td>Tiny core, plugins on top</td><td>Lean &mdash; built on Starlette + pydantic</td></tr>
+        <tr><td><strong>ORM</strong></td><td>Built-in (Django ORM)</td><td>None &mdash; pick SQLAlchemy</td><td>None &mdash; SQLAlchemy or SQLModel</td></tr>
+        <tr><td><strong>Admin UI</strong></td><td>Auto-generated, free</td><td>None &mdash; build it yourself</td><td>None &mdash; auto Swagger/OpenAPI docs</td></tr>
+        <tr><td><strong>Best for</strong></td><td>CMS, complex apps, fast MVPs</td><td>Small services, prototypes</td><td>APIs, microservices, async</td></tr>
+        <tr><td><strong>Learning curve</strong></td><td>Steeper at first</td><td>Easy &mdash; harder later</td><td>Easy if you know type hints</td></tr>
       </tbody>
     </table>
   </div>
