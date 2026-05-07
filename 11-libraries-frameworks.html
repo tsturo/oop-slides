@@ -557,23 +557,15 @@ delta = now - dt
 <!-- 17. Pandas — data file -->
 <div class="slide">
   <h2><span style="color: #34d399;">pandas</span> &mdash; the example dataset</h2>
-  <p style="color: var(--muted); margin-bottom: 1rem;">Throughout the examples we'll use a <strong>cars.csv</strong> file:</p>
-  <div style="max-width: 780px;">
-    <table class="access-table" style="font-size: 0.9rem;">
-      <thead>
-        <tr><th>Make</th><th>Model</th><th>Year</th><th>Color</th><th>Mileage</th><th>Price</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Toyota</td><td>Corolla</td><td>2020</td><td>Black</td><td>45 000</td><td>15 500</td></tr>
-        <tr><td>Honda</td><td>Civic</td><td>2018</td><td>Red</td><td>62 000</td><td>13 200</td></tr>
-        <tr><td>Toyota</td><td>RAV4</td><td>2022</td><td>White</td><td>21 000</td><td>26 800</td></tr>
-        <tr><td>Ford</td><td>Focus</td><td>2019</td><td>Black</td><td>78 000</td><td>9 900</td></tr>
-        <tr><td>Honda</td><td>Accord</td><td>2021</td><td>Black</td><td>32 000</td><td>22 100</td></tr>
-        <tr><td>Ford</td><td>Mustang</td><td>2023</td><td>Red</td><td>8 500</td><td>41 700</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p style="margin-top: 1rem; color: var(--muted); font-size: 0.9rem;">&#128221; A <strong>DataFrame</strong> is essentially this: rows + named columns + types.</p>
+  <p style="color: var(--muted); margin-bottom: 1rem;">A CSV is just <strong>plain text</strong> &mdash; values separated by commas. Here's <strong>cars.csv</strong>:</p>
+  <pre style="font-size: 0.95rem; max-width: 780px;">Make,Model,Year,Color,Mileage,Price
+Toyota,Corolla,2020,Black,45000,15500
+Honda,Civic,2018,Red,62000,13200
+Toyota,RAV4,2022,White,21000,26800
+Ford,Focus,2019,Black,78000,9900
+Honda,Accord,2021,Black,32000,22100
+Ford,Mustang,2023,Red,8500,41700</pre>
+  <p style="margin-top: 1rem; color: var(--muted); font-size: 0.9rem;">&#128221; First line = column names. Each row below = one record. <code style="color: var(--cyan);">pd.read_csv()</code> turns this into a <strong>DataFrame</strong> &mdash; a table with named columns and types.</p>
 </div>
 
 <!-- 18. Pandas Example 1 — Load CSV -->
