@@ -418,7 +418,7 @@
     <li>&#128218; We revisit each of the <strong>10 core topics</strong> from the course</li>
     <li>&#128221; A few key recap slides per topic &mdash; copied straight from the original lectures</li>
     <li>&#10067; A short quiz after each topic to check your memory</li>
-    <li>&#127919; ~15 questions total &mdash; same format as the exam</li>
+    <li>&#127919; ~33 quiz questions &mdash; many are <strong>direct from the exam pool</strong>, others are very similar</li>
     <li>&#129504; Treat this as your last revision before the exam</li>
   </ul>
 </div>
@@ -428,7 +428,7 @@
 <div class="slide center" style="background: var(--surface);">
   <p style="color: var(--accent); font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Topic 1</p>
   <h1 style="color: var(--accent);">Classes & Objects</h1>
-  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then a quiz</p>
+  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then quizzes from the exam pool</p>
 </div>
 
 <div class="slide">
@@ -564,34 +564,46 @@ book2 = <span class="cls">Book</span>(<span class="str">"Refactoring"</span>, <s
 
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Classes & Objects &mdash; Constructor)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What is the purpose of <code>__init__</code>?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Destroys the object</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Initializes a new instance &mdash; sets up its attributes</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Returns the class name</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Creates a copy of the object</p></div>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Classes & Objects &mdash; Class)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">What is a class in programming?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) A specific instance of an object</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) A template for creating objects</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) A type of function in a program</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) A variable that holds data</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;"><strong>__init__</strong> is called automatically when you instantiate a class. It receives <code>self</code> + arguments and sets up the object's initial state.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">A class is a <strong>template</strong> (blueprint) for creating objects. Each object built from a class shares the same structure but has its own data.</p>
 </div>
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Classes & Objects &mdash; self)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What does <code>self</code> refer to?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) The class itself</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) The current instance of the class</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) The parent class</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) A global variable</p></div>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Classes & Objects &mdash; Object)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which statement best describes an object in OOP?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) A function that performs a specific task</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) A prototype for classes</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) An instance of a class</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) A collection of classes</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;"><strong>self</strong> is the specific object that called the method. Python passes it automatically &mdash; so <code>obj.method()</code> becomes <code>Class.method(obj)</code>.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">An object is an <strong>instance of a class</strong>. The class defines the structure; the object holds the actual data and can call the methods.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Classes & Objects &mdash; OOP Pillars)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which of these is NOT one of the four pillars of OOP?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Encapsulation</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Abstraction</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) Compilation</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Polymorphism</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">The four pillars are <strong>Abstraction, Encapsulation, Inheritance, Polymorphism</strong>. Compilation is unrelated &mdash; it's a build step, not an OOP concept.</p>
 </div>
 
 <!-- ====== SECTION: TOPIC 2 ====== -->
 <div class="slide center" style="background: var(--surface);">
   <p style="color: var(--green); font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Topic 2</p>
-  <h1 style="color: var(--green);">Encapsulation</h1>
-  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then a quiz</p>
+  <h1 style="color: var(--green);">Encapsulation & Access Control</h1>
+  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then quizzes from the exam pool</p>
 </div>
 
 <div class="slide">
@@ -768,34 +780,46 @@ c = <span class="cls">Circle</span>(<span class="num">5</span>)
 
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Encapsulation &mdash; Naming)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What does a single underscore prefix (<code>_name</code>) signal in Python?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Python forbids access to this attribute</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Convention: protected &mdash; internal use only</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) It triggers name mangling</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) It makes the attribute static</p></div>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Encapsulation & Access Control &mdash; Definition)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">What does encapsulation refer to in object-oriented programming?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) The process of inheriting properties from a base class</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) The practice of keeping data and the methods that modify it together within a class</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Dividing a program into multiple distinct classes</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) The interaction between different objects</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;">Python doesn't enforce access control. A single underscore is a <strong>convention</strong> meaning &laquo;please don't touch from outside&raquo;. Double underscore (<code>__name</code>) triggers name mangling.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Encapsulation</strong> bundles data + the methods that operate on that data inside a single class &mdash; and hides internals from outside code.</p>
 </div>
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Encapsulation &mdash; @property)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What does <code>@property</code> let you do?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Make an attribute read-only forever</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Run validation/logic on attribute access &mdash; while keeping <code>obj.x</code> syntax</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Convert a method into a class method</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Inherit from a parent class</p></div>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Encapsulation & Access Control &mdash; Private)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">In Python, which prefix is used to declare a private variable?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) private</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) protect</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) <code>__</code> (double underscore)</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) <code>private:</code></p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;"><strong>@property</strong> turns a method into a getter. With a paired <code>@x.setter</code> you can validate writes &mdash; all without breaking the simple <code>obj.x</code> interface.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">Python uses naming conventions: a <strong>double underscore prefix</strong> triggers name-mangling (private-ish). Single underscore <code>_x</code> is just a convention for &laquo;protected&raquo;.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Encapsulation & Access Control &mdash; Access)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">How are private variables of a Python class typically accessed from outside?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Directly by their name</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) They cannot be accessed at all</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Through reflection library functions</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>D) Through public methods (getters / setters) defined in the class</strong></p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">The Pythonic way: expose <strong>public methods</strong> (or <code>@property</code>) that act as getters/setters. This keeps the internal data hidden and gives you a place to validate writes.</p>
 </div>
 
 <!-- ====== SECTION: TOPIC 3 ====== -->
 <div class="slide center" style="background: var(--surface);">
   <p style="color: var(--cyan); font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Topic 3</p>
   <h1 style="color: var(--cyan);">Inheritance</h1>
-  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then a quiz</p>
+  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then quizzes from the exam pool</p>
 </div>
 
 <div class="slide">
@@ -1041,33 +1065,45 @@ rex = <span class="cls">Dog</span>(<span class="str">"Rex"</span>, <span class="
 
 <div class="slide quiz-slide">
   <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Inheritance &mdash; super())</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">How do you call the parent class's <code>__init__</code> from a child class?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) <code>parent.__init__()</code></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) <code>Parent.init(self)</code></p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) <code>super().__init__(...)</code></strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Python does it automatically</p></div>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">How would you call the constructor of the parent class from a child class in Python?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Using the <code>parent</code> keyword</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Using the <code>super()</code> function</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Using the <code>self</code> keyword</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Using both <code>self</code> and <code>super()</code></p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;"><code>super().__init__(...)</code> chains the parent constructor. Without it, parent attributes never get set &mdash; you'll hit <code>AttributeError</code>.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><code>super().__init__(...)</code> chains to the parent constructor. Without it, parent attributes never get initialised &mdash; you'll hit <code>AttributeError</code> later.</p>
 </div>
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Inheritance &mdash; MRO)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What is Method Resolution Order (MRO)?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>A) The order in which Python searches base classes for a method</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) The order of arguments in __init__</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) The order tests run in</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) How fast methods execute</p></div>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Inheritance &mdash; Terminology &mdash; multi-select)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which terms are valid synonyms for &laquo;parent class&raquo;? (select all that apply)</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>A) Base class</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Subclass</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Derived class</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>D) Superclass</strong></p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;">MRO is the lookup order Python uses to find a method across the inheritance chain. Inspect it with <code>ClassName.__mro__</code> or <code>ClassName.mro()</code>.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Parent / Base / Super</strong> &mdash; same thing. <strong>Child / Sub / Derived</strong> &mdash; same thing. Don't mix them up on the exam.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Inheritance &mdash; Diamond)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">What problem can occur when using multiple inheritance?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>A) Diamond problem</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Circle inheritance</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Random resolution</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Memory leak</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">The <strong>Diamond problem</strong> &mdash; a class inherits from two classes that share a common ancestor, creating ambiguity about which method to call. Python resolves this with the <strong>MRO</strong>.</p>
 </div>
 
 <!-- ====== SECTION: TOPIC 4 ====== -->
 <div class="slide center" style="background: var(--surface);">
   <p style="color: var(--orange); font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Topic 4</p>
   <h1 style="color: var(--orange);">Polymorphism</h1>
-  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then a quiz</p>
+  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then quizzes from the exam pool</p>
 </div>
 
 <div class="slide">
@@ -1251,22 +1287,46 @@ animals = [<span class="cls">Dog</span>(), <span class="cls">Cat</span>(), <span
 
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Polymorphism &mdash; Duck Typing)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What is duck typing?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) A way to type-check function arguments</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Inheriting from a Duck class</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) If it has the method I need, I'll use it &mdash; type doesn't matter</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Using <code>isinstance()</code> everywhere</p></div>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Polymorphism &mdash; Definition)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">What is polymorphism in Python?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) A method always does the same thing regardless of the object</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Accessing properties of one class from another class</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) A method does different things based on the object that it is acting upon</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Inheriting properties and methods from another class</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;">&laquo;If it walks like a duck and quacks like a duck&raquo; &mdash; Python cares that an object has the right <strong>methods</strong>, not what class it belongs to.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Polymorphism</strong> &mdash; one interface, many forms. Same method call (<code>animal.speak()</code>), different result depending on the object's actual class.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Polymorphism &mdash; Abstract)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which decorator is used to define an abstract method in Python?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) <code>@abstract</code></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) <code>@abstractdecorator</code></p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) <code>@abstractmethod</code></strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) <code>@override</code></p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">Use <code>@abstractmethod</code> from the <code>abc</code> module. The class itself must inherit from <code>ABC</code> &mdash; then it can't be instantiated until all abstract methods are implemented.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Polymorphism &mdash; Overriding)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">What is method overriding?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Deleting a method from a parent class</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Modifying an existing method in the parent class</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Creating a new method in a child class with the same name but different parameters</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>D) Creating a new method in a child class with the same name and parameters</strong></p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Overriding</strong> &mdash; same signature, new implementation in the child class. (Different parameters = overloading, which Python doesn't natively support.)</p>
 </div>
 
 <!-- ====== SECTION: TOPIC 5 ====== -->
 <div class="slide center" style="background: var(--surface);">
   <p style="color: var(--accent); font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Topic 5</p>
   <h1 style="color: var(--accent);">Composition & Aggregation</h1>
-  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then a quiz</p>
+  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then quizzes from the exam pool</p>
 </div>
 
 <div class="slide">
@@ -1469,21 +1529,45 @@ my_car = <span class="cls">Car</span>(<span class="str">"Toyota"</span>)
 
 <div class="slide quiz-slide">
   <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Composition & Aggregation &mdash; has-a)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What is the key difference between composition and aggregation?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) They're the same thing</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Composition uses inheritance, aggregation doesn't</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) Composition: parts die with owner. Aggregation: parts survive independently</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Aggregation is faster</p></div>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which relationship best describes composition in OOP?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) is-a</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) can-do</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) uses-a</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>D) has-a</strong></p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;"><strong>Composition</strong> = strong ownership (House &amp; Rooms). <strong>Aggregation</strong> = weak ownership (Team &amp; Players). Players exist before/after the team.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">Composition is a <strong>has-a</strong> relationship (Car <em>has-a</em> Engine). Inheritance is <strong>is-a</strong> (Dog <em>is-a</em> Animal).</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Composition & Aggregation &mdash; Aggregation)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which is a key difference between aggregation and composition?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>A) In aggregation, the part can exist independently of the whole</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) In composition, objects are linked using pointers</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Aggregation implies stronger ownership than composition</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) There is no real difference</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Composition</strong> = parts die with the owner (House &amp; Rooms). <strong>Aggregation</strong> = parts survive independently (Team &amp; Players).</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Composition & Aggregation &mdash; Example)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">A <code>Car</code> class creates and owns an <code>Engine</code> object inside its <code>__init__</code>. This is an example of...</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Aggregation</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Composition</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Inheritance</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Dependency injection</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">Creating the part <em>inside</em> the owner and tying its lifecycle to the owner = <strong>composition</strong>. If <code>Engine</code> were passed in from outside, that would be aggregation / DI.</p>
 </div>
 
 <!-- ====== SECTION: TOPIC 6 ====== -->
 <div class="slide center" style="background: var(--surface);">
   <p style="color: var(--accent); font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Topic 6</p>
   <h1 style="color: var(--accent);">Exception Handling</h1>
-  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then a quiz</p>
+  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then quizzes from the exam pool</p>
 </div>
 
 <div class="slide">
@@ -1651,22 +1735,58 @@ my_car = <span class="cls">Car</span>(<span class="str">"Toyota"</span>)
 
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Exception Handling &mdash; finally)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">Which block always runs &mdash; whether or not an exception was raised?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) <code>try</code></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) <code>except</code></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) <code>else</code></p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>D) <code>finally</code></strong></p></div>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Exception Handling &mdash; except)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which keyword is used immediately after <code>try</code> to catch exceptions in Python?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) catch</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) except</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) finally</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) error</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;"><code>finally</code> runs no matter what &mdash; perfect for cleanup like closing files or releasing resources. <code>else</code> only runs if no exception occurred.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong><code>except</code></strong>. (Java/C# use <code>catch</code>, but Python uses <code>except</code>.) You can specify the exception type: <code>except ValueError:</code></p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Exception Handling &mdash; finally)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which block always runs, whether or not an exception occurred?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) <code>except</code></p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) <code>finally</code></strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) <code>else</code></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) <code>before</code></p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong><code>finally</code></strong> always runs &mdash; ideal for cleanup like closing files or releasing locks. <code>else</code> only runs if no exception was raised.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Exception Handling &mdash; raise)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which keyword is used to manually raise an exception in Python?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) throw</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) raise</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) error</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) exception</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong><code>raise</code></strong> &mdash; e.g. <code>raise ValueError(&quot;negative balance&quot;)</code>. Java/C# use <code>throw</code>; Python uses <code>raise</code>.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Exception Handling &mdash; Custom)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">When writing a custom exception in Python, which class should you derive from?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) <code>Error</code></p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) <code>Exception</code></strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) <code>BaseError</code></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) <code>CustomError</code></p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">Inherit from <code>Exception</code> (or a more specific subclass like <code>ValueError</code>). Avoid inheriting from <code>BaseException</code> directly &mdash; that catches things like <code>KeyboardInterrupt</code>.</p>
 </div>
 
 <!-- ====== SECTION: TOPIC 7 ====== -->
 <div class="slide center" style="background: var(--surface);">
   <p style="color: var(--green); font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Topic 7</p>
   <h1 style="color: var(--green);">SOLID Principles</h1>
-  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then a quiz</p>
+  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then quizzes from the exam pool</p>
 </div>
 
 <div class="slide center">
@@ -1805,33 +1925,57 @@ my_car = <span class="cls">Car</span>(<span class="str">"Toyota"</span>)
 
 <div class="slide quiz-slide">
   <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(SOLID Principles &mdash; SRP)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">&laquo;A class should have only one reason to change&raquo; &mdash; which principle?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which SOLID principle states that a class should have only one reason to change?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
     <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>A) Single Responsibility Principle</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Open-Closed Principle</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Liskov Substitution</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Interface Segregation</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Open/Closed Principle</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Liskov Substitution Principle</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Dependency Inversion Principle</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;"><strong>SRP</strong> &mdash; high cohesion within a class, low coupling between classes. If two unrelated reasons would force you to edit the same class, it's doing too much.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>SRP</strong> &mdash; one class, one responsibility. If two unrelated reasons could force you to edit the same class, split it.</p>
 </div>
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(SOLID Principles &mdash; DIP)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What does the Dependency Inversion Principle say?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Always use the newest dependencies</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) High-level modules should depend on abstractions, not concrete low-level modules</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Invert the order of imports</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Replace inheritance with composition</p></div>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(SOLID Principles &mdash; OCP)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which SOLID principle states that a class should be open for extension and closed for modification?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Single Responsibility Principle</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Open/Closed Principle</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Liskov Substitution Principle</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Dependency Inversion Principle</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;"><strong>DIP</strong> &mdash; both high-level and low-level code depend on <em>abstractions</em> (ABCs / protocols), so you can swap implementations without touching the high-level logic.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>OCP</strong> &mdash; you should be able to add new behavior (extend) without rewriting existing code (modify). Achieved via inheritance, composition, or strategy patterns.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(SOLID Principles &mdash; LSP)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which SOLID principle states that objects of a superclass should be replaceable with objects of its subclasses without breaking the application?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Single Responsibility Principle</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Open/Closed Principle</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) Liskov Substitution Principle</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Dependency Inversion Principle</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>LSP</strong> &mdash; named after Barbara Liskov. If code expects an <code>Animal</code>, passing a <code>Dog</code> should still work correctly. Penguins shouldn't break a <code>Bird.fly()</code> contract.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(SOLID Principles &mdash; DIP &mdash; multi-select)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which statements about Dependency Injection are correct? (select all that apply)</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>A) High-level modules should not depend on low-level modules</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Low-level modules should not depend on high-level modules</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) DI helps to decrease coupling between classes</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) DI helps to increase coupling between classes</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>DIP</strong> &mdash; both high- and low-level code should depend on <em>abstractions</em>. DI is the technique: pass dependencies in from outside, which decreases coupling.</p>
 </div>
 
 <!-- ====== SECTION: TOPIC 8 ====== -->
 <div class="slide center" style="background: var(--surface);">
   <p style="color: var(--accent); font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Topic 8</p>
   <h1 style="color: var(--accent);">UML & Design Patterns</h1>
-  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then a quiz</p>
+  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then quizzes from the exam pool</p>
 </div>
 
 <div class="slide">
@@ -1983,22 +2127,46 @@ my_car = <span class="cls">Car</span>(<span class="str">"Toyota"</span>)
 
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(UML & Design Patterns &mdash; UML)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">How is inheritance (generalization) drawn in a UML class diagram?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) A dashed arrow</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) A solid line with a hollow triangle arrowhead pointing to the parent</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) A filled diamond</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) A plus sign</p></div>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(UML & Design Patterns &mdash; Factory)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which describes the role of the Factory Method pattern?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Defines the skeleton of an algorithm</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Creates objects without specifying the exact class</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Allows classes to work together that couldn't otherwise</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Provides global access to a single instance</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;"><strong>Generalization</strong> = solid line + hollow triangle pointing to the parent. Filled diamond = composition; hollow diamond = aggregation; dashed arrow = dependency.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Factory Method</strong> &mdash; centralizes object creation so callers ask &laquo;what&raquo; they need, and the factory decides &laquo;which class&raquo;. (&laquo;Global access&raquo; describes Singleton; &laquo;classes that couldn't work together&raquo; describes Adapter.)</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(UML & Design Patterns &mdash; Builder)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which design pattern is used to construct complex objects step by step?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Decorator</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Singleton</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) Builder</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Proxy</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Builder</strong> &mdash; useful when an object has many optional parameters or a multi-step construction process. Call <code>.withX().withY().build()</code> instead of a 12-arg constructor.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(UML & Design Patterns &mdash; Singleton)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">What is the purpose of the <code>__new__</code> method in Python?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Initializing the newly created object</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Creating and returning a new instance of a class</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Calling after <code>__init__</code> to set up the object</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Cleaning up the object after it is no longer needed</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><code>__new__</code> <strong>creates and returns</strong> the instance; <code>__init__</code> then <strong>initialises</strong> it. Overriding <code>__new__</code> is how the Singleton pattern is typically implemented in Python.</p>
 </div>
 
 <!-- ====== SECTION: TOPIC 9 ====== -->
 <div class="slide center" style="background: var(--surface);">
   <p style="color: #fbbf24; font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Topic 9</p>
   <h1 style="color: #fbbf24;">Unit Testing & TDD</h1>
-  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then a quiz</p>
+  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then quizzes from the exam pool</p>
 </div>
 
 <div class="slide">
@@ -2119,34 +2287,58 @@ my_car = <span class="cls">Car</span>(<span class="str">"Toyota"</span>)
 
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Unit Testing & TDD &mdash; TDD Cycle)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What are the three phases of the TDD cycle?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Plan, Code, Ship</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Write, Run, Debug</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) Red, Green, Refactor</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Spec, Build, Test</p></div>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Unit Testing & TDD &mdash; TDD)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">What are the main phases of test-driven development (TDD)?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Plan, develop, test</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Red, green, refactor</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Design, implement, test</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Red, green, review</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;"><strong>Red</strong> &mdash; write a failing test. <strong>Green</strong> &mdash; make it pass with minimal code. <strong>Refactor</strong> &mdash; clean up while keeping tests green. Repeat.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Red</strong> &mdash; write a failing test. <strong>Green</strong> &mdash; make it pass with minimal code. <strong>Refactor</strong> &mdash; clean up while keeping tests green. Repeat.</p>
 </div>
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Unit Testing & TDD &mdash; AAA)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">What does the AAA pattern stand for in unit testing?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Assert, Apply, Accept</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Arrange, Act, Assert</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Allocate, Assign, Audit</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Add, Adjust, Acknowledge</p></div>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Unit Testing & TDD &mdash; Purpose)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">What is the primary purpose of unit testing?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) To test the entire system as a whole</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) To test individual units or components of the software</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) To test the performance of the software</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) To evaluate the usability of the software</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;"><strong>Arrange</strong> the inputs, <strong>Act</strong> on the subject, <strong>Assert</strong> the outcome &mdash; three lines, three responsibilities.</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">Unit tests check <strong>one small piece</strong> (usually a method or class) in isolation. Whole-system tests are integration / end-to-end tests &mdash; different layer of the pyramid.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Unit Testing & TDD &mdash; Frameworks &mdash; multi-select)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which frameworks are commonly used for unit testing in Python? (select all that apply)</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) pythontest</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) pytest</strong></p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) unittest</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) pythontesting</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong><code>unittest</code></strong> ships with the standard library. <strong><code>pytest</code></strong> is the community favorite &mdash; less boilerplate, plain <code>assert</code>, great fixtures.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Unit Testing & TDD &mdash; Mocking)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which statement about mocking in software testing is correct?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Mocking complicates testing as it requires extra mock objects</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Mocking uses real objects in tests to ensure accuracy</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Mocking creates full copies of objects for testing</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>D) Mocking simplifies testing by replacing complex dependencies with mock objects</strong></p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Mocks</strong> replace slow or external things (databases, HTTP, time) with controllable fakes. The test becomes fast, deterministic, and focused on the unit you actually want to test.</p>
 </div>
 
 <!-- ====== SECTION: TOPIC 10 ====== -->
 <div class="slide center" style="background: var(--surface);">
   <p style="color: #22d3ee; font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Topic 10</p>
   <h1 style="color: #22d3ee;">Design Patterns (Part 2)</h1>
-  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then a quiz</p>
+  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then quizzes from the exam pool</p>
 </div>
 
 <div class="slide">
@@ -2296,15 +2488,39 @@ t = <span class="cls">TransportFactory</span>.<span class="fn">create</span>(<sp
 
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Design Patterns (Part 2) &mdash; Observer)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem;">Which pattern lets multiple objects react automatically when a subject's state changes?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 760px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Singleton</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Factory</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) Observer</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Decorator</p></div>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Design Patterns (Part 2) &mdash; Decorator)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which design pattern allows behavior to be added to an individual object, dynamically?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Adapter</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Observer</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) Decorator</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Factory</p></div>
   </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 760px;"><strong>Observer</strong> &mdash; the subject keeps a list of observers and notifies them on changes (think YouTube channel + subscribers, or event listeners in a UI).</p>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Decorator</strong> &mdash; wraps an object to add behavior at runtime, without subclassing. Think of layering clothes: t-shirt &rarr; sweater &rarr; jacket &rarr; raincoat.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Design Patterns (Part 2) &mdash; Structural)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which patterns organize classes and objects to form larger structures and help keep parts of the system loosely coupled?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Creational</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Structural</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Behavioral</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Concurrency</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">Three GoF families: <strong>Creational</strong> (how objects are made), <strong>Structural</strong> (how they're composed &mdash; Adapter, Decorator, Facade, Proxy), <strong>Behavioral</strong> (how they communicate).</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Design Patterns (Part 2) &mdash; Categorize &mdash; multi-select)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which of these are creational design patterns? (select all that apply)</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>A) Factory</strong></p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Builder</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Adapter</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>D) Singleton</strong></p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Creational</strong> patterns deal with object creation: Singleton, Factory, Abstract Factory, Builder, Prototype. <strong>Adapter</strong> is structural &mdash; it adapts one interface to another.</p>
 </div>
 
 <!-- ====== KEY TAKEAWAYS ====== -->
