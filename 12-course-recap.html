@@ -385,7 +385,7 @@
 <div class="slide active center">
   <p style="color: var(--accent); font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">PYTHON OOP &mdash; COURSE 12</p>
   <h1>Course Recap</h1>
-  <p class="subtitle">Everything we've covered &mdash; in 10 quick stops</p>
+  <p class="subtitle">Everything we've covered &mdash; in 9 quick stops</p>
   <p style="color: var(--muted); font-size: 0.9rem; margin-top: 2rem;">
     <span class="tag">&larr;</span> <span class="tag">&rarr;</span> to navigate
   </p>
@@ -415,7 +415,7 @@
 <div class="slide">
   <h2>How This Lecture Works</h2>
   <ul>
-    <li>&#128218; We revisit each of the <strong>10 core topics</strong> from the course</li>
+    <li>&#128218; We revisit each of the <strong>9 core topics</strong> from the course</li>
     <li>&#128221; A few key recap slides per topic &mdash; copied straight from the original lectures</li>
     <li>&#10067; A short quiz after each topic to check your memory</li>
     <li>&#127919; ~33 quiz questions &mdash; many are <strong>direct from the exam pool</strong>, others are very similar</li>
@@ -1955,79 +1955,8 @@ my_car = <span class="cls">Car</span>(<span class="str">"Toyota"</span>)
 <!-- ====== SECTION: TOPIC 8 ====== -->
 <div class="slide center" style="background: var(--surface);">
   <p style="color: var(--accent); font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Topic 8</p>
-  <h1 style="color: var(--accent);">UML & Design Patterns</h1>
+  <h1 style="color: var(--accent);">Design Patterns</h1>
   <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then quizzes from the exam pool</p>
-</div>
-
-<div class="slide">
-  <h2>What is <span class="accent">UML</span>?</h2>
-  <div class="layout">
-    <div class="text">
-      <ul>
-        <li>&#128208; <strong>Unified Modeling Language</strong> &mdash; a standardized visual language for software design</li>
-        <li>&#127912; Not a programming language &mdash; a <strong>modeling</strong> language</li>
-        <li>&#129309; Provides a common vocabulary for developers, architects, and stakeholders</li>
-        <li>&#128196; Used to visualize, specify, construct, and document software systems</li>
-      </ul>
-      <div class="callout" style="margin-top: 1.5rem;">UML helps you <strong>think about design</strong> before you write code.</div>
-    </div>
-    <div class="visual">
-      <img src="assets/bpmn-example.png" alt="Example UML diagram" style="max-height: 350px; border-radius: 8px;">
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>UML Diagram <span class="accent">Categories</span></h2>
-  <div class="two-col" style="margin-top: 1.5rem;">
-    <div class="col" style="border-color: #a78bfa;">
-      <h3 style="color: #a78bfa;">&#128194; Structural Diagrams</h3>
-      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 0.5rem;">Static view &mdash; what the system <strong>is</strong></p>
-      <ul style="font-size: 0.9rem;">
-        <li>Class Diagram</li>
-        <li>Object Diagram</li>
-        <li>Component Diagram</li>
-        <li>Package Diagram</li>
-      </ul>
-    </div>
-    <div class="col" style="border-color: #34d399;">
-      <h3 style="color: #34d399;">&#9889; Behavioral Diagrams</h3>
-      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 0.5rem;">Dynamic view &mdash; what the system <strong>does</strong></p>
-      <ul style="font-size: 0.9rem;">
-        <li>Sequence Diagram</li>
-        <li>Use Case Diagram</li>
-        <li>Activity Diagram</li>
-        <li>State Machine Diagram</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Class Diagram <span class="accent">Cheat Sheet</span></h2>
-  <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 0.5rem;">
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; flex: 1; min-width: 200px; max-width: 250px;">
-      <h3 style="color: #a78bfa; font-size: 0.9rem; margin-bottom: 0.5rem;">Visibility</h3>
-      <p style="font-size: 0.8rem; font-family: JetBrains Mono, monospace;"><span style="color: #34d399;">+</span> public</p>
-      <p style="font-size: 0.8rem; font-family: JetBrains Mono, monospace;"><span style="color: var(--accent);">-</span> private</p>
-      <p style="font-size: 0.8rem; font-family: JetBrains Mono, monospace;"><span style="color: #fbbf24;">#</span> protected</p>
-      <p style="font-size: 0.8rem; font-family: JetBrains Mono, monospace;"><span style="color: #a78bfa;">~</span> package</p>
-    </div>
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; flex: 1; min-width: 200px; max-width: 250px;">
-      <h3 style="color: #818cf8; font-size: 0.9rem; margin-bottom: 0.5rem;">Relationships</h3>
-      <p style="font-size: 0.8rem;">&#9472;&#9472;&#9655; Generalization</p>
-      <p style="font-size: 0.8rem;">&#9472;&#9472;&#9472; Association</p>
-      <p style="font-size: 0.8rem;">&#9671;&#9472;&#9472; Aggregation</p>
-      <p style="font-size: 0.8rem;">&#9670;&#9472;&#9472; Composition</p>
-    </div>
-    <div style="background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; flex: 1; min-width: 200px; max-width: 250px;">
-      <h3 style="color: #34d399; font-size: 0.9rem; margin-bottom: 0.5rem;">Other</h3>
-      <p style="font-size: 0.8rem;">- - -&#9655; Dependency</p>
-      <p style="font-size: 0.8rem;">&#171;interface&#187; stereotype</p>
-      <p style="font-size: 0.8rem;"><em>italic</em> = abstract</p>
-      <p style="font-size: 0.8rem;">1..* multiplicity</p>
-    </div>
-  </div>
 </div>
 
 <div class="slide center" style="background: var(--surface);">
@@ -2108,7 +2037,7 @@ my_car = <span class="cls">Car</span>(<span class="str">"Toyota"</span>)
 
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(UML & Design Patterns &mdash; Factory)</span></h2>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Design Patterns &mdash; Factory)</span></h2>
   <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which describes the role of the Factory Method pattern?</p>
   <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
     <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Defines the skeleton of an algorithm</p></div>
@@ -2120,7 +2049,7 @@ my_car = <span class="cls">Car</span>(<span class="str">"Toyota"</span>)
 </div>
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(UML & Design Patterns &mdash; Builder)</span></h2>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Design Patterns &mdash; Builder)</span></h2>
   <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which design pattern is used to construct complex objects step by step?</p>
   <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
     <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Decorator</p></div>
@@ -2132,7 +2061,7 @@ my_car = <span class="cls">Car</span>(<span class="str">"Toyota"</span>)
 </div>
 
 <div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(UML & Design Patterns &mdash; Singleton)</span></h2>
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Design Patterns &mdash; Singleton)</span></h2>
   <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">What is the purpose of the <code>__new__</code> method in Python?</p>
   <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
     <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Initializing the newly created object</p></div>
@@ -2141,6 +2070,188 @@ my_car = <span class="cls">Car</span>(<span class="str">"Toyota"</span>)
     <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Cleaning up the object after it is no longer needed</p></div>
   </div>
   <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><code>__new__</code> <strong>creates and returns</strong> the instance; <code>__init__</code> then <strong>initialises</strong> it. Overriding <code>__new__</code> is how the Singleton pattern is typically implemented in Python.</p>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #fbbf24;">Strategy</span> &mdash; Real-world Analogy</h2>
+  <div class="layout">
+    <div class="text">
+      <p style="margin-bottom: 1rem;">Imagine you have to get to the <strong>airport</strong>. Different strategies:</p>
+      <ul>
+        <li>&#128652; <strong>Bus</strong> &mdash; cheapest, but slowest</li>
+        <li>&#128661; <strong>Taxi</strong> &mdash; fast and comfortable, but expensive</li>
+        <li>&#128690; <strong>Bicycle</strong> &mdash; free and healthy, but weather-dependent</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.2rem;">Same <strong>goal</strong> (reach the airport), different <strong>strategies</strong>. You pick one depending on <strong>budget</strong>, <strong>time</strong>, or <strong>weather</strong>.</div>
+    </div>
+    <div class="visual">
+      <img src="assets/dp-strategy-comic.png" alt="Transportation strategies: bus, cab, and bicycle to reach the airport" style="max-width: 100%; max-height: 440px; border-radius: 8px; background: white; padding: 8px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #34d399;">Decorator</span> &mdash; Real-world Analogy</h2>
+  <div class="layout">
+    <div class="text">
+      <p style="margin-bottom: 1.2rem;">Wearing <strong>layers of clothing</strong>:</p>
+      <ul>
+        <li>&#128085; You start with a <strong>t-shirt</strong> (base object)</li>
+        <li>&#129507; Add a <strong>sweater</strong> when it's cold (decorator 1)</li>
+        <li>&#129509; Put on a <strong>jacket</strong> for rain (decorator 2)</li>
+        <li>&#127746; Add a <strong>raincoat</strong> for heavy rain (decorator 3)</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.2rem;">Each layer <strong>wraps</strong> the previous one. You can add or remove layers without changing the t-shirt itself.</div>
+    </div>
+    <div class="visual">
+      <img src="assets/dp-decorator-comic.png" alt="Decorator analogy: layering clothes — t-shirt, sweater, jacket, raincoat" style="max-width: 100%; max-height: 440px; border-radius: 8px; background: white; padding: 8px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Factory: <span class="accent">Solution</span></h2>
+  <div class="layout">
+    <div class="text">
+      <ul>
+        <li>&#128296; <strong>Centralize</strong> all creation logic in one place</li>
+        <li>&#128994; Clients ask <em>what</em> they need &mdash; the factory picks <em>which class</em></li>
+        <li>&#128257; Adding a new product = <strong>one edit</strong> to the factory, zero changes to callers</li>
+      </ul>
+      <div class="callout" style="margin-top: 1rem;">Most useful when <strong>many inputs</strong> determine <strong>which class</strong> to instantiate &mdash; all that complexity lives in <strong>one place</strong>.</div>
+      <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--muted);">&#9654; The diagram on the right shows <strong>Factory Method</strong> (GoF) &mdash; a polymorphic variant with subclass overrides. In Python, the <strong>Simple Factory</strong> below (a single <code>create()</code> with <code>if</code>/<code>else</code>) is what you'll use 95% of the time.</p>
+    </div>
+    <div class="visual">
+      <div class="reveal-blocks">
+        <div class="reveal-block">
+          <img src="assets/dp-factory-solution.png" alt="Factory Method solution diagram" style="max-width: 100%; max-height: 400px; border-radius: 8px; background: white; padding: 8px;">
+        </div>
+        <div class="reveal-block">
+          <p style="color: var(--muted); margin-top: 0.7rem; margin-bottom: 0.3rem; font-size: 0.85rem;">In practice &mdash; many params &rarr; one of many classes:</p>
+          <pre style="font-size: 0.68rem;"><span class="kw">class</span> <span class="cls">TransportFactory</span>:
+    @<span class="fn">staticmethod</span>
+    <span class="kw">def</span> <span class="fn">create</span>(destination, weight, urgent):
+        <span class="kw">if</span> destination == <span class="str">"overseas"</span>:
+            <span class="kw">return</span> <span class="cls">Ship</span>(weight)
+        <span class="kw">if</span> urgent <span class="kw">and</span> weight &lt; <span class="num">10</span>:
+            <span class="kw">return</span> <span class="cls">Drone</span>(weight)
+        <span class="kw">if</span> weight &gt; <span class="num">1000</span>:
+            <span class="kw">return</span> <span class="cls">Train</span>(weight)
+        <span class="kw">return</span> <span class="cls">Truck</span>(weight)
+
+t = <span class="cls">TransportFactory</span>.<span class="fn">create</span>(<span class="str">"overseas"</span>, <span class="num">50</span>, <span class="kw">False</span>)</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>Facade: <span class="accent">Solution</span></h2>
+  <div style="max-width: 700px;">
+    <ul>
+      <li>&#128451;&#65039; Create a class that provides a <strong>simple, high-level interface</strong></li>
+      <li>&#128230; It wraps the complex subsystem and delegates calls internally</li>
+      <li>&#128994; Clients interact with the Facade &mdash; <strong>not</strong> the subsystem directly</li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <h2><span style="color: #22d3ee;">Observer</span> &mdash; Real-world Analogy</h2>
+  <div class="layout">
+    <div class="text">
+      <p style="margin-bottom: 1rem;">Think of a <strong>YouTube channel</strong>:</p>
+      <ul>
+        <li>&#127909; The <strong>channel</strong> (subject) publishes new videos</li>
+        <li>&#128100; <strong>Subscribers</strong> (observers) get notified automatically</li>
+        <li>&#10060; The channel doesn't care <em>who</em> subscribes or <em>how many</em></li>
+        <li>&#9989; Subscribers can join or leave freely &mdash; no coupling to the channel's internals</li>
+      </ul>
+      <div class="callout" style="margin-top: 1.2rem;">One publisher, many subscribers. <strong>Loose coupling</strong>.</div>
+    </div>
+    <div class="visual" style="display: flex; align-items: center; justify-content: center;">
+      <img src="assets/youtube-subscribe.png" alt="YouTube subscribe button — the publisher-subscriber analogy for the Observer pattern" style="max-width: 100%; max-height: 340px;">
+    </div>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>When to Use <span class="accent">Which Pattern</span>?</h2>
+  <div style="max-width: 860px; margin-top: 1rem;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem;">
+      <thead>
+        <tr style="border-bottom: 2px solid var(--border);">
+          <th style="text-align: left; padding: 0.6rem 0.8rem; color: var(--muted); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-size: 0.78rem;">Pattern</th>
+          <th style="text-align: left; padding: 0.6rem 0.8rem; color: var(--muted); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-size: 0.78rem;">Use when&hellip;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #fbbf24;">Strategy</td>
+          <td style="padding: 0.55rem 0.8rem;">You have several algorithms doing the same thing and want to pick at runtime</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #34d399;">Decorator</td>
+          <td style="padding: 0.55rem 0.8rem;">You need to add behavior to an object <em>without</em> subclassing</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #818cf8;">Factory</td>
+          <td style="padding: 0.55rem 0.8rem;">Object creation logic shouldn't live in the caller</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #a78bfa;">Facade</td>
+          <td style="padding: 0.55rem 0.8rem;">Client code is drowning in subsystem complexity</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: var(--accent);">Iterator</td>
+          <td style="padding: 0.55rem 0.8rem;">You want to traverse a collection without exposing internals</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #22d3ee;">Observer</td>
+          <td style="padding: 0.55rem 0.8rem;">Multiple objects must react to a state change</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout" style="margin-top: 1.2rem;">Not sure? <strong>Write the simple version first.</strong> Refactor to a pattern when the real need appears.</div>
+  </div>
+</div>
+
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Design Patterns &mdash; Decorator)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which design pattern allows behavior to be added to an individual object, dynamically?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Adapter</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Observer</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) Decorator</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Factory</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Decorator</strong> &mdash; wraps an object to add behavior at runtime, without subclassing. Think of layering clothes: t-shirt &rarr; sweater &rarr; jacket &rarr; raincoat.</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Design Patterns &mdash; Structural)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which patterns organize classes and objects to form larger structures and help keep parts of the system loosely coupled?</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Creational</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Structural</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Behavioral</p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Concurrency</p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">Three GoF families: <strong>Creational</strong> (how objects are made), <strong>Structural</strong> (how they're composed &mdash; Adapter, Decorator, Facade, Proxy), <strong>Behavioral</strong> (how they communicate).</p>
+</div>
+
+<div class="slide quiz-slide">
+  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Design Patterns &mdash; Categorize &mdash; multi-select)</span></h2>
+  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which of these are creational design patterns? (select all that apply)</p>
+  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>A) Factory</strong></p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Builder</strong></p></div>
+    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Adapter</p></div>
+    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>D) Singleton</strong></p></div>
+  </div>
+  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Creational</strong> patterns deal with object creation: Singleton, Factory, Abstract Factory, Builder, Prototype. <strong>Adapter</strong> is structural &mdash; it adapts one interface to another.</p>
 </div>
 
 <!-- ====== SECTION: TOPIC 9 ====== -->
@@ -2315,195 +2426,6 @@ my_car = <span class="cls">Car</span>(<span class="str">"Toyota"</span>)
   <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Mocks</strong> replace slow or external things (databases, HTTP, time) with controllable fakes. The test becomes fast, deterministic, and focused on the unit you actually want to test.</p>
 </div>
 
-<!-- ====== SECTION: TOPIC 10 ====== -->
-<div class="slide center" style="background: var(--surface);">
-  <p style="color: #22d3ee; font-size: 0.95rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1rem;">Topic 10</p>
-  <h1 style="color: #22d3ee;">Design Patterns (Part 2)</h1>
-  <p class="subtitle" style="margin-top: 0.5rem;">Quick recap, then quizzes from the exam pool</p>
-</div>
-
-<div class="slide">
-  <h2><span style="color: #fbbf24;">Strategy</span> &mdash; Real-world Analogy</h2>
-  <div class="layout">
-    <div class="text">
-      <p style="margin-bottom: 1rem;">Imagine you have to get to the <strong>airport</strong>. Different strategies:</p>
-      <ul>
-        <li>&#128652; <strong>Bus</strong> &mdash; cheapest, but slowest</li>
-        <li>&#128661; <strong>Taxi</strong> &mdash; fast and comfortable, but expensive</li>
-        <li>&#128690; <strong>Bicycle</strong> &mdash; free and healthy, but weather-dependent</li>
-      </ul>
-      <div class="callout" style="margin-top: 1.2rem;">Same <strong>goal</strong> (reach the airport), different <strong>strategies</strong>. You pick one depending on <strong>budget</strong>, <strong>time</strong>, or <strong>weather</strong>.</div>
-    </div>
-    <div class="visual">
-      <img src="assets/dp-strategy-comic.png" alt="Transportation strategies: bus, cab, and bicycle to reach the airport" style="max-width: 100%; max-height: 440px; border-radius: 8px; background: white; padding: 8px;">
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2><span style="color: #34d399;">Decorator</span> &mdash; Real-world Analogy</h2>
-  <div class="layout">
-    <div class="text">
-      <p style="margin-bottom: 1.2rem;">Wearing <strong>layers of clothing</strong>:</p>
-      <ul>
-        <li>&#128085; You start with a <strong>t-shirt</strong> (base object)</li>
-        <li>&#129507; Add a <strong>sweater</strong> when it's cold (decorator 1)</li>
-        <li>&#129509; Put on a <strong>jacket</strong> for rain (decorator 2)</li>
-        <li>&#127746; Add a <strong>raincoat</strong> for heavy rain (decorator 3)</li>
-      </ul>
-      <div class="callout" style="margin-top: 1.2rem;">Each layer <strong>wraps</strong> the previous one. You can add or remove layers without changing the t-shirt itself.</div>
-    </div>
-    <div class="visual">
-      <img src="assets/dp-decorator-comic.png" alt="Decorator analogy: layering clothes — t-shirt, sweater, jacket, raincoat" style="max-width: 100%; max-height: 440px; border-radius: 8px; background: white; padding: 8px;">
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Factory: <span class="accent">Solution</span></h2>
-  <div class="layout">
-    <div class="text">
-      <ul>
-        <li>&#128296; <strong>Centralize</strong> all creation logic in one place</li>
-        <li>&#128994; Clients ask <em>what</em> they need &mdash; the factory picks <em>which class</em></li>
-        <li>&#128257; Adding a new product = <strong>one edit</strong> to the factory, zero changes to callers</li>
-      </ul>
-      <div class="callout" style="margin-top: 1rem;">Most useful when <strong>many inputs</strong> determine <strong>which class</strong> to instantiate &mdash; all that complexity lives in <strong>one place</strong>.</div>
-      <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--muted);">&#9654; The diagram on the right shows <strong>Factory Method</strong> (GoF) &mdash; a polymorphic variant with subclass overrides. In Python, the <strong>Simple Factory</strong> below (a single <code>create()</code> with <code>if</code>/<code>else</code>) is what you'll use 95% of the time.</p>
-    </div>
-    <div class="visual">
-      <div class="reveal-blocks">
-        <div class="reveal-block">
-          <img src="assets/dp-factory-solution.png" alt="Factory Method solution diagram" style="max-width: 100%; max-height: 400px; border-radius: 8px; background: white; padding: 8px;">
-        </div>
-        <div class="reveal-block">
-          <p style="color: var(--muted); margin-top: 0.7rem; margin-bottom: 0.3rem; font-size: 0.85rem;">In practice &mdash; many params &rarr; one of many classes:</p>
-          <pre style="font-size: 0.68rem;"><span class="kw">class</span> <span class="cls">TransportFactory</span>:
-    @<span class="fn">staticmethod</span>
-    <span class="kw">def</span> <span class="fn">create</span>(destination, weight, urgent):
-        <span class="kw">if</span> destination == <span class="str">"overseas"</span>:
-            <span class="kw">return</span> <span class="cls">Ship</span>(weight)
-        <span class="kw">if</span> urgent <span class="kw">and</span> weight &lt; <span class="num">10</span>:
-            <span class="kw">return</span> <span class="cls">Drone</span>(weight)
-        <span class="kw">if</span> weight &gt; <span class="num">1000</span>:
-            <span class="kw">return</span> <span class="cls">Train</span>(weight)
-        <span class="kw">return</span> <span class="cls">Truck</span>(weight)
-
-t = <span class="cls">TransportFactory</span>.<span class="fn">create</span>(<span class="str">"overseas"</span>, <span class="num">50</span>, <span class="kw">False</span>)</pre>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>Facade: <span class="accent">Solution</span></h2>
-  <div style="max-width: 700px;">
-    <ul>
-      <li>&#128451;&#65039; Create a class that provides a <strong>simple, high-level interface</strong></li>
-      <li>&#128230; It wraps the complex subsystem and delegates calls internally</li>
-      <li>&#128994; Clients interact with the Facade &mdash; <strong>not</strong> the subsystem directly</li>
-    </ul>
-  </div>
-</div>
-
-<div class="slide">
-  <h2><span style="color: #22d3ee;">Observer</span> &mdash; Real-world Analogy</h2>
-  <div class="layout">
-    <div class="text">
-      <p style="margin-bottom: 1rem;">Think of a <strong>YouTube channel</strong>:</p>
-      <ul>
-        <li>&#127909; The <strong>channel</strong> (subject) publishes new videos</li>
-        <li>&#128100; <strong>Subscribers</strong> (observers) get notified automatically</li>
-        <li>&#10060; The channel doesn't care <em>who</em> subscribes or <em>how many</em></li>
-        <li>&#9989; Subscribers can join or leave freely &mdash; no coupling to the channel's internals</li>
-      </ul>
-      <div class="callout" style="margin-top: 1.2rem;">One publisher, many subscribers. <strong>Loose coupling</strong>.</div>
-    </div>
-    <div class="visual" style="display: flex; align-items: center; justify-content: center;">
-      <img src="assets/youtube-subscribe.png" alt="YouTube subscribe button — the publisher-subscriber analogy for the Observer pattern" style="max-width: 100%; max-height: 340px;">
-    </div>
-  </div>
-</div>
-
-<div class="slide">
-  <h2>When to Use <span class="accent">Which Pattern</span>?</h2>
-  <div style="max-width: 860px; margin-top: 1rem;">
-    <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem;">
-      <thead>
-        <tr style="border-bottom: 2px solid var(--border);">
-          <th style="text-align: left; padding: 0.6rem 0.8rem; color: var(--muted); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-size: 0.78rem;">Pattern</th>
-          <th style="text-align: left; padding: 0.6rem 0.8rem; color: var(--muted); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-size: 0.78rem;">Use when&hellip;</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #fbbf24;">Strategy</td>
-          <td style="padding: 0.55rem 0.8rem;">You have several algorithms doing the same thing and want to pick at runtime</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #34d399;">Decorator</td>
-          <td style="padding: 0.55rem 0.8rem;">You need to add behavior to an object <em>without</em> subclassing</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #818cf8;">Factory</td>
-          <td style="padding: 0.55rem 0.8rem;">Object creation logic shouldn't live in the caller</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #a78bfa;">Facade</td>
-          <td style="padding: 0.55rem 0.8rem;">Client code is drowning in subsystem complexity</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: var(--accent);">Iterator</td>
-          <td style="padding: 0.55rem 0.8rem;">You want to traverse a collection without exposing internals</td>
-        </tr>
-        <tr style="border-bottom: 1px solid var(--border);">
-          <td style="padding: 0.55rem 0.8rem; font-weight: 700; color: #22d3ee;">Observer</td>
-          <td style="padding: 0.55rem 0.8rem;">Multiple objects must react to a state change</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="callout" style="margin-top: 1.2rem;">Not sure? <strong>Write the simple version first.</strong> Refactor to a pattern when the real need appears.</div>
-  </div>
-</div>
-
-
-<div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Design Patterns (Part 2) &mdash; Decorator)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which design pattern allows behavior to be added to an individual object, dynamically?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Adapter</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">B) Observer</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>C) Decorator</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Factory</p></div>
-  </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Decorator</strong> &mdash; wraps an object to add behavior at runtime, without subclassing. Think of layering clothes: t-shirt &rarr; sweater &rarr; jacket &rarr; raincoat.</p>
-</div>
-
-<div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Design Patterns (Part 2) &mdash; Structural)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which patterns organize classes and objects to form larger structures and help keep parts of the system loosely coupled?</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">A) Creational</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Structural</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Behavioral</p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">D) Concurrency</p></div>
-  </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;">Three GoF families: <strong>Creational</strong> (how objects are made), <strong>Structural</strong> (how they're composed &mdash; Adapter, Decorator, Facade, Proxy), <strong>Behavioral</strong> (how they communicate).</p>
-</div>
-
-<div class="slide quiz-slide">
-  <h2>Quiz Time! <span style="color: var(--muted); font-size: 1rem;">(Design Patterns (Part 2) &mdash; Categorize &mdash; multi-select)</span></h2>
-  <p style="color: var(--accent); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; max-width: 850px;">Which of these are creational design patterns? (select all that apply)</p>
-  <div class="two-col quiz-answers" style="margin-top: 1.5rem; max-width: 800px;">
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>A) Factory</strong></p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>B) Builder</strong></p></div>
-    <div class="col quiz-answer" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);">C) Adapter</p></div>
-    <div class="col quiz-answer correct" style="text-align: center;"><p style="font-size: 1.05rem; color: var(--green);"><strong>D) Singleton</strong></p></div>
-  </div>
-  <p class="quiz-explanation" style="color: var(--muted); margin-top: 1.2rem; font-size: 0.95rem; max-width: 800px;"><strong>Creational</strong> patterns deal with object creation: Singleton, Factory, Abstract Factory, Builder, Prototype. <strong>Adapter</strong> is structural &mdash; it adapts one interface to another.</p>
-</div>
-
 <!-- ====== KEY TAKEAWAYS ====== -->
 <div class="slide">
   <h2>Key Takeaways &mdash; The Whole Course</h2>
@@ -2516,7 +2438,7 @@ t = <span class="cls">TransportFactory</span>.<span class="fn">create</span>(<sp
       <li><strong>Composition</strong> &mdash; <em>has-a</em> beats <em>is-a</em> most of the time</li>
       <li><strong>Exceptions</strong> &mdash; <code>try / except / else / finally</code>, raise your own when needed</li>
       <li><strong>SOLID</strong> &mdash; five guardrails for OOP design</li>
-      <li><strong>UML &amp; Patterns</strong> &mdash; common vocabulary + proven solutions</li>
+      <li><strong>Design Patterns</strong> &mdash; common vocabulary + proven solutions</li>
       <li><strong>Testing &amp; TDD</strong> &mdash; AAA pattern, Red/Green/Refactor</li>
     </ul>
   </div>
